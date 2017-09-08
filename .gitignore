@@ -26,3 +26,6 @@
 
 /config/locales
 /vendor
+
+# Ignore application configuration
+/config/application.yml

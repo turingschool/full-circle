@@ -11,6 +11,11 @@ gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'faraday'
+gem 'figaro'
+gem 'omniauth'
+gem 'omniauth-github'
+
 # gem 'coffee-rails', '~> 4.2'
 # gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
