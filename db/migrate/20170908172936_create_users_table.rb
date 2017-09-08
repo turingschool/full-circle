@@ -5,7 +5,7 @@ class CreateUsersTable < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.string :github_id
       t.text :github_token
-      t.integer :role default: 0
+      t.integer :role, default: 0
 
       t.timestamps null: false
     end
