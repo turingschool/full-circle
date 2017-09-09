@@ -18,7 +18,7 @@ gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-github'
 
-gem 'react-rails'
+gem 'react-rails', '~> 2.2.1'
 
 # gem 'coffee-rails', '~> 4.2'
 # gem 'redis', '~> 3.0'
