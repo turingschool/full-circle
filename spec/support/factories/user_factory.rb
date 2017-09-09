@@ -3,8 +3,8 @@ FactoryGirl.define do
   factory :user do
     name 'John Galt'
     email 'somewhere@colorado.com'
-    github_id '90210'
-    github_token 'abc123'
+    uid '90210'
+    token 'abc123'
   end
 
   trait :reviewer do
