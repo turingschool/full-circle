@@ -1,7 +1,7 @@
 module Authorize
   extend ActiveSupport::Concern
 
-  protected
+  private
 
     def redirect_user
       if student?
