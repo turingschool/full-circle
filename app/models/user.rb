@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 
-
   enum role: [:student, :reviewer, :admin]
 
   class << self
+
     def find_or_create_by_oauth(params)
       user_params = {
         github_id: params['uid'],

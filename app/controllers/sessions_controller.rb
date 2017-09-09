@@ -1,10 +1,15 @@
 class SessionsController < ApplicationController
 
   def create
+    user = User.find_or_create_by_oauth(oauth_params)
 
-    @user = User.find_or_create_by_oauth(oauth_params)
+    if user
+      session[:user_id] = user.id
+      redirect_user
+    else
+      redirect_to homepage_path
+    end
 
-    redirect_to root_path
   end
 
   private
@@ -12,5 +17,4 @@ class SessionsController < ApplicationController
     def oauth_params
       request.env['omniauth.auth']
     end
-
 end
