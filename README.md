@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/turingschool/full-circle.svg?branch=master)](https://travis-ci.org/turingschool/full-circle)
+
 # Full Circle
 ### Turing's Diversity Scholarship Application
 
