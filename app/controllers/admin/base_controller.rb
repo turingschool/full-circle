@@ -1,9 +1,9 @@
 class Admin::BaseController < ApplicationController
-  before_action :require_admin
+  before_action :authorize!
 
   private
 
-    def require_admin
+    def authorize!
       render file: "/public/404" unless admin?
     end
 end
