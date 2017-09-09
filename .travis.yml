@@ -7,4 +7,4 @@ services:
  - postgresql
 script:
  - bin/rake db:{create,migrate} RAILS_ENV=test
- - bin/rspec
+ - bin/rake
