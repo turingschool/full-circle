@@ -1,9 +1,15 @@
 class SessionsController < ApplicationController
-  include Authorize
 
   def create
-    @user = User.find_or_create_by_oauth(oauth_params)
-    redirect_user
+    user = User.find_or_create_by_oauth(oauth_params)
+
+    if user
+      session[:user_id] = user.id
+      redirect_user
+    else
+      redirect_to homepage_path
+    end
+
   end
 
   private

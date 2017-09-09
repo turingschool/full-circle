@@ -14,15 +14,13 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'faraday'
+
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'cancancan', '~> 2.0'
 
 gem 'react-rails', '~> 2.2.1'
-
-# gem 'coffee-rails', '~> 4.2'
-# gem 'redis', '~> 3.0'
-# gem 'capistrano-rails', group: :development
 
 group :development do
   gem 'web-console', '>= 3.3.0'

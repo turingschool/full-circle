@@ -1,5 +1,7 @@
 class Admin::DashboardController < Admin::BaseController
 
-  def index; end
+  def index
+    binding.pry
+  end
 
 end
