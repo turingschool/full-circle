@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include Authorize
 
   def create
     @user = User.find_or_create_by_oauth(oauth_params)

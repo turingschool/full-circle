@@ -3,5 +3,16 @@ Rails.application.routes.draw do
 
   get '/auth/github/callback', to: 'sessions#create'
 
-  resources :dashboard, only: [:index]
+  namespace :admin do
+    get '/dashboard', to: 'dashboard#index'
+  end
+
+  namespace :reviewer do
+    get '/dashboard', to: 'dashboard#index'
+  end
+
+  namespace :student do
+    get '/dashboard', to: 'dashboard#index'
+  end
+
 end
