@@ -1,8 +1,8 @@
 FactoryGirl.define do
 
   factory :user do
-    first_name 'John'
-    last_name 'Galt'
+    name 'John Galt'
+    email 'somewhere@colorado.com'
     github_id '90210'
     github_token 'abc123'
   end
