@@ -1,8 +1,8 @@
 class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
-      t.string :first_name
-      t.string :last_name
+      t.string :name
+      t.string :email
       t.string :github_id
       t.text :github_token
       t.integer :role, default: 0
