@@ -1,0 +1,9 @@
+class CohortsSection extends React.Component {
+  render() {
+    return (
+      <section className='main-horz-frame cohorts'>
+        <CohortsModule />
+      </section>
+    )
+  }
+}
