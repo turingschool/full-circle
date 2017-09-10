@@ -1,4 +1,5 @@
 class CohortModule extends React.Component {
+
   render() {
     let cohort = this.props.cohort
 
@@ -15,10 +16,9 @@ class CohortModule extends React.Component {
     let start_date = new Date(cohort.start_date)
     let end_date = new Date(cohort.end_date)
 
-    if (today >= start_date && today <= end_date) {
+    if (today >= start_date && today <= end_date)
       return 'open'
-    } else {
+    else
       return 'closed'
-    }
   }
 }
