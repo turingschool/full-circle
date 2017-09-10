@@ -1,4 +1,4 @@
-@mixin shadow($horz: 1px, $vert: 1px, $blur: 10px, $spread: 0.5px, $alpha: 0.2) {
+@mixin shadow($horz: 1px, $vert: 1px, $blur: 7px, $spread: 0.5px, $alpha: 0.1) {
   -webkit-box-shadow: $horz $vert $blur $spread rgba(0, 0, 0, $alpha);
     -moz-box-shadow: $horz $vert $blur $spread rgba(0, 0, 0, $alpha);
       box-shadow: $horz $vert $blur $spread rgba(0, 0, 0, $alpha);

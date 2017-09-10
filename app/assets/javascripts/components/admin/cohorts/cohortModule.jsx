@@ -1,20 +1,25 @@
 class CohortModule extends React.Component {
 
-  render() {
-    let cohort = this.props.cohort
+  constructor(props) {
+    super(props)
 
+    this.cohort = this.props.cohort
+  }
+
+  render() {
     return (
-      <div className={['cohort', this.status(cohort)].join(' ')} key={cohort.id.toString()}>
-        <span>{cohort.title}</span>
-        <span className={cohort.state}>{cohort.state}</span>
+      <div className={['cohort', this.status(this.cohort)].join(' ')}
+          onClick={this.props.onClick.bind(this.cohort)}>
+        <span>{this.cohort.title}</span>
+        <span className={this.cohort.state}>{this.cohort.state}</span>
       </div>
     )
   }
 
-  status(cohort) {
+  status() {
     let today = new Date
-    let start_date = new Date(cohort.start_date)
-    let end_date = new Date(cohort.end_date)
+    let start_date = new Date(this.cohort.start_date)
+    let end_date = new Date(this.cohort.end_date)
 
     if (today >= start_date && today <= end_date)
       return 'open'
