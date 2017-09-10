@@ -1,9 +1,20 @@
 .cohorts-frame {
+  @include shadow();
+  
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
 
   width: 100%;
   padding: 10px;
 
   overflow: scroll;
+
+  .open {
+    background-color: green;
+  }
+
+  .closed {
+    background-color: #eeeeee;
+  }
 }

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170910201306) do
     t.string "title"
     t.date "start_date"
     t.date "end_date"
-    t.integer "status", default: 0
+    t.integer "state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
