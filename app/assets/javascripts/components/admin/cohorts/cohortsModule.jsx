@@ -2,7 +2,9 @@ class CohortsModule extends React.Component {
   render() {
     return (
       <section className='cohorts-frame'>
-        Lots of Cohorts
+        {this.props.cohorts.map((cohort, i) => {
+          return <CohortModule key={i} cohort={cohort} />
+        })}
       </section>
     )
   }
