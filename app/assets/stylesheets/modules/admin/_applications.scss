@@ -1,4 +1,6 @@
 .applications-frame {
+  @include shadow();
+  
   display: flex;
 
   width: 100%;

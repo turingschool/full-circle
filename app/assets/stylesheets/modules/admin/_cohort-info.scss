@@ -1,4 +1,6 @@
 .cohort-info-frame {
+  @include shadow();
+  
   display: flex;
 
   height: 200px;
