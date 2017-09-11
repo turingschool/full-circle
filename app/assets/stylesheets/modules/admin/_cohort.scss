@@ -20,10 +20,10 @@
   }
 
   .unfinalized {
-    background-color: red;
+    background-color: $action-red
   }
 
   .finalized {
-    background-color: #cccccc;
+    background-color: $action-none
   }
 }

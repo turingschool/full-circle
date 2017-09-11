@@ -10,4 +10,16 @@
 
   margin-top: 20px;
   padding: 10px;
+
+  .undecided {
+    background-color: $action-red
+  }
+
+  .declined {
+    background-color: $action-none
+  }
+
+  .awarded {
+    background-color: $action-green
+  }
 }

@@ -12,10 +12,10 @@
   overflow: scroll;
 
   .open {
-    background-color: green;
+    background-color: $action-green;
   }
 
   .closed {
-    background-color: #eeeeee;
+    background-color: $action-none;
   }
 }
