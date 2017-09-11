@@ -1,21 +1,154 @@
-User.destroy_all
-Cohort.destroy_all
+class Seed
 
-User.create(uid: '22713509', role: 'admin')
+  def run
+    clean
+    make_cohorts
+    make_users
+    make_applications
+    populate_cohorts
+    award_scholarships
+  end
 
-10.times do |i|
-  date = Date.today + (i+1).months
+  def clean
+    puts 'Cleaning'
+    User.destroy_all
+    Cohort.destroy_all
+    Application.destroy_all
+  end
 
-  Cohort.create(
-    title: ('17' + i.to_s),
-    start_date: date,
-    end_date: date + 3.weeks,
-    state: 'finalized'
-  )
+  def make_cohorts
+    puts 'Making Cohorts'
+    @closed_cohorts = make_closed_cohorts
+    @open_cohort = make_open_cohort
+  end
+
+  def make_users
+    puts 'Makeing Users'
+    @admin = make_admin
+    puts "Made Admin: #{@admin}"
+    @past_students = make_past_students
+    puts "Made #{@past_students.length} Past Students"
+    @current_students = make_current_students
+    puts "Made #{@current_students.length} Current Students"
+  end
+
+  def make_applications
+    puts 'Making Applications'
+    @past_applications = make_past_applications
+    puts "Made #{@past_applications.length} Past Applications"
+    @current_applications = make_current_applications
+    puts "Made #{@current_applications.length} Current Applications"
+  end
+
+  def populate_cohorts
+    puts 'Populating Cohorts'
+    populate_closed_cohorts
+    puts 'Populated Closed Cohorts'
+    populate_open_cohort
+    puts 'Open Closed Cohorts'
+  end
+
+  def award_scholarships
+    award_closed_cohorts
+    puts 'Awarded Scholorships'
+  end
+
+  ###
+
+  def make_closed_cohorts
+    10.times.map do |i|
+      date = Date.today + (i+1).months
+
+      Cohort.create(
+        title: ('17' + i.to_s),
+        start_date: date,
+        end_date: date + 3.weeks,
+        state: 'finalized'
+      )
+    end
+  end
+
+  def make_open_cohort
+    Cohort.create(
+      title: '1801',
+      start_date: Date.today - 1.day,
+      end_date: Date.today + 3.weeks
+    )
+  end
+
+  def make_admin
+    User.create(uid: '22713509', role: 'admin')
+  end
+
+  def make_past_students
+    80.times.map do |i|
+      name = Faker::FamilyGuy.character
+      email = name.gsub(' ', '.') + '@gmail.com'
+      uid = (1234 + i).to_s
+      token = (9876543 + i).to_s
+
+      User.create(name: name, email: email, uid: uid, token: token)
+    end
+  end
+
+  def make_current_students
+    8.times.map do |i|
+      name = Faker::HarryPotter.unique.character
+      email = name.gsub(' ', '.') + '@gmail.com'
+      uid = (12345 + i).to_s
+      token = (98765432 + i).to_s
+
+      User.create(name: name, email: email, uid: uid, token: token)
+    end
+  end
+
+  def make_past_applications
+    @past_students.each.map do |student|
+      app = make_application
+      app.user = student
+      app
+    end
+  end
+
+  def make_current_applications
+    @current_students.each.map do |student|
+      app = make_application
+      app.user = student
+      app
+    end
+  end
+
+  def make_application
+    Application.new( essay: Faker::Lorem.paragraph(8, false) )
+  end
+
+  def populate_closed_cohorts
+    @closed_cohorts.each_with_index do |cohort, i|
+      chunk = i * 8
+      @past_applications[chunk..chunk+7].each do |app|
+        app.cohort = cohort
+        app.save!
+      end
+    end
+  end
+
+  def populate_open_cohort
+    @current_applications.each do |app|
+      app.cohort = @open_cohort
+      app.save!
+    end
+  end
+
+  def award_closed_cohorts
+    @closed_cohorts.each do |cohort|
+      cohort.applications.each { |app| app.declined! }
+
+      winning_apps = cohort.applications.sample(2)
+      winning_apps.each do |winner|
+        winner.awarded!
+      end
+    end
+  end
 end
 
-Cohort.create(
-  title: '1801',
-  start_date: Date.today - 1.day,
-  end_date: Date.today + 3.weeks
-)
+Seed.new.run

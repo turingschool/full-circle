@@ -9,7 +9,7 @@ class CohortModule extends React.Component {
   render() {
     return (
       <div className={['cohort', this.status(this.cohort)].join(' ')}
-          onClick={this.props.onClick.bind(this.cohort)}>
+          onClick={this.props.onClick.bind(this, this.cohort)}>
         <span>{this.cohort.title}</span>
         <span className={this.cohort.state}>{this.cohort.state}</span>
       </div>

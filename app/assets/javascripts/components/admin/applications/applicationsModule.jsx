@@ -1,8 +1,11 @@
 class ApplicationsModule extends React.Component {
+
   render() {
     return (
       <section className='applications-frame'>
-        Applications
+        {this.props.cohort.applications.map((app) => {
+          return <ApplicationModule key={app.id} app={app} />
+        })}
       </section>
     )
   }

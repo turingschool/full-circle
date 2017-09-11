@@ -1,5 +1,7 @@
 {
   "name": "full_circle_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "classnames": "^2.2.5"
+  }
 }

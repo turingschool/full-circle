@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Cohort do
 
+  describe 'Associations' do
+    it { should have_many(:applications) }
+  end
+
   describe 'State' do
 
     it 'Defaults to Unfinalized' do
