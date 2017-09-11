@@ -12,6 +12,7 @@ class CohortsModule extends React.Component {
   sortBy(property) {
     let sortBy = property
 
+    debugger
     return this.props.cohorts.sort((a, b) => {
       if (a[sortBy] > b[sortBy])
         return -1;
