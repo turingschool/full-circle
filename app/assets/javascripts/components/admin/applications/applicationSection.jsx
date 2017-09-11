@@ -1,21 +1,11 @@
 class ApplicationSection extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = { cohort: this.props.cohort }
-    this.cohort = this.props.cohort
-  }
-
   render() {
     return (
       <section className='main-vert-frame applications'>
-        <CohortInfoModule cohort={this.cohort}/>
-        <ApplicationsModule cohort={this.cohort}/>
+        <CohortInfoModule cohort={this.props.cohort}/>
+        <ApplicationsModule cohort={this.props.cohort}/>
       </section>
     )
-  }
-
-  updateCohort(cohort) {
-    this.setState({ cohort: cohort})
   }
 }

@@ -2,30 +2,39 @@ class AdminDashboard extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      cohorts: {},
+      cohortInFocus: {},
+      sortBy: 'title'
+    }
+  }
 
-    this.cohorts = JSON.parse(this.props.cohorts)
-    this.sortBy = 'title'
+  componentWillMount(){
+    let cohorts = this.sortCohortsBy(JSON.parse(this.props.cohorts))
+
+    this.setState( {cohorts: cohorts} )
+    this.setState( {cohortInFocus: cohorts[0]} )
+  }
+
+  handleChange(cohort) {
+    this.setState( {cohortInFocus: cohort} )
   }
 
   render() {
     return (
       <main className='admin-frame'>
-        <CohortsSection cohorts={this.sortCohortsBy()}
-          updateApplications={this.updateApplications}/>
-        <ApplicationSection cohort={this.sortCohortsBy()[0]}/>
+        <CohortsSection cohorts={this.state.cohorts}
+          updateApplications={this.handleChange.bind(this)}/>
+        <ApplicationSection cohort={this.state.cohortInFocus}/>
       </main>
     )
   }
 
-  updateApplications(event) {
-
-  }
-
-  sortCohortsBy() {
-    return this.cohorts.sort((a, b) => {
-      if (a[this.sortBy] > b[this.sortBy])
+  sortCohortsBy(cohorts) {
+    return cohorts.sort((a, b) => {
+      if (a[this.state.sortBy] > b[this.state.sortBy])
         return -1;
-      if (a[this.sortBy] < b[this.sortBy])
+      if (a[this.state.sortBy] < b[this.state.sortBy])
         return 1;
       return 0;
     })
