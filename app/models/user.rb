@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include ManageUser
 
+  has_one :application
+
   enum role: [:student, :reviewer, :admin]
 
   class << self

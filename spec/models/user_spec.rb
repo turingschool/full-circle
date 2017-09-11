@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User do
 
+  describe 'Associations' do
+    it { should have_one(:application) }
+  end
+
   describe 'Roles' do
 
     it 'Defaults to Student' do

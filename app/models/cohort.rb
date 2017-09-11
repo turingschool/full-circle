@@ -1,4 +1,5 @@
 class Cohort < ApplicationRecord
+  has_many :applications
 
   enum state: ['unfinalized', 'finalized']
 
