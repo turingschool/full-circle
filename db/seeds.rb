@@ -141,9 +141,11 @@ class Seed
 
   def award_closed_cohorts
     @closed_cohorts.each do |cohort|
-      winners = cohort.applications.sample(2)
-      winners.each do |winner|
-        winner.status = 'awarded'
+      cohort.applications.each { |app| app.declined! }
+      
+      winning_apps = cohort.applications.sample(2)
+      winning_apps.each do |winner|
+        winner.awarded!
       end
     end
   end
