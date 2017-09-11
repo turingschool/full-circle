@@ -6,6 +6,7 @@ class Seed
     make_users
     make_applications
     populate_cohorts
+    assign_reviewers
     award_scholarships
   end
 
@@ -30,6 +31,8 @@ class Seed
     puts "Made #{@past_students.length} Past Students"
     @current_students = make_current_students
     puts "Made #{@current_students.length} Current Students"
+    @reviewers = make_reviewers
+    puts "Made #{@reviewers.length} Reviewers"
   end
 
   def make_applications
@@ -46,6 +49,13 @@ class Seed
     puts 'Populated Closed Cohorts'
     populate_open_cohort
     puts 'Open Closed Cohorts'
+  end
+
+  def assign_reviewers
+    puts 'Assigning Past Reviewers'
+    assign_past_reviewers
+    puts 'Assigning Current Reviewers'
+    assign_current_reviewers
   end
 
   def award_scholarships
@@ -102,6 +112,17 @@ class Seed
     end
   end
 
+  def make_reviewers
+    20.times.map do |i|
+      name = Faker::Friends.character
+      email = name.gsub(' ', '.') + '@gmail.com'
+      uid = (123456 + i).to_s
+      token = (987654321 + i).to_s
+
+      User.create(name: name, email: email, uid: uid, token: token, role: 'reviewer')
+    end
+  end
+
   def make_past_applications
     @past_students.each.map do |student|
       app = make_application
@@ -136,6 +157,25 @@ class Seed
     @current_applications.each do |app|
       app.cohort = @open_cohort
       app.save!
+    end
+  end
+
+  def assign_past_reviewers
+    @closed_cohorts.each do |cohort|
+      cohort.cohort_reviewers << 6.times.map do |i|
+        CohortReviewer.create(
+          user: @reviewers.sample,
+          status: 'finalized'
+        )
+      end
+    end
+  end
+
+  def assign_current_reviewers
+    @open_cohort.cohort_reviewers << 6.times.map do |i|
+      CohortReviewer.create(
+        user: @reviewers.sample,
+      )
     end
   end
 
