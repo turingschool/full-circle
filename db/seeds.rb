@@ -1,43 +1,59 @@
 class Seed
 
-  def run_seed
+  def run
     clean
     make_cohorts
     make_users
     make_applications
     populate_cohorts
+    award_scholarships
   end
 
   def clean
+    puts 'Cleaning'
     User.destroy_all
     Cohort.destroy_all
     Application.destroy_all
   end
 
   def make_cohorts
+    puts 'Making Cohorts'
     @closed_cohorts = make_closed_cohorts
     @open_cohort = make_open_cohort
   end
 
   def make_users
+    puts 'Makeing Users'
     @admin = make_admin
+    puts "Made Admin: #{@admin}"
     @past_students = make_past_students
+    puts "Made #{@past_students.length} Past Students"
     @current_students = make_current_students
+    puts "Made #{@current_students.length} Current Students"
   end
 
   def make_applications
+    puts 'Making Applications'
     @past_applications = make_past_applications
+    puts "Made #{@past_applications.length} Past Applications"
     @current_applications = make_current_applications
+    puts "Made #{@current_applications.length} Current Applications"
   end
 
   def populate_cohorts
+    puts 'Populating Cohorts'
     populate_closed_cohorts
+    puts 'Populated Closed Cohorts'
     populate_open_cohort
+    puts 'Open Closed Cohorts'
   end
 
   def award_scholarships
     award_closed_cohorts
+    puts 'Awarded Scholorships'
   end
+
+  ###
 
   def make_closed_cohorts
     5.times.map do |i|
@@ -66,7 +82,7 @@ class Seed
 
   def make_past_students
     40.times.map do |i|
-      name = Faker::FamilyGuy.unique.character
+      name = Faker::FamilyGuy.character
       email = name.gsub(' ', '.') + '@gmail.com'
       uid = (1234 + i).to_s
       token = (9876543 + i).to_s
@@ -76,7 +92,7 @@ class Seed
   end
 
   def make_current_students
-    40.times.map do |i|
+    8.times.map do |i|
       name = Faker::HarryPotter.unique.character
       email = name.gsub(' ', '.') + '@gmail.com'
       uid = (12345 + i).to_s
@@ -87,32 +103,31 @@ class Seed
   end
 
   def make_past_applications
-    @current_students.each.map do |student|
-      make_application.tap do |app|
-        student.application = app
-      end
+    @past_students.each.map do |student|
+      app = make_application
+      app.user = student
+      app
     end
   end
 
   def make_current_applications
     @current_students.each.map do |student|
-      make_application.tap do |app|
-        student.application = app
-      end
+      app = make_application
+      app.user = student
+      app
     end
   end
 
   def make_application
-    Application.create(
-      essay: Faker::Lorem.paragraph(8, false, 4..12)
-    )
+    Application.new( essay: Faker::Lorem.paragraph(8, false) )
   end
 
   def populate_closed_cohorts
-    @closed_cohorts.each do |cohort, i|
+    @closed_cohorts.each_with_index do |cohort, i|
       chunk = i * 8
-      @past_applications[chunk..7].each do |app|
+      @past_applications[chunk..chunk+7].each do |app|
         app.cohort = cohort
+        app.save!
       end
     end
   end
@@ -120,6 +135,7 @@ class Seed
   def populate_open_cohort
     @current_applications.each do |app|
       app.cohort = @open_cohort
+      app.save!
     end
   end
 
@@ -132,3 +148,5 @@ class Seed
     end
   end
 end
+
+Seed.new.run
