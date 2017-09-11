@@ -3,14 +3,10 @@ class CohortsModule extends React.Component {
     return (
       <section className='cohorts-frame'>
         {this.sortBy('title').map((cohort, i) => {
-          return <CohortModule key={i} cohort={cohort} onClick={this.clickHandler}/>
+          return <CohortModule key={i} cohort={cohort} onClick={this.props.updateApplications}/>
         })}
       </section>
     )
-  }
-
-  clickHandler(e) {
-    debugger
   }
 
   sortBy(property) {
