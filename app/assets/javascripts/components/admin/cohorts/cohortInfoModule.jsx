@@ -1,5 +1,5 @@
 class CohortInfoModule extends React.Component {
-  
+
   render() {
     return (
       <section className='cohort-info-frame'>
@@ -8,6 +8,9 @@ class CohortInfoModule extends React.Component {
           <span>Applications: {this.props.cohort.applications.length}</span>
         </div>
         <div className='main-vert-frame right'>
+          <ReviewersModule
+            reviewers={this.props.cohort.reviewers}
+          />
         </div>
       </section>
     )
