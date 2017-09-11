@@ -6,12 +6,11 @@ class AdminDashboard extends React.Component {
       cohorts: {},
       cohortInFocus: {},
       appInFocus: {},
-      sortBy: 'title'
     }
   }
 
   componentWillMount(){
-    let cohorts = this.sortCohortsBy(JSON.parse(this.props.cohorts))
+    let cohorts = JSON.parse(this.props.cohorts)
 
     this.setState( {cohorts: cohorts} )
     this.setState( {cohortInFocus: cohorts[0]} )
@@ -35,15 +34,5 @@ class AdminDashboard extends React.Component {
           handleChange={this.handleChange.bind(this)} />
       </main>
     )
-  }
-
-  sortCohortsBy(cohorts) {
-    return cohorts.sort((a, b) => {
-      if (a[this.state.sortBy] > b[this.state.sortBy])
-        return -1;
-      if (a[this.state.sortBy] < b[this.state.sortBy])
-        return 1;
-      return 0;
-    })
   }
 }
