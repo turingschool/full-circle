@@ -1,10 +1,35 @@
 .cohort-info-frame {
   @include shadow();
-  
+
   display: flex;
 
   height: 200px;
   width: 100%;
 
-  padding: 10px;
+  margin-bottom: 20px;
+
+  .left, .right {
+    display: flex;
+    align-items: flex-start;
+
+    width: 50%;
+    height: auto;
+
+    margin: 10px;
+
+    background-color: $action-none;
+
+    span {
+      display: flex;
+      align-items: center;
+
+      height: 30px;
+      margin: 3px;
+      padding: 5px;
+
+
+      border: 1px solid black;
+      border-radius: 3px;
+    }
+  }
 }

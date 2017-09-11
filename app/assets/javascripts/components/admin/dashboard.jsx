@@ -24,6 +24,7 @@ class AdminDashboard extends React.Component {
     return (
       <main className='admin-frame'>
         <CohortsSection cohorts={this.state.cohorts}
+          cohort={this.state.cohortInFocus}
           updateApplications={this.handleChange.bind(this)}/>
         <ApplicationSection cohort={this.state.cohortInFocus}/>
       </main>
