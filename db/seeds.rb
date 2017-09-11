@@ -56,7 +56,7 @@ class Seed
   ###
 
   def make_closed_cohorts
-    5.times.map do |i|
+    10.times.map do |i|
       date = Date.today + (i+1).months
 
       Cohort.create(
@@ -81,7 +81,7 @@ class Seed
   end
 
   def make_past_students
-    40.times.map do |i|
+    80.times.map do |i|
       name = Faker::FamilyGuy.character
       email = name.gsub(' ', '.') + '@gmail.com'
       uid = (1234 + i).to_s
@@ -142,7 +142,7 @@ class Seed
   def award_closed_cohorts
     @closed_cohorts.each do |cohort|
       cohort.applications.each { |app| app.declined! }
-      
+
       winning_apps = cohort.applications.sample(2)
       winning_apps.each do |winner|
         winner.awarded!
