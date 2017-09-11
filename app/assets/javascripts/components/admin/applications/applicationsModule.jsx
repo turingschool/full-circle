@@ -4,7 +4,10 @@ class ApplicationsModule extends React.Component {
     return (
       <section className='applications-frame'>
         {this.props.cohort.applications.map((app) => {
-          return <ApplicationModule key={app.id} app={app} />
+          return <ApplicationRow
+            key={app.id}
+            app={app}
+            onClick={this.props.handleChange} />
         })}
       </section>
     )

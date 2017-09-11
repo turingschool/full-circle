@@ -5,6 +5,7 @@ class AdminDashboard extends React.Component {
     this.state = {
       cohorts: {},
       cohortInFocus: {},
+      appInFocus: {},
       sortBy: 'title'
     }
   }
@@ -14,18 +15,24 @@ class AdminDashboard extends React.Component {
 
     this.setState( {cohorts: cohorts} )
     this.setState( {cohortInFocus: cohorts[0]} )
+    this.setState( {appInFocus: cohorts[0].applications[0]})
   }
 
-  handleChange(cohort) {
-    this.setState( {cohortInFocus: cohort} )
+  handleChange(action) {
+    this.setState(action)
   }
 
   render() {
     return (
       <main className='admin-frame'>
-        <CohortsSection cohorts={this.state.cohorts}
-          updateApplications={this.handleChange.bind(this)}/>
-        <ApplicationSection cohort={this.state.cohortInFocus}/>
+        <CohortsSection
+          cohorts={this.state.cohorts}
+          cohort={this.state.cohortInFocus}
+          handleChange={this.handleChange.bind(this)} />
+        <ApplicationSection
+          cohort={this.state.cohortInFocus}
+          app={this.state.appInFocus}
+          handleChange={this.handleChange.bind(this)} />
       </main>
     )
   }
