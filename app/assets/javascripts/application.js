@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require fetch
 //= require react
 //= require react_ujs
 //= require components

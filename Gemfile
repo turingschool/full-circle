@@ -21,6 +21,7 @@ gem 'omniauth-github'
 gem 'faker', '>= 1.8.4'
 
 gem 'react-rails', '~> 2.2.1'
+gem 'fetch-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
