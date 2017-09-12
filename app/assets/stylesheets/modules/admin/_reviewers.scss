@@ -1,0 +1,13 @@
+.reviewers-frame {
+  width: 100%;
+
+  overflow: scroll;
+
+  .reviewer {
+    width: auto;
+
+    span {
+      width: auto;
+    }
+  }
+}

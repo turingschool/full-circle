@@ -3,6 +3,9 @@ class User < ApplicationRecord
 
   has_one :application, dependent: :destroy
 
+  has_many :cohort_reviewers, dependent: :destroy
+  has_many :cohorts, through: :cohort_reviewers
+
   enum role: [:student, :reviewer, :admin]
 
   class << self

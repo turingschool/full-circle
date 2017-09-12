@@ -1,4 +1,5 @@
 class CohortsSection extends React.Component {
+  
   render() {
     return (
       <section className='main-vert-frame cohorts'>
