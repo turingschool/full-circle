@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
+      user.update!(jwt_token: jwt_encode({user_id: user.id}) )
       redirect_user
     else
       redirect_to homepage_path
