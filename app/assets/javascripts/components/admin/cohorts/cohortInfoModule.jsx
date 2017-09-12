@@ -6,6 +6,7 @@ class CohortInfoModule extends React.Component {
         <div className='main-vert-frame left'>
           <span>Cohort: {this.props.cohort.title}</span>
           <span>Applications: {this.props.cohort.applications.length}</span>
+          <span>Reviewers: {this.props.cohort.reviewers.length}</span>
         </div>
         <div className='main-vert-frame right'>
           <ReviewersModule

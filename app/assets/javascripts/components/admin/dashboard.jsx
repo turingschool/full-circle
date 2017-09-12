@@ -22,7 +22,6 @@ class AdminDashboard extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <main className='admin-frame'>
         <CohortsSection
