@@ -18,7 +18,7 @@ gem 'faraday'
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-github'
-gem 'cancancan', '~> 2.0'
+gem 'faker', '>= 1.8.4'
 
 gem 'react-rails', '~> 2.2.1'
 
@@ -36,5 +36,4 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-rails'
-  gem 'faker', '>= 1.8.4'
 end
