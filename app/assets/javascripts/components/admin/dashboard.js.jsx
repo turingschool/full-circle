@@ -5,7 +5,7 @@ class AdminDashboard extends React.Component {
     this.state = {
       cohorts: {},
       cohortInFocus: {},
-      appInFocus: {},
+      appInFocus: {}
     }
   }
 
@@ -15,6 +15,14 @@ class AdminDashboard extends React.Component {
     this.setState( {cohorts: cohorts} )
     this.setState( {cohortInFocus: cohorts[0]} )
     this.setState( {appInFocus: cohorts[0].applications[0]})
+
+    fetch('/api/v1/admin/applications')
+      .then((data) => {
+        return data.json()
+      })
+      .then((json) => {
+        console.log(json)
+      })
   }
 
   handleChange(action) {
