@@ -31,12 +31,16 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'pry-rails'
+end
+
+group :test do
+  gem 'simplecov', :require => false
+  gem 'phantomjs'
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'pry-rails'
-  gem 'phantomjs'
-  gem 'poltergeist'
 end
