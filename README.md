@@ -42,6 +42,7 @@ Full Circle is really 3 single page apps in one. Each user has their own dashboa
 Once a user has entered a dashboard we are no longer in Rails but in React. All React components will be found in the `app/assets/javascript/components` folder. Each dashboard lives in their corresponding folder with shared components living in the shared folder.
 
 #### User Authentication
+`See user testing for additional Spec information on Auth/Auth.`
 > Files that include OAuth flow:
 - config/initializers/omniauth.rb
 - app/models/concerns/oauth_user.rb
@@ -67,3 +68,20 @@ Because this is a Rails-React app user Authorization happens in two places in tw
 2. Prior to a user entering a dashboard the user is converted to a JWT token **(found in application_controller.rb)** and stored in the dashboard as 'user'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded the user is then found from the database and scoping of the role can be achieved by calling user.<role>?.
 
 This is mostly unneeded in the sense that a User is already Authorized when they log in. However, it is needed in order to protect the API from 3rd party entry. When and if the API needs to be opened up basic protection now exists.
+
+## Testing
+
+This section covers some of what is in the testing suite that may not be obvious. Testing React in a Rails environment isn't awesome and requires a few extra hurdles to jump through.
+
+> The testing environment uses RSpec and Capybara with Poltergeist to handle Phantomjs. It's slow, but easy to write and easy to test and does not require any additional setup on your end.
+
+> All testing configs for middle-wear will be found in rails_helper.rb. This includes Shoulda-Matchers, Capybara/Poltergeist, and Omniauth
+
+Unit and Integration testing covers most Ruby written code, and is fairly straight forward. Feature testing covers some higher level functionality on the user's end. To reduce test maintenance they try to stay vague enough that changes to css or DOM elements will not effect it. But, inevitably changes on the user's end will probably break something. Listed here are those areas that might be suspect.
+
+#### User authentication and authorization
+
+> features/homepage/user_can_log_in_spec.rb
+
+Omniauth mocks a user's credentials and fakes a callback authentication with a provider. What Omniauth returns is found in the rails_helper.rb under Omniauth.config. If a different provider is used you may need to update these to match what the provider actually returns.
+
