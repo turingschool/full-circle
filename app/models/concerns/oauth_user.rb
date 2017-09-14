@@ -1,9 +1,9 @@
-module ManageUser
+module OauthUser
   extend ActiveSupport::Concern
 
   def self.included(base)
 
-    def base.clean_params(params)
+    def base.oauth_params(params)
       {
         uid: params['uid'],
         token: params['credentials']['token'],
