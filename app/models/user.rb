@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  include ManageUser
+  include OauthUser
 
   has_one :application, dependent: :destroy
 
@@ -11,8 +11,8 @@ class User < ApplicationRecord
   class << self
 
     def find_or_create_by_oauth(params)
-      user = User.find_or_create_by(uid: clean_params(params)[:uid])
-      user.tap { |user| user.update!(clean_params(params)) }
+      user = User.find_or_create_by(uid: oauth_params(params)[:uid])
+      user.tap { |user| user.update!(oauth_params(params)) }
     end
   end
 end
