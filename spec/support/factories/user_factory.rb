@@ -4,7 +4,7 @@ FactoryGirl.define do
     name 'John Galt'
     email 'somewhere@colorado.com'
     uid '90210'
-    token 'abc123'
+    token 'averysecrettoken'
   end
 
   trait :reviewer do

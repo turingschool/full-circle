@@ -37,4 +37,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'pry-rails'
+  gem 'phantomjs'
+  gem 'poltergeist'
 end
