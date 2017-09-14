@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     def current_user
       @current_user ||= User.find(session[:user_id])
     end
+
+    def jwt_encode(payload)
+      JWT.encode(payload, Rails.application.secrets.secret_key_base)
+    end
 end

@@ -18,7 +18,7 @@ class AdminDashboard extends React.Component {
 
     let user = this.props.user
     let options = {
-      headers: { 'user': user }
+      headers: { 'Authorization': 'Bearer ' + user }
     }
 
     fetch('/api/v1/admin/applications', options)

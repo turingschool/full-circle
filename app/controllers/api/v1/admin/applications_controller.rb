@@ -1,10 +1,16 @@
 class Api::V1::Admin::ApplicationsController < ApiController
+  before_action :authorize!
 
   def index
-
-    if current_user.admin?
-      render json: {'Authorized':  current_user.admin? }
-    end
+      render json: {
+                      status: 200,
+                      body: { Authorized:  current_user.admin? }
+                   }
   end
 
+  private
+
+    def authorize!
+      render json: { status: 401 } unless current_user.admin?
+    end
 end
