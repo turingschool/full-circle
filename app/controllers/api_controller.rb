@@ -4,11 +4,11 @@ class ApiController < ActionController::API
 
       def parsed_user
         user = request.env['HTTP_AUTHORIZATION'].match(/^Bearer (.*)/)[1]
-        JSON.parse(jwt_decode(user)[:user])
+        jwt_decode(user)[:user]
       end
 
       def current_user
-        @current_user ||= User.find(parsed_user["id"])
+        @current_user ||= User.find(parsed_user)
       end
 
       def jwt_decode(token)
