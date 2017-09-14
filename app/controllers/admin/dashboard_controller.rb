@@ -2,7 +2,7 @@ class Admin::DashboardController < Admin::BaseController
 
   def index
     @cohorts = Cohort.all.to_json(:include => [:applications, :reviewers])
-    @user = current_user
+    @user = jwt_encode({user: current_user.to_json})
   end
 
 end

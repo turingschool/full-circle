@@ -16,8 +16,9 @@ class AdminDashboard extends React.Component {
     this.setState( {cohortInFocus: cohorts[0]} )
     this.setState( {appInFocus: cohorts[0].applications[0]})
 
+    let user = this.props.user
     let options = {
-      headers: { 'user_token': this.props.user.jwt_token }
+      headers: { 'user': user }
     }
 
     fetch('/api/v1/admin/applications', options)
