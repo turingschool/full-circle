@@ -4,7 +4,7 @@ class ApiController < ActionController::API
 
       def parsed_user
         user = request.env['HTTP_AUTHORIZATION'].match(/^Bearer (.*)/)[1]
-        jwt_decode(user)[:user]
+        jwt_decode(user)["user"]
       end
 
       def current_user
@@ -12,7 +12,6 @@ class ApiController < ActionController::API
       end
 
       def jwt_decode(token)
-        decoded = JWT.decode(token, Rails.application.secrets.secret_key_base)
-        HashWithIndifferentAccess.new(decoded[0])
+        JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
       end
 end
