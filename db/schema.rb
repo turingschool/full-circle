@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170915015458) do
 
   create_table "reviews", force: :cascade do |t|
     t.json "metric"
-    t.integer "status"
+    t.integer "status", default: 0
     t.bigint "application_id"
     t.bigint "cohort_reviewer_id"
     t.datetime "created_at", null: false

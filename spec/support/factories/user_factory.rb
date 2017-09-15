@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :user do
     name 'John Galt'
     email 'somewhere@colorado.com'
-    uid '90210'
+    sequence :uid { |i| '90210' + i.to_s }
     token 'averysecrettoken'
   end
 

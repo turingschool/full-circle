@@ -39,13 +39,14 @@ Capybara.javascript_driver = :poltergeist
 Capybara.server_port = 3001
 
 OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-  uid: '90210',
-  credentials: { token: 'averysecrettoken' },
-  info: {
-    name: 'John Galt',
-    email: 'somewhere@colorado.com'
+  'uid' => '90210',
+  'credentials' => { 'token' => 'averysecrettoken' },
+  'info' => {
+    'name' => 'John Galt',
+    'email' => 'somewhere@colorado.com'
   }
 })
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

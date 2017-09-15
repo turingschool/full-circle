@@ -4,6 +4,8 @@ RSpec.describe Cohort do
 
   describe 'Associations' do
     it { should have_many(:applications) }
+    it { should have_many(:cohort_reviewers) }
+    it { should have_many(:users).through(:cohort_reviewers) }
   end
 
   describe 'State' do
