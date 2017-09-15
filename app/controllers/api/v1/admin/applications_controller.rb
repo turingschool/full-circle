@@ -4,14 +4,14 @@ class Api::V1::Admin::ApplicationsController < ApiController
   def index
       render json: {
                       status: 200,
-                      body: { Authorized:  current_user.admin? }
+                      body: { Authorized:  current_requester.admin? }
                    }
   end
 
   private
 
     def authorize!
-      render json: { status: 401 } unless current_user.admin?
+      render json: { status: 401 } unless current_requester.admin?
 
       rescue JWT::DecodeError => e
         render json: { status: 401, error: e.message }
