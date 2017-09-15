@@ -11,15 +11,12 @@ This application assists in streamlining and automating the application process 
 - React 2.2.1
 
 ### Setup
+
 If you don't have ruby 2.4.1 or greater first install this using your Ruby version manager of choice: $ `rvm install 2.4.1`
 
-Now: $ `git clone https://github.com/turingschool/full-circle.git`
+Now: `git clone https://github.com/turingschool/full-circle.git`
 
-Run $ `bundle update`. If all goes well setup the database:
-
-$ `rake db:create db:migrate` and optionally:
-
-$ `rake db:seed`
+Run `bundle update`. If all goes well setup the database: `rake db:create db:migrate` and optionally: `rake db:seed`
 
 Install figaro: $ `bundle exec figaro install` and then add to the created application.yml file your Github OAuth credentials:
 ```Ruby
@@ -44,10 +41,10 @@ Once a user has entered a dashboard we are no longer in Rails but in React. All 
 #### User Authentication
 `See user testing for additional Spec information on Auth/Auth.`
 > Files that include OAuth flow:
-- config/initializers/omniauth.rb
-- app/models/concerns/oauth_user.rb
-- app/controllers/concerns/authorize.rb
-- app/controllers/session_controller.rb
+> - config/initializers/omniauth.rb
+> - app/models/concerns/oauth_user.rb
+> - app/controllers/concerns/authorize.rb
+> - app/controllers/session_controller.rb
 
 OAuth happens right now via the omniauth gem with a github provider **(found in the omniauth.rb config file)**. The hope is this will make moving to the Census provider somewhat painless.
 
@@ -57,15 +54,16 @@ A user in the Full Circle database will maintain state with the OAuth provider. 
 
 #### User Authorization
 > Files that include Authorization
-- controller/concerns/authorize.rb
-- app/controllers/api_controller.rb
-- app/controllers/application_controller.rb
+> - controller/concerns/authorize.rb
+> - app/controllers/api_controller.rb
+> - app/controllers/application_controller.rb
+> - app/models/jw_token.rb
 
 Because this is a Rails-React app user Authorization happens in two places in two ways:
 
 1. When a user logs in via the homepage and a new session is created the user is authorized before rerouting to the correct dashboard. All users are defaulted to a student. **Rerouting and user checks can be found in authorize.rb**.
 
-2. Prior to a user entering a dashboard the user is converted to a JWT token **(found in application_controller.rb)** and stored in the dashboard as 'user'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded the user is then found from the database and scoping of the role can be achieved by calling user.<role>?.
+2. Prior to a user entering a dashboard the user is converted to a JWT token **(found in application_controller.rb)** and stored in the dashboard as 'user'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded and parsed the user is then found from the database and scoping of the role can be achieved by calling user.<role>?.
 
 This is mostly unneeded in the sense that a User is already Authorized when they log in. However, it is needed in order to protect the API from 3rd party entry. When and if the API needs to be opened up basic protection now exists.
 
@@ -74,7 +72,6 @@ This is mostly unneeded in the sense that a User is already Authorized when they
 This section covers some of what is in the testing suite that may not be obvious. Testing React in a Rails environment isn't awesome and requires a few extra hurdles to jump through.
 
 > The testing environment uses RSpec and Capybara with Poltergeist to handle Phantomjs. It's slow, but easy to write and easy to test and does not require any additional setup on your end.
-
 > All testing configs for middle-wear will be found in rails_helper.rb. This includes Shoulda-Matchers, Capybara/Poltergeist, and Omniauth
 
 Unit and Integration testing covers most Ruby written code, and is fairly straight forward. Feature testing covers some higher level functionality on the user's end. To reduce test maintenance they try to stay vague enough that changes to css or DOM elements will not effect it. But, inevitably changes on the user's end will probably break something. Listed here are those areas that might be suspect.
