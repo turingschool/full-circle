@@ -7,7 +7,8 @@ class Seed
     make_applications
     populate_cohorts
     assign_reviewers
-    award_scholarships
+    score_applications
+    puts "Done!"
   end
 
   def clean
@@ -26,7 +27,7 @@ class Seed
   def make_users
     puts 'Makeing Users'
     @admin = make_admin
-    puts "Made Admin: #{@admin}"
+    puts "Made Admin"
     @past_students = make_past_students
     puts "Made #{@past_students.length} Past Students"
     @current_students = make_current_students
@@ -58,9 +59,11 @@ class Seed
     assign_current_reviewers
   end
 
-  def award_scholarships
-    award_closed_cohorts
-    puts 'Awarded Scholorships'
+  def score_applications
+    puts "Scoring Past Applications"
+    score_past_applications
+    puts "Awarding Past Applications"
+    award_past_applications
   end
 
   ###
@@ -179,16 +182,29 @@ class Seed
     end
   end
 
-  def score_applications
-    
+  def score_past_applications
+    @closed_cohorts.each do |cohort|
+      cohort.cohort_reviewers.each do |cohort_reviewer|
+        cohort_reviewer.applications << cohort.applications
+        cohort_reviewer.reviews.each do |review|
+          review.score_card["metrics"].each do |metric|
+            metric["score"] = rand(1..10)
+          end
+          review.reviewed!
+        end
+      end
+    end
   end
 
-  def award_closed_cohorts
+  def award_past_applications
     @closed_cohorts.each do |cohort|
       cohort.applications.each { |app| app.declined! }
 
-      winning_apps = cohort.applications.sample(2)
-      winning_apps.each do |winner|
+      winning_apps = cohort.applications.sort_by do |app|
+        app.reviews.reduce(0) { |sum, rev| sum + rev.score_card["total"] }
+      end.reverse
+
+      winning_apps[0..1].each do |winner|
         winner.awarded!
       end
     end

@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170915015458) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.json "metric"
+    t.json "score_card"
     t.integer "status", default: 0
     t.bigint "application_id"
     t.bigint "cohort_reviewer_id"
