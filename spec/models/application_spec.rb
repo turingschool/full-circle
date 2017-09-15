@@ -4,6 +4,9 @@ RSpec.describe Application do
 
   describe 'Associations' do
     it { should belong_to(:user) }
+    it { should belong_to(:cohort) }
+    it { should have_many(:reviews) }
+    it { should have_many(:cohort_reviewers).through(:reviews) }
   end
 
   describe 'Status' do

@@ -179,6 +179,10 @@ class Seed
     end
   end
 
+  def score_applications
+    
+  end
+
   def award_closed_cohorts
     @closed_cohorts.each do |cohort|
       cohort.applications.each { |app| app.declined! }
