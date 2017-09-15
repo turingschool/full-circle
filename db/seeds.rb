@@ -188,7 +188,7 @@ class Seed
         cohort_reviewer.applications << cohort.applications
         cohort_reviewer.reviews.each do |review|
           review.score_card["metrics"].each do |metric|
-            metric["value"] = rand(1..10)
+            metric["score"] = rand(1..10)
           end
           review.reviewed!
         end

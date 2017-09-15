@@ -12,19 +12,28 @@ RSpec.describe Review do
     it 'Should all default to 0' do
       review = create(:review)
 
-      expect(review.metric).to eq({"passion"=>0, "dedication"=>0, "need"=>0})
+      expect(review.score_card).to eq({ "metrics" => [
+                                    { "name" => "passion",
+                                      "score" => 0 },
+                                    { "name" => "dedication",
+                                      "score" => 0 },
+                                    { "name" => "need",
+                                      "score" => 0 } ],
+                                  "total" => 0,
+                                  "average" => 0
+                                })
     end
 
     it 'Can be scored' do
       review = create(:review)
 
-      review.metric["passion"] = 10
-      review.metric["dedication"] = 10
-      review.metric["need"] = 10
+      review.score_card['metrics'].each do |metric|
+        metric["value"] = 10
+      end
 
-      expect(review.metric["passion"]).to eq(10)
-      expect(review.metric["dedication"]).to eq(10)
-      expect(review.metric["need"]).to eq(10)
+      review.score_card['metrics'].each do |metric|
+        expect(metric["value"]).to eq(10)
+      end
     end
   end
 

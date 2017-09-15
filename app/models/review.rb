@@ -12,11 +12,11 @@ class Review < ApplicationRecord
   def set_metrics
     self.score_card = { "metrics" => [
                           { "name" => "passion",
-                            "value" => 0 },
+                            "score" => 0 },
                           { "name" => "dedication",
-                            "value" => 0 },
+                            "score" => 0 },
                           { "name" => "need",
-                            "value" => 0 } ],
+                            "score" => 0 } ],
                         "total" => 0,
                         "average" => 0
                       }
@@ -30,7 +30,7 @@ class Review < ApplicationRecord
   end
 
   def total
-    score_card["metrics"].reduce(0) { |sum, metric| sum + metric["value"] }
+    score_card["metrics"].reduce(0) { |sum, metric| sum + metric["score"] }
   end
 
   def average

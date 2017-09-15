@@ -73,14 +73,20 @@ Reviews belong to a cohort_reviewer and an application, so every application can
 
 When a review is first created it has a status of 'unreviewed'. It can then be marked 'reviewed' by a reviewer.
 
-**Metric** The metric column is a json field. When a review is made the metric column will be auto filled with a callback prior to creation. It currently looks like this:
+**Score Card** The score_card column is a json field. When a review is made the score_card will be auto filled with a callback prior to creation. It currently looks like this:
 ```Ruby
-{"passion"=>0, "dedication"=>0, "need"=> 0}
+{ "metrics" => [
+    { "name" => "passion",
+      "score" => 0 },
+    { "name" => "dedication",
+      "score" => 0 },
+    { "name" => "need",
+      "score" => 0 } ],
+  "total" => 0,
+  "average" => 0
+}
 ```
-This has a drawback. If a change is required in the future, than calculations of past reviews will need to be addressed. This is a problem that would plague almost any method of storing the metric though. At least this way a metric in a cohort will never change based on future alterations and versioning can preserve past calculations.
-
-This also has a perk though. With ActiveRecord, json objects in a table can easily be accessed, mutated, and aggregated. This makes dealing with the metric very convenient.
-
+This has a few advantages. Since the calculations don't care how many or what the name of a metric is, if a change is required in the future, past cohorts with the old metric won't break. Simply update the score_card by changing the name or adding a metric and all new calculations will automatically reflect that. Another perk with a json field is that if a new key field is required it can be added on the fly, so additional information can be stored in the score card on a as needed basis.
 
 ## Testing
 
