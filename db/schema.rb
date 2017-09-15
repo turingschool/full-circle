@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911192828) do
+ActiveRecord::Schema.define(version: 20170915015458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 20170911192828) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.json "metric"
+    t.integer "status"
+    t.bigint "application_id"
+    t.bigint "cohort_reviewer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_reviews_on_application_id"
+    t.index ["cohort_reviewer_id"], name: "index_reviews_on_cohort_reviewer_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -60,4 +71,6 @@ ActiveRecord::Schema.define(version: 20170911192828) do
   add_foreign_key "applications", "users"
   add_foreign_key "cohort_reviewers", "cohorts"
   add_foreign_key "cohort_reviewers", "users"
+  add_foreign_key "reviews", "applications"
+  add_foreign_key "reviews", "cohort_reviewers"
 end
