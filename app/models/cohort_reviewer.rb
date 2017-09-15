@@ -2,7 +2,7 @@ class CohortReviewer < ApplicationRecord
   belongs_to :user
   belongs_to :cohort
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :applications, through: :reviews
 
   enum status: ['unfinalized', 'finalized']
