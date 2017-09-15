@@ -63,9 +63,24 @@ Because this is a Rails-React app user Authorization happens in two places in tw
 
 1. When a user logs in via the homepage and a new session is created the user is authorized before rerouting to the correct dashboard. All users are defaulted to a student. **Rerouting and user checks can be found in authorize.rb**.
 
-2. Prior to a user entering a dashboard the user is converted to a JWT token **(found in application_controller.rb)** and stored in the dashboard as 'user'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded and parsed the user is then found from the database and scoping of the role can be achieved by calling user.<role>?.
+2. Prior to a user entering a dashboard the user is converted to a JWT token **(found in application_controller.rb)** and stored in the dashboard as 'user_id'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded and parsed the user is then pulled from the database and scoping of the role can be achieved by calling user.<role>?.
 
 This is mostly unneeded in the sense that a User is already Authorized when they log in. However, it is needed in order to protect the API from 3rd party entry. When and if the API needs to be opened up basic protection now exists.
+
+#### Reviews
+
+Reviews belong to a cohort_reviewer and an application, so every application can have as reviews as their are cohort reviewers. As a bonus an application will have many cohort_reviewers through reviews, and a cohort_reviewer will have many applications through reviews.
+
+When a review is first created it has a status of 'unreviewed'. It can then be marked 'reviewed' by a reviewer.
+
+**Metric** The metric column is a json field. When a review is made the metric column will be auto filled with a callback prior to creation. It currently looks like this:
+```Ruby
+{"passion"=>0, "dedication"=>0, "need"=> 0}
+```
+This has a drawback. If a change is required in the future, than calculations of past reviews will need to be addressed. This is a problem that would plague almost any method of storing the metric though. At least this way a metric in a cohort will never change based on future alterations and versioning can preserve past calculations.
+
+This also has a perk though. With ActiveRecord, json objects in a table can easily be accessed, mutated, and aggregated. This makes dealing with the metric very convenient.
+
 
 ## Testing
 
@@ -81,4 +96,3 @@ Unit and Integration testing covers most Ruby written code, and is fairly straig
 > features/homepage/user_can_log_in_spec.rb
 
 Omniauth mocks a user's credentials and fakes a callback authentication with a provider. What Omniauth returns is found in the rails_helper.rb under Omniauth.config. If a different provider is used you may need to update these to match what the provider actually returns.
-
