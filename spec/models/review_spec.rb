@@ -7,21 +7,21 @@ RSpec.describe Review do
     it { should belong_to(:cohort_reviewer) }
   end
 
-  describe 'Metrics' do
+  describe 'Score Card' do
 
-    it 'Should all default to 0' do
+    it 'Scores should all default to 0' do
       review = create(:review)
 
       expect(review.score_card).to eq({ "metrics" => [
-                                    { "name" => "passion",
-                                      "score" => 0 },
-                                    { "name" => "dedication",
-                                      "score" => 0 },
-                                    { "name" => "need",
-                                      "score" => 0 } ],
-                                  "total" => 0,
-                                  "average" => 0
-                                })
+                                          { "name" => "passion",
+                                            "score" => 0 },
+                                          { "name" => "dedication",
+                                            "score" => 0 },
+                                          { "name" => "need",
+                                            "score" => 0 } ],
+                                        "total" => 0,
+                                        "average" => 0
+                                      })
     end
 
     it 'Can be scored' do
@@ -34,6 +34,44 @@ RSpec.describe Review do
       review.score_card['metrics'].each do |metric|
         expect(metric["value"]).to eq(10)
       end
+    end
+
+    it 'Can find a metric' do
+      review = create(:review)
+      metric = review.metric('passion')
+
+      expect(metric).to eq({"name"=>"passion", "score"=>0})
+    end
+
+    it 'Can score a metric' do
+      review = create(:review)
+
+      review.score_metric('passion', 6)
+      metric = review.metric('passion')
+
+      expect(metric).to eq({"name"=>"passion", "score"=>6})
+    end
+
+    it 'Will be totaled when reviewed' do
+      review = create(:review)
+
+      review.score_metric('passion', 10)
+      review.score_metric('dedication', 8)
+      review.score_metric('need', 6)
+
+      review.reviewed!
+      expect(review.score_card["total"]).to eq(24)
+    end
+
+    it 'Will be averaged when reviewed' do
+      review = create(:review)
+
+      review.score_metric('passion', 10)
+      review.score_metric('dedication', 8)
+      review.score_metric('need', 6)
+
+      review.reviewed!
+      expect(review.score_card["average"]).to eq(8.0)
     end
   end
 

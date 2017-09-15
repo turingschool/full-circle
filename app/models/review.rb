@@ -7,6 +7,16 @@ class Review < ApplicationRecord
 
   enum status: ['unreviewed', 'reviewed']
 
+  def score_metric(name, score)
+    score_card['metrics'].each do |metric|
+      metric["score"] = score if metric["name"] == name
+    end
+  end
+
+  def metric(name)
+    score_card["metrics"].find { |metric| metric["name"] == name }
+  end
+
   private
 
   def set_metrics
@@ -21,8 +31,6 @@ class Review < ApplicationRecord
                         "average" => 0
                       }
   end
-
-  private
 
   def calculate_metrics
     score_card["total"] = total
