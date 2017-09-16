@@ -5,7 +5,7 @@ class StudentDashboard extends React.Component {
     this.state = {
       student: {},
       application: {},
-      current_cohort: {}
+      currentCohort: {}
     }
 
     this.authorization = {
@@ -20,9 +20,8 @@ class StudentDashboard extends React.Component {
     let student = JSON.parse(this.props.student)
     let application = JSON.parse(this.props.application)
 
-    debugger
     this.setState({
-                    current_cohort: current_cohort,
+                    currentCohort: current_cohort,
                     student: student,
                     application: application
                   })
@@ -43,13 +42,13 @@ class StudentDashboard extends React.Component {
   }
 
   decisionTree() {
-    if (this.state.current_cohort.length < 1) {
+    if (this.state.currentCohort.length < 1) {
       return <NotAcceptingApplications />
     } else {
       if (this.state.application) {
         return <span>{this.props.student}</span>
       } else {
-        return <span>Please confirm this is your current cohort</span>
+        return <ConfirmCohort currentCohort={this.state.currentCohort}/>
       }
     }
   }
