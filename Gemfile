@@ -40,6 +40,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
+  gem 'phantomjs'
   gem 'launchy'
   gem 'shoulda-matchers'
 end

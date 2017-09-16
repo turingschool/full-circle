@@ -67,7 +67,7 @@ RSpec.describe Cohort do
 
     it 'Can return current open cohort' do
       cohort = create(:cohort, :open)
-      current = Cohort.current
+      current = Cohort.current[0]
 
       expect(current).to eq(cohort)
     end
