@@ -9,9 +9,7 @@ class StudentDashboard extends React.Component {
     }
 
     this.authorization = {
-      headers: {
-        'Authorization': 'Bearer ' + this.props.authorization
-      }
+      'Authorization': 'Bearer ' + this.props.authorization
     }
   }
 
@@ -48,8 +46,31 @@ class StudentDashboard extends React.Component {
       if (this.state.application) {
         return <span>{this.props.student}</span>
       } else {
-        return <ConfirmCohort currentCohort={this.state.currentCohort}/>
+        return <ConfirmCohort
+          currentCohort={this.state.currentCohort}
+          newApplication={this.newApplication.bind(this)} />
       }
     }
+  }
+
+  newApplication() {
+    let params = `?cohort_id=${this.state.currentCohort["id"]}`
+
+    let options = {
+      method: 'POST',
+      headers: this.authorization
+    }
+
+    fetch('/api/v1/student/applications' + params, options)
+      .then((data) => {
+        return data.json()
+      })
+      .then((json) => {
+        debugger
+
+        this.setState({
+          application: json
+        })
+      })
   }
 }
