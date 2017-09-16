@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       namespace :admin do
         resources :applications, only: [:index]
       end
+
+      namespace :student do
+        resources :applications, only: [:index, :create]
+        resource :applications, only: [:update]
+      end
     end
   end
 

@@ -6,12 +6,14 @@ class Cohort < ApplicationRecord
 
   enum state: ['unfinalized', 'finalized']
 
+  scope :current, -> { where('start_date <= ? AND end_date >= ?', Date.today, Date.today) }
+
   def reviewers
     self.users.where(role: 'reviewer')
   end
 
   def open?
-    (Date.today >= start_date) && (Date.today <= end_date)
+    (start_date <= Date.today) && (end_date >= Date.today)
   end
 
   def css_status

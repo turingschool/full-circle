@@ -4,7 +4,7 @@ class HomePage extends React.Component {
     return (
       <main className='homepage-frame'>
         <section className='main-vert-frame'>
-          <Btn Text='Login' Url='/auth/github' />
+          <LinkBtn Text='Login' Url='/auth/github' />
         </section>
       </main>
     )

@@ -90,7 +90,7 @@ class Seed
   end
 
   def make_admin
-    User.create(uid: '22713509', role: 'admin')
+    User.create(uid: '22713509', role: 'student')
   end
 
   def make_past_students

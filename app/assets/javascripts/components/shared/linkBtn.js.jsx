@@ -1,4 +1,4 @@
-class Btn extends React.Component {
+class LinkBtn extends React.Component {
   render() {
     return (
       <div className='login'>
