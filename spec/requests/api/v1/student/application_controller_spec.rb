@@ -45,12 +45,12 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
 
     end
 
-    it 'Will return 400 if application fails to create' do
-      allow_any_instance_of(ApiController).to receive(:current_requester).and_return(false)
+    it 'Will return 404 if application fails to create' do
+      allow_any_instance_of(Api::V1::ApiController).to receive(:current_requester).and_return(false)
       post @url, params: { "cohort_id" => @cohort }, headers: @authorization
 
-      expect(response.status).to eq(400)
-      expect(JSON.parse(response.body)).to eq({"error"=>"Could Not Find Record"})
+      expect(response.status).to eq(404)
+      expect(JSON.parse(response.body)).to eq({"error"=>"Record Not Found"})
     end
 
     it 'Will create an Application' do
