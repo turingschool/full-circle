@@ -16,11 +16,21 @@ class Api::V1::Student::ApplicationsController < Api::V1::ApiController
     end
   end
 
-  def edit
-    binding.pry
+  def update
+    application = current_requester.application
+
+    if application.update(application_params)
+      render json: application
+    else
+      render json: { "error"=>"Error Updating Application" }, status: 400
+    end
   end
 
   private
+
+    def application_params
+      params.permit(:essay)
+    end
 
     def authorize_requester
       current_requester

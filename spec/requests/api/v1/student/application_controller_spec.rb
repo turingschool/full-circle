@@ -41,12 +41,10 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
   end
 
   describe 'POST' do
-    before do
-
-    end
 
     it 'Will return 404 if application fails to create' do
       allow_any_instance_of(Api::V1::ApiController).to receive(:current_requester).and_return(false)
+
       post @url, params: { "cohort_id" => @cohort }, headers: @authorization
 
       expect(response.status).to eq(404)
@@ -61,6 +59,22 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
 
       expect(application["user_id"]).to eq(@user.id)
       expect(application["cohort_id"]).to eq(@cohort.id)
+    end
+  end
+
+  describe 'PUT' do
+
+    it 'Will update an Application' do
+      application = @user.application
+
+      put @url,
+        params: { essay: "I changed the Essay!" },
+        headers: @authorization
+
+      expect(response).to be_success
+      application = JSON.parse(response.body)
+
+      expect(application["essay"]).to eq("I changed the Essay!")
     end
   end
 
