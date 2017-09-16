@@ -44,7 +44,9 @@ class StudentDashboard extends React.Component {
       return <NotAcceptingApplications />
     } else {
       if (this.state.application) {
-        return <span>{this.props.student}</span>
+        return <ApplicationForm
+          application={this.state.application}
+          authorization={this.authorization} />
       } else {
         return <ConfirmCohort
           currentCohort={this.state.currentCohort}
@@ -66,11 +68,7 @@ class StudentDashboard extends React.Component {
         return data.json()
       })
       .then((json) => {
-        debugger
-
-        this.setState({
-          application: json
-        })
+        this.handleChange({ application: json })
       })
   }
 }
