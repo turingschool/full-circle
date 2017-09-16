@@ -36,7 +36,6 @@ Capybara.register_driver :poltergeist do |app|
 end
 
 Capybara.javascript_driver = :poltergeist
-Capybara.server_port = 3001
 
 OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
   'uid' => '90210',

@@ -37,10 +37,9 @@ end
 
 group :test do
   gem 'simplecov', :require => false
-  gem 'phantomjs'
-  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'launchy'
   gem 'shoulda-matchers'
 end

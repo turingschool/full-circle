@@ -9,5 +9,10 @@ FactoryGirl.define do
       start_date Date.today - 1.days
       end_date Date.today + 30.days
     end
+
+    trait :closed do
+      start_date Date.today - 31.days
+      end_date Date.today - 1.days
+    end
   end
 end

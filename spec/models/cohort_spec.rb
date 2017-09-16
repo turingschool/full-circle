@@ -62,4 +62,22 @@ RSpec.describe Cohort do
       expect(cohort.css_status).to eq('closed')
     end
   end
+
+  describe 'Scopes' do
+
+    it 'Can return current open cohort' do
+      cohort = create(:cohort, :open)
+      current = Cohort.current
+
+      expect(current).to eq(cohort)
+    end
+
+    it 'Returns Empty if no current open cohort' do
+      cohort = create(:cohort, :closed)
+      current = Cohort.current
+
+      assert(current.empty?)
+    end
+
+  end
 end

@@ -20,6 +20,7 @@ RSpec.describe 'User can login' do
 
     it 'Student will route to student/dashboard' do
       click_on 'Login'
+      
       expect(page).to have_current_path('/student/dashboard')
     end
 
