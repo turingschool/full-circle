@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       end
 
       namespace :student do
-        resources :applications, only: [:index]
+        resources :applications, only: [:index, :create, :update]
       end
     end
   end

@@ -6,7 +6,17 @@ class Api::V1::Student::ApplicationsController < ApiController
   end
 
   def create
-    
+    cohort = Cohort.find(params[:cohort_id])
+    application = Application.new(cohort: cohort, user: current_requester)
+
+    if application.save!
+      render json: application
+    else
+      render json: { "error"=>"Error Creating Application" }, status: 400
+    end
+
+    rescue ActiveRecord::RecordNotFound
+      render json: { "error"=>"Could Not Find Record" }, status: 400
   end
 
   def edit
@@ -17,9 +27,9 @@ class Api::V1::Student::ApplicationsController < ApiController
     def authorize_requester
       current_requester
 
-    rescue JWT::DecodeError
-        render json: { status: 403, error: 'Forbidden' }
+      rescue JWT::DecodeError
+        render json: { "error"=>"Forbidden" }, status: 403
       rescue ActiveRecord::RecordNotFound
-        render json: { status: 404, error: 'Record Not Found' }
+        render json: { "error"=>"Record Not Found" }, status: 404
     end
 end

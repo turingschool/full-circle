@@ -8,6 +8,8 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
     @user = create(:user)
     @cohort = create(:cohort, :open)
     @user.application = create(:application, cohort: @cohort)
+    @token = JwToken.encode({user_id: @user.id})
+    @authorization = { 'HTTP_AUTHORIZATION' => "Bearer " + @token }
   end
 
   describe 'Varification' do
@@ -15,21 +17,21 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
       token = JwToken.encode({user_id: 'Bam!'})
       get @url, headers: { 'HTTP_AUTHORIZATION' => "Bearer " + token }
 
-      expect(JSON.parse(response.body)).to eq({"status"=>404, "error" => "Record Not Found"})
+      expect(response.status).to eq(404)
+      expect(JSON.parse(response.body)).to eq({ "error"=>"Record Not Found" })
     end
 
     it 'Will return Forbidden if invalid token is sent' do
       get @url, headers: { 'HTTP_AUTHORIZATION' => "Bearer " + '1' }
 
-      expect(JSON.parse(response.body)).to eq({"status"=>403, "error"=>"Forbidden"})
+      expect(response.status).to eq(403)
+      expect(JSON.parse(response.body)).to eq({ "error"=>"Forbidden" })
     end
   end
 
   describe 'GET' do
     it 'Will return the requesters application' do
-      token = JwToken.encode({user_id: @user.id})
-
-      get @url, headers: { 'HTTP_AUTHORIZATION' => "Bearer " + token }
+      get @url, headers: @authorization
       application = JSON.parse(response.body)
 
       expect(response).to be_success
@@ -37,4 +39,29 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
       expect(application["id"]).to eq(@user.application.id)
     end
   end
+
+  describe 'POST' do
+    before do
+
+    end
+
+    it 'Will return 400 if application fails to create' do
+      allow_any_instance_of(ApiController).to receive(:current_requester).and_return(false)
+      post @url, params: { "cohort_id" => @cohort }, headers: @authorization
+
+      expect(response.status).to eq(400)
+      expect(JSON.parse(response.body)).to eq({"error"=>"Could Not Find Record"})
+    end
+
+    it 'Will create an Application' do
+      post @url, params: { "cohort_id" => @cohort.id }, headers: @authorization
+
+      expect(response).to be_success
+      application = JSON.parse(response.body)
+
+      expect(application["user_id"]).to eq(@user.id)
+      expect(application["cohort_id"]).to eq(@cohort.id)
+    end
+  end
+
 end
