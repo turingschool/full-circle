@@ -4,12 +4,14 @@ class ApplicationFormSection extends React.Component {
     super(props)
 
     this.state = {
-      essay: this.props.application.essay
+      essay: this.props.application.essay,
+      message: ""
     }
   }
 
   handleChange(event) {
-    this.setState({essay: event.target.value});
+    this.setState({ essay: event.target.value,
+                    message: 'Unsaved Changes' });
   }
 
   render() {
@@ -27,7 +29,7 @@ class ApplicationFormSection extends React.Component {
             Save
           </div>
           <div className='message'>
-            Message
+            {this.state.message}
           </div>
         </section>
 
@@ -47,8 +49,11 @@ class ApplicationFormSection extends React.Component {
       .then((data) => {
         return data.json()
       })
-      .then((json) => {
-        // Some kind of save message I think.
+      .then((response) => {
+        this.setState({message: 'Application Saved'})
+      })
+      .catch((error) => {
+        this.setState({message: 'Unable to Save Application'})
       })
   }
 
