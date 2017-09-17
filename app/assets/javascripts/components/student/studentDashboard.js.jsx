@@ -28,16 +28,19 @@ class StudentDashboard extends React.Component {
   }
 
   render() {
-    let page = this.decisionTree()
+    let page = this.routing()
 
     return (
-      <main className='student'>
-        { page }
+      <main className='main-vert-frame'>
+        <Header />
+        <section className='student'>
+          { page }
+        </section>
       </main>
     )
   }
 
-  decisionTree() {
+  routing() {
     if (this.state.currentCohort.length < 1) {
       return <NotAcceptingApplications />
     } else {
