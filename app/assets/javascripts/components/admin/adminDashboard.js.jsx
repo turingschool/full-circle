@@ -2,7 +2,7 @@ class AdminDashboard extends React.Component {
 
   constructor(props) {
     super(props)
-    
+
     this.state = {
       cohorts: {},
       cohortInFocus: {},
@@ -36,7 +36,7 @@ class AdminDashboard extends React.Component {
 
   render() {
     return (
-      <main className='admin-frame'>
+      <main className='admin'>
         <CohortsSection
           cohorts={this.state.cohorts}
           cohort={this.state.cohortInFocus}

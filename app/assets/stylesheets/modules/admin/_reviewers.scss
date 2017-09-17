@@ -1,13 +1,15 @@
-.reviewers-frame {
-  width: 100%;
+.admin {
+  .reviewers-frame {
+    width: 100%;
 
-  overflow: scroll;
+    overflow: scroll;
 
-  .reviewer {
-    width: auto;
-
-    span {
+    .reviewer {
       width: auto;
+
+      span {
+        width: auto;
+      }
     }
   }
 }

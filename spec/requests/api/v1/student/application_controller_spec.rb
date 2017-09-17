@@ -68,7 +68,7 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
       application = @user.application
 
       put @url,
-        params: { essay: "I changed the Essay!" },
+        params: { application: { essay: 'I changed the Essay!' } },
         headers: @authorization
 
       expect(response).to be_success

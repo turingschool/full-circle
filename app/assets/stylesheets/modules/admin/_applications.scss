@@ -1,24 +1,26 @@
-.applications-frame {
-  @include shadow();
+.admin {
+  .applications-frame {
+    @include shadow();
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
 
-  padding: 10px;
+    padding: 10px;
 
-  .undecided {
-    background-color: $action-red
-  }
+    .undecided {
+      background-color: $action-red
+    }
 
-  .declined {
-    background-color: $action-none
-  }
+    .declined {
+      background-color: $action-none
+    }
 
-  .awarded {
-    background-color: $action-green
+    .awarded {
+      background-color: $action-green
+    }
   }
 }
