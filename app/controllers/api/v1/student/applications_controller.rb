@@ -29,7 +29,7 @@ class Api::V1::Student::ApplicationsController < Api::V1::ApiController
   private
 
     def application_params
-      params.permit(:essay)
+      params.require(:application).permit(:essay)
     end
 
     def authorize_requester

@@ -8,9 +8,7 @@ class StudentDashboard extends React.Component {
       currentCohort: {}
     }
 
-    this.authorization = {
-      'Authorization': 'Bearer ' + this.props.authorization
-    }
+    this.authorization = 'Bearer ' + this.props.authorization
   }
 
   componentWillMount(){
@@ -33,7 +31,7 @@ class StudentDashboard extends React.Component {
     let page = this.decisionTree()
 
     return (
-      <main className='student-frame'>
+      <main className='student'>
         { page }
       </main>
     )
@@ -44,7 +42,7 @@ class StudentDashboard extends React.Component {
       return <NotAcceptingApplications />
     } else {
       if (this.state.application) {
-        return <ApplicationForm
+        return <ApplicationFormSection
           application={this.state.application}
           authorization={this.authorization} />
       } else {
@@ -60,7 +58,7 @@ class StudentDashboard extends React.Component {
 
     let options = {
       method: 'POST',
-      headers: this.authorization
+      headers: { 'Authorization': this.authorization }
     }
 
     fetch('/api/v1/student/applications' + params, options)

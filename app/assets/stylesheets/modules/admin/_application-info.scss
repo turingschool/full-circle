@@ -1,4 +1,5 @@
-.application-info-frame {
+.admin {
+  .application-info-frame {
     @include shadow();
 
     display: flex;
@@ -19,4 +20,5 @@
       border: 1px solid black;
       border-radius: 3px;
     }
+  }
 }

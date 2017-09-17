@@ -2,9 +2,9 @@ class ConfirmCohort extends React.Component {
 
   render() {
     return (
-      <main className='confirm-cohort-frame'>
+      <section className='main-vert'>
           <CurrentCohortModule {...this.props} />
-      </main>
+      </section>
     )
   }
 }

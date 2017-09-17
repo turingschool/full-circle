@@ -1,0 +1,25 @@
+.student {
+  .application-footer {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 50px;
+
+    padding: 10px;
+
+    @include btn();
+
+    .message {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      width: 200px;
+      height: 100%;
+    }
+  }
+}
