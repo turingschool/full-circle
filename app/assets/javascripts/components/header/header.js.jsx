@@ -18,9 +18,9 @@ class Header extends React.Component {
     let user = ""
 
     if (this.state.isLoggedIn) {
-      user = <menu>
-               <span>{this.props.user.name}</span>
-               <span>
+      user = <menu className='user'>
+               <span className='name'>{this.props.user.name}</span>
+               <span className='logout'>
                  <a href='/logout' className='btn'>
                    Log Out
                  </a>

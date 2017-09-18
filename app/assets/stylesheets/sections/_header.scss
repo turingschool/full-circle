@@ -10,4 +10,23 @@
   img {
     height: 80px;
   }
+
+  menu.user {
+    display: flex;
+    justify-content: space-between;
+
+    padding-right: 20px;
+
+    min-width: 120px;
+
+    .logout {
+      text-align: center;
+      width: 120px;
+    }
+
+    span, a {
+      color: white;
+      padding: 0 10px 0 10px;
+    }
+  }
 }
