@@ -18,20 +18,18 @@
 
       margin: 10px;
 
-      background-color: $action-none;
-
       span {
         display: flex;
         align-items: center;
 
         height: 30px;
+        width: 100%;
         margin: 3px;
         padding: 5px;
 
-
-        border: 1px solid black;
+        border: 1px solid $blue-digital;
         border-radius: 3px;
       }
     }
-  }  
+  }
 }

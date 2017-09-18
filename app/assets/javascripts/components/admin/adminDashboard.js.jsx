@@ -8,6 +8,9 @@ class AdminDashboard extends React.Component {
       cohortInFocus: {},
       appInFocus: {}
     }
+
+    this.user = JSON.parse(this.props.user)
+    this.authorization = 'Bearer ' + this.props.authorization
   }
 
   componentWillMount(){
@@ -16,18 +19,6 @@ class AdminDashboard extends React.Component {
     this.setState( {cohorts: cohorts} )
     this.setState( {cohortInFocus: cohorts[0]} )
     this.setState( {appInFocus: cohorts[0].applications[0]})
-
-    let options = {
-      headers: { 'Authorization': 'Bearer ' + this.props.user_id }
-    }
-
-    fetch('/api/v1/admin/applications', options)
-      .then((data) => {
-        return data.json()
-      })
-      .then((json) => {
-        console.log(json)
-      })
   }
 
   handleChange(action) {
@@ -36,15 +27,18 @@ class AdminDashboard extends React.Component {
 
   render() {
     return (
-      <main className='admin'>
-        <CohortsSection
-          cohorts={this.state.cohorts}
-          cohort={this.state.cohortInFocus}
-          handleChange={this.handleChange.bind(this)} />
-        <ApplicationSection
-          cohort={this.state.cohortInFocus}
-          app={this.state.appInFocus}
-          handleChange={this.handleChange.bind(this)} />
+      <main className='main-vert-frame'>
+        <Header user={this.user} />
+        <main className='admin'>
+          <CohortsSection
+            cohorts={this.state.cohorts}
+            cohort={this.state.cohortInFocus}
+            handleChange={this.handleChange.bind(this)} />
+          <ApplicationSection
+            cohort={this.state.cohortInFocus}
+            app={this.state.appInFocus}
+            handleChange={this.handleChange.bind(this)} />
+        </main>
       </main>
     )
   }

@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe 'User can login' do
   OmniAuth.config.test_mode = true
 
-  it 'Can see the login page', js: true do
+  xit 'Can see the login page', js: true do
     visit '/'
 
     expect(page).to have_content('Login')
     expect(page).to have_selector(:css, 'a[href="/auth/github"]')
   end
 
-  describe 'Can Log in', js: true do
+  xdescribe 'Can Log in', js: true do
     before do
       @user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
@@ -20,7 +20,7 @@ RSpec.describe 'User can login' do
 
     it 'Student will route to student/dashboard' do
       click_on 'Login'
-      
+
       expect(page).to have_current_path('/student/dashboard')
     end
 
