@@ -1,4 +1,4 @@
-class Api::V1::Admin::ApplicationsController < ApiController
+class Api::V1::Admin::ApplicationsController < Api::V1::ApiController
   before_action :authorize!
 
   def index
