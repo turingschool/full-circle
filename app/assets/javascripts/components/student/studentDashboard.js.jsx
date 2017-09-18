@@ -3,22 +3,20 @@ class StudentDashboard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      student: {},
       application: {},
       currentCohort: {}
     }
 
+    this.user = JSON.parse(this.props.user)
     this.authorization = 'Bearer ' + this.props.authorization
   }
 
   componentWillMount(){
     let current_cohort = JSON.parse(this.props.current_cohort)
-    let student = JSON.parse(this.props.student)
     let application = JSON.parse(this.props.application)
 
     this.setState({
                     currentCohort: current_cohort,
-                    student: student,
                     application: application
                   })
   }
@@ -32,7 +30,7 @@ class StudentDashboard extends React.Component {
 
     return (
       <main className='main-vert-frame'>
-        <Header />
+        <Header user={this.user} />
         <section className='student'>
           { page }
         </section>

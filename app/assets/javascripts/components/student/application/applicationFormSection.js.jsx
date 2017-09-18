@@ -10,8 +10,10 @@ class ApplicationFormSection extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ essay: event.target.value,
-                    message: 'Unsaved Changes' });
+    this.setState({
+      essay: event.target.value,
+      message: 'Unsaved Changes'
+    });
   }
 
   render() {
@@ -28,6 +30,11 @@ class ApplicationFormSection extends React.Component {
           <div className='btn' onClick={this.updateApplication.bind(this)}>
             Save
           </div>
+
+          <div className='btn' onClick={this.submitApplication.bind(this)}>
+            Submit
+          </div>
+
           <div className='message'>
             {this.state.message}
           </div>
@@ -55,6 +62,10 @@ class ApplicationFormSection extends React.Component {
       .catch((error) => {
         this.setState({message: 'Unable to Save Application'})
       })
+  }
+
+  submitApplication() {
+    console.log('Submit! Yay! Wait, are you sure?')
   }
 
 }
