@@ -1,1 +1,4 @@
-<%= react_component 'AdminDashboard', cohorts: @cohorts, user_id: @user_id %>
+<%= react_component 'AdminDashboard',
+  cohorts: @cohorts,
+  authorization: @authorization,
+  user: @user.to_json %>
