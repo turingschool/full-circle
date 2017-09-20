@@ -7,13 +7,14 @@ class StudentApplicationFooter extends React.Component {
           onClick={this.props.updateApplication}
           Text='Save' />
 
-        <ClickBtn
-          onClick={this.props.submitApplication}
-          Text='Submit' />
-
         <div className='message'>
           {this.props.message}
         </div>
+
+        <ClickBtn
+          onClick={this.props.confirmApplication}
+          Text='Submit' />
+
       </section>
     )
   }

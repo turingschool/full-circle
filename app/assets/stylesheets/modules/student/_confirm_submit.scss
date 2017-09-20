@@ -1,0 +1,23 @@
+.student {
+  .confirm-submission {
+    @include shadow();
+
+    display: flex;
+    align-self: center;
+
+    position: fixed;
+
+    width: 900px;
+    height: 50%;
+
+    background-color: white;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: flex;
+  }
+}
