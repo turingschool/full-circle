@@ -1,4 +1,4 @@
-class ApplicationFormSection extends React.Component {
+class StudentApplicationSection extends React.Component {
 
   constructor(props) {
     super(props)
@@ -20,26 +20,14 @@ class ApplicationFormSection extends React.Component {
     return (
       <section className='application'>
 
-        <section className='application-form'>
-          <textarea
-            value={this.state.essay}
-            onChange={this.handleChange.bind(this)} />
-        </section>
+        <StudentApplicationForm
+          essay={this.state.essay}
+          onChange={this.handleChange.bind(this)} />
 
-        <section className='application-footer'>
-          <div className='btn' onClick={this.updateApplication.bind(this)}>
-            Save
-          </div>
-
-          <div className='btn' onClick={this.submitApplication.bind(this)}>
-            Submit
-          </div>
-
-          <div className='message'>
-            {this.state.message}
-          </div>
-        </section>
-
+        <StudentApplicationFooter
+          message={this.state.message}
+          updateApplication={this.updateApplication.bind(this)}
+          submitApplication={this.submitApplication.bind(this)} />
       </section>
     )
   }
@@ -47,7 +35,7 @@ class ApplicationFormSection extends React.Component {
   updateApplication() {
     let options = {
       method: 'PUT',
-      body: JSON.stringify({essay: this.state.essay}),
+      body: JSON.stringify({application: {essay: this.state.essay}}),
       headers: {'Authorization': this.props.authorization,
                 'Content-Type': "application/json" }
     }

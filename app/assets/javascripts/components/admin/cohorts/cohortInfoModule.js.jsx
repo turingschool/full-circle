@@ -1,4 +1,4 @@
-class CohortInfoModule extends React.Component {
+class AdminCohortInfoModule extends React.Component {
 
   render() {
     return (
@@ -9,7 +9,7 @@ class CohortInfoModule extends React.Component {
           <span>Reviewers: {this.props.cohort.reviewers.length}</span>
         </div>
         <div className='main-vert-frame right'>
-          <ReviewersModule
+          <AdminReviewersModule
             reviewers={this.props.cohort.reviewers}
           />
         </div>

@@ -1,10 +1,10 @@
-class CohortsSection extends React.Component {
-  
+class AdminCohortsSection extends React.Component {
+
   render() {
     return (
       <section className='main-vert-frame cohorts'>
-        <CohortInfoModule cohort={this.props.cohort} />
-        <CohortsModule cohorts={this.props.cohorts} {...this.props} />
+        <AdminCohortInfoModule cohort={this.props.cohort} />
+        <AdminCohortsModule cohorts={this.props.cohorts} {...this.props} />
       </section>
     )
   }

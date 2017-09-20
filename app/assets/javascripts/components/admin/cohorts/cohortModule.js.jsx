@@ -1,4 +1,4 @@
-class CohortModule extends React.Component {
+class AdminCohortModule extends React.Component {
 
   constructor(props) {
     super(props)
