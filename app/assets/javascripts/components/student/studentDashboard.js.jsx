@@ -43,7 +43,7 @@ class StudentDashboard extends React.Component {
       return <NotAcceptingApplications />
     } else {
       if (this.state.application) {
-        return <ApplicationSection
+        return <StudentApplicationSection
           application={this.state.application}
           authorization={this.authorization} />
       } else {

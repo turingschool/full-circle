@@ -1,4 +1,4 @@
-class ApplicationFooter extends React.Component {
+class StudentApplicationFooter extends React.Component {
 
   render() {
     return(

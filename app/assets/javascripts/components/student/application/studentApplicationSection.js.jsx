@@ -1,4 +1,4 @@
-class ApplicationSection extends React.Component {
+class StudentApplicationSection extends React.Component {
 
   constructor(props) {
     super(props)
@@ -20,11 +20,11 @@ class ApplicationSection extends React.Component {
     return (
       <section className='application'>
 
-        <ApplicationForm
+        <StudentApplicationForm
           essay={this.state.essay}
           onChange={this.handleChange.bind(this)} />
 
-        <ApplicationFooter
+        <StudentApplicationFooter
           message={this.state.message}
           updateApplication={this.updateApplication.bind(this)}
           submitApplication={this.submitApplication.bind(this)} />

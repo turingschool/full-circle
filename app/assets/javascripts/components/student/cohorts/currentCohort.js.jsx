@@ -1,4 +1,4 @@
-class CurrentCohort extends React.Component {
+class StudentCurrentCohort extends React.Component {
 
   render() {
     return(

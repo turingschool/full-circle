@@ -1,9 +1,9 @@
-Admin.ReviewersModule = class ReviewersModule extends React.Component {
+class AdminReviewersModule extends React.Component {
   render() {
     return (
       <section className='reviewers-frame'>
         { this.props.reviewers.map((reviewer, i) => {
-            return <Admin.ReviewerRow
+            return <AdminReviewerRow
               key={reviewer.id + i}
               reviewer={reviewer}
             />

@@ -1,4 +1,4 @@
-class ApplicationForm extends React.Component {
+class StudentApplicationForm extends React.Component {
 
   render() {
     return(

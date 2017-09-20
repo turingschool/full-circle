@@ -1,4 +1,4 @@
-Admin.ReviewerRow = class ReviewerRow extends React.Component {
+class AdminReviewerRow extends React.Component {
   render() {
     return (
       <div className='reviewer'>
