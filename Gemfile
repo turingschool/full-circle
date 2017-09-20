@@ -23,6 +23,8 @@ gem 'faker', '>= 1.8.4'
 gem 'react-rails', '~> 2.2.1'
 gem 'fetch-rails'
 
+gem 'browserify-rails', '~> 4.2.0'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

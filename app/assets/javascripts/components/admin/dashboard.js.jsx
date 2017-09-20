@@ -1,4 +1,4 @@
-class AdminDashboard extends React.Component {
+Admin.Dashboard = class Dashboard extends React.Component {
 
   constructor(props) {
     super(props)
@@ -30,11 +30,11 @@ class AdminDashboard extends React.Component {
       <main className='main-vert-frame'>
         <Header user={this.user} />
         <main className='admin'>
-          <CohortsSection
+          <Admin.CohortsSection
             cohorts={this.state.cohorts}
             cohort={this.state.cohortInFocus}
             handleChange={this.handleChange.bind(this)} />
-          <ApplicationSection
+          <Admin.ApplicationSection
             cohort={this.state.cohortInFocus}
             app={this.state.appInFocus}
             handleChange={this.handleChange.bind(this)} />

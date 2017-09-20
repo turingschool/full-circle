@@ -1,4 +1,4 @@
-class CohortsModule extends React.Component {
+Admin.CohortsModule = class CohortsModule extends React.Component {
 
   constructor(props) {
     super(props)
@@ -12,7 +12,7 @@ class CohortsModule extends React.Component {
     return (
       <section className='cohorts-frame'>
         {this.sortCohortsBy(this.props.cohorts).map((cohort) => {
-          return <CohortModule
+          return <Admin.CohortModule
             key={cohort.id}
             cohort={cohort}
             onClick={this.props.handleChange} />

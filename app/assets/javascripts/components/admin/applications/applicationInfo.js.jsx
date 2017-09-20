@@ -1,5 +1,4 @@
-class ApplicationInfo extends React.Component {
-
+Admin.ApplicationInfo = class ApplicationInfo extends React.Component {
 
   render() {
     return (

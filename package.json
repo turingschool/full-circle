@@ -1,7 +1,9 @@
 {
   "name": "full_circle_app",
   "private": true,
-  "dependencies": {
-    "classnames": "^2.2.5"
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "~14.4.0",
+    "browserify-incremental": "^3.1.1"
   }
 }

@@ -1,4 +1,4 @@
-class ApplicationRow extends React.Component {
+Admin.ApplicationRow = class ApplicationRow extends React.Component {
 
   constructor(props) {
     super(props)
