@@ -39,7 +39,8 @@ class StudentDashboard extends React.Component {
   }
 
   routing() {
-    if (this.state.currentCohort.length < 1) {
+    debugger
+    if (this.state.currentCohort == null) {
       return <NotAcceptingApplications />
     } else {
       if (this.state.application) {
