@@ -16,9 +16,9 @@ class StudentDashboard extends React.Component {
     let application = JSON.parse(this.props.application)
 
     this.setState({
-                    currentCohort: current_cohort,
-                    application: application
-                  })
+      currentCohort: current_cohort,
+      application: application
+    })
   }
 
   handleChange(action) {

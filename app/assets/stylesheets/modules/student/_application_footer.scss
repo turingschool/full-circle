@@ -16,10 +16,12 @@
     .message {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
 
       width: 200px;
       height: 100%;
+
+      color: #999;
     }
   }
 }

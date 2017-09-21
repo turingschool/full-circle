@@ -6,4 +6,5 @@ class Application < ApplicationRecord
   has_many :cohort_reviewers, through: :reviews
 
   enum status: ['undecided', 'declined', 'awarded']
+  enum state: ['draft', 'submitted']
 end

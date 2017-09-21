@@ -2,13 +2,14 @@
   .application-form {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 
     width: 100%;
     height: 100%;
 
     padding: 10px;
 
-    textarea {
+    textarea, p {
       width: 100%;
       height: 100%;
 
@@ -20,7 +21,27 @@
       outline: none;
       overflow: scroll;
 
-      font-size: 18px;
+      font-size: 20px;
+      font: 20px sans-serif;
+
+      white-space: pre-wrap;
+    }
+
+    .thank-you {
+      @include shadow();
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 100px;
+      width: 100%;
+
+      padding: 20px;
+      border: 1px solid $blue-digital;
+      border-radius: 4px;
+
+      font-size: 24px;
     }
 
     textarea:hover {
