@@ -4,84 +4,40 @@ class StudentApplicationSection extends React.Component {
     super(props)
 
     this.state = {
-      essay: this.props.application.essay,
-      message: "",
-      confirm: 'hide'
+      confirm: false,
+      submitted: this.props.application.state,
+      application: this.props.application,
+      essay: this.props.application.essay
     }
   }
 
-  handleChange(event) {
-    this.setState({
-      essay: event.target.value,
-      message: 'Unsaved Changes'
-    });
+  handleUpdate(action) {
+    this.setState(action)
+  }
+
+  routing() {
+    if (this.state.submitted == 'submitted') {
+      return <ThanksForSubmit />
+    } else if (this.state.confirm) {
+      return <StudentApplicationSubmit
+        essay={this.state.essay}
+        authorization={this.props.authorization}
+        submit={this.handleUpdate.bind(this)}/>
+    } else {
+      return <ApplicationEdit
+        essay={this.state.essay}
+        authorization={this.props.authorization}
+        toggleConfirm={this.handleUpdate.bind(this)} />
+    }
   }
 
   render() {
-    return (
+    let page = this.routing()
+
+    return(
       <section className='application'>
-
-        <StudentApplicationForm
-          essay={this.state.essay}
-          onChange={this.handleChange.bind(this)} />
-
-        <StudentApplicationFooter
-          message={this.state.message}
-          updateApplication={this.updateApplication.bind(this)}
-          confirmApplication={this.confirmSubmit.bind(this)} />
-
-        <ConfirmSubmission
-          confirm={this.state.confirm}
-          essay={this.state.essay}
-          submitApplication={this.submitApplication.bind(this)} />
-
+        { page }
       </section>
     )
   }
-
-  updateApplication() {
-    let options = {
-      method: 'PUT',
-      body: JSON.stringify({application: {essay: this.state.essay}}),
-      headers: {'Authorization': this.props.authorization,
-                'Content-Type': "application/json" }
-    }
-
-    fetch('/api/v1/student/applications', options)
-      .then((data) => {
-        return data.json()
-      })
-      .then((response) => {
-        this.setState({message: 'Application Saved'})
-      })
-      .catch((error) => {
-        this.setState({message: 'Unable to Save Application'})
-      })
-  }
-
-  confirmSubmit() {
-    debugger
-    this.setState({confirm: 'show'})
-  }
-
-  submitApplication() {
-    let options = {
-      method: 'PUT',
-      body: JSON.stringify({application: {state: 'submitted'}}),
-      headers: {'Authorization': this.props.authorization,
-                'Content-Type': "application/json" }
-    }
-
-    fetch('/api/v1/student/applications', options)
-      .then((data) => {
-        return data.json()
-      })
-      .then((response) => {
-        this.setState({message: 'Application Submitted'})
-      })
-      .catch((error) => {
-        this.setState({message: 'Unable to Submit Application'})
-      })
-  }
-
 }

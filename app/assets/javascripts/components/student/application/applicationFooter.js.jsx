@@ -12,7 +12,7 @@ class StudentApplicationFooter extends React.Component {
         </div>
 
         <ClickBtn
-          onClick={this.props.confirmApplication}
+          onClick={this.props.toggleConfirm.bind(this, {confirm: true} )}
           Text='Submit' />
 
       </section>
