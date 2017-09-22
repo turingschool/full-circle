@@ -11,7 +11,10 @@ class StudentApplicationQuestions extends React.Component {
             <p>{ date.toDateString() }</p>
           </section>
           <section className='questions'>
-            <h4>Please answer the following questions.</h4>
+            <h4>Please answer the following four questions in your essay.</h4>
+            {this.props.cohort.questions.map((question, i) => {
+              return <p key={i}>{question}</p>
+            })}
           </section>
         </section>
       </section>
