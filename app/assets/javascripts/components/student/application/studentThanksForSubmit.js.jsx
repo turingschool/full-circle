@@ -1,4 +1,4 @@
-class ThanksForSubmit extends React.Component {
+class StudentThanksForSubmit extends React.Component {
 
   constructor(props) {
     super(props)

@@ -1,4 +1,4 @@
-class ApplicationEdit extends React.Component {
+class StudentApplicationEdit extends React.Component {
 
   constructor(props) {
     super(props)

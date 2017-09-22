@@ -24,7 +24,7 @@ class StudentApplicationSection extends React.Component {
         authorization={this.props.authorization}
         submit={this.handleUpdate.bind(this)}/>
     } else {
-      return <ApplicationEdit
+      return <StudentApplicationEdit
         essay={this.state.essay}
         authorization={this.props.authorization}
         toggleConfirm={this.handleUpdate.bind(this)} />

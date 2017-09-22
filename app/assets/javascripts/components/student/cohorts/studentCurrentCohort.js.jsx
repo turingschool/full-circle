@@ -2,9 +2,12 @@ class StudentCurrentCohort extends React.Component {
 
   render() {
     return(
-      <div onClick={this.props.newApplication}>
-        {this.props.currentCohort.title}
-      </div>
+      <section className='confirm-cohort-frame'>
+        <p>Please confirm that the current open cohort is the one you are applying for.</p>
+        <ClickBtn
+          Text={this.props.currentCohort.title}
+          onClick={this.props.newApplication} />
+      </section>
     )
   }
 }
