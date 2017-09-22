@@ -45,6 +45,7 @@ class StudentDashboard extends React.Component {
       if (this.state.application) {
         return <StudentApplicationSection
           application={this.state.application}
+          cohort={this.state.currentCohort}
           authorization={this.authorization} />
       } else {
         return <StudentConfirmCohort

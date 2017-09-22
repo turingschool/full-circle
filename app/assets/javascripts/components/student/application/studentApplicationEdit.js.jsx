@@ -19,9 +19,14 @@ class StudentApplicationEdit extends React.Component {
   render () {
     return(
       <section className='empty-container'>
-        <StudentApplicationForm
-          essay={this.state.essay}
-          onChange={this.handleChange.bind(this)} />
+        <section className='main-horz-frame'>
+          <StudentApplicationForm
+            essay={this.state.essay}
+            onChange={this.handleChange.bind(this)} />
+
+          <StudentApplicationQuestions
+            cohort={this.props.cohort} />
+        </section>
 
         <StudentApplicationFooter
           message={this.state.message}

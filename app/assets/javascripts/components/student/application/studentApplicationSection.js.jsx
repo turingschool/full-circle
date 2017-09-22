@@ -26,6 +26,7 @@ class StudentApplicationSection extends React.Component {
     } else {
       return <StudentApplicationEdit
         essay={this.state.essay}
+        cohort={this.props.cohort}
         authorization={this.props.authorization}
         toggleConfirm={this.handleUpdate.bind(this)} />
     }
