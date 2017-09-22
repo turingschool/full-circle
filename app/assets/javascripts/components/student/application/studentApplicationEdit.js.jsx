@@ -22,7 +22,7 @@ class StudentApplicationEdit extends React.Component {
         <section className='main-horz-frame'>
           <StudentApplicationForm
             essay={this.state.essay}
-            onChange={this.handleChange.bind(this)} />
+            handleChange={this.handleChange.bind(this)} />
 
           <StudentApplicationQuestions
             cohort={this.props.cohort} />
@@ -30,6 +30,7 @@ class StudentApplicationEdit extends React.Component {
 
         <StudentApplicationFooter
           message={this.state.message}
+          essay={this.state.essay}
           updateApplication={this.updateApplication.bind(this)}
           toggleConfirm={this.props.toggleConfirm} />
       </section>

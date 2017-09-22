@@ -7,7 +7,8 @@ class StudentApplicationSection extends React.Component {
       confirm: false,
       submitted: this.props.application.state,
       application: this.props.application,
-      essay: this.props.application.essay
+      essay: this.props.application.essay,
+      message: ""
     }
   }
 
@@ -26,6 +27,7 @@ class StudentApplicationSection extends React.Component {
     } else {
       return <StudentApplicationEdit
         essay={this.state.essay}
+        message={this.state.message}
         cohort={this.props.cohort}
         authorization={this.props.authorization}
         toggleConfirm={this.handleUpdate.bind(this)} />
