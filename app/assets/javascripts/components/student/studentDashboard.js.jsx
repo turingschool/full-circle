@@ -39,7 +39,6 @@ class StudentDashboard extends React.Component {
   }
 
   routing() {
-    debugger
     if (this.state.currentCohort == null) {
       return <NotAcceptingApplications />
     } else {
@@ -48,7 +47,7 @@ class StudentDashboard extends React.Component {
           application={this.state.application}
           authorization={this.authorization} />
       } else {
-        return <ConfirmCohort
+        return <StudentConfirmCohort
           currentCohort={this.state.currentCohort}
           newApplication={this.newApplication.bind(this)} />
       }

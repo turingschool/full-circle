@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170915015458) do
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
-    t.text "essay"
+    t.text "essay", default: ""
     t.integer "status", default: 0
     t.integer "state", default: 0
     t.bigint "cohort_id"

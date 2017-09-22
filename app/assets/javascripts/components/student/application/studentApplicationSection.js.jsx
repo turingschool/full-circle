@@ -17,7 +17,7 @@ class StudentApplicationSection extends React.Component {
 
   routing() {
     if (this.state.submitted == 'submitted') {
-      return <ThanksForSubmit />
+      return <StudentThanksForSubmit />
     } else if (this.state.confirm) {
       return <StudentApplicationSubmit
         essay={this.state.essay}
