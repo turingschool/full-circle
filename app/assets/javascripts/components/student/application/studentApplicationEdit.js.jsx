@@ -8,18 +8,32 @@ class StudentApplicationEdit extends React.Component {
     this.state = {
       essay: this.props.essay,
       message: "",
-      char_limit: this.props.cohort.config.essay_length
+      wordCount: this.wordCount(this.props.essay)
     }
+  }
+
+  wordCount(essay) {
+    return this.cohort.config.essay_length - essay.split(' ').length
+  }
+
+  trimEssay(essay) {
+    return essay.split(' ').slice(0, this.cohort.config.essay_length).join(' ')
   }
 
   handleChange(event) {
     let essay = event.target.value
+    let message = 'Unsaved Changes'
+
+    if (essay.split(' ').length > this.cohort.config.essay_length) {
+      essay = this.trimEssay(essay)
+      message = 'Exceeded Word Limit'
+    }
 
     this.setState({
       essay: essay,
-      message: 'Unsaved Changes',
-      essayLimit: this.cohort.config.essay_length - essay.length
-    });
+      message: message,
+      wordCount: this.wordCount(essay)
+    })
   }
 
   render () {
@@ -37,7 +51,7 @@ class StudentApplicationEdit extends React.Component {
         <StudentApplicationFooter
           message={this.state.message}
           essay={this.state.essay}
-          essayLimit={this.state.essayLimit}
+          wordCount={this.state.wordCount}
           updateApplication={this.updateApplication.bind(this)}
           toggleConfirm={this.props.toggleConfirm} />
       </section>

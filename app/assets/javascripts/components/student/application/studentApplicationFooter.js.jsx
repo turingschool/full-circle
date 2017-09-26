@@ -10,8 +10,9 @@ class StudentApplicationFooter extends React.Component {
         <div className='message'>
           {this.props.message}
         </div>
+
         <div className='message'>
-          {this.props.essayLimit}
+          {this.props.wordCount}
         </div>
 
         <ClickBtn
