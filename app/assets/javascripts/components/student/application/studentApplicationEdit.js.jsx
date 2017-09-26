@@ -7,9 +7,13 @@ class StudentApplicationEdit extends React.Component {
 
     this.state = {
       essay: this.props.essay,
-      message: "",
+      message: this.props.message,
       wordCount: this.wordCount(this.props.essay)
     }
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({message: nextProps.message})
   }
 
   wordCount(essay) {
