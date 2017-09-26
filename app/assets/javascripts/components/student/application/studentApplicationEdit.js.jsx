@@ -17,7 +17,7 @@ class StudentApplicationEdit extends React.Component {
   }
 
   wordCount(essay) {
-    return this.cohort.config.essay_length - essay.split(' ').length
+    return this.cohort.config.essay_length - essay.split(' ').length + 1
   }
 
   trimEssay(essay) {

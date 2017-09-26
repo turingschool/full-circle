@@ -16,15 +16,17 @@ class StudentApplicationFooter extends React.Component {
         </div>
 
         <ClickBtn
-          onClick={this.props.toggleConfirm.bind(this, this.unsavedChanges())}
+          onClick={this.props.toggleConfirm.bind(this, this.validateEssay())}
           Text='Submit' />
       </section>
     )
   }
 
-  unsavedChanges() {
+  validateEssay() {
     if (this.props.message == 'Unsaved Changes') {
       return { message: 'Save Before Submitting' }
+    } else if (this.props.essay.length < 1) {
+      return { message: 'Essay cannot be blank' }
     } else {
       return {
         confirm: true,
