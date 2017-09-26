@@ -1,7 +1,14 @@
 class StudentApplicationQuestions extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    this.end_date = this.props.cohort.end_date
+    this.questions = this.props.cohort.config.questions
+  }
+
   render() {
-    let date = new Date(this.props.cohort.end_date)
+    let date = new Date(this.end_date)
 
     debugger
     return(
@@ -13,7 +20,7 @@ class StudentApplicationQuestions extends React.Component {
           </section>
           <section className='questions'>
             <h4>Please answer the following four questions in your essay.</h4>
-            {this.props.cohort.config.questions.map((question, i) => {
+            {this.questions.map((question, i) => {
               return <p key={i}>{question}</p>
             })}
           </section>
