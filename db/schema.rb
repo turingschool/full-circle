@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170922141414) do
     t.integer "state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "questions", array: true
+    t.json "config"
   end
 
   create_table "reviews", force: :cascade do |t|
