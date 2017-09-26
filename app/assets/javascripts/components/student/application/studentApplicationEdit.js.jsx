@@ -3,16 +3,22 @@ class StudentApplicationEdit extends React.Component {
   constructor(props) {
     super(props)
 
+    this.cohort = this.props.cohort
+
     this.state = {
       essay: this.props.essay,
-      message: ""
+      message: "",
+      char_limit: this.props.cohort.config.essay_length
     }
   }
 
   handleChange(event) {
+    let essay = event.target.value
+
     this.setState({
-      essay: event.target.value,
-      message: 'Unsaved Changes'
+      essay: essay,
+      message: 'Unsaved Changes',
+      essayLimit: this.cohort.config.essay_length - essay.length
     });
   }
 
@@ -31,6 +37,7 @@ class StudentApplicationEdit extends React.Component {
         <StudentApplicationFooter
           message={this.state.message}
           essay={this.state.essay}
+          essayLimit={this.state.essayLimit}
           updateApplication={this.updateApplication.bind(this)}
           toggleConfirm={this.props.toggleConfirm} />
       </section>

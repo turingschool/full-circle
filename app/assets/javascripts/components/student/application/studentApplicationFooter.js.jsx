@@ -10,6 +10,9 @@ class StudentApplicationFooter extends React.Component {
         <div className='message'>
           {this.props.message}
         </div>
+        <div className='message'>
+          {this.props.essayLimit}
+        </div>
 
         <ClickBtn
           onClick={this.props.toggleConfirm.bind(this,

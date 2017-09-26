@@ -10,7 +10,6 @@ class StudentApplicationQuestions extends React.Component {
   render() {
     let date = new Date(this.end_date)
 
-    debugger
     return(
       <section className='application-questions'>
         <section className='inside-border'>
