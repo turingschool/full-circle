@@ -21,10 +21,17 @@ class StudentApplicationSubmit extends React.Component {
         <p>{this.props.essay}</p>
 
         <section className='confirm-alts'>
-          Email: <input value={this.state.alt_email}
-            onChange={this.handleChange.bind(this, 'alt_email')} />
-          Name: <input value={this.state.alt_name}
-            onChange={this.handleChange.bind(this, 'alt_name')} />
+          <section className='row'>
+            <h4>Email:</h4>
+              <input value={this.state.alt_email}
+                onChange={this.handleChange.bind(this, 'alt_email')} />
+          </section>
+
+          <section className='row'>
+            <h4>Name:</h4>
+              <input value={this.state.alt_name}
+                onChange={this.handleChange.bind(this, 'alt_name')} />
+          </section>
         </section>
 
         <section className='confirm-submission'>
@@ -37,7 +44,13 @@ class StudentApplicationSubmit extends React.Component {
   submitApplication() {
     let options = {
       method: 'PUT',
-      body: JSON.stringify({application: {state: 'submitted'}}),
+      body: JSON.stringify({
+        application: {state: 'submitted'},
+        user: {
+          alt_name: this.state.alt_name,
+          alt_email: this.state.alt_email
+        }
+      }),
       headers: {'Authorization': this.props.authorization,
                 'Content-Type': "application/json" }
     }

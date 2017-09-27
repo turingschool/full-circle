@@ -1,5 +1,5 @@
 class Api::V1::Student::ApplicationsController < Api::V1::ApiController
-  
+
   def index
     render json: current_requester.application
   end
@@ -29,5 +29,9 @@ class Api::V1::Student::ApplicationsController < Api::V1::ApiController
 
     def application_params
       params.require(:application).permit(:essay, :state)
+    end
+
+    def user_params
+      params.require(:user).permit(:alt_name, :alt_email)
     end
 end
