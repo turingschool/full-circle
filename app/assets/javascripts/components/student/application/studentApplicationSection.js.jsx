@@ -22,6 +22,7 @@ class StudentApplicationSection extends React.Component {
     } else if (this.state.confirm) {
       return <StudentApplicationSubmit
         essay={this.state.essay}
+        user={this.props.user}
         authorization={this.props.authorization}
         submit={this.handleUpdate.bind(this)}/>
     } else {

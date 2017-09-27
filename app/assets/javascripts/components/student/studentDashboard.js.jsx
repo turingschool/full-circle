@@ -2,6 +2,7 @@ class StudentDashboard extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.state = {
       application: {},
       currentCohort: {}
@@ -46,6 +47,7 @@ class StudentDashboard extends React.Component {
         return <StudentApplicationSection
           application={this.state.application}
           cohort={this.state.currentCohort}
+          user={this.user}
           authorization={this.authorization} />
       } else {
         return <StudentConfirmCohort

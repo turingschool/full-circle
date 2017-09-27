@@ -1,9 +1,31 @@
 class StudentApplicationSubmit extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      alt_email: this.props.user.alt_email,
+      alt_name: this.props.user.alt_name
+    }
+  }
+
+  handleChange(key, event) {
+    this.setState({
+      [key]: event.target.value
+    })
+  }
+
   render() {
     return(
       <section className='application-form'>
         <p>{this.props.essay}</p>
+
+        <section className='confirm-alts'>
+          Email: <input value={this.state.alt_email}
+            onChange={this.handleChange.bind(this, 'alt_email')} />
+          Name: <input value={this.state.alt_name}
+            onChange={this.handleChange.bind(this, 'alt_name')} />
+        </section>
 
         <section className='confirm-submission'>
           <ClickBtn Text='Confirm' onClick={this.submitApplication.bind(this)} />
