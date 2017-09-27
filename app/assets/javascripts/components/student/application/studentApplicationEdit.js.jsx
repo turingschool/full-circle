@@ -20,6 +20,7 @@ class StudentApplicationEdit extends React.Component {
     if (essay == "") {
       return this.cohort.config.essay_length
     } else {
+      debugger
       return this.cohort.config.essay_length - essay.trim().split(' ').length
     }
   }
