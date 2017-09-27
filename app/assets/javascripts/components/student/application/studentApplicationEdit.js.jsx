@@ -3,6 +3,7 @@ class StudentApplicationEdit extends React.Component {
   constructor(props) {
     super(props)
 
+    console.log('Edit Essay')
     this.cohort = this.props.cohort
 
     this.state = {
@@ -17,7 +18,8 @@ class StudentApplicationEdit extends React.Component {
   }
 
   wordCount(essay) {
-    console.log(essay)
+    console.log('Essay: ' + essay)
+
     if (essay == "") {
       return this.cohort.config.essay_length
     } else {
