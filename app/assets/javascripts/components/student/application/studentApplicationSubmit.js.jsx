@@ -35,17 +35,26 @@ class StudentApplicationSubmit extends React.Component {
         </section>
 
         <section className='confirm-submission'>
-          <ClickBtn Text='Confirm' onClick={this.submitApplication.bind(this)} />
+          <ClickBtn Text='Confirm' onClick={this.submit.bind(this)} />
         </section>
       </section>
     )
   }
 
-  submitApplication() {
+  submit(){
+    Promise.all([this.submitUser(), this.submitApplication()])
+      .then((response) => {
+        this.props.submit( {submitted: 'submitted'} )
+      })
+      .catch((error) => {
+        this.props.submit( {message: 'Unable to Submit Application'} )
+      })
+  }
+
+  submitUser() {
     let options = {
       method: 'PUT',
       body: JSON.stringify({
-        application: {state: 'submitted'},
         user: {
           alt_name: this.state.alt_name,
           alt_email: this.state.alt_email
@@ -55,15 +64,23 @@ class StudentApplicationSubmit extends React.Component {
                 'Content-Type': "application/json" }
     }
 
-    fetch('/api/v1/student/applications', options)
+    return fetch('/api/v1/student/users', options)
       .then((data) => {
         return data.json()
       })
-      .then((response) => {
-        this.props.submit( {submitted: 'submitted'} )
-      }.bind(this))
-      .catch((error) => {
-        this.props.submit( {message: 'Unable to Submit Application'} )
-      }.bind(this))
+  }
+
+  submitApplication() {
+    let options = {
+      method: 'PUT',
+      body: JSON.stringify({application: {state: 'submitted'}}),
+      headers: {'Authorization': this.props.authorization,
+                'Content-Type': "application/json" }
+    }
+
+    return fetch('/api/v1/student/applications', options)
+      .then((data) => {
+        return data.json()
+      })
   }
 }
