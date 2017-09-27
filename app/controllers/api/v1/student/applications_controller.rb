@@ -9,7 +9,7 @@ class Api::V1::Student::ApplicationsController < Api::V1::ApiController
     application = Application.new(cohort: cohort, user: current_requester)
 
     if application.save
-      render json: application
+      render json: application, status: 201
     else
       render json: { "error"=>"Error Creating Application" }, status: 400
     end
@@ -29,9 +29,5 @@ class Api::V1::Student::ApplicationsController < Api::V1::ApiController
 
     def application_params
       params.require(:application).permit(:essay, :state)
-    end
-
-    def user_params
-      params.require(:user).permit(:alt_name, :alt_email)
     end
 end
