@@ -12,8 +12,8 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
     @authorization = { 'HTTP_AUTHORIZATION' => "Bearer " + @token }
   end
 
-  describe 'Varification' do
-    it 'Will return error if no record found' do
+  describe 'Authentication' do
+    it 'Will return error if no user found' do
       token = JwToken.encode({user_id: 'Bam!'})
       get @url, headers: { 'HTTP_AUTHORIZATION' => "Bearer " + token }
 
@@ -42,13 +42,6 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
 
   describe 'POST' do
 
-    it 'Will return error if activerecord fails' do
-      post @url, params: { "cohort_id" => nil }, headers: @authorization
-
-      expect(response.status).to eq(404)
-      expect(JSON.parse(response.body)).to eq({"error"=>"Record Not Found"})
-    end
-
     it 'Will return error if Application fails to save' do
       allow_any_instance_of(Api::V1::ApiController).to receive(:current_requester).and_return(nil)
 
@@ -73,6 +66,17 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
 
   describe 'PUT' do
 
+    it 'Will return error is application failed to update' do
+      put @url,
+        params: { application: { essay: nil } },
+        headers: @authorization
+
+      expect(response.status).to eq(400)
+      error = JSON.parse(response.body)
+
+      expect(error["error"]).to eq("Error Updating Application")
+    end
+
     it 'Will update an Application' do
       put @url,
         params: { application: { essay: 'I changed the Essay!' } },
@@ -83,17 +87,5 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
 
       expect(application["essay"]).to eq("I changed the Essay!")
     end
-
-    it 'Will return error is failed to update' do
-      put @url,
-        params: { application: { essay: nil } },
-        headers: @authorization
-
-      expect(response.status).to eq(400)
-      error = JSON.parse(response.body)
-
-      expect(error["error"]).to eq("Error Updating Application")
-    end
   end
-
 end
