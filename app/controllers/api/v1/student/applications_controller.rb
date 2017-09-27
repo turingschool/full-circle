@@ -9,6 +9,7 @@ class Api::V1::Student::ApplicationsController < Api::V1::ApiController
     application = Application.new(cohort: cohort, user: current_requester)
 
     if application.save
+      puts application
       render json: application
     else
       render json: { "error"=>"Error Creating Application" }, status: 400

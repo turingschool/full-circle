@@ -17,10 +17,11 @@ class StudentApplicationEdit extends React.Component {
   }
 
   wordCount(essay) {
+    console.log(essay)
     if (essay == "") {
       return this.cohort.config.essay_length
     } else {
-      return this.cohort.config.essay_length - essay.split(' ').length
+      return this.cohort.config.essay_length - essay.trim().split(' ').length
     }
   }
 
