@@ -3,8 +3,6 @@ class StudentDashboard extends React.Component {
   constructor(props) {
     super(props)
 
-    console.log('Student DashBoard')
-    
     this.state = {
       application: {},
       currentCohort: {}

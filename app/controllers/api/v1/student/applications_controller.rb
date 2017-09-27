@@ -1,13 +1,10 @@
 class Api::V1::Student::ApplicationsController < Api::V1::ApiController
 
   def index
-    puts 'Student Application'
     render json: current_requester.application
   end
 
   def create
-    puts 'Create Application'
-    
     cohort = Cohort.find(params[:cohort_id])
     application = Application.new(cohort: cohort, user: current_requester)
 
