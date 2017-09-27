@@ -14,6 +14,10 @@ class Cohort < ApplicationRecord
     self.users.where(role: 'reviewer')
   end
 
+  def students
+    self.users.where(role: 'student')
+  end
+
   def open?
     (start_date <= Date.today) && (end_date >= Date.today)
   end
