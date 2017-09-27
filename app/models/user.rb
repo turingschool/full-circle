@@ -10,11 +10,22 @@ class User < ApplicationRecord
 
   enum role: [:student, :reviewer, :admin]
 
+  def default_alts
+    unless alt_name && alt_email
+      self.alt_email = email
+      self.alt_name = name
+    end
+  end
+
   class << self
 
     def find_or_create_by_oauth(params)
       user = User.find_or_create_by(uid: params['uid'])
-      user.tap { |user| user.update!(oauth_params(params)) }
+      user.tap do |user|
+        user.update!(oauth_params(params))
+        user.default_alts
+        user.save
+      end
     end
   end
 end

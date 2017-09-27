@@ -5,7 +5,7 @@ class StudentApplicationForm extends React.Component {
       <section className='application-form'>
         <textarea
           value={this.props.essay}
-          onChange={this.props.onChange} />
+          onChange={this.props.handleChange.bind(this) } />
       </section>
     )
   }

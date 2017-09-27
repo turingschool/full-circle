@@ -2,6 +2,7 @@ class StudentDashboard extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.state = {
       application: {},
       currentCohort: {}
@@ -39,15 +40,17 @@ class StudentDashboard extends React.Component {
   }
 
   routing() {
-    if (this.state.currentCohort.length < 1) {
+    if (this.state.currentCohort == null) {
       return <NotAcceptingApplications />
     } else {
       if (this.state.application) {
         return <StudentApplicationSection
           application={this.state.application}
+          cohort={this.state.currentCohort}
+          user={this.user}
           authorization={this.authorization} />
       } else {
-        return <ConfirmCohort
+        return <StudentConfirmCohort
           currentCohort={this.state.currentCohort}
           newApplication={this.newApplication.bind(this)} />
       }

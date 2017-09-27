@@ -18,4 +18,12 @@
 
     cursor: pointer;
   }
+
+  .btn:hover {
+    @include shadow(0, 0, 7px, 0.5px, 0.2);
+  }
+
+  .btn:active {
+    background-color: $blue-pms;
+  }
 }

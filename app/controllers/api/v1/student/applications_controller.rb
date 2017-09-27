@@ -1,5 +1,4 @@
 class Api::V1::Student::ApplicationsController < Api::V1::ApiController
-  before_action :authorize_requester
 
   def index
     render json: current_requester.application
@@ -32,7 +31,7 @@ class Api::V1::Student::ApplicationsController < Api::V1::ApiController
       params.require(:application).permit(:essay, :state)
     end
 
-    def authorize_requester
-      current_requester
+    def user_params
+      params.require(:user).permit(:alt_name, :alt_email)
     end
 end

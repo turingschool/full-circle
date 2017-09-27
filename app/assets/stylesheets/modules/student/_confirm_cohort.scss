@@ -1,0 +1,21 @@
+.student {
+  .confirm-cohort-frame {
+    @include btn();
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    padding: 10px;
+
+    p {
+      height: 100px;
+
+      font-size: 24px;
+    }
+  }
+}

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915015458) do
+ActiveRecord::Schema.define(version: 20170927005000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
-    t.text "essay"
+    t.text "essay", default: ""
     t.integer "status", default: 0
     t.integer "state", default: 0
     t.bigint "cohort_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170915015458) do
     t.integer "state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "config"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -65,6 +66,8 @@ ActiveRecord::Schema.define(version: 20170915015458) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "alt_email"
+    t.string "alt_name"
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
