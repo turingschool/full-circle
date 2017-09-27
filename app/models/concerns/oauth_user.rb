@@ -2,7 +2,6 @@ module OauthUser
   extend ActiveSupport::Concern
 
   def self.included(base)
-
     def base.oauth_params(params)
       {
         uid: params['uid'],

@@ -25,8 +25,8 @@ Rails.application.routes.draw do
       namespace :student do
         resources :applications, only: [:index, :create]
         resource :applications, only: [:update]
+        resources :users, only: [:update]
       end
     end
   end
-
 end
