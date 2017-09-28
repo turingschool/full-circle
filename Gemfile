@@ -42,7 +42,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'poltergeist'
-  gem 'phantomjs'
+  gem 'phantomjs', '~> 2.0'
   gem 'launchy'
   gem 'shoulda-matchers'
 end

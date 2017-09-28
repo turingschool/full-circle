@@ -25,17 +25,17 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Capybara.register_driver :poltergeist do |app|
+Capybara.register_driver :poltergeist_debug do |app|
   Capybara::Poltergeist::Driver.new(app, {
     js_errors: false,
     phantomjs_options: ['--ignore-ssl-errors=yes', '--ssl-protocol=any'],
     debug: false,
     timeout: 500,
-    phantomjs: File.absolute_path(Phantomjs.path)
+    inspector: true
   })
 end
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :poltergeist_debug
 
 OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
   'uid' => '90210',
