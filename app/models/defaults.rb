@@ -1,4 +1,4 @@
-class Default
+class Defaults
 
   class << self
     def essay_limit
@@ -13,7 +13,6 @@ class Default
     end
 
     def guidelines
-      binding.pry
       "Turing School of Software & Design, Diversity Scholarship Announcement
       Turing stands for the inclusion and equality of all people, regardless of race,
       gender, sexual orientation, age, zip code, background, or life experience. When we look

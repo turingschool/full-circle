@@ -1,12 +1,12 @@
 class Cohort < ApplicationRecord
-  include ConfigDefaults
-
   has_many :applications, dependent: :destroy
 
   has_many :cohort_reviewers, dependent: :destroy
   has_many :users, through: :cohort_reviewers
 
   has_one :config
+
+  before_create :set_defaults
 
   enum state: ['unfinalized', 'finalized']
 
@@ -30,9 +30,9 @@ class Cohort < ApplicationRecord
 
   private
 
-    def set_config
-      self.questions = Default.questions
-      self.essay_limit = Default.essay_limit
-      self.guidelines = Default.quidelines
+    def set_defaults
+      self.questions = Defaults.questions
+      self.essay_limit = Defaults.essay_limit
+      self.guidelines = Defaults.guidelines
     end
 end
