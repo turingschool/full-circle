@@ -35,6 +35,10 @@ class StudentApplicationSubmit extends React.Component {
         </section>
 
         <section className='confirm-submission'>
+          <ClickBtn Text='Go Back'
+            onClick={this.props.toggleConfirm.bind(this, {
+              confirm: false
+            })} />
           <ClickBtn Text='Confirm' onClick={this.submit.bind(this)} />
         </section>
       </section>
