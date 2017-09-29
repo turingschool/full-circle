@@ -80,4 +80,31 @@ RSpec.describe Cohort do
     end
 
   end
+
+  describe 'Helper Methods' do
+
+    it 'Can return all reviewers' do
+      cohort = create(:cohort, :open)
+      reviewers = create_list(:user, 10, :reviewer)
+      students = create_list(:user, 10)
+
+      cohort.users << reviewers << students
+
+      expect(cohort.reviewers.count).to eq(10)
+      expect(reviewers).to include(*cohort.reviewers)
+      expect(students).not_to include(*cohort.reviewers)
+    end
+
+    it 'Can return all students' do
+      cohort = create(:cohort, :open)
+      reviewers = create_list(:user, 10, :reviewer)
+      students = create_list(:user, 10)
+
+      cohort.users << reviewers << students
+
+      expect(cohort.reviewers.count).to eq(10)
+      expect(students).to include(*cohort.students)
+      expect(reviewers).not_to include(*cohort.students)
+    end
+  end
 end

@@ -5,6 +5,7 @@ class StudentApplicationSection extends React.Component {
 
     this.state = {
       confirm: false,
+      guidelines: 'show',
       submitted: this.props.application.state,
       application: this.props.application,
       essay: this.props.application.essay,
@@ -31,6 +32,7 @@ class StudentApplicationSection extends React.Component {
         message={this.state.message}
         cohort={this.props.cohort}
         authorization={this.props.authorization}
+        toggleGuidelines={this.handleUpdate.bind(this)}
         toggleConfirm={this.handleUpdate.bind(this)} />
     }
   }
@@ -40,6 +42,9 @@ class StudentApplicationSection extends React.Component {
 
     return(
       <section className='application'>
+        <StudentApplicationGuidelines
+          visable={this.state.guidelines}
+          toggleGuidelines={this.handleUpdate.bind(this)} />
         { page }
       </section>
     )

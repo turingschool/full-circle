@@ -10,6 +10,8 @@ RSpec.describe User do
 
   describe 'Validations' do
     it { should validate_uniqueness_of(:uid)}
+    it { should validate_presence_of(:alt_name).on(:update)}
+    it { should validate_presence_of(:alt_email).on(:update)}
   end
 
   describe 'Roles' do
@@ -35,7 +37,7 @@ RSpec.describe User do
     end
   end
 
-  describe 'Helper Methods' do
+  describe 'OAuth Methods' do
 
     def oauth_params
       {

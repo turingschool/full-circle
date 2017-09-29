@@ -17,6 +17,13 @@ class StudentApplicationQuestions extends React.Component {
             <h4>Application Deadline</h4>
             <p>{ date.toDateString() }</p>
           </section>
+          <section className='guidelines'>
+            <ClickBtn
+              Text='Read Guidelines'
+              onClick={this.props.toggleGuidelines.bind(this, {
+                guidelines: 'show'
+              })} />
+          </section>
           <section className='questions'>
             <h4>Please answer the following four questions in your essay.</h4>
             {this.questions.map((question, i) => {

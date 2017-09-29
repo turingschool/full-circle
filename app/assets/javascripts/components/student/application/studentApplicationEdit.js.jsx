@@ -17,6 +17,7 @@ class StudentApplicationEdit extends React.Component {
   }
 
   wordCount(essay) {
+
     if (essay == "") {
       return this.cohort.config.essay_length
     } else {
@@ -53,7 +54,8 @@ class StudentApplicationEdit extends React.Component {
             handleChange={this.handleChange.bind(this)} />
 
           <StudentApplicationQuestions
-            cohort={this.props.cohort} />
+            cohort={this.props.cohort}
+            toggleGuidelines={this.props.toggleGuidelines}/>
         </section>
 
         <StudentApplicationFooter
