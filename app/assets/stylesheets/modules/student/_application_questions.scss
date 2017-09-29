@@ -32,6 +32,13 @@
         border-bottom: 1px solid $blue-digital;
       }
 
+      .guidelines {
+        @include btn(100%);
+
+        padding: 10px;
+        border-bottom: 1px solid $blue-digital;
+      }
+
       .questions {
         width: 100%;
         height: 100%;
