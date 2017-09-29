@@ -26,8 +26,6 @@ class Seed
 
   def make_users
     puts 'Makeing Users'
-    @admin = make_admin
-    puts "Made Admin"
     @past_students = make_past_students
     puts "Made #{@past_students.length} Past Students"
     @current_students = make_current_students
@@ -87,10 +85,6 @@ class Seed
       start_date: Date.today - 1.day,
       end_date: Date.today + 3.weeks
     )
-  end
-
-  def make_admin
-    User.create(uid: '22713509', role: 'student')
   end
 
   def make_past_students

@@ -4,7 +4,7 @@ class StudentApplicationQuestions extends React.Component {
     super(props)
 
     this.end_date = this.props.cohort.end_date
-    this.questions = this.props.cohort.config.questions
+    this.questions = this.props.cohort.questions
   }
 
   render() {
@@ -24,11 +24,8 @@ class StudentApplicationQuestions extends React.Component {
                 guidelines: 'show'
               })} />
           </section>
-          <section className='questions'>
-            <h4>Please answer the following four questions in your essay.</h4>
-            {this.questions.map((question, i) => {
-              return <p key={i}>{question}</p>
-            })}
+          <section className='questions'
+            dangerouslySetInnerHTML={{__html: this.questions}}>
           </section>
         </section>
       </section>

@@ -4,6 +4,7 @@ class StudentApplicationEdit extends React.Component {
     super(props)
 
     this.cohort = this.props.cohort
+    this.essayLimit = this.props.cohort.essay_limit
 
     this.state = {
       essay: this.props.essay,
@@ -19,21 +20,21 @@ class StudentApplicationEdit extends React.Component {
   wordCount(essay) {
 
     if (essay == "") {
-      return this.cohort.config.essay_length
+      return this.essayLimit
     } else {
-      return this.cohort.config.essay_length - essay.trim().split(' ').length
+      return this.essayLimit - essay.trim().split(' ').length
     }
   }
 
   trimEssay(essay) {
-    return essay.split(' ').slice(0, this.cohort.config.essay_length).join(' ')
+    return essay.split(' ').slice(0, this.essayLimit).join(' ')
   }
 
   handleChange(event) {
     let essay = event.target.value
     let message = 'Unsaved Changes'
 
-    if (essay.split(' ').length > this.cohort.config.essay_length) {
+    if (essay.split(' ').length > this.essayLimit) {
       essay = this.trimEssay(essay)
       message = 'Exceeded Word Limit'
     }

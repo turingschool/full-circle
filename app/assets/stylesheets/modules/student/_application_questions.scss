@@ -49,14 +49,7 @@
         outline: none;
         overflow: scroll;
 
-        h4 {
-          padding-bottom: 10px;
-        }
-
-        p {
-          padding: 5px 0 5px 0;
-          line-height: 20px;
-        }
+        @include text_format();
       }
     }
   }

@@ -44,6 +44,7 @@ class StudentApplicationSection extends React.Component {
       <section className='application'>
         <StudentApplicationGuidelines
           visable={this.state.guidelines}
+          guidelines={this.props.cohort.guidelines}
           toggleGuidelines={this.handleUpdate.bind(this)} />
         { page }
       </section>
