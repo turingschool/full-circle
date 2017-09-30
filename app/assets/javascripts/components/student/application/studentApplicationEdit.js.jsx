@@ -72,15 +72,12 @@ class StudentApplicationEdit extends React.Component {
   updateApplication() {
     let options = {
       method: 'PUT',
-      body: JSON.stringify({application: {essay: this.state.essay}}),
-      headers: {'Authorization': this.props.authorization,
-                'Content-Type': "application/json" }
+      body: JSON.stringify({ application: {essay: this.state.essay} }),
+      headers: { 'Authorization': this.props.authorization,
+                 'Content-Type': "application/json" }
     }
 
-    fetch('/api/v1/student/applications', options)
-      .then((data) => {
-        return data.json()
-      })
+    ping('/api/v1/student/applications', options)
       .then((response) => {
         this.setState({message: 'Application Saved'})
       })
