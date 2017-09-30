@@ -16,7 +16,6 @@ class StudentDashboard extends React.Component {
     let cohort = JSON.parse(this.props.cohort)
     let application = JSON.parse(this.props.application)
 
-    debugger
     this.setState({
       cohort: cohort,
       application: application
