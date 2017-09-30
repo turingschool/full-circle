@@ -11,7 +11,7 @@ RSpec.describe 'Student can logout', js: true do
     click_on 'Login'
   end
 
-  it 'and are redirected to homepage' do
+  xit 'and are redirected to homepage' do
     expect(page).to have_content('Log Out')
 
     click_on 'Log Out'
