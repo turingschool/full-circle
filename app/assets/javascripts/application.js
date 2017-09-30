@@ -16,5 +16,3 @@
 //= require react_ujs
 //= require components
 //= require_tree .
-
-ping = require('./ping/ping.js')

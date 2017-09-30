@@ -12,5 +12,3 @@ function handleErrors(response) {
   }
   return response
 }
-
-module.exports = ping
