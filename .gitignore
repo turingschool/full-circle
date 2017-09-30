@@ -31,3 +31,4 @@
 /config/application.yml
 
 # Public folder. At least for now.
+/public/assets
