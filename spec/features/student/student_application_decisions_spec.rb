@@ -10,7 +10,7 @@ RSpec.describe 'Student Application Decisions', js: true do
     visit '/'
   end
 
-  describe 'If there is no open cohort' do
+  xdescribe 'If there is no open cohort' do
 
     it 'A student cannot make an application' do
       click_on 'Login'
@@ -19,7 +19,7 @@ RSpec.describe 'Student Application Decisions', js: true do
     end
   end
 
-  describe 'If there is an open cohort' do
+  xdescribe 'If there is an open cohort' do
     before do
       @cohort = create(:cohort, :open)
     end
