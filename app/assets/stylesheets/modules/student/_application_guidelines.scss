@@ -14,6 +14,7 @@
     background-color: white;
 
     @include btn();
+    @include text_format();
 
     .body {
       display: flex;
@@ -27,10 +28,10 @@
       border: 1px solid $blue-digital;
       border-radius: 4px;
 
-      overflow: scroll;
-
       font-size: 18px;
       line-height: 20px;
+
+      overflow: scroll;
     }
   }
 

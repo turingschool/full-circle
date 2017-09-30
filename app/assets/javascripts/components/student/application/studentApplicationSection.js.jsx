@@ -25,7 +25,7 @@ class StudentApplicationSection extends React.Component {
         essay={this.state.essay}
         user={this.props.user}
         authorization={this.props.authorization}
-        submit={this.handleUpdate.bind(this)}/>
+        toggleConfirm={this.handleUpdate.bind(this)}/>
     } else {
       return <StudentApplicationEdit
         essay={this.state.essay}
@@ -44,6 +44,7 @@ class StudentApplicationSection extends React.Component {
       <section className='application'>
         <StudentApplicationGuidelines
           visable={this.state.guidelines}
+          guidelines={this.props.cohort.guidelines}
           toggleGuidelines={this.handleUpdate.bind(this)} />
         { page }
       </section>

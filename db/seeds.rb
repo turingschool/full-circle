@@ -26,8 +26,6 @@ class Seed
 
   def make_users
     puts 'Makeing Users'
-    @admin = make_admin
-    puts "Made Admin"
     @past_students = make_past_students
     puts "Made #{@past_students.length} Past Students"
     @current_students = make_current_students
@@ -74,8 +72,11 @@ class Seed
 
       Cohort.create(
         title: ('17' + i.to_s),
+        open_date: date,
+        close_date: date + 2.weeks,
         start_date: date,
-        end_date: date + 3.weeks,
+        end_date: date + 4.weeks,
+        notify_date: date + 3.weeks,
         state: 'finalized'
       )
     end
@@ -84,13 +85,12 @@ class Seed
   def make_open_cohort
     Cohort.create(
       title: '1801',
+      open_date: Date.today - 1.day,
+      close_date: Date.today + 2.weeks,
       start_date: Date.today - 1.day,
-      end_date: Date.today + 3.weeks
+      end_date: Date.today + 4.weeks,
+      notify_date: Date.today + 3.weeks
     )
-  end
-
-  def make_admin
-    User.create(uid: '22713509', role: 'student')
   end
 
   def make_past_students

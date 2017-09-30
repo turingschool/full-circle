@@ -41,10 +41,15 @@ ActiveRecord::Schema.define(version: 20170927005000) do
     t.string "title"
     t.date "start_date"
     t.date "end_date"
+    t.date "open_date"
+    t.date "close_date"
+    t.date "notify_date"
+    t.integer "essay_limit"
+    t.string "guidelines"
+    t.string "questions"
     t.integer "state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.json "config"
   end
 
   create_table "reviews", force: :cascade do |t|

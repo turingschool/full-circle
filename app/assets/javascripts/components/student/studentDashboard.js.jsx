@@ -5,7 +5,7 @@ class StudentDashboard extends React.Component {
 
     this.state = {
       application: {},
-      currentCohort: {}
+      cohort: {}
     }
 
     this.user = JSON.parse(this.props.user)
@@ -13,11 +13,12 @@ class StudentDashboard extends React.Component {
   }
 
   componentWillMount(){
-    let current_cohort = JSON.parse(this.props.current_cohort)
+    let cohort = JSON.parse(this.props.cohort)
     let application = JSON.parse(this.props.application)
 
+    debugger
     this.setState({
-      currentCohort: current_cohort,
+      cohort: cohort,
       application: application
     })
   }
@@ -40,25 +41,25 @@ class StudentDashboard extends React.Component {
   }
 
   routing() {
-    if (this.state.currentCohort == null) {
+    if (this.state.cohort == null) {
       return <NotAcceptingApplications />
     } else {
       if (this.state.application) {
         return <StudentApplicationSection
           application={this.state.application}
-          cohort={this.state.currentCohort}
+          cohort={this.state.cohort}
           user={this.user}
           authorization={this.authorization} />
       } else {
         return <StudentConfirmCohort
-          currentCohort={this.state.currentCohort}
+          cohort={this.state.cohort}
           newApplication={this.newApplication.bind(this)} />
       }
     }
   }
 
   newApplication() {
-    let params = `?cohort_id=${this.state.currentCohort["id"]}`
+    let params = `?cohort_id=${this.state.cohort["id"]}`
 
     let options = {
       method: 'POST',

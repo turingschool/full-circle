@@ -3,7 +3,7 @@ namespace :production do
   task :build do
     system("RAILS_ENV=production rake db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1")
     system("RAILS_ENV=production rake db:create")
-    system("RAILS_ENV=production rake db:migrate")
+    system("RAILS_ENV=production rake db:migrate:reset")
     system("RAILS_ENV=production rake db:seed")
     system("RAILS_ENV=production rake assets:clobber")
     system("RAILS_ENV=production rake assets:precompile")

@@ -1,11 +1,11 @@
 class Student::DashboardController < ApplicationController
 
   def index
-    @current_cohort = Cohort.current[0]
+    @cohort = Cohort.current[0]
     @user = current_user
 
-    if @user.application && @current_cohort.applications.find(@user.application.id)
-      @application = @current_cohort.applications.find(@user.application.id)
+    if @user.application && @cohort.applications.find(@user.application.id)
+      @application = @cohort.applications.find(@user.application.id)
     else
       @application = false
     end

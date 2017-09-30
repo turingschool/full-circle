@@ -20,10 +20,10 @@ class AdminCohortModule extends React.Component {
 
   status() {
     let today = new Date
-    let start_date = new Date(this.cohort.start_date)
-    let end_date = new Date(this.cohort.end_date)
+    let open_date = new Date(this.cohort.open_date)
+    let close_date = new Date(this.cohort.close_date)
 
-    if (today >= start_date && today <= end_date)
+    if (today >= open_date && today <= close_date)
       return 'open'
     else
       return 'closed'

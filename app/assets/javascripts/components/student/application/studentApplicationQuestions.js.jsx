@@ -3,13 +3,14 @@ class StudentApplicationQuestions extends React.Component {
   constructor(props) {
     super(props)
 
-    this.end_date = this.props.cohort.end_date
-    this.questions = this.props.cohort.config.questions
+    this.close_date = this.props.cohort.close_date
+    this.questions = this.props.cohort.questions
   }
 
   render() {
-    let date = new Date(this.end_date)
+    let date = new Date(this.close_date.replace(/-/g, '\/'))
 
+    debugger
     return(
       <section className='application-questions'>
         <section className='inside-border'>
@@ -24,11 +25,8 @@ class StudentApplicationQuestions extends React.Component {
                 guidelines: 'show'
               })} />
           </section>
-          <section className='questions'>
-            <h4>Please answer the following four questions in your essay.</h4>
-            {this.questions.map((question, i) => {
-              return <p key={i}>{question}</p>
-            })}
+          <section className='questions'
+            dangerouslySetInnerHTML={{__html: this.questions}}>
           </section>
         </section>
       </section>
