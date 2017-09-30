@@ -3,13 +3,14 @@ class StudentApplicationQuestions extends React.Component {
   constructor(props) {
     super(props)
 
-    this.end_date = this.props.cohort.end_date
+    this.close_date = this.props.cohort.close_date
     this.questions = this.props.cohort.questions
   }
 
   render() {
-    let date = new Date(this.end_date)
+    let date = new Date(this.close_date.replace(/-/g, '\/'))
 
+    debugger
     return(
       <section className='application-questions'>
         <section className='inside-border'>

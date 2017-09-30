@@ -19,7 +19,7 @@ class Defaults
       Turing and a career in software development.</p>"
     end
 
-    def guidelines
+    def guidelines(cohort)
       "<h3>Turing School of Software & Design, Diversity Scholarship Announcement</h3>
       <p>Turing stands for the inclusion and equality of all people, regardless of race,
       gender, sexual orientation, age, zip code, background, or life experience. When we look
@@ -47,22 +47,22 @@ class Defaults
       accepted to study at Turing, we invite you to apply.</p>
       <h3>Eligibility and Deadlines for November Scholarships:</h3>
       <p>Scholarship applicants must be accepted into the Turing School of Software & Design
-      for the 1708 cohort, which begins August 14, 2017 and meet the following qualifications:</p>
+      for the #{cohort.title} cohort, which begins #{cohort.open_date.strftime("%B %d, %Y")}
+      and meet the following qualifications:</p>
       <p>1. Identify as a member of at least one group that is underrepresented in
       technology (e.g. Black, Latino/a, Native American, Pacific Islander, Woman,
       LGBTQ, or veteran)</p>
-      <p>2. Be accepted into the school and commit to the August cohort, which starts on
-      August 14, 2017.</p>
+      <p>2. Be accepted into the school and commit to the #{cohort.open_date.strftime("%B")} cohort, which starts on
+      #{cohort.open_date.strftime("%B %d, %Y")}.</p>
       <p>3. Upon acceptance, complete a brief (approximately 1000 words) scholarship
       essay (below). Our scholarship panel will award scholarships based on your
       essay response (passion, determination, and financial need). Scholarship
-      essays are due by Sunday, July 9th, midnight and emailed to Joanne Liu
-      (joanne@turing.io)​.</p>
+      essays are due by #{cohort.close_date.strftime("%B %d, %Y")}, midnight​.</p>
       <h3>How much are the Scholarships Worth?</h3>
       <p>Scholarships will be awarded in the form of tuition waivers of $4,000 to be applied to
       your first day payment. Combined with Turing’s deferment options, scholarships will
       allow recipients to start at Turing for as little as $1,000.
-      <h3>Scholarship Program Essay (due July 9, 2017):</h3>
+      <h3>Scholarship Program Essay (due #{cohort.close_date.strftime("%B %d, %Y")}):</h3>
       <p>The purpose of this essay is to allow the scholarship panel to learn more about you, to
       better understand your passion and determination to become a programmer, and to
       understand your relative financial need.</p>
@@ -87,7 +87,7 @@ class Defaults
       be based on demonstration of passion, dedication, and relative financial need as
       demonstrated in essay responses.</p>
       <h3>When will finalists be notified?</h3>
-      <p>Scholarship finalists will be notified by Friday, July 14, 2017.</p>
+      <p>Scholarship finalists will be notified by #{cohort.notify_date.strftime("%A, %B %d, %Y")}.</p>
       <h3>Scholarship Program Terms & Conditions:</h3>
       <p>1. Scholarships are offered in the form of tuition waivers and have no cash value. If
       the scholarship recipient is unable to complete the program for any reason, no

@@ -4,13 +4,9 @@ class Cohort < ApplicationRecord
   has_many :cohort_reviewers, dependent: :destroy
   has_many :users, through: :cohort_reviewers
 
-  has_one :config
-
-  before_create :set_defaults
-
   enum state: ['unfinalized', 'finalized']
 
-  scope :current, -> { where('start_date <= ? AND end_date >= ?', Date.today, Date.today) }
+  scope :current, -> { where('open_date <= ? AND close_date >= ?', Date.today, Date.today) }
 
   def reviewers
     self.users.where(role: 'reviewer')
@@ -21,18 +17,23 @@ class Cohort < ApplicationRecord
   end
 
   def open?
-    (start_date <= Date.today) && (end_date >= Date.today)
+    (open_date <= Date.today) && (close_date >= Date.today)
   end
 
   def css_status
     open? ? 'open' : 'closed'
   end
 
-  private
+  def guidelines
+    Defaults.guidelines(self)
+  end
 
-    def set_defaults
-      self.questions = Defaults.questions
-      self.essay_limit = Defaults.essay_limit
-      self.guidelines = Defaults.guidelines
-    end
+  def questions
+    Defaults.questions
+  end
+
+  def essay_limit
+    Defaults.essay_limit
+  end
+
 end

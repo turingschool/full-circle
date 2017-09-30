@@ -27,37 +27,37 @@ RSpec.describe Cohort do
   describe 'Status' do
 
     it 'Can be open' do
-      start_date = Date.today - 1.day
-      end_date = start_date + 3.weeks
+      open_date = Date.today - 1.day
+      close_date = open_date + 3.weeks
 
-      cohort = create(:cohort, start_date: start_date, end_date: end_date)
+      cohort = create(:cohort, open_date: open_date, close_date: close_date)
 
       assert(cohort.open?)
     end
 
     it 'Can be closed' do
-      start_date = Date.today - 3.weeks
-      end_date = start_date - 1.day
+      open_date = Date.today - 3.weeks
+      close_date = open_date - 1.day
 
-      cohort = create(:cohort, start_date: start_date, end_date: end_date)
+      cohort = create(:cohort, open_date: open_date, close_date: close_date)
 
       refute(cohort.open?)
     end
 
     it 'Can return open status css class' do
-      start_date = Date.today - 1.day
-      end_date = start_date + 3.weeks
+      open_date = Date.today - 1.day
+      close_date = open_date + 3.weeks
 
-      cohort = create(:cohort, start_date: start_date, end_date: end_date)
+      cohort = create(:cohort, open_date: open_date, close_date: close_date)
 
       expect(cohort.css_status).to eq('open')
     end
 
     it 'Can return closed status css class' do
-      start_date = Date.today - 3.weeks
-      end_date = start_date - 1.day
+      open_date = Date.today - 3.weeks
+      close_date = open_date - 1.day
 
-      cohort = create(:cohort, start_date: start_date, end_date: end_date)
+      cohort = create(:cohort, open_date: open_date, close_date: close_date)
 
       expect(cohort.css_status).to eq('closed')
     end
