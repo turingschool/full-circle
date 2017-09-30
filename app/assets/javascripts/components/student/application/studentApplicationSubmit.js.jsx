@@ -5,7 +5,8 @@ class StudentApplicationSubmit extends React.Component {
 
     this.state = {
       alt_email: this.props.user.alt_email,
-      alt_name: this.props.user.alt_name
+      alt_name: this.props.user.alt_name,
+      message: ""
     }
   }
 
@@ -39,6 +40,9 @@ class StudentApplicationSubmit extends React.Component {
             onClick={this.props.toggleConfirm.bind(this, {
               confirm: false
             })} />
+          <span>
+            {this.state.message}
+          </span>
           <ClickBtn Text='Confirm' onClick={this.submit.bind(this)} />
         </section>
       </section>
@@ -46,12 +50,19 @@ class StudentApplicationSubmit extends React.Component {
   }
 
   submit(){
-    Promise.all([this.submitUser(), this.submitApplication()])
+    this.submitUser()
+      .then(this.submitApplication.bind(this))
       .then((response) => {
-        this.props.submit( {submitted: 'submitted'} )
-      })
+        this.props.toggleConfirm({
+          submitted: 'submitted'
+        })
+      }.bind(this))
       .catch((error) => {
-        this.props.submit( {message: 'Unable to Submit Application'} )
+        error.json().then((json) => {
+          this.setState({
+            message: json.join(' ')
+          })
+        }.bind(this))
       })
   }
 
@@ -69,8 +80,9 @@ class StudentApplicationSubmit extends React.Component {
     }
 
     return fetch('/api/v1/student/users', options)
+      .then(this.handleErrors)
       .then((data) => {
-        return data.json()
+        return data
       })
   }
 
@@ -83,8 +95,16 @@ class StudentApplicationSubmit extends React.Component {
     }
 
     return fetch('/api/v1/student/applications', options)
+      .then(this.handleErrors)
       .then((data) => {
-        return data.json()
+        return data
       })
+  }
+
+  handleErrors(response) {
+    if (!response.ok) {
+      throw response
+    }
+    return response
   }
 }

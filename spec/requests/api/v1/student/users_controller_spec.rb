@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'API::V1::Student::ApplicationController' do
+RSpec.describe 'API::V1::Student::UserController' do
   OmniAuth.config.test_mode = true
 
   before do
@@ -43,10 +43,10 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
       expect(response.status).to eq(400)
       error = JSON.parse(response.body)
 
-      expect(error["error"]).to eq("Error Updating User")
+      expect(error).to eq(["Alt name can't be blank"])
     end
 
-    it 'Will update an Application' do
+    it 'Will update a User' do
       put @url,
         params: { user: {
                     alt_name: 'Sponge Bob',

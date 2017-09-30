@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :uid
   validates_presence_of :alt_name, :alt_email, on: :update
-  validates_format_of :alt_email, :with => /@/, on: :update
 
   before_create :set_default_alts
 
