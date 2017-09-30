@@ -11,9 +11,7 @@ class StudentApplicationSubmit extends React.Component {
   }
 
   handleChange(key, event) {
-    this.setState({
-      [key]: event.target.value
-    })
+    this.setState({ [key]: event.target.value })
   }
 
   handleUpdate(action) {
@@ -41,19 +39,15 @@ class StudentApplicationSubmit extends React.Component {
 
         <section className='confirm-submission'>
           <ClickBtn Text='Go Back'
-            onClick={this.props.toggleConfirm.bind(this, {
-              confirm: false
-            })} />
-          <span>
-            {this.state.message}
-          </span>
-          <ClickBtn Text='Confirm' onClick={this.submit.bind(this)} />
+            onClick={this.props.toggleConfirm.bind(this, { confirm: false })} />
+          <span>{this.state.message}</span>
+          <ClickBtn Text='Confirm' onClick={this.submitForm.bind(this)} />
         </section>
       </section>
     )
   }
 
-  submit(){
+  submitForm(){
     this.submitUser()
       .then(this.submitApplication.bind(this))
       .then((response) => {
@@ -69,10 +63,8 @@ class StudentApplicationSubmit extends React.Component {
   submitUser() {
     let options = {
       method: 'PUT',
-      body: JSON.stringify({
-        user: { alt_name: this.state.alt_name,
-                alt_email: this.state.alt_email }
-      }),
+      body: JSON.stringify({ user: { alt_name: this.state.alt_name,
+                                     alt_email: this.state.alt_email }}),
       headers: { 'Authorization': this.props.authorization,
                  'Content-Type': "application/json" }
     }
