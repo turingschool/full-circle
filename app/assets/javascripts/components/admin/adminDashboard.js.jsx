@@ -15,10 +15,10 @@ class AdminDashboard extends React.Component {
   }
 
   componentWillMount() {
-    let cohorts = JSON.parse(this.props.closedCohorts)
+    let cohorts = JSON.parse(this.props.cohorts)
 
     this.setState({
-      cohort: cohorts[cohorts.length - 1]
+      cohort: cohorts[cohorts.length - 1],
       cohorts: cohorts
     })
   }
@@ -76,5 +76,4 @@ class AdminDashboard extends React.Component {
       authorization={this.authorization}
     />
   }
-
 }

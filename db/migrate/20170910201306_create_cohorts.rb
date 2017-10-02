@@ -10,6 +10,7 @@ class CreateCohorts < ActiveRecord::Migration[5.1]
       t.integer :essay_limit
       t.string :guidelines
       t.string :questions
+      t.boolean :open, defaults: false
       t.integer :state, default: 0
 
       t.timestamps null: false

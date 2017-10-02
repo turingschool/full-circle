@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170927005000) do
     t.integer "essay_limit"
     t.string "guidelines"
     t.string "questions"
+    t.boolean "open"
     t.integer "state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
