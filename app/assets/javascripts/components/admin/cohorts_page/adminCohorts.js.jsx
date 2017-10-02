@@ -15,7 +15,7 @@ class AdminCohorts extends React.Component {
 
   render() {
     return(
-      <section className='cohorts'>
+      <section className='main-horz-frame'>
         <AdminCohortsListSection
           cohorts={this.state.cohorts}
           changeCohort={this.handleChange.bind(this)}

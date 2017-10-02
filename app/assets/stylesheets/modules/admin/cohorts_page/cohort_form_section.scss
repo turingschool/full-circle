@@ -1,0 +1,14 @@
+.admin {
+  .cohort-form-section {
+    display: flex;
+    flex-direction: column;
+
+    width: 70%;
+    height: 100%;
+
+    padding: 10px;
+
+    border: 1px solid $blue-digital;
+    border-radius: 4px;
+  }
+}

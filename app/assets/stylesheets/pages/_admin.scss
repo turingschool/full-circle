@@ -2,22 +2,11 @@
   @include shadow();
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   width: 1200px;
   height: 100%;
 
   margin: 20px 0 20px 0;
   padding: 10px;
-
-  section.cohorts,
-  section.applications {
-    display: flex;
-    flex-direction: column;
-
-    width: 50%;
-    padding: 20px;
-
-    height: auto;
-  }
 }
