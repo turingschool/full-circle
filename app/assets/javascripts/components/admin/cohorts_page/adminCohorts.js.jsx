@@ -4,7 +4,7 @@ class AdminCohorts extends React.Component {
     super(props)
 
     this.state = {
-      cohort: {}
+      cohort: {},
       cohorts: this.props.cohorts
     }
   }
@@ -16,10 +16,13 @@ class AdminCohorts extends React.Component {
   render() {
     return(
       <section className='cohorts'>
-        <AdminCohortsList
+        <AdminCohortsListSection
           cohorts={this.state.cohorts}
           changeCohort={this.handleChange.bind(this)}
           addCohort={this.handleChange.bind(this)} />
+
+        <AdminCohortFormSection
+          cohort={this.state.cohort} />
       </section>
     )
   }
