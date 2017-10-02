@@ -4,8 +4,8 @@ class StudentDashboard extends React.Component {
     super(props)
 
     this.state = {
-      application: {},
-      cohort: {}
+      cohort: {},
+      application: {}
     }
 
     this.user = JSON.parse(this.props.user)

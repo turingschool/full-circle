@@ -7,6 +7,7 @@ class Cohort < ApplicationRecord
   enum state: ['unfinalized', 'finalized']
 
   scope :current, -> { where('open_date <= ? AND close_date >= ?', Date.today, Date.today) }
+  scope :closed, -> { where('open_date > ? OR close_date < ?', Date.today, Date.today) }
 
   def reviewers
     self.users.where(role: 'reviewer')

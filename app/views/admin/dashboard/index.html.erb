@@ -1,4 +1,6 @@
 <%= react_component 'AdminDashboard',
-  cohorts: @cohorts,
-  authorization: @authorization,
-  user: @user.to_json %>
+  closedCohorts: @closed_cohorts,
+  currentCohort: @current_cohort,
+  users: @users,
+  user: @user.to_json,
+  authorization: @authorization %>

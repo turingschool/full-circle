@@ -1,4 +1,4 @@
-class Admin::BaseController < ApplicationController
+class AdminController < ApplicationController
   before_action :authorize!
 
   private
