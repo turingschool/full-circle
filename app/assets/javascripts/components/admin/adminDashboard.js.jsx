@@ -42,8 +42,6 @@ class AdminDashboard extends React.Component {
 
   routing() {
     switch(this.state.page) {
-      case('cohorts'):
-        return this.cohorts()
       case('cohort'):
         return this.cohort()
       case('users'):
@@ -57,23 +55,20 @@ class AdminDashboard extends React.Component {
     return <AdminCohorts
       cohorts={this.state.cohorts}
       changePage={this.handleChange.bind(this)}
-      authorization={this.authorization}
-    />
+      authorization={this.authorization} />
   }
 
   cohort() {
     return <AdminCohort
       cohort={this.state.cohort}
       changePage={this.handleChange.bind(this)}
-      authorization={this.authorization}
-    />
+      authorization={this.authorization} />
   }
 
   users() {
     return <AdminUsers
       users={this.state.users}
       changePage={this.handleChange.bind(this)}
-      authorization={this.authorization}
-    />
+      authorization={this.authorization} />
   }
 }
