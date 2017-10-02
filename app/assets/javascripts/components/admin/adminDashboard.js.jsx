@@ -56,7 +56,7 @@ class AdminDashboard extends React.Component {
   cohorts() {
     return <AdminCohorts
       cohorts={this.state.cohorts}
-      handleChange={this.handleChange.bind(this)}
+      changePage={this.handleChange.bind(this)}
       authorization={this.authorization}
     />
   }
@@ -64,7 +64,7 @@ class AdminDashboard extends React.Component {
   cohort() {
     return <AdminCohort
       cohort={this.state.cohort}
-      handleChange={this.handleChange.bind(this)}
+      changePage={this.handleChange.bind(this)}
       authorization={this.authorization}
     />
   }
@@ -72,7 +72,7 @@ class AdminDashboard extends React.Component {
   users() {
     return <AdminUsers
       users={this.state.users}
-      handleChange={this.handleChange.bind(this)}
+      changePage={this.handleChange.bind(this)}
       authorization={this.authorization}
     />
   }
