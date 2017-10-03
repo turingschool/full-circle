@@ -5,7 +5,14 @@ class AdminCohortFormFooter extends React.Component {
       <section className='form-footer'>
         <ClickBtn Text={this.editSaveText()}
           onClick={this.editSaveFunction()} />
+
         {this.props.message}
+
+        <ClickBtn Text='Delete'
+          onClick={this.props.deleteCohort.bind(this, {
+            message: 'Deleted Cohort'
+          })} />
+
       </section>
     )
   }

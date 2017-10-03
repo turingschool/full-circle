@@ -29,7 +29,8 @@ class AdminCohorts extends React.Component {
           message={this.state.message}
           toggleEdit={this.handleChange.bind(this)}
           saveForm={this.handleChange.bind(this)}
-          updateForm={this.handleChange.bind(this)} />
+          updateForm={this.handleChange.bind(this)}
+          deleteCohort={this.handleChange.bind(this)} />
       </section>
     )
   }

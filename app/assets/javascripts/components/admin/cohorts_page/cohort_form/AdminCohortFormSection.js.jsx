@@ -13,7 +13,8 @@ class AdminCohortFormSection extends React.Component {
           readOnly={this.props.readOnly}
           message={this.props.message}
           toggleEdit={this.props.toggleEdit}
-          saveForm={this.props.saveForm} />
+          saveForm={this.props.saveForm}
+          deleteCohort={this.props.deleteCohort} />
       </section>
     )
   }
