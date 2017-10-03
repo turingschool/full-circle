@@ -4,9 +4,12 @@ class AdminCohortFormSection extends React.Component {
     super(props)
 
     this.state = {
-      editable: false,
-      message: ""
+      editable: false
     }
+  }
+
+  handleChange(action){
+    this.setState(action)
   }
 
   render() {
@@ -14,10 +17,11 @@ class AdminCohortFormSection extends React.Component {
       <section className='cohort-form-section'>
         <AdminCohortForm
           cohort={this.props.cohort}
-          editable={this.state.editable} />
+          editable={this.state.editable}
+          updateForm={this.props.updateForm}/>
 
         <AdminCohortFormFooter
-          message={this.state.message} />
+          message={this.props.message} />
       </section>
     )
   }

@@ -3,7 +3,7 @@ class AdminCohortFormFooter extends React.Component {
   render() {
     return(
       <section className='form-footer'>
-        Cohort Footer
+        {this.props.message}
       </section>
     )
   }
