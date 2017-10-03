@@ -35,15 +35,23 @@
 
         font-size: 18px;
         padding-left: 5px;
+      }
+
+      input.readOnlytrue {
+        color: $gray-digital
+      }
+
+      input.readOnlyfalse {
+        color: black;
 
         border-bottom: 1px solid $blue-digital;
       }
 
-      input:focus {
+      input.readOnlyfalse:focus {
         @include shadow();
       }
 
-      input:hover {
+      input.readOnlyfalse:hover {
         border-bottom: 3px solid $blue-digital;
       }
     }

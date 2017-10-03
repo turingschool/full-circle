@@ -14,36 +14,14 @@ class AdminCohortFormData extends React.Component {
   render() {
     return(
       <section className='cohort-data'>
-        <AdminCohortInputRow
-          Value={this.props.cohort.title}
-          Param='title' Text='Title'
-          handleChange={this.handleChange.bind(this)} />
 
-        <AdminCohortDateRow
-          readOnly={this.props.readOnly}
-          Value={this.props.cohort.start_date}
-          Param='start_date' Text='Start Date' Id='1'
-          handleChange={this.handleChange.bind(this)} />
+        {this.textInput('title', 'Title')}
+        {this.dateInput('start_date', 'Start Date', '1')}
+        {this.dateInput('end_date', 'End Date', '2')}
+        {this.dateInput('open_date', 'Open Date', '3')}
+        {this.dateInput('close_date', 'Close Date', '4')}
+        {this.dateInput('notify_date', 'Notify Date', '5')}
 
-        <AdminCohortDateRow
-          Value={this.props.cohort.end_date}
-          Param='end_date' Text='End Date' Id='2'
-          handleChange={this.handleChange.bind(this)} />
-
-        <AdminCohortDateRow
-          Value={this.props.cohort.open_date}
-          Param='open_date' Text='Open Date' Id='3'
-          handleChange={this.handleChange.bind(this)} />
-
-        <AdminCohortDateRow
-          Value={this.props.cohort.close_date}
-          Param='close_date' Text='Close Date' Id='4'
-          handleChange={this.handleChange.bind(this)} />
-
-        <AdminCohortDateRow
-          Value={this.props.cohort.notify_date}
-          Param='notify_date' Text='Notify Date' Id='5'
-          handleChange={this.handleChange.bind(this)} />
       </section>
     )
   }
@@ -53,6 +31,14 @@ class AdminCohortFormData extends React.Component {
       readOnly={this.props.readOnly}
       Value={this.props.cohort[param]}
       Param={param} Text={text} Id={id}
+      handleChange={this.handleChange.bind(this)} />
+  }
+
+  textInput(param, text) {
+    return <AdminCohortInputRow
+      readOnly={this.props.readOnly}
+      Value={this.props.cohort[param]}
+      Param={param} Text={text}
       handleChange={this.handleChange.bind(this)} />
   }
 }

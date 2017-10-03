@@ -14,7 +14,8 @@ class AdminCohortDateRow extends React.Component {
       <div className='form-row'>
         <span className='input-label'>{this.props.Text}</span>
 
-        <input id={'datetimepicker' + this.props.Id}
+        <input className={'readOnly' + this.props.readOnly}
+          id={'datetimepicker' + this.props.Id}
           readOnly={this.props.readOnly}
           value={moment(this.props.Value).format('MMMM DD, YYYY')}
           type='text'

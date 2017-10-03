@@ -9,6 +9,7 @@ class AdminCohortFormSection extends React.Component {
           updateForm={this.props.updateForm} />
 
         <AdminCohortFormFooter
+          cohort={this.props.cohort}
           readOnly={this.props.readOnly}
           message={this.props.message}
           toggleEdit={this.props.toggleEdit}
