@@ -11,7 +11,6 @@ class AdminCohortFormData extends React.Component {
     })
   }
 
-
   render() {
     return(
       <section className='cohort-data'>
@@ -21,6 +20,7 @@ class AdminCohortFormData extends React.Component {
           handleChange={this.handleChange.bind(this)} />
 
         <AdminCohortDateRow
+          readOnly={this.props.readOnly}
           Value={this.props.cohort.start_date}
           Param='start_date' Text='Start Date' Id='1'
           handleChange={this.handleChange.bind(this)} />
@@ -46,5 +46,13 @@ class AdminCohortFormData extends React.Component {
           handleChange={this.handleChange.bind(this)} />
       </section>
     )
+  }
+
+  dateInput(param, text, id) {
+    return <AdminCohortDateRow
+      readOnly={this.props.readOnly}
+      Value={this.props.cohort[param]}
+      Param={param} Text={text} Id={id}
+      handleChange={this.handleChange.bind(this)} />
   }
 }

@@ -6,7 +6,8 @@ class AdminCohorts extends React.Component {
     this.state = {
       cohort: this.props.cohorts[0],
       cohorts: this.props.cohorts,
-      message: 'Welcome'
+      message: 'Welcome',
+      readOnly: true
     }
   }
 
@@ -23,8 +24,11 @@ class AdminCohorts extends React.Component {
           addCohort={this.handleChange.bind(this)} />
 
         <AdminCohortFormSection
+          readOnly={this.state.readOnly}
           cohort={this.state.cohort}
           message={this.state.message}
+          toggleEdit={this.handleChange.bind(this)}
+          saveForm={this.handleChange.bind(this)}
           updateForm={this.handleChange.bind(this)} />
       </section>
     )
