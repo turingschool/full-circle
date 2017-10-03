@@ -21278,6 +21278,7 @@ var AdminCohorts = (function (_React$Component) {
   _createClass(AdminCohorts, [{
     key: 'handleChange',
     value: function handleChange(action) {
+      debugger;
       this.setState(action);
     }
   }, {
@@ -21304,26 +21305,40 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var _reactDatepicker = require('react-datepicker');
-
-var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
-
 var AdminCohortDateRow = (function (_React$Component) {
   _inherits(AdminCohortDateRow, _React$Component);
 
-  function AdminCohortDateRow() {
+  function AdminCohortDateRow(props) {
     _classCallCheck(this, AdminCohortDateRow);
 
-    _get(Object.getPrototypeOf(AdminCohortDateRow.prototype), 'constructor', this).apply(this, arguments);
+    _get(Object.getPrototypeOf(AdminCohortDateRow.prototype), 'constructor', this).call(this, props);
+
+    this.state = {
+      date: function () {
+        return { date: "" };
+      }
+    };
   }
 
   _createClass(AdminCohortDateRow, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $('#datetimepicker' + this.props.Id).datetimepicker({
+        defaultDate: this.props.Value,
+        format: 'MMMM DD, YYYY'
+      }).on('changeDate', function (ev) {
+        $('#date-daily').change();
+      });
+
+      $('#date-daily').change(function (e) {
+        debugger;
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
@@ -21331,13 +21346,13 @@ var AdminCohortDateRow = (function (_React$Component) {
         { className: 'form-row' },
         React.createElement(
           'span',
-          { className: 'label' },
+          { className: 'input-label' },
           this.props.Text
         ),
-        React.createElement(_reactDatepicker2['default'], {
-          selected: moment(this.props.Date),
-          onChange: this.handleChange.bind(this, this.props.Param) }),
-        ';'
+        React.createElement('input', { id: 'datetimepicker' + this.props.Id,
+          value: this.state.date().date,
+          type: 'text',
+          onChange: this.props.handleChange.bind(this, this.props.Param) })
       );
     }
   }]);
@@ -21416,24 +21431,24 @@ var AdminCohortFormData = (function (_React$Component) {
           Param: 'title', Text: 'Title',
           handleChange: this.handleChange.bind(this) }),
         React.createElement(AdminCohortDateRow, {
-          selected: this.props.cohort.start_date,
-          Param: 'start_date', Text: 'Start Date',
+          Value: this.props.cohort.start_date,
+          Param: 'start_date', Text: 'Start Date', Id: '1',
           handleChange: this.handleChange.bind(this) }),
-        React.createElement(AdminCohortInputRow, {
+        React.createElement(AdminCohortDateRow, {
           Value: this.props.cohort.end_date,
-          Param: 'end_date', Text: 'End Date',
+          Param: 'end_date', Text: 'End Date', Id: '2',
           handleChange: this.handleChange.bind(this) }),
-        React.createElement(AdminCohortInputRow, {
+        React.createElement(AdminCohortDateRow, {
           Value: this.props.cohort.open_date,
-          Param: 'open_date', Text: 'Open Date',
+          Param: 'open_date', Text: 'Open Date', Id: '3',
           handleChange: this.handleChange.bind(this) }),
-        React.createElement(AdminCohortInputRow, {
+        React.createElement(AdminCohortDateRow, {
           Value: this.props.cohort.close_date,
-          Param: 'close_date', Text: 'Close Date',
+          Param: 'close_date', Text: 'Close Date', Id: '4',
           handleChange: this.handleChange.bind(this) }),
-        React.createElement(AdminCohortInputRow, {
+        React.createElement(AdminCohortDateRow, {
           Value: this.props.cohort.notify_date,
-          Param: 'notify_date', Text: 'Notify Date',
+          Param: 'notify_date', Text: 'Notify Date', Id: '5',
           handleChange: this.handleChange.bind(this) })
       );
     }
@@ -21570,7 +21585,7 @@ var AdminCohortInputRow = (function (_React$Component) {
         { className: 'form-row' },
         React.createElement(
           'span',
-          { className: 'label' },
+          { className: 'input-label' },
           this.props.Text
         ),
         React.createElement('input', { value: this.props.Value,

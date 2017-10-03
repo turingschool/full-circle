@@ -1,6 +1,7 @@
 class AdminCohortFormData extends React.Component {
 
   handleChange(param, event) {
+
     let cohort = this.props.cohort
     cohort[param] = event.target.value
 
