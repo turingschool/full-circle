@@ -21,10 +21,6 @@ class Cohort < ApplicationRecord
     (open_date <= Date.today) && (close_date >= Date.today)
   end
 
-  def css_status
-    open? ? 'open' : 'closed'
-  end
-
   def guidelines
     Defaults.guidelines(self)
   end
