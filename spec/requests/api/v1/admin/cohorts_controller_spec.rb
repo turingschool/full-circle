@@ -38,10 +38,10 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     end
   end
 
-  xdescribe 'POST' do
+  describe 'POST' do
 
     it 'Will return error if Cohort fails to create' do
-      post @url, params: { title: "" }, headers: @authorization
+      post @url, params: { cohort: { title: "" } }, headers: @authorization
 
       expect(response.status).to eq(400)
       error = JSON.parse(response.body)
@@ -50,12 +50,12 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     end
 
     it 'Will create a Cohort' do
-      post @url, params: {}, headers: @authorization
+      post @url, params: { cohort: { title: '1703'} }, headers: @authorization
 
       expect(response.status).to eq(200)
       cohort = JSON.parse(response.body)
 
-      expect(Cohort.last.id).to eq(cohort.id)
+      expect(Cohort.last.id).to eq(cohort["id"])
     end
   end
 
