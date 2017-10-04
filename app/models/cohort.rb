@@ -4,6 +4,9 @@ class Cohort < ApplicationRecord
   has_many :cohort_reviewers, dependent: :destroy
   has_many :users, through: :cohort_reviewers
 
+  validates_presence_of :title, :start_date, :end_date,
+                        :open_date, :close_date, :notify_date
+
   enum state: ['unfinalized', 'finalized']
 
   scope :current, -> { where('open_date <= ? AND close_date >= ?', Date.today, Date.today) }

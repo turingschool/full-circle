@@ -12,6 +12,7 @@ class AdminCohorts extends React.Component {
   }
 
   handleChange(action) {
+    debugger
     this.setState(action)
   }
 

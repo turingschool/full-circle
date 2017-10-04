@@ -42,7 +42,7 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
 
   describe 'POST' do
 
-    it 'Will return error if Application fails to save' do
+    it 'Will return error if Application fails to create' do
       allow_any_instance_of(Api::V1::ApiController).to receive(:current_requester).and_return(nil)
 
       post @url, params: { "cohort_id" => @cohort.id }, headers: @authorization

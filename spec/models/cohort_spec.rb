@@ -8,6 +8,15 @@ RSpec.describe Cohort do
     it { should have_many(:users).through(:cohort_reviewers) }
   end
 
+  describe 'Validations' do
+    it { should validate_presence_of(:title)}
+    it { should validate_presence_of(:start_date)}
+    it { should validate_presence_of(:end_date)}
+    it { should validate_presence_of(:open_date)}
+    it { should validate_presence_of(:close_date)}
+    it { should validate_presence_of(:notify_date)}
+  end
+
   describe 'State' do
 
     it 'Defaults to Unfinalized' do

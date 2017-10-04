@@ -4,12 +4,10 @@ class AdminNewCohort extends React.Component {
     return(
       <section className='new-cohort'>
         <ClickBtn Text='New Cohort'
-          onClick={this.newCohort.bind(this)} />
+          onClick={this.props.addCohort.bind(this, {
+            message: 'Made New Cohort'
+          })} />
       </section>
     )
-  }
-
-  newCohort() {
-    console.log('New Cohort')
   }
 }
