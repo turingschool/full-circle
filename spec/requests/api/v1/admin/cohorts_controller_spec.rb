@@ -38,6 +38,41 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     end
   end
 
+  describe 'GET' do
+
+    it 'Will return all cohorts' do
+      cohorts = create_list(:cohort, 10)
+
+      get @url, headers: @authorization
+
+      expect(response.status).to eq(200)
+      raw_cohorts = JSON.parse(response.body)
+
+      expect(raw_cohorts.count).to eq(10)
+    end
+
+    it 'Will return one cohort' do
+      cohort = create(:cohort)
+
+      get @url + '/' + cohort.id.to_s, headers: @authorization
+
+      expect(response.status).to eq(200)
+      raw_cohort = JSON.parse(response.body)
+
+      expect(raw_cohort["id"]).to eq(cohort.id)
+    end
+
+  end
+
+    it 'Will return error if Cohort fails to create' do
+      post @url, params: { cohort: { title: "" } }, headers: @authorization
+
+      expect(response.status).to eq(400)
+      error = JSON.parse(response.body)
+
+      expect(error["error"]).to eq("Error Creating Cohort")
+    end
+
   describe 'POST' do
 
     it 'Will return error if Cohort fails to create' do

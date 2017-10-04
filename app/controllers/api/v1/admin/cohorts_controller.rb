@@ -1,6 +1,11 @@
 class Api::V1::Admin::CohortsController < Api::V1::AdminApiController
 
   def index
+    render json: Cohort.all, status: 200
+  end
+
+  def show
+    render json: Cohort.find(params[:id]), status: 200
   end
 
   def create
