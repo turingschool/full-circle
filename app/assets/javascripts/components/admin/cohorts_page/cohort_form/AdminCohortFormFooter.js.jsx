@@ -42,10 +42,10 @@ class AdminCohortFormFooter extends React.Component {
 
     ping('/api/v1/admin/cohorts/' + cohort_id, options)
       .then((response) => {
-        this.props.saveForm(
-          { readOnly: true,
-            cohort: this.props.cohort,
-            message: 'Form Saved' })
+        this.props.saveForm({
+          readOnly: true,
+          cohort: this.props.cohort,
+          message: 'Form Saved' })
       })
       .catch((error) => {
         this.props.deleteCohort({message: 'Unable to Save Cohort'})
@@ -53,9 +53,9 @@ class AdminCohortFormFooter extends React.Component {
   }
 
   removeCohort() {
-    let cohorts = this.props.cohorts
-
-    return cohorts.filter((cohort) => cohort.id !== this.props.cohort.id)
+    return this.props.cohorts.filter((cohort) => {
+      cohort.id !== this.props.cohort.id
+    })
   }
 
   options(verb, body = {}) {
