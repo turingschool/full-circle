@@ -5,6 +5,8 @@ class AdminCohortDateRow extends React.Component {
 
     datepicker.datetimepicker({format: 'MMMM DD, YYYY'})
       .on('dp.change', (event) => {
+        debugger
+        event.target.value = moment(event.date._d).format('YYYY-DD-MM')
         this.props.handleChange(this.props.Param, event)
     }.bind(this))
   }
@@ -17,7 +19,6 @@ class AdminCohortDateRow extends React.Component {
         <input className={'readOnly' + this.props.readOnly}
           id={'datetimepicker' + this.props.Id}
           readOnly={this.props.readOnly}
-          data-date={this.props.Value}
           value={moment(this.props.Value).format('MMMM DD, YYYY')}
           type='text'
           onChange={this.props.handleChange.bind(this, this.props.Param)} />
