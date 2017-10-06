@@ -136,6 +136,7 @@ RSpec.describe 'API::V1::Admin::CohortController' do
       raw_cohort = JSON.parse(response.body)
 
       expect(raw_cohort["id"]).to eq(cohort.id)
+      expect(Cohort.all).not_to include(cohort)
     end
   end
 end
