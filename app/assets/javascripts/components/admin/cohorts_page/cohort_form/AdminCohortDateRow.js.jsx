@@ -17,6 +17,7 @@ class AdminCohortDateRow extends React.Component {
         <input className={'readOnly' + this.props.readOnly}
           id={'datetimepicker' + this.props.Id}
           readOnly={this.props.readOnly}
+          data-date={this.props.Value}
           value={moment(this.props.Value).format('MMMM DD, YYYY')}
           type='text'
           onChange={this.props.handleChange.bind(this, this.props.Param)} />

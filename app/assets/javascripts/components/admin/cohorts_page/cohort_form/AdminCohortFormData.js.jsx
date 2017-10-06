@@ -3,7 +3,13 @@ class AdminCohortFormData extends React.Component {
   handleChange(param, event) {
 
     let cohort = this.props.cohort
-    cohort[param] = event.target.value
+
+    if (event.target.dataset.date == undefined) {
+      cohort[param] = event.target.value
+    } else {
+      debugger
+      cohort[param] = event.target.dataset.date
+    }
 
     this.props.updateForm({
       cohort: cohort,
