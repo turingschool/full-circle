@@ -19,6 +19,7 @@ class Api::V1::Admin::CohortsController < Api::V1::AdminApiController
   end
 
   def update
+    binding.pry
     cohort = Cohort.find(params[:id])
 
     if cohort.update(cohort_params)

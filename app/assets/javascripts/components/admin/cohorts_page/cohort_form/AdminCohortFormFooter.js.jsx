@@ -9,12 +9,62 @@ class AdminCohortFormFooter extends React.Component {
         {this.props.message}
 
         <ClickBtn Text='Delete'
-          onClick={this.props.deleteCohort.bind(this, {
-            message: 'Deleted Cohort'
-          })} />
+          onClick={this.deleteCohort.bind(this)} />
 
       </section>
     )
+  }
+
+  deleteCohort() {
+    let cohort_id = this.props.cohort.id
+
+    ping('/api/v1/admin/cohorts/' + cohort_id, this.options('DELETE'))
+      .then((response) => {
+        response.json().then((json) => {
+          let cohorts = this.removeCohort()
+
+          this.props.deleteCohort({
+            cohorts: cohorts,
+            message: 'Cohort Deleted'
+          })
+        })
+      })
+      .catch((error) => {
+        this.props.deleteCohort({message: 'Unable to Delete Cohort'})
+      })
+  }
+
+  saveCohort() {
+    let cohort_id = this.props.cohort.id
+    let options = this.options('PUT',
+      JSON.stringify({ cohort: this.props.cohort })
+    )
+
+    ping('/api/v1/admin/cohorts/' + cohort_id, options)
+      .then((response) => {
+        this.props.saveForm(
+          { readOnly: true,
+            cohort: this.props.cohort,
+            message: 'Form Saved' })
+      })
+      .catch((error) => {
+        this.props.deleteCohort({message: 'Unable to Save Cohort'})
+      })
+  }
+
+  removeCohort() {
+    let cohorts = this.props.cohorts
+
+    return cohorts.filter((cohort) => cohort.id !== this.props.cohort.id)
+  }
+
+  options(verb, body = {}) {
+    return {
+      body: body,
+      method: verb,
+      headers: { 'Authorization': this.props.authorization,
+                 'Content-Type': "application/json" }
+    }
   }
 
   editSaveText() {
@@ -32,11 +82,7 @@ class AdminCohortFormFooter extends React.Component {
         message: 'Editing Form'
       })
     } else {
-      return this.props.saveForm.bind(this, {
-        readOnly: true,
-        cohort: this.props.cohort,
-        message: 'Form Saved'
-      })
+      return this.saveCohort.bind(this)
     }
   }
 }
