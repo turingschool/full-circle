@@ -94,4 +94,36 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     end
   end
 
+  describe 'PUT' do
+
+    it 'Will return error Cohort fails to update' do
+      cohort = create(:cohort)
+
+      put @url + '/' + cohort.id.to_s,
+        params: {cohort: {title: ''} },
+        headers: @authorization
+
+        expect(response.status).to eq(400)
+        error = JSON.parse(response.body)
+
+        expect(error["error"]).to eq('Error Updating Cohort')
+    end
+
+    it 'Will update cohort' do
+      date = Date.today + 10.day
+      cohort = create(:cohort)
+
+      put @url + '/' + cohort.id.to_s,
+        params: {cohort: {title: 'Hello!', start_date: date}},
+        headers: @authorization
+
+      expect(response.status).to eq(200)
+      raw_cohort = JSON.parse(response.body)
+
+      expect(raw_cohort["title"]).to eq("Hello!")
+      expect(Cohort.last.title).to eq("Hello!")
+    end
+
+  end
+
 end

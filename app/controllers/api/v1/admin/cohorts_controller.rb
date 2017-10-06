@@ -18,6 +18,26 @@ class Api::V1::Admin::CohortsController < Api::V1::AdminApiController
     end
   end
 
+  def update
+    cohort = Cohort.find(params[:id])
+
+    if cohort.update(cohort_params)
+      render json: cohort, status: 200
+    else
+      render json: { "error"=>"Error Updating Cohort" }, status: 400
+    end
+  end
+
+  def delete
+    cohort = Cohort.find(params[:id])
+
+    if cohort.destroy
+      render json: cohort, status: 200
+    else
+      render json: { "error"=>"Error Deleting Cohort" }, status: 400
+    end
+  end
+
   private
     def cohort_params
       params.require(:cohort)
