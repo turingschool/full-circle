@@ -9,7 +9,8 @@ class AdminCohortsListSection extends React.Component {
 
           <AdminNewCohort
             cohorts={this.props.cohorts}
-            addCohort={this.props.addCohort} />
+            addCohort={this.props.addCohort}
+            authorization={this.props.authorization} />
         </section>
       )
     }
