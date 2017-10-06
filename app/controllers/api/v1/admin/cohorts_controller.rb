@@ -28,7 +28,7 @@ class Api::V1::Admin::CohortsController < Api::V1::AdminApiController
     end
   end
 
-  def delete
+  def destroy
     cohort = Cohort.find(params[:id])
 
     if cohort.destroy

@@ -110,11 +110,10 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     end
 
     it 'Will update cohort' do
-      date = Date.today + 10.day
       cohort = create(:cohort)
 
       put @url + '/' + cohort.id.to_s,
-        params: {cohort: {title: 'Hello!', start_date: date}},
+        params: {cohort: {title: 'Hello!'}},
         headers: @authorization
 
       expect(response.status).to eq(200)
@@ -123,7 +122,20 @@ RSpec.describe 'API::V1::Admin::CohortController' do
       expect(raw_cohort["title"]).to eq("Hello!")
       expect(Cohort.last.title).to eq("Hello!")
     end
-
   end
 
+  describe 'DELET' do
+
+    it 'Will delete a cohort' do
+      cohort = create(:cohort)
+
+      delete @url + '/' + cohort.id.to_s,
+        headers: @authorization
+
+      expect(response.status).to eq(200)
+      raw_cohort = JSON.parse(response.body)
+
+      expect(raw_cohort["id"]).to eq(cohort.id)
+    end
+  end
 end
