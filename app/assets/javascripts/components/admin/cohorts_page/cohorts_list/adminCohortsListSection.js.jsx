@@ -4,6 +4,7 @@ class AdminCohortsListSection extends React.Component {
       return(
         <section className='cohorts-list-section'>
           <AdminCohortsList
+            cohort={this.props.cohort}
             cohorts={this.props.cohorts}
             changeCohort={this.props.changeCohort} />
 

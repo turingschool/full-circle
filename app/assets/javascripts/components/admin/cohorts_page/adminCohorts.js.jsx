@@ -19,16 +19,17 @@ class AdminCohorts extends React.Component {
     return(
       <section className='main-horz-frame'>
         <AdminCohortsListSection
+          cohort={this.state.cohort}
           cohorts={this.state.cohorts}
           changeCohort={this.handleChange.bind(this)}
           addCohort={this.handleChange.bind(this)}
           authorization={this.props.authorization} />
 
         <AdminCohortFormSection
-          readOnly={this.state.readOnly}
           cohort={this.state.cohort}
           cohorts={this.state.cohorts}
           message={this.state.message}
+          readOnly={this.state.readOnly}
           toggleEdit={this.handleChange.bind(this)}
           saveForm={this.handleChange.bind(this)}
           updateForm={this.handleChange.bind(this)}
