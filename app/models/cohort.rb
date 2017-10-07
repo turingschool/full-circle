@@ -7,6 +7,8 @@ class Cohort < ApplicationRecord
   validates_presence_of :title, :start_date, :end_date,
                         :open_date, :close_date, :notify_date
 
+  before_save :set_dates
+
   enum state: ['unfinalized', 'finalized']
 
   scope :current, -> { where('open_date <= ? AND close_date >= ?', Date.today, Date.today) }
@@ -37,4 +39,13 @@ class Cohort < ApplicationRecord
     Defaults.essay_limit
   end
 
+  private
+
+    def set_dates
+      self.start_date = Date.today
+      self.end_date = Date.today + 6.week
+      self.open_date = Date.today
+      self.close_date = Date.today + 4.week
+      self.notify_date = Date.today + 5.week
+    end
 end
