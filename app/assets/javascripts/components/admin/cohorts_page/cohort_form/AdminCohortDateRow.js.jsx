@@ -8,7 +8,7 @@ class AdminCohortDateRow extends React.Component {
       showTodayButton: true
     })
       .on('dp.change', (event) => {
-        event.target.value = moment(event.date._d).format('YYYY-DD-MM')
+        event.target.value = moment(event.date._d).format('YYYY-MM-DD')
         this.props.handleChange(this.props.Param, event)
     }.bind(this))
   }
