@@ -11,6 +11,7 @@ class Cohort < ApplicationRecord
 
   scope :current, -> { where('open_date <= ? AND close_date >= ?', Date.today, Date.today) }
   scope :closed, -> { where('open_date > ? OR close_date < ?', Date.today, Date.today) }
+  default_scope { order("start_date DESC") }
 
   def reviewers
     self.users.where(role: 'reviewer')

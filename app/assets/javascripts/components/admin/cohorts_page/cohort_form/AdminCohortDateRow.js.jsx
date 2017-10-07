@@ -3,9 +3,11 @@ class AdminCohortDateRow extends React.Component {
   componentDidMount() {
     let datepicker = $('#datetimepicker' + this.props.Id)
 
-    datepicker.datetimepicker({format: 'MMMM DD, YYYY'})
+    datepicker.datetimepicker({
+      format: 'MMMM DD, YYYY',
+      showTodayButton: true
+    })
       .on('dp.change', (event) => {
-        debugger
         event.target.value = moment(event.date._d).format('YYYY-DD-MM')
         this.props.handleChange(this.props.Param, event)
     }.bind(this))
