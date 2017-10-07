@@ -18,12 +18,13 @@
   .cohort-row:hover {
     @include shadow;
 
-    border: 2px solid $blue-digital;
+    opacity: 0.8;
+    background-color: $blue-digital;
   }
 
   .cohort-row.selected {
     @include shadow;
-    
-    border: 2px solid $blue-digital;
+
+    background-color: $blue-digital;
   }
 }

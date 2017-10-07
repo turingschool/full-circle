@@ -5,6 +5,8 @@ class AdminCohortDateRow extends React.Component {
 
     datepicker.datetimepicker({
       format: 'MMMM DD, YYYY',
+      toolbarPlacement: 'top',
+      showClose: true,
       showTodayButton: true
     })
       .on('dp.change', (event) => {
