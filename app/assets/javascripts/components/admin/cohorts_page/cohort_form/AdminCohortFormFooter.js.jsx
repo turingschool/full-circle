@@ -34,6 +34,12 @@ class AdminCohortFormFooter extends React.Component {
       })
   }
 
+  removeCohort() {
+    return this.props.cohorts.filter((cohort) => {
+      return cohort.id !== this.props.cohort.id
+    })
+  }
+
   saveCohort() {
     let cohort_id = this.props.cohort.id
     let options = this.options('PUT',
@@ -50,12 +56,6 @@ class AdminCohortFormFooter extends React.Component {
       .catch((error) => {
         this.props.deleteCohort({message: 'Unable to Save Cohort'})
       })
-  }
-
-  removeCohort() {
-    return this.props.cohorts.filter((cohort) => {
-      cohort.id !== this.props.cohort.id
-    })
   }
 
   options(verb, body = {}) {
