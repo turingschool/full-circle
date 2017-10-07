@@ -1,20 +1,8 @@
 class ClickBtn extends React.Component {
-  constructor(props) {
-    super(props)
-
-    if (this.props.disabled) {
-      this.disabled = true
-    } else {
-      this.disabled = false
-    }
-  }
 
   render() {
     return(
-      <div className='btn'
-        onClick={this.props.onClick}
-        disabled={this.disabled}>
-
+      <div className={['btn', this.props.show].join(' ').trim()} onClick={this.props.onClick}>
         {this.props.Text}
       </div>
     )
