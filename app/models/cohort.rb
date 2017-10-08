@@ -42,10 +42,10 @@ class Cohort < ApplicationRecord
   private
 
     def set_dates
-      self.start_date = Date.today
-      self.end_date = Date.today + 6.week
-      self.open_date = Date.today
-      self.close_date = Date.today + 4.week
-      self.notify_date = Date.today + 5.week
+      self.start_date = Date.today unless start_date
+      self.end_date = Date.today + 6.week unless end_date
+      self.open_date = Date.today unless open_date
+      self.close_date = Date.today + 4.week unless close_date
+      self.notify_date = Date.today + 5.week unless notify_date
     end
 end
