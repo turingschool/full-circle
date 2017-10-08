@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       namespace :admin do
         resources :applications, only: [:index]
         resources :cohorts
+        resources :cohorts do
+          resources :reviewers
+        end
       end
 
       namespace :student do
