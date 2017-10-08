@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'API::V1::Admin::CohortController' do
+RSpec.describe 'API::V1::Admin::ReviewersController' do
   OmniAuth.config.test_mode = true
 
-  def url({cohort_id: @cohort.id, user_id: "")
+  def url(cohort_id: @cohort.id, user_id: "")
     '/api/v1/admin/cohorts/' + cohort_id.to_s + '/reviewers/' + user_id.to_s
   end
 
@@ -55,25 +55,15 @@ RSpec.describe 'API::V1::Admin::CohortController' do
 
       expect(raw_cohorts.count).to eq(10)
     end
-
-    it 'Will return one Cohort Reviewer' do
-      get url(user_id: @user.id), headers: @authorization
-
-      expect(response.status).to eq(200)
-      raw_cohort = JSON.parse(response.body)
-
-      expect(raw_cohort["id"]).to eq(@cohort.id)
-    end
-
   end
 
-  describe 'POST' do
+  describe 'PUT' do
 
-    it 'Will create a Cohort Reviewer' do
-      reviewer = create(:reviewer)
+    it 'Will update add to a Cohorts Reviewers' do
+      reviewer = create(:user, :reviewer)
       expect(@cohort.reviewers.count).to eq(0)
 
-      post url(user_id: reviewer), headers: @authorization
+      put url(user_id: reviewer.id), headers: @authorization
 
       expect(response.status).to eq(200)
       cohort_reviewer = JSON.parse(response.body)
