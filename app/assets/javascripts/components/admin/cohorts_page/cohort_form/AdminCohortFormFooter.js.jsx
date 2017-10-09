@@ -10,7 +10,7 @@ class AdminCohortFormFooter extends React.Component {
 
         <ClickBtn Text='Delete'
           onClick={this.deleteCohort.bind(this)}
-          show={this.showDelete()} />
+          readOnly={this.props.readOnly} />
 
       </section>
     )
@@ -84,14 +84,6 @@ class AdminCohortFormFooter extends React.Component {
       })
     } else {
       return this.saveCohort.bind(this)
-    }
-  }
-
-  showDelete() {
-    if(this.props.readOnly) {
-      return 'disable'
-    } else {
-      return 'enable'
     }
   }
 }
