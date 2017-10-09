@@ -7,10 +7,13 @@ class AdminCohortForm extends React.Component {
           readOnly={this.props.readOnly}
           cohort={this.props.cohort}
           updateForm={this.props.updateForm} />
+
         <AdminCohortReviewers
           readOnly={this.props.readOnly}
           cohort={this.props.cohort}
-          updateForm={this.props.updateForm} />
+          updateForm={this.props.updateForm}
+          removeReviewer={this.props.removeReviewer}
+          authorization={this.props.authorization} />
       </section>
     )
   }

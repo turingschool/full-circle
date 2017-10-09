@@ -10,7 +10,7 @@ class Api::V1::Admin::ReviewersController < Api::V1::AdminApiController
     reviewer = User.find(params[:id])
 
     if @cohort.users << reviewer
-      render json: reviewer
+      render json: reviewer, status: 200
     else
       render json: { "error"=>"Error Creating Cohort Reviewer" }, status: 400
     end
@@ -25,7 +25,6 @@ class Api::V1::Admin::ReviewersController < Api::V1::AdminApiController
     else
       render json: { "error"=>"Error Delete Cohort Reviewer" }, status: 400
     end
-
   end
 
   private
@@ -37,5 +36,4 @@ class Api::V1::Admin::ReviewersController < Api::V1::AdminApiController
     def get_reviewer
       @reviewer = User.find(params[:id])
     end
-
 end

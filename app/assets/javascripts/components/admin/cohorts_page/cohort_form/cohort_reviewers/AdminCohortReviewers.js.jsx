@@ -6,14 +6,12 @@ class AdminCohortReviewers extends React.Component {
         {this.props.cohort.reviewers.map((reviewer, i) => {
           return <AdminCohortReviewerRow key={i}
             reviewer={reviewer}
+            cohort={this.props.cohort}
             readOnly={this.props.readOnly}
-            removeReviewer={this.removeReviewer.bind(this)} />
+            removeReviewer={this.props.removeReviewer}
+            authorization={this.props.authorization} />
         })}
       </section>
     )
-  }
-
-  removeReviewer() {
-    this.props.updateForm({message: 'Removed Reviewer'})
   }
 }

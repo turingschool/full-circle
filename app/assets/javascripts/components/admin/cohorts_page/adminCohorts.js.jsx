@@ -34,6 +34,7 @@ class AdminCohorts extends React.Component {
           saveForm={this.handleChange.bind(this)}
           updateForm={this.handleChange.bind(this)}
           deleteCohort={this.handleChange.bind(this)}
+          removeReviewer={this.handleChange.bind(this)}
           authorization={this.props.authorization} />
       </section>
     )
