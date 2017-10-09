@@ -5,7 +5,7 @@ class AdminCohortReviewerRow extends React.Component {
       <div className='reviewer-row'>
         <span>{this.props.reviewer.name}</span>
         <ClickBtn Text='X'
-          show={ this.enabled() }
+          show={this.enabled()}
           onClick={ this.props.removeReviewer.bind(this) } />
       </div>
     )
@@ -13,7 +13,7 @@ class AdminCohortReviewerRow extends React.Component {
 
   enabled() {
     if (this.props.readOnly) {
-      return 'disabled'
+      return 'disable'
     } else {
       return 'enable'
     }

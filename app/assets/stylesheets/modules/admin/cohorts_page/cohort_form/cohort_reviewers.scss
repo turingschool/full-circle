@@ -12,5 +12,17 @@
 
     border: 1px solid $blue-digital;
     border-radius: 4px;
+
+    .reviewer-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      height: 30px;
+      width: 100%;
+
+      @include btn(15px, 15px);
+    }
   }
 }
