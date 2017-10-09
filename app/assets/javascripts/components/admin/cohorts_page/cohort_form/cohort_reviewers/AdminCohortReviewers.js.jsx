@@ -13,7 +13,8 @@ class AdminCohortReviewers extends React.Component {
         })}
 
         <AdminCohortReviewerSearch
-          allReviewers={this.props.allReviewers}/>
+          readOnly={this.props.readOnly}
+          authorization={this.props.authorization} />
       </section>
     )
   }

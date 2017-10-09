@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :admin do
         resources :applications, only: [:index]
-        resources :cohorts do
-          resources :reviewers, except: [:new, :create, :edit]
+        resources :cohort do
+          resources :reviewers, except: [:new, :create, :edit], controller: 'cohort_reviewers'
         end
       end
 
