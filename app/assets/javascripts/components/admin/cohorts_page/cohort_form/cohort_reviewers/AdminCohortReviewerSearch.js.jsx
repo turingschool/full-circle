@@ -30,10 +30,12 @@ class AdminCohortReviewerSearch extends React.Component {
 
         <section className='search-results'>
           {this.filteredSearch().map((reviewer, i) => {
-            return <AdminCohortReviewerSearchRow
-              key={i}
+            return <AdminCohortReviewerSearchRow key={i}
               reviewer={reviewer}
+              cohort={this.props.cohort}
               readOnly={this.props.readOnly}
+              addReviewer={this.props.addReviewer}
+              authorization={this.props.authorization}
             />
           })}
         </section>

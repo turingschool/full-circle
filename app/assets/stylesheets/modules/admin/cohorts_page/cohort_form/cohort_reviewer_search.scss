@@ -4,13 +4,14 @@
     flex-direction: column;
 
     width: 100%;
+    min-height: 100px;
 
     border: 1px solid $blue-digital;
     border-radius: 4px;
 
     .search-input {
       width: 100%;
-      min-height: 30px;
+      min-height: 40px;
 
       padding: 5px;
 

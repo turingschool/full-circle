@@ -6,7 +6,7 @@ class AdminCohortReviewerRow extends React.Component {
         <span>{this.props.reviewer.name}</span>
         <ClickBtn Text='X'
           readOnly={this.props.readOnly}
-          onClick={ this.removeReviewer.bind(this) } />
+          onClick={this.removeReviewer.bind(this)} />
       </div>
     )
   }

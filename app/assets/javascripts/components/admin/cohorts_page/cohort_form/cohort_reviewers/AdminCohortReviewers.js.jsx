@@ -15,7 +15,9 @@ class AdminCohortReviewers extends React.Component {
         </section>
 
         <AdminCohortReviewerSearch
+          cohort={this.props.cohort}
           readOnly={this.props.readOnly}
+          addReviewer={this.props.addReviewer}
           authorization={this.props.authorization} />
       </section>
     )
