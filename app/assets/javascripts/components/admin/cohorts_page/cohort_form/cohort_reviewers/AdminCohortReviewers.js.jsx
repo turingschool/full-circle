@@ -11,6 +11,9 @@ class AdminCohortReviewers extends React.Component {
             removeReviewer={this.props.removeReviewer}
             authorization={this.props.authorization} />
         })}
+
+        <AdminCohortReviewerSearch
+          allReviewers={this.props.allReviewers}/>
       </section>
     )
   }

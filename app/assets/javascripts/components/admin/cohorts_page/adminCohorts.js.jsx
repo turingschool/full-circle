@@ -28,6 +28,7 @@ class AdminCohorts extends React.Component {
         <AdminCohortFormSection
           cohort={this.state.cohort}
           cohorts={this.state.cohorts}
+          allReviewers={this.props.allReviewers}
           message={this.state.message}
           readOnly={this.state.readOnly}
           toggleEdit={this.handleChange.bind(this)}

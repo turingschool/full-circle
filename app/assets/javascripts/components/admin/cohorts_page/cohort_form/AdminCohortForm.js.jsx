@@ -11,6 +11,7 @@ class AdminCohortForm extends React.Component {
         <AdminCohortReviewers
           readOnly={this.props.readOnly}
           cohort={this.props.cohort}
+          allReviewers={this.props.allReviewers}
           updateForm={this.props.updateForm}
           removeReviewer={this.props.removeReviewer}
           authorization={this.props.authorization} />
