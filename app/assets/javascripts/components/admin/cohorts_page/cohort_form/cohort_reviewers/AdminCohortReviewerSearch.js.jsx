@@ -19,12 +19,24 @@ class AdminCohortReviewerSearch extends React.Component {
 
   render() {
     return(
-      <section className='reviewer-search'>
-        <input type='text' onChange={this.handleChange.bind(this, 'search')} />
+      <section className='reviewer-search-box'>
+        <section className='search-input'>
+          <input type='text'
+            readOnly={this.props.readOnly}
+            className={['readOnly', this.props.readOnly].join('')}
+            placeholder='Search Reviewers'
+            onChange={this.handleChange.bind(this, 'search')} />
+        </section>
 
-      {this.filteredSearch().map((reviewer, i) => {
-        return <span key={i}>{reviewer.name}</span>
-      })}
+        <section className='search-results'>
+          {this.filteredSearch().map((reviewer, i) => {
+            return <AdminCohortReviewerSearchRow
+              key={i}
+              reviewer={reviewer}
+              readOnly={this.props.readOnly}
+            />
+          })}
+        </section>
       </section>
     )
   }

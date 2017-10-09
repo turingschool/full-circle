@@ -1,33 +1,32 @@
-.cohort-form-section {
-  .cohort-reviewers-section {
+.admin {
+  .reviewer-search-box {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
 
-    height: 100%;
-    width: 50%;
-
-    padding: 10px;
-
-    overflow: scroll;
+    width: 100%;
 
     border: 1px solid $blue-digital;
     border-radius: 4px;
 
-    .cohort-reviewers {
+    .search-input {
+      width: 100%;
+      min-height: 30px;
+
+      padding: 5px;
+
+      @include input();
+    }
+
+    .search-results {
       display: flex;
       flex-direction: column;
 
       width: 100%;
-      min-height: max-content;
+      height: 100%;
 
       padding: 10px;
-      margin-bottom: 10px;
 
       overflow: scroll;
-
-      border: 1px solid $blue-digital;
-      border-radius: 4px;
 
       .reviewer-row {
         display: flex;
@@ -38,7 +37,7 @@
         min-height: 30px;
         width: 100%;
 
-        @include btn(15px, 15px);
+        @include btn(50px, 15px);
       }
     }
   }
