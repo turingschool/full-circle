@@ -21,8 +21,9 @@ Rails.application.routes.draw do
       namespace :admin do
         resources :applications, only: [:index]
         resources :cohort do
-          resources :reviewers, except: [:new, :create, :edit], controller: 'cohort_reviewers'
+          resources :reviewers, only: [:show, :index, :update, :delete], controller: 'cohort_reviewers'
         end
+        resources :reviewers, only: [:index]
       end
 
       namespace :student do
