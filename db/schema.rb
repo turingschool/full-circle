@@ -38,15 +38,16 @@ ActiveRecord::Schema.define(version: 20170927005000) do
   end
 
   create_table "cohorts", force: :cascade do |t|
-    t.string "title"
-    t.date "start_date"
-    t.date "end_date"
-    t.date "open_date"
-    t.date "close_date"
-    t.date "notify_date"
+    t.string "title", default: "1703"
+    t.date "start_date", default: "2000-01-01"
+    t.date "end_date", default: "2000-01-01"
+    t.date "open_date", default: "2000-01-01"
+    t.date "close_date", default: "2000-01-01"
+    t.date "notify_date", default: "2000-01-01"
     t.integer "essay_limit"
     t.string "guidelines"
     t.string "questions"
+    t.boolean "open", default: false
     t.integer "state", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

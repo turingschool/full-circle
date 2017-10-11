@@ -19,6 +19,14 @@
     cursor: pointer;
   }
 
+  .btn.true {
+    visibility: hidden;
+  }
+
+  .btn.false  {
+    visibility: visible;
+  }
+
   .btn:hover {
     @include shadow(0, 0, 7px, 0.5px, 0.2);
   }

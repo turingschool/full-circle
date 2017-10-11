@@ -23,7 +23,13 @@ gem 'faker', '>= 1.8.4'
 gem 'react-rails', '~> 2.2.1'
 gem 'fetch-rails'
 
+gem 'jquery-rails'
+
 gem 'browserify-rails', '~> 4.2.0'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

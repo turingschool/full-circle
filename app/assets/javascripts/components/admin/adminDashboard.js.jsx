@@ -4,42 +4,71 @@ class AdminDashboard extends React.Component {
     super(props)
 
     this.state = {
-      cohorts: {},
-      cohortInFocus: {},
-      appInFocus: {}
+      page: 'cohorts',
+      cohort: {},
+      cohorts: {}
     }
 
     this.user = JSON.parse(this.props.user)
+    this.users = JSON.parse(this.props.users)
     this.authorization = 'Bearer ' + this.props.authorization
   }
 
-  componentWillMount(){
+  componentWillMount() {
     let cohorts = JSON.parse(this.props.cohorts)
 
-    this.setState( {cohorts: cohorts} )
-    this.setState( {cohortInFocus: cohorts[0]} )
-    this.setState( {appInFocus: cohorts[0].applications[0]})
+    this.setState({
+      cohort: cohorts[cohorts.length - 1],
+      cohorts: cohorts
+    })
   }
 
-  handleChange(action) {
+  handleChange(action){
     this.setState(action)
   }
 
   render() {
+    let page = this.routing()
+
     return (
       <main className='main-vert-frame'>
         <Header user={this.user} />
-        <main className='admin'>
-          <AdminCohortsSection
-            cohorts={this.state.cohorts}
-            cohort={this.state.cohortInFocus}
-            handleChange={this.handleChange.bind(this)} />
-          <AdminApplicationSection
-            cohort={this.state.cohortInFocus}
-            app={this.state.appInFocus}
-            handleChange={this.handleChange.bind(this)} />
-        </main>
+        <section className='admin'>
+          { page }
+        </section>
       </main>
     )
+  }
+
+  routing() {
+    switch(this.state.page) {
+      case('cohort'):
+        return this.cohort()
+      case('users'):
+        return this.users()
+      default:
+        return this.cohorts()
+    }
+  }
+
+  cohorts() {
+    return <AdminCohorts
+      cohorts={this.state.cohorts}
+      changePage={this.handleChange.bind(this)}
+      authorization={this.authorization} />
+  }
+
+  cohort() {
+    return <AdminCohort
+      cohort={this.state.cohort}
+      changePage={this.handleChange.bind(this)}
+      authorization={this.authorization} />
+  }
+
+  users() {
+    return <AdminUsers
+      users={this.state.users}
+      changePage={this.handleChange.bind(this)}
+      authorization={this.authorization} />
   }
 }

@@ -12,7 +12,6 @@ module ErrorHandler
       rescue_from JWT::DecodeError do |error|
         render json: { "error"=>"Forbidden" }, status: 403
       end
-
     end
   end
 end

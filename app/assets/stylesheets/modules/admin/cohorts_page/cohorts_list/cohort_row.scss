@@ -1,0 +1,30 @@
+.cohorts-list {
+  .cohort-row {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 30px;
+
+    padding: 5px;
+    margin-bottom: 5px;
+
+    border: 1px solid $blue-digital;
+    border-radius: 4px;
+
+    font-size: 18px;
+  }
+
+  .cohort-row:hover {
+    @include shadow;
+
+    opacity: 0.8;
+    background-color: $blue-digital;
+  }
+
+  .cohort-row.selected {
+    @include shadow;
+
+    background-color: $blue-digital;
+  }
+}

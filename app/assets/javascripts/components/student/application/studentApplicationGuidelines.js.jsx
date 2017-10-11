@@ -16,7 +16,7 @@ class StudentApplicationGuidelines extends React.Component {
         <section className='confirm-submission'>
           <ClickBtn Text='Got It'
             onClick={this.props.toggleGuidelines.bind(this, {
-              guidelines: 'hide'
+              guidelines: 'disable'
             })} />
         </section>
       </section>

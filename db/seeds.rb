@@ -68,7 +68,7 @@ class Seed
 
   def make_closed_cohorts
     10.times.map do |i|
-      date = Date.today + (i+1).months
+      date = Date.today + (-6 - i).months
 
       Cohort.create(
         title: ('17' + i.to_s),

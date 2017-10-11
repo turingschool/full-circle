@@ -8,6 +8,15 @@ RSpec.describe Cohort do
     it { should have_many(:users).through(:cohort_reviewers) }
   end
 
+  describe 'Validations' do
+    it { should validate_presence_of(:title)}
+    it { should validate_presence_of(:start_date)}
+    it { should validate_presence_of(:end_date)}
+    it { should validate_presence_of(:open_date)}
+    it { should validate_presence_of(:close_date)}
+    it { should validate_presence_of(:notify_date)}
+  end
+
   describe 'State' do
 
     it 'Defaults to Unfinalized' do
@@ -32,7 +41,7 @@ RSpec.describe Cohort do
 
       cohort = create(:cohort, open_date: open_date, close_date: close_date)
 
-      assert(cohort.open?)
+      assert(cohort.open)
     end
 
     it 'Can be closed' do
@@ -41,26 +50,9 @@ RSpec.describe Cohort do
 
       cohort = create(:cohort, open_date: open_date, close_date: close_date)
 
-      refute(cohort.open?)
+      refute(cohort.open)
     end
 
-    it 'Can return open status css class' do
-      open_date = Date.today - 1.day
-      close_date = open_date + 3.weeks
-
-      cohort = create(:cohort, open_date: open_date, close_date: close_date)
-
-      expect(cohort.css_status).to eq('open')
-    end
-
-    it 'Can return closed status css class' do
-      open_date = Date.today - 3.weeks
-      close_date = open_date - 1.day
-
-      cohort = create(:cohort, open_date: open_date, close_date: close_date)
-
-      expect(cohort.css_status).to eq('closed')
-    end
   end
 
   describe 'Scopes' do

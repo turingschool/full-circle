@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :admin do
         resources :applications, only: [:index]
+        resources :cohorts do
+          resources :reviewers, only: [:show, :index, :update, :destroy], controller: 'cohort_reviewers'
+        end
+        resources :reviewers, only: [:index]
       end
 
       namespace :student do

@@ -1,0 +1,13 @@
+.admin {
+  .new-cohort {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 50px;
+
+    border-top: 1px solid $blue-digital;
+    @include btn(100%);
+  }
+}

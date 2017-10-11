@@ -1,5 +1,4 @@
-class Api::V1::Admin::ApplicationsController < Api::V1::ApiController
-  before_action :authorize!
+class Api::V1::Admin::ApplicationsController < Api::V1::AdminApiController
 
   def index
       render json: {
@@ -8,12 +7,4 @@ class Api::V1::Admin::ApplicationsController < Api::V1::ApiController
                    }
   end
 
-  private
-
-    def authorize!
-      render json: { status: 401 } unless current_requester.admin?
-
-      rescue JWT::DecodeError => e
-        render json: { status: 401, error: e.message }
-    end
 end

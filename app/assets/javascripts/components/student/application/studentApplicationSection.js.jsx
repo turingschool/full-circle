@@ -5,7 +5,7 @@ class StudentApplicationSection extends React.Component {
 
     this.state = {
       confirm: false,
-      guidelines: 'show',
+      guidelines: 'enable',
       submitted: this.props.application.state,
       application: this.props.application,
       essay: this.props.application.essay,
