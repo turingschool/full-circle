@@ -29,7 +29,11 @@ class AdminNewCohort extends React.Component {
 
   createOptions() {
     return {
-      body: JSON.stringify({ cohort: {title: '1703'} }),
+      body: JSON.stringify({ cohort: {
+        title: '1703', notify_date: new Date(),
+        start_date: new Date(), end_date: new Date(),
+        open_date: new Date(), close_date: new Date()}
+      }),
       method: 'POST',
       headers: { 'Authorization': this.props.authorization,
                  'Content-Type': "application/json" }

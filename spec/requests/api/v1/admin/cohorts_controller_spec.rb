@@ -41,7 +41,7 @@ RSpec.describe 'API::V1::Admin::CohortController' do
   describe 'GET' do
 
     it 'Will return all cohorts' do
-      cohorts = create_list(:cohort, 10)
+      cohorts = create_list(:cohort, 10, :open)
 
       get @url, headers: @authorization
 
@@ -52,7 +52,7 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     end
 
     it 'Will return one cohort' do
-      cohort = create(:cohort)
+      cohort = create(:cohort, :open)
 
       get @url + '/' + cohort.id.to_s, headers: @authorization
 
@@ -61,22 +61,18 @@ RSpec.describe 'API::V1::Admin::CohortController' do
 
       expect(raw_cohort["id"]).to eq(cohort.id)
     end
-
   end
-
-    it 'Will return error if Cohort fails to create' do
-      post @url, params: { cohort: { title: "" } }, headers: @authorization
-
-      expect(response.status).to eq(400)
-      error = JSON.parse(response.body)
-
-      expect(error["error"]).to eq("Error Creating Cohort")
-    end
 
   describe 'POST' do
 
+    def cohort_params
+      { start_date: Date.today, end_date: Date.today,
+        open_date: Date.today, close_date: Date.today,
+        notify_date: Date.today }
+    end
+
     it 'Will return error if Cohort fails to create' do
-      post @url, params: { cohort: { title: "" } }, headers: @authorization
+      post @url, params: { cohort: cohort_params.merge({ title: "" }) }, headers: @authorization
 
       expect(response.status).to eq(400)
       error = JSON.parse(response.body)
@@ -85,7 +81,7 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     end
 
     it 'Will create a Cohort' do
-      post @url, params: { cohort: { title: '1703'} }, headers: @authorization
+      post @url, params: { cohort: cohort_params.merge({ title: 'Title' }) }, headers: @authorization
 
       expect(response.status).to eq(200)
       cohort = JSON.parse(response.body)
@@ -97,7 +93,7 @@ RSpec.describe 'API::V1::Admin::CohortController' do
   describe 'PUT' do
 
     it 'Will return error Cohort fails to update' do
-      cohort = create(:cohort)
+      cohort = create(:cohort, :open)
 
       put @url + '/' + cohort.id.to_s,
         params: {cohort: {title: ''} },
@@ -110,7 +106,7 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     end
 
     it 'Will update cohort' do
-      cohort = create(:cohort)
+      cohort = create(:cohort, :open)
 
       put @url + '/' + cohort.id.to_s,
         params: {cohort: {title: 'Hello!'}},
@@ -127,7 +123,7 @@ RSpec.describe 'API::V1::Admin::CohortController' do
   describe 'DELET' do
 
     it 'Will delete a cohort' do
-      cohort = create(:cohort)
+      cohort = create(:cohort, :open)
 
       delete @url + '/' + cohort.id.to_s,
         headers: @authorization

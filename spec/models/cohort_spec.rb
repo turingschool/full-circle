@@ -10,23 +10,18 @@ RSpec.describe Cohort do
 
   describe 'Validations' do
     it { should validate_presence_of(:title)}
-    it { should validate_presence_of(:start_date)}
-    it { should validate_presence_of(:end_date)}
-    it { should validate_presence_of(:open_date)}
-    it { should validate_presence_of(:close_date)}
-    it { should validate_presence_of(:notify_date)}
   end
 
   describe 'State' do
 
     it 'Defaults to Unfinalized' do
-      cohort = create(:cohort)
+      cohort = create(:cohort, :open)
 
       assert(cohort.unfinalized?)
     end
 
     it 'Can be a Finalized' do
-      cohort = create(:cohort)
+      cohort = create(:cohort, :closed)
 
       cohort.finalized!
       assert(cohort.finalized?)
@@ -39,7 +34,7 @@ RSpec.describe Cohort do
       open_date = Date.today - 1.day
       close_date = open_date + 3.weeks
 
-      cohort = create(:cohort, open_date: open_date, close_date: close_date)
+      cohort = create(:cohort, :open)
 
       assert(cohort.open)
     end
@@ -48,7 +43,7 @@ RSpec.describe Cohort do
       open_date = Date.today - 3.weeks
       close_date = open_date - 1.day
 
-      cohort = create(:cohort, open_date: open_date, close_date: close_date)
+      cohort = create(:cohort, :closed)
 
       refute(cohort.open)
     end
