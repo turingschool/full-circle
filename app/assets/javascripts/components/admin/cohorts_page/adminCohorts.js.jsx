@@ -11,7 +11,7 @@ class AdminCohorts extends React.Component {
     }
   }
 
-  handleChange(action) {
+  handleAction(action) {
     this.setState(action)
   }
 
@@ -21,8 +21,7 @@ class AdminCohorts extends React.Component {
         <AdminCohortsListSection
           cohort={this.state.cohort}
           cohorts={this.state.cohorts}
-          changeCohort={this.handleChange.bind(this)}
-          addCohort={this.handleChange.bind(this)}
+          handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
 
         <AdminCohortFormSection
@@ -31,12 +30,7 @@ class AdminCohorts extends React.Component {
           allReviewers={this.props.allReviewers}
           message={this.state.message}
           readOnly={this.state.readOnly}
-          toggleEdit={this.handleChange.bind(this)}
-          saveForm={this.handleChange.bind(this)}
-          updateForm={this.handleChange.bind(this)}
-          deleteCohort={this.handleChange.bind(this)}
-          removeReviewer={this.handleChange.bind(this)}
-          addReviewer={this.handleChange.bind(this)}
+          handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
       </section>
     )

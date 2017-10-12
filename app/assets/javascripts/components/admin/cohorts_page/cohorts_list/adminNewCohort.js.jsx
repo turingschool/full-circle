@@ -11,23 +11,23 @@ class AdminNewCohort extends React.Component {
 
   createCohort() {
 
-    ping('/api/v1/admin/cohorts', this.createOptions())
+    ping('/api/v1/admin/cohorts', this.options())
       .then((response) => {
         response.json().then((json) => {
-          this.addCohort(json)
+          this.props.cohorts.push(json)
 
-          this.props.addCohort({
+          this.props.handleAction({
             cohorts: this.props.cohorts,
             message: 'Cohort Created'
           })
         }.bind(this))
       })
       .catch((error) => {
-        this.props.addCohort({message: 'Unable to Create Cohort'})
+        this.props.handleAction({message: 'Unable to Create Cohort'})
       })
   }
 
-  createOptions() {
+  options() {
     return {
       body: JSON.stringify({ cohort: {
         title: '1703', notify_date: new Date(),
@@ -38,9 +38,5 @@ class AdminNewCohort extends React.Component {
       headers: { 'Authorization': this.props.authorization,
                  'Content-Type': "application/json" }
     }
-  }
-
-  addCohort(cohort) {
-    this.props.cohorts.push(cohort)
   }
 }
