@@ -20,14 +20,14 @@ class AdminCohortReviewerSearchRow extends React.Component {
         response.json().then((json) => {
           this.props.cohort.reviewers.push(json)
 
-          this.props.addReviewer({
+          this.props.handleAction({
             cohort: this.props.cohort,
             message: 'Added Reviewer'
           })
         })
       })
       .catch((error) => {
-        this.props.addReviewer({message: 'Error Adding Reviewer'})
+        this.props.handleAction({message: 'Error Adding Reviewer'})
       })
   }
 

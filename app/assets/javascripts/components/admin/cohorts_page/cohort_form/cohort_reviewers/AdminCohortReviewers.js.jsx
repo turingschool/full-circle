@@ -9,7 +9,7 @@ class AdminCohortReviewers extends React.Component {
               reviewer={reviewer}
               cohort={this.props.cohort}
               readOnly={this.props.readOnly}
-              removeReviewer={this.props.removeReviewer}
+              handleAction={this.props.handleAction}
               authorization={this.props.authorization} />
           })}
         </section>
@@ -17,7 +17,7 @@ class AdminCohortReviewers extends React.Component {
         <AdminCohortReviewerSearch
           cohort={this.props.cohort}
           readOnly={this.props.readOnly}
-          addReviewer={this.props.addReviewer}
+          handleAction={this.props.handleAction}
           authorization={this.props.authorization} />
       </section>
     )
