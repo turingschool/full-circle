@@ -83,7 +83,7 @@ class AdminCohortFormFooter extends React.Component {
         message: 'Editing Form'
       })
     } else {
-      return this.handleAction.bind(this)
+      return this.saveCohort.bind(this)
     }
   }
 }

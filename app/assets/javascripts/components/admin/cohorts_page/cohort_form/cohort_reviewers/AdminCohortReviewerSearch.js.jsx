@@ -34,7 +34,7 @@ class AdminCohortReviewerSearch extends React.Component {
               reviewer={reviewer}
               cohort={this.props.cohort}
               readOnly={this.props.readOnly}
-              addReviewer={this.props.handleAction}
+              handleAction={this.props.handleAction}
               authorization={this.props.authorization}
             />
           })}

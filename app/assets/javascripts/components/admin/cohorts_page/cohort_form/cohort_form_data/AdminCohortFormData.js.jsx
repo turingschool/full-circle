@@ -4,7 +4,7 @@ class AdminCohortFormData extends React.Component {
     let cohort = this.props.cohort
     cohort[param] = event.target.value
 
-    this.props.updateForm({
+    this.props.handleAction({
       cohort: cohort,
       message: "Editing Form"
     })
