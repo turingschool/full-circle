@@ -7,6 +7,6 @@ class Application < ApplicationRecord
 
   validates_length_of :essay, :minimum => 0, :allow_nil => false
 
-  enum status: ['undecided', 'declined', 'awarded']
+  enum status: ['undecided', 'declined', 'awarded', 'invalid']
   enum state: ['draft', 'submitted']
 end
