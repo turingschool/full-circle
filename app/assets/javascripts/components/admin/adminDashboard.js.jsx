@@ -52,21 +52,21 @@ class AdminDashboard extends React.Component {
   }
 
   cohorts() {
-    return <AdminCohorts
+    return <AdminEditCohorts
       cohorts={this.state.cohorts}
       changePage={this.handleChange.bind(this)}
       authorization={this.authorization} />
   }
 
   cohort() {
-    return <AdminCohort
+    return <AdminViewCohorts
       cohort={this.state.cohort}
       changePage={this.handleChange.bind(this)}
       authorization={this.authorization} />
   }
 
   users() {
-    return <AdminUsers
+    return <AdminEditUsers
       users={this.state.users}
       changePage={this.handleChange.bind(this)}
       authorization={this.authorization} />

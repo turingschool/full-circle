@@ -1,4 +1,4 @@
-class AdminCohort extends React.Component {
+class AdminViewCohorts extends React.Component {
 
   render() {
     return(
