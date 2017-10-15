@@ -6,9 +6,7 @@ class AdminCohortFormSection extends React.Component {
         <AdminCohortForm
           cohort={this.props.cohort}
           readOnly={this.props.readOnly}
-          updateForm={this.props.updateForm}
-          removeReviewer={this.props.removeReviewer}
-          addReviewer={this.props.addReviewer}
+          handleAction={this.props.handleAction}
           authorization={this.props.authorization} />
 
         <AdminCohortFormFooter
@@ -17,9 +15,7 @@ class AdminCohortFormSection extends React.Component {
           allReviewers={this.props.allReviewers}
           readOnly={this.props.readOnly}
           message={this.props.message}
-          toggleEdit={this.props.toggleEdit}
-          saveForm={this.props.saveForm}
-          deleteCohort={this.props.deleteCohort}
+          handleAction={this.props.handleAction}
           authorization={this.props.authorization} />
       </section>
     )

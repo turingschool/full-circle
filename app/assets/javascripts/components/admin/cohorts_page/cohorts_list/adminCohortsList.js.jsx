@@ -7,7 +7,7 @@ class AdminCohortsList extends React.Component {
           return <AdminCohortRow key={i}
             cohort={cohort}
             selected={this.selected(cohort)}
-            changeCohort={this.props.changeCohort} />
+            handleAction={this.props.handleAction} />
           }
         )}
       </section>

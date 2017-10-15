@@ -3,8 +3,8 @@ class AdminCohortFormFooter extends React.Component {
   render() {
     return(
       <section className='form-footer'>
-        <ClickBtn Text={this.editSaveText()}
-          onClick={this.editSaveFunction()} />
+        <ClickBtn Text={this.editOrSaveText()}
+          onClick={this.editOrSaveFunction()} />
 
         {this.props.message}
 
@@ -24,14 +24,14 @@ class AdminCohortFormFooter extends React.Component {
         response.json().then((json) => {
           let cohorts = this.removeCohort()
 
-          this.props.deleteCohort({
+          this.props.handleAction({
             cohorts: cohorts,
             message: 'Cohort Deleted'
           })
         })
       })
       .catch((error) => {
-        this.props.deleteCohort({message: 'Unable to Delete Cohort'})
+        this.props.handleAction({message: 'Unable to Delete Cohort'})
       })
   }
 
@@ -49,13 +49,13 @@ class AdminCohortFormFooter extends React.Component {
 
     ping('/api/v1/admin/cohorts/' + cohort_id, options)
       .then((response) => {
-        this.props.saveForm({
+        this.props.handleAction({
           readOnly: true,
           cohort: this.props.cohort,
           message: 'Form Saved' })
       })
       .catch((error) => {
-        this.props.deleteCohort({message: 'Unable to Save Cohort'})
+        this.props.handleAction({message: 'Unable to Save Cohort'})
       })
   }
 
@@ -68,7 +68,7 @@ class AdminCohortFormFooter extends React.Component {
     }
   }
 
-  editSaveText() {
+  editOrSaveText() {
     if(this.props.readOnly) {
       return 'Edit'
     } else {
@@ -76,9 +76,9 @@ class AdminCohortFormFooter extends React.Component {
     }
   }
 
-  editSaveFunction() {
+  editOrSaveFunction() {
     if(this.props.readOnly) {
-      return this.props.toggleEdit.bind(this, {
+      return this.props.handleAction.bind(this, {
         readOnly: false,
         message: 'Editing Form'
       })

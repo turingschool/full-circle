@@ -19,14 +19,14 @@ class AdminCohortReviewerRow extends React.Component {
         response.json().then((json) => {
           this.props.cohort.reviewers = this.remainingReviewers()
 
-          this.props.removeReviewer({
+          this.props.handleAction({
             cohort: this.props.cohort,
             message: 'Reviewer Removed'
           })
         })
       })
       .catch((error) => {
-        this.props.removeReviewer({
+        this.props.handleAction({
           message: 'Unable to Remove Reviewer'
         })
       })
