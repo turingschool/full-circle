@@ -4,7 +4,7 @@ class AdminDashboard extends React.Component {
     super(props)
 
     this.state = {
-      page: 'editCohorts',
+      page: 'viewCohorts',
       cohort: {},
       cohorts: {}
     }
@@ -58,9 +58,9 @@ class AdminDashboard extends React.Component {
       authorization={this.authorization} />
   }
 
-  viewCohort() {
+  viewCohorts() {
     return <AdminViewCohorts
-      cohort={this.state.cohort}
+      cohorts={this.state.cohorts}
       changePage={this.handleChange.bind(this)}
       authorization={this.authorization} />
   }

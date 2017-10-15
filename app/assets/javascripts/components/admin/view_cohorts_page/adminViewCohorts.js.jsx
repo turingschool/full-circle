@@ -16,12 +16,12 @@ class AdminViewCohorts extends React.Component {
     let cohorts = this.props.cohorts
     let cohort = this.props.cohorts[0]
 
-    this.setState(
+    this.setState({
       cohorts: cohorts,
       cohort: cohort,
       applications: cohort.applications,
       application: cohort.applications[0]
-    )
+    })
   }
 
   handleAction(action) {
