@@ -4,23 +4,13 @@ class AdminDashboard extends React.Component {
     super(props)
 
     this.state = {
-      page: 'viewCohorts',
-      cohort: {},
-      cohorts: {}
+      page: 'editCohorts',
+      cohorts: JSON.parse(this.props.cohorts)
     }
 
     this.user = JSON.parse(this.props.user)
     this.users = JSON.parse(this.props.users)
     this.authorization = 'Bearer ' + this.props.authorization
-  }
-
-  componentWillMount() {
-    let cohorts = JSON.parse(this.props.cohorts)
-
-    this.setState({
-      cohort: cohorts[cohorts.length - 1],
-      cohorts: cohorts
-    })
   }
 
   handleChange(action){
@@ -29,7 +19,7 @@ class AdminDashboard extends React.Component {
 
   render() {
     let page = this.routing()
-
+    
     return (
       <main className='main-vert-frame'>
         <Header user={this.user} />
@@ -45,14 +35,14 @@ class AdminDashboard extends React.Component {
       case('editCohorts'):
         return this.editCohorts()
       case('editUsers'):
-        return this.users()
+        return this.editUsers()
       default:
         return this.viewCohorts()
     }
   }
 
   editCohorts() {
-    return <AdminEditCohorts
+    return <AdminEditCohortsSection
       cohorts={this.state.cohorts}
       changePage={this.handleChange.bind(this)}
       authorization={this.authorization} />
