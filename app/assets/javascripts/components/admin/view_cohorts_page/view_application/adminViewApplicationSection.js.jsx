@@ -1,4 +1,4 @@
-class ViewApplicationSection extends React.Component {
+class AdminViewApplicationSection extends React.Component {
 
   render() {
     return(

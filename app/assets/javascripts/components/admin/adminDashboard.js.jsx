@@ -4,7 +4,7 @@ class AdminDashboard extends React.Component {
     super(props)
 
     this.state = {
-      page: 'editCohorts',
+      page: 'showCohorts',
       cohorts: JSON.parse(this.props.cohorts)
     }
 
@@ -19,7 +19,7 @@ class AdminDashboard extends React.Component {
 
   render() {
     let page = this.routing()
-    
+
     return (
       <main className='main-vert-frame'>
         <Header user={this.user} />

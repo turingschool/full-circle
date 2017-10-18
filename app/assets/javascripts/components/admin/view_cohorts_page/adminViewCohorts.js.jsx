@@ -33,15 +33,15 @@ class AdminViewCohorts extends React.Component {
   render() {
     return(
       <section className='main-horz-frame'>
-        <ViewCohortsSection
+        <AdminViewCohortsSection
           cohorts={this.state.cohorts}
           cohort={this.state.cohort}
           handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
 
-        <ViewApplicationSection
+        <AdminViewApplicationSection
           application={this.state.application}
-          handleAction={this.handleAction}
+          handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
 
       </section>
