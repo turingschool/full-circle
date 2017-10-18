@@ -1,0 +1,48 @@
+@mixin dropdownMenu() {
+
+  .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    .header {
+      display: flex;
+      align-items: center;
+
+      position: relative;
+
+      width: 100%;
+      min-height: min-content;
+      max-height: max-content;
+
+      padding: 5px;
+    }
+
+    .list {
+
+      width: 100%;
+      max-height: 200px;
+      overflow: scroll;
+
+      .row {
+        display: flex;
+        flex-direction: row;
+
+        width: 100%;
+        min-height: 20px;
+
+        padding: 5px;
+      }
+
+      .true {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .false {
+        display: none;
+      }
+    }
+  }
+}

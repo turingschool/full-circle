@@ -1,0 +1,14 @@
+.admin {
+  .view-cohorts {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+    height: 100%;
+
+    padding: 5px;
+
+    @mixin dropdown-menu {
+    }
+  }
+}
