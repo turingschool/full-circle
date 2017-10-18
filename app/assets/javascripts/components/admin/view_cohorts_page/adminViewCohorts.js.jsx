@@ -19,7 +19,7 @@ class AdminViewCohorts extends React.Component {
     if (cohort != undefined){
       this.setState({
         cohorts: cohorts,
-        cohort: cohort,
+        item: cohort,
         applications: cohort.applications,
         application: cohort.applications[0]
       })
@@ -35,7 +35,7 @@ class AdminViewCohorts extends React.Component {
       <section className='main-horz-frame'>
         <AdminViewCohortsSection
           cohorts={this.state.cohorts}
-          cohort={this.state.cohort}
+          cohort={this.state.item}
           handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
 

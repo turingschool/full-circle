@@ -1,31 +1,42 @@
 @mixin dropdownMenu() {
 
-  .dropdown-menu {
+  .circle-dropdown-menu {
     display: flex;
     flex-direction: column;
 
     width: 100%;
+    color: black;
 
     .header {
+
       display: flex;
       align-items: center;
-
-      position: relative;
 
       width: 100%;
       min-height: min-content;
       max-height: max-content;
 
       padding: 5px;
+      border-radius: 4px 4px 0 0;
+
+      background-color: $dark-grey;
+      color: #e1e1e1;
     }
 
     .list {
+      display: flex;
+      flex-direction: column;
 
       width: 100%;
       max-height: 200px;
+      border-radius: 0 0 4px 4px;
+
+      background-color: #e1e1e1;
+      color: $dark-grey;
+
       overflow: scroll;
 
-      .row {
+      .item {
         display: flex;
         flex-direction: row;
 
@@ -34,15 +45,10 @@
 
         padding: 5px;
       }
+    }
 
-      .true {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .false {
-        display: none;
-      }
+    .list.false {
+      display: none;
     }
   }
 }

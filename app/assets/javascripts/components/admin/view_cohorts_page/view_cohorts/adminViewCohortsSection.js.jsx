@@ -4,7 +4,9 @@ class AdminViewCohortsSection extends React.Component {
     return(
       <section className='view-cohorts'>
         <DropDownMenu
+          label='title'
           list={this.props.cohorts}
+          header={this.props.cohort}
           handleAction={this.props.handleAction} />
 
       </section>

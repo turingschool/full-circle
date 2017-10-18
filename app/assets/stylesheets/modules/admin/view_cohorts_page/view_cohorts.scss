@@ -8,7 +8,6 @@
 
     padding: 5px;
 
-    @mixin dropdown-menu {
-    }
+    @include dropdownMenu();
   }
 }
