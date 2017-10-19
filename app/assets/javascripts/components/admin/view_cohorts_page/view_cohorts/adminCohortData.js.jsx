@@ -3,7 +3,11 @@ class AdminCohortData extends React.Component {
   render() {
     return(
       <section className='cohort-data'>
-        Data!
+        <StaticTextField
+          width='50%'
+          label='Status'
+          text={this.props.cohort.title} />
+
       </section>
     )
   }
