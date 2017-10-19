@@ -9,6 +9,10 @@ class AdminViewCohortsSection extends React.Component {
           header={this.props.cohort}
           handleAction={this.props.handleAction} />
 
+        <AdminCohortDataSection
+          cohort={this.props.cohort}
+          handleAction={this.props.handleAction} />
+
       </section>
     )
   }
