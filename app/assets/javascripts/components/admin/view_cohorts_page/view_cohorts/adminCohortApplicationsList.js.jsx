@@ -4,7 +4,12 @@ class AdminCohortApplicationList extends React.Component {
     return(
       <section className='cohort-applications-list'>
         {this.props.applications.map((app) => {
-          debugger
+          return <SelectableTextField
+            texts={[app.user.name, app.status]}
+            width='100%'
+            returnKey='application'
+            returnValue={app}
+            handleAction={this.props.handleAction} />
         })}
       </section>
     )
