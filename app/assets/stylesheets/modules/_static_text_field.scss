@@ -4,15 +4,15 @@
 
   align-items: center;
 
-  height: min-content;
+  min-height: 25px;;
   padding: 5px;
 
-  .static-label {
+  .static-label,
+  .static-text {
+    display: flex;
+    align-items: center;
+
     width: 100%;
     color: $gray-print;
-  }
-
-  .static-text {
-    width: 100%
   }
 }

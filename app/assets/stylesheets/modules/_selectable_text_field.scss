@@ -1,0 +1,22 @@
+.selectable-text-field {
+  display: flex;
+  flex-direction: row;
+
+  padding: 5px;
+
+  min-height: 24px;
+
+  span {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.selectable-text-field:hover {
+  background-color: $gray-highlight
+}
+
+.selectable-text-field:active {
+  background-color: $gray-select;
+  color: $gray-highlight;
+}
