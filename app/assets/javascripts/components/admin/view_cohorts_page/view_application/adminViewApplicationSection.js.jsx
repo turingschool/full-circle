@@ -3,7 +3,13 @@ class AdminViewApplicationSection extends React.Component {
   render() {
     return(
       <section className='view-applications'>
-        Application
+        <AdminApplicationActionBar
+          application={this.props.application}
+          handleAction={this.props.handleAction} />
+
+        <AdminAppDataSection
+          application={this.props.application} />
+
       </section>
     )
   }
