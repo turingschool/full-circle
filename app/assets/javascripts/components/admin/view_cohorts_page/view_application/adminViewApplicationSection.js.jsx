@@ -8,6 +8,7 @@ class AdminViewApplicationSection extends React.Component {
           handleAction={this.props.handleAction} />
 
         <AdminAppDataSection
+          user={this.props.application.user}
           application={this.props.application} />
 
       </section>
