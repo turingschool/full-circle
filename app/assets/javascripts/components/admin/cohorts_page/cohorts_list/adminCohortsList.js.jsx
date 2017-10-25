@@ -1,22 +1,16 @@
-class AdminCohortsList extends React.Component {
-
-  render() {
-    return(
-      <section className='cohorts-list'>
-        {this.props.cohorts.map((cohort, i) => {
-          return <AdminCohortRow key={i}
-            cohort={cohort}
-            selected={this.selected(cohort)}
-            handleAction={this.props.handleAction} />
-          }
-        )}
-      </section>
-    )
-  }
-
-  selected(cohort) {
-    if (this.props.cohort.id == cohort.id) {
-      return 'selected'
-    }
-  }
-}
+const AdminCohortsList = ({ cohort, cohorts, handleAction  }) => {
+const { id } = cohort;
+const mappedAdminRow = cohorts.map( singleCohort => (
+   <AdminCohortRow
+      cohort={cohort}
+      selected= { id === singleCohort.id ? 'selected' : null }
+      handleAction ={ handleAction }
+      key={singleCohort.id}
+    /> )
+)
+ return (
+   <section>
+     { mappedAdminRow }
+   </section>
+ )
+};

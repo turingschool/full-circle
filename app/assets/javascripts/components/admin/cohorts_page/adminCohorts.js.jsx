@@ -1,18 +1,22 @@
 class AdminCohorts extends React.Component {
-
-  constructor(props) {
-    super(props)
-
+  constructor() {
+    super()
     this.state = {
-      cohort: this.props.cohorts[0],
-      cohorts: this.props.cohorts,
+      cohort: '',
+      cohorts: [],
       message: 'Welcome',
       readOnly: true
     }
   }
 
-  handleAction(action) {
-    this.setState(action)
+  componentDidMount() {
+    const { cohorts } = this.props
+    const cohort = cohorts[0]
+    this.handleAction({cohort}, {cohorts})
+  }
+
+  handleAction(...action) {
+    this.setState({...action})
   }
 
   render() {

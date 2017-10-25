@@ -13,6 +13,10 @@ class StudentApplicationEdit extends React.Component {
     }
   }
 
+  componentDidMount() {
+
+  }
+
   componentWillReceiveProps (nextProps) {
     this.setState({message: nextProps.message})
   }

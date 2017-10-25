@@ -23,22 +23,12 @@ class AdminDashboard extends React.Component {
     })
   }
 
+  componentDidMount
+
   handleChange(action){
     this.setState(action)
   }
 
-  render() {
-    let page = this.routing()
-
-    return (
-      <main className='main-vert-frame'>
-        <Header user={this.user} />
-        <section className='admin'>
-          { page }
-        </section>
-      </main>
-    )
-  }
 
   routing() {
     switch(this.state.page) {
@@ -70,5 +60,18 @@ class AdminDashboard extends React.Component {
       users={this.state.users}
       changePage={this.handleChange.bind(this)}
       authorization={this.authorization} />
+  }
+
+  render() {
+    let page = this.routing()
+
+    return (
+      <main className='main-vert-frame'>
+        <Header user={this.user} />
+        <section className='admin'>
+          { page }
+        </section>
+      </main>
+    )
   }
 }

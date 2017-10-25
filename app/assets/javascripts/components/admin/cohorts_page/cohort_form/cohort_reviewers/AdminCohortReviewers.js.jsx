@@ -4,7 +4,7 @@ class AdminCohortReviewers extends React.Component {
     return(
       <section className='cohort-reviewers-section'>
         <section className='cohort-reviewers'>
-          {this.props.cohort.reviewers.map((reviewer, i) => {
+          { !this.props.cohort.length ? null : this.props.cohort.reviewers.map((reviewer, i) => {
             return <AdminCohortReviewerRow key={i}
               reviewer={reviewer}
               cohort={this.props.cohort}
@@ -14,11 +14,14 @@ class AdminCohortReviewers extends React.Component {
           })}
         </section>
 
+      {
+        !this.props.cohort ? null :
         <AdminCohortReviewerSearch
           cohort={this.props.cohort}
           readOnly={this.props.readOnly}
           handleAction={this.props.handleAction}
           authorization={this.props.authorization} />
+        }
       </section>
     )
   }

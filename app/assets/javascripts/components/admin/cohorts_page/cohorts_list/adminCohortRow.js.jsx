@@ -1,15 +1,9 @@
-class AdminCohortRow extends React.Component {
-
-  render(){
-    return(
-      <div className={['cohort-row', this.props.selected].join(' ').trim()}
-        onClick={this.props.handleAction.bind(this,
-          { cohort: this.props.cohort,
-            message: 'Changed Cohort' }
-        )}>
-
-        {this.props.cohort.title}
-      </div>
-    )
-  }
+const AdminCohortRow = ({ handleAction, selected, cohort }) => {
+  const { title } = cohort
+  return(
+  <button className={`cohort-row ${selected}`}
+    onClick={() => handleAction({ cohort, message: 'Changed Cohort'})}>
+    {title}
+  </button>
+  )
 }

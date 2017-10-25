@@ -10,19 +10,6 @@ class AdminCohortFormData extends React.Component {
     })
   }
 
-  render() {
-    return(
-      <section className='cohort-data'>
-        {this.textInput('title', 'Title')}
-        {this.dateInput('start_date', 'Start Date', '1')}
-        {this.dateInput('end_date', 'End Date', '2')}
-        {this.dateInput('open_date', 'Open Date', '3')}
-        {this.dateInput('close_date', 'Close Date', '4')}
-        {this.dateInput('notify_date', 'Notify Date', '5')}
-      </section>
-    )
-  }
-
   dateInput(param, text, id) {
     return <AdminCohortDateRow
       readOnly={this.props.readOnly}
@@ -37,5 +24,18 @@ class AdminCohortFormData extends React.Component {
       Value={this.props.cohort[param]}
       Param={param} Text={text}
       handleChange={this.handleChange.bind(this)} />
+  }
+  render() {
+
+    return(
+      <section className='cohort-data'>
+        {this.textInput('title', 'Title')}
+        {this.dateInput('start_date', 'Start Date', '1')}
+        {this.dateInput('end_date', 'End Date', '2')}
+        {this.dateInput('open_date', 'Open Date', '3')}
+        {this.dateInput('close_date', 'Close Date', '4')}
+        {this.dateInput('notify_date', 'Notify Date', '5')}
+      </section>
+    )
   }
 }
