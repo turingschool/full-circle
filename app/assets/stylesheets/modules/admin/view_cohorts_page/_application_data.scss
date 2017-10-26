@@ -1,0 +1,17 @@
+.view-applications {
+  .application-data {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    padding: 10px;
+
+    .application-scores,
+    .user-data {
+       display: flex;
+       flex-wrap: wrap;
+
+       width: 100%
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.admin {
+  .view-cohorts {
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+    height: 100%;
+
+    padding: 10px;
+    margin-right: 10px;
+
+    border: 1px solid $blue-digital;
+    border-radius: 4px;
+
+    @include dropdownMenu();
+  }
+}

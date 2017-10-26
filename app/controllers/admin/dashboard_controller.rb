@@ -1,7 +1,7 @@
 class Admin::DashboardController < AdminController
 
   def index
-    @cohorts = Cohort.all.to_json(:include => [:applications, :reviewers])
+    @cohorts = Cohort.all.to_json(:include => [{:applications => {:include => [:user, :reviews]}}, :reviewers])
 
     @users = User.all.to_json
 
