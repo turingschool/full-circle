@@ -24,4 +24,10 @@ namespace :production do
     system("RAILS_ENV=production rake db:create")
   end
 
+  desc 'Recompile production assets'
+  task :prepare do
+    system("RAILS_ENV=production rake assets:clobber")
+    system("RAILS_ENV=production rake assets:precompile")
+  end
+
 end
