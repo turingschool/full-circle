@@ -1,6 +1,7 @@
 .admin {
 
-  .view-applications {
+  .view-applications,
+  .no-application {
     display: flex;
     flex-direction: column;
 
@@ -13,5 +14,10 @@
     border-radius: 4px;
 
     @include shadow();
+  }
+
+  .no-application {
+    justify-content: center;
+    align-items: center;
   }
 }

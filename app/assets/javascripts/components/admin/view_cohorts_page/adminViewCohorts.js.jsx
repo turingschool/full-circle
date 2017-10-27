@@ -39,12 +39,21 @@ class AdminViewCohorts extends React.Component {
           handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
 
-        <AdminViewApplicationSection
-          application={this.state.application}
-          handleAction={this.handleAction.bind(this)}
-          authorization={this.props.authorization} />
-
+        {this.applicationSection()}
       </section>
     )
+  }
+
+  applicationSection() {
+    if (this.state.application != undefined) {
+      return <AdminViewApplicationSection
+        application={this.state.application}
+        handleAction={this.handleAction.bind(this)}
+        authorization={this.props.authorization} />
+    } else {
+      return <section className='no-application'>
+        No Applications
+      </section>
+    }
   }
 }

@@ -4,7 +4,7 @@ class AdminDashboard extends React.Component {
     super(props)
 
     this.state = {
-      page: 'showCohorts',
+      page: 'editCohorts',
       cohorts: JSON.parse(this.props.cohorts)
     }
 
@@ -23,6 +23,7 @@ class AdminDashboard extends React.Component {
     return (
       <main className='main-vert-frame'>
         <Header user={this.user} />
+        <AdminNavigationBar changePage={this.handleChange.bind(this)} />
         <section className='admin'>
           { page }
         </section>

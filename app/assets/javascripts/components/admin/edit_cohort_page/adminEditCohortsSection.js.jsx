@@ -24,6 +24,7 @@ class AdminEditCohortsSection extends React.Component {
         message={this.state.message}
         readOnly={this.state.readOnly}
         handleAction={this.handleAction.bind(this)}
+        changePage={this.props.changePage}
         authorization={this.props.authorization} />
     )
   }
