@@ -28,10 +28,19 @@
   }
 
   .btn:hover {
-    @include shadow(0, 0, 7px, 0.5px, 0.2);
+    @include shadow();
   }
 
   .btn:active {
     background-color: $blue-pms;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+
+  a:hover {
+    font-weight: normal;
   }
 }

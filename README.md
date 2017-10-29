@@ -154,6 +154,20 @@ Props:
 - handleAction: (Function) The function that will handle the selection of a row.
 When a row is selected the drop down menu will build an object { item: selectedObject } that can be used to change state.
 
+## Stylesheets
+
+> Everything is scss and Flexbox is the main layout tool used. Flexbox everywhere!
+
+Because I hate Bootstrap, I rolled all my own Stylesheets. Sorry if this kills you a little.
+
+Stylesheets are organized in folders and should be more or less easy to locate. For the most part styles in each folder should make sense why they are there. Other times it won't make sense. At the very least, fussy searching for a style class should be easy and the class should not be much of a mystery.
+
+Shared React Components have their own Mixin, found in the stylesheets/components folder. When you add a shared Component in React you will also need to @include the corresponding style in it's parent.
+
+I tried to make each .scss file as small as possible. I have also repeated styles when they could have been shared in a single file. This is mostly to reduce the chance of breaking styles elsewhere. When you change a style you should have a pretty good idea of what it's actually going to change, and not
+change for that matter.
+
+Because scss allows us to nest classes I have "scoped" each page to keep things from messing with other things. All admin classes are wrapped in .admin, reviewer in .reviewer, and student in .student. Seems a little redundant, but it makes you stress less about adding and changing styles.
 
 ## Testing
 
