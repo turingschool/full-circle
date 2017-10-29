@@ -63,31 +63,9 @@ Because this is a Rails-React app user Authorization happens in two places in tw
 
 1. When a user logs in via the homepage and a new session is created the user is authorized before rerouting to the correct dashboard. All users are defaulted to a student. **Rerouting and user checks can be found in authorize.rb**.
 
-2. Prior to a user entering a dashboard the user is converted to a JWT token **(found in application_controller.rb)** and stored in the dashboard as 'user_id'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded and parsed the user is then pulled from the database and scoping of the role can be achieved by calling user.<role>?.
+2. Prior to a user entering a dashboard the user_id is converted to a JWT token **(found in application_controller.rb)** and stored in the client as 'user_id'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded and parsed the user is then pulled from the database and scoping of the role can be achieved by calling user.<role>?.
 
-This is mostly unneeded in the sense that a User is already Authorized when they log in. However, it is needed in order to protect the API from 3rd party entry. When and if the API needs to be opened up basic protection now exists.
-
-#### Reviews
-
-Reviews belong to a cohort_reviewer and an application, so every application can have as reviews as their are cohort reviewers. As a bonus an application will have many cohort_reviewers through reviews, and a cohort_reviewer will have many applications through reviews.
-
-When a review is first created it has a status of 'unreviewed'. It can then be marked 'reviewed' by a reviewer.
-
-**Score Card** The score_card column is a json field. When a review is made the score_card will be auto filled with a callback prior to creation. It currently looks like this:
-```Ruby
-{ "metrics" => [
-    { "name" => "passion",
-      "score" => 0 },
-    { "name" => "dedication",
-      "score" => 0 },
-    { "name" => "need",
-      "score" => 0 } ],
-  "total" => 0,
-  "average" => 0
-}
-```
-This has a few advantages. Since the calculations don't care how many or what the name of a metric is, if a change is required in the future, past cohorts with the old metric won't break. Simply update the score_card by changing the name or adding a metric and all new calculations will automatically reflect that. Another perk with a json field is that if a new key field is required it can be added on the fly, so additional information can be stored in the score card on a as needed basis.
-
+## React Components
 ## Testing
 
 This section covers some of what is in the testing suite that may not be obvious. Testing React in a Rails environment isn't awesome and requires a few extra hurdles to jump through.
