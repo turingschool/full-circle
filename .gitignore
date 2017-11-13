@@ -6,6 +6,10 @@
 
 # Ignore bundler config.
 /.bundle
+Gemfile.lock
+
+# Ignore test coverage
+/coverage
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -27,5 +31,7 @@
 /config/locales
 /vendor
 
+# Ignore application configuration
+/config/application.yml
 # Ignore application configuration
 /config/application.yml
