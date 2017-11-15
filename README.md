@@ -63,39 +63,123 @@ Because this is a Rails-React app user Authorization happens in two places in tw
 
 1. When a user logs in via the homepage and a new session is created the user is authorized before rerouting to the correct dashboard. All users are defaulted to a student. **Rerouting and user checks can be found in authorize.rb**.
 
-2. Prior to a user entering a dashboard the user is converted to a JWT token **(found in application_controller.rb)** and stored in the dashboard as 'user_id'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded and parsed the user is then pulled from the database and scoping of the role can be achieved by calling user.<role>?.
+2. Prior to a user entering a dashboard the user_id is converted to a JWT token **(found in application_controller.rb)** and stored in the client as 'user_id'. This is then used for all calls to the API side of the app. The user token is sent in a header as `Authorization: Bearer <token>`. On the api side this comes in as `request.env['HTTP_AUTHORIZATION']` **(found in api_controller.rb)**. Once the token is decoded and parsed the user is then pulled from the database and scoping of the role can be achieved by calling user.<role>?.
 
-This is mostly unneeded in the sense that a User is already Authorized when they log in. However, it is needed in order to protect the API from 3rd party entry. When and if the API needs to be opened up basic protection now exists.
+## React Components
 
-#### Reviews
+This section covers React Components, their organization, shared use, and architecture.
 
-Reviews belong to a cohort_reviewer and an application, so every application can have as reviews as their are cohort reviewers. As a bonus an application will have many cohort_reviewers through reviews, and a cohort_reviewer will have many applications through reviews.
+> All React Components are found in the app/assets/javascript/components
 
-When a review is first created it has a status of 'unreviewed'. It can then be marked 'reviewed' by a reviewer.
+> React is integrated with rails using the Rails-React gem. This gem deals with React by pulling it into the asset-pipeline. This means that you don't ever need to import React into files, export components out of files, or care very much about folder structure at all. Make a React Component and it will be automatically available anywhere. This has draw-backs. Mainly that incorporating webpack based packages are pain and I've avoided using them. This means that I've been forces to only use packages that are asset-pipeline friendly and can be loaded via a gam.
 
-**Score Card** The score_card column is a json field. When a review is made the score_card will be auto filled with a callback prior to creation. It currently looks like this:
-```Ruby
-{ "metrics" => [
-    { "name" => "passion",
-      "score" => 0 },
-    { "name" => "dedication",
-      "score" => 0 },
-    { "name" => "need",
-      "score" => 0 } ],
-  "total" => 0,
-  "average" => 0
+#### Organization
+
+All components can be found in app/assets/javascript/components. This file is loaded via component.js in app/assets/javascript, which is subsequently loaded via application.js.
+
+You might have noticed the 'ping' folder which includes ping.js.jsx holding some generic methods for making API requests. You can include any file in the javascrips folder and application.js will load it allowing you access to those methods on a global scope. By adding the jsx we can seamlessly use these methods in our React components.
+
+Components are organized into five main sub folders, Homepage, Admin, Reviewer, Student, and shared. Sections of each page are then put into subfolders in an attempt to makes their use more obvious. Hopefully that's true.
+
+To make sure components never collide with one another all student components are started with Student, admin components Admin, and reviewer components Reviewer. This gets a little verbose, but helps to scope components.
+
+#### handleAction Pattern
+
+One of the tricky aspects of React is dealing with state changes among deeply nested components. For larger applications Redux can be used, but since this application isn't that big an alternative has been created instead.
+
+Most "base" components of the page has one very simple method called 'handleAction'. This function takes an object that contains a key/value structure to match that of React's setState().
+
+This makes changing state relatively painless. Assuming that you'll be handling all state changes from this base Component, you can handle any state change with it by sending it up the component chain and calling it at any point.
+
+To use it you must send the method the key/value you want to change the state of, which requires a little bind weirdness. When you do finally call it will look like this: **this.props.handleAction.bind(this, {key: value})**. On action this call the handleAction method and initiate a state change.
+
+#### handleChange Pattern
+
+Changing state based on Javascrip's _event_ needs to be handles a little differently than just making key: value since we also need access to the event itself.
+
+Typically this is used when you want to capture a change in a text field, or the event.target.value.
+
+To do this you'll need to rely on React's onClick prop, and then understand, again, the weirdness of bind.
+
+React's onClick is much like Javascrip's thing.on('click', function()). The callback function is what you make onClick equal to. To make a universal onChange function you'll need to build the key: value pair by sending the key and then just using the event in the function.
+
+```Javascript
+handleChange(key, event) {
+  this.setState( {[key]: event.target.value} )
 }
 ```
-This has a few advantages. Since the calculations don't care how many or what the name of a metric is, if a change is required in the future, past cohorts with the old metric won't break. Simply update the score_card by changing the name or adding a metric and all new calculations will automatically reflect that. Another perk with a json field is that if a new key field is required it can be added on the fly, so additional information can be stored in the score card on a as needed basis.
+
+To call the function: `onClick={this.props.handleChange.bind(this, 'key')}`. You don't need to send the event since onChange automatically sends that at the end of the params sent to the receiving function. This is captured as event in the handleChange function.
+
+#### Shared components
+
+Components that can be used anywhere are stored in the Shared folder. Most of these rely on the "handleAction" pattern.
+
+Name: **ClickBtn** <br>
+Description: **Creates a clickable button that will execute a function.** <br>
+Props:
+ - onClick: (Function) What will be executed on button click.
+ - Text: (String) Text that will be displayed in button body.
+ - readOnly: (Boolean) Defaults to false. True will disable button.
+
+Name: **LinkBtn** <br>
+Description: **Creates a clickable button that will reroute to a link.** <br>
+Props:
+- Url: (String) Full Url of redirect on button Click.
+- Text: (String) Text that will be displayed in button body.
+- readOnly: (Boolean) Defaults to false. True will disable button.
+
+Name: **StaticTextField** <br>
+Description: **Creates a formatted static text row.** <br>
+Props:
+- label: (String) Row label.
+- text: (String) Text of row.
+- width: (String) Width of row. Must include %, px, vw, etc.. ('100%')
+
+Name: **SelectableTextField** <br>
+Description: **Creates a formatted text selectable row.** <br>
+Props:
+- texts: (Array) The texts that will be displayed in the row. Must be held in an array, even if just one text.
+- width: (String) Width of row. Must include %, px, vw, etc.. ('100%')
+- returnKey: (String) The key that will match a state change.
+- returnValue: (String, Array, Object) The thing that will be replaced in the state change.
+- handleAction: (Function) The function that will executed when row is selected.<br>
+
+Name: **DropDownMenu** <br>
+Description: **Creates a drop down menu from a list of objects.** <br>
+Props:
+- list: (Array) All of the objects that will be selectable from the drop down menu.
+- header: (Object) The initial object that will be displayed in the header of the drop down menu.
+- label: (String) The attribute of the object that will be displayed in the drop down rows.
+- handleAction: (Function) The function that will handle the selection of a row.
+When a row is selected the drop down menu will build an object { item: selectedObject } that can be used to change state.
+
+## Stylesheets
+
+> Everything is scss and Flexbox is the main layout tool used. Flexbox everywhere!
+
+Because I hate Bootstrap, I rolled all my own Stylesheets. Sorry if this kills you a little.
+
+Stylesheets are organized in folders and should be more or less easy to locate. For the most part styles in each folder should make sense why they are there. Other times it won't make sense. At the very least, fussy searching for a style class should be easy and the class should not be much of a mystery.
+
+Shared React Components have their own Mixin, found in the stylesheets/components folder. When you add a shared Component in React you will also need to @include the corresponding style in it's parent.
+
+I tried to make each .scss file as small as possible. I have also repeated styles when they could have been shared in a single file. This is mostly to reduce the chance of breaking styles elsewhere. When you change a style you should have a pretty good idea of what it's actually going to change, and not
+change for that matter.
+
+Because scss allows us to nest classes I have "scoped" each page to keep things from messing with other things. All admin classes are wrapped in .admin, reviewer in .reviewer, and student in .student. Seems a little redundant, but it makes you stress less about adding and changing styles.
 
 ## Testing
 
 This section covers some of what is in the testing suite that may not be obvious. Testing React in a Rails environment isn't awesome and requires a few extra hurdles to jump through.
 
 > The testing environment uses RSpec and Capybara with Poltergeist to handle Phantomjs. It's slow, but easy to write and easy to test and does not require any additional setup on your end.
+
+***AAAAACK!!! As of now Phantomjs does not support Javascript ES6. This means that unless you want to go down some very dark roads testing React Components is not possible. When support of ES6 is real, Feature testing should be really easy and integrate very nicely with Capybara.***
+
 > All testing configs for middle-wear will be found in rails_helper.rb. This includes Shoulda-Matchers, Capybara/Poltergeist, and Omniauth
 
-Unit and Integration testing covers most Ruby written code, and is fairly straight forward. Feature testing covers some higher level functionality on the user's end. To reduce test maintenance they try to stay vague enough that changes to css or DOM elements will not effect it. But, inevitably changes on the user's end will probably break something. Listed here are those areas that might be suspect.
+Unit testing covers most Ruby written code, and is fairly straight forward. Feature testing covers some higher level functionality on the user's end.
 
 #### User authentication and authorization
 
