@@ -1,16 +1,15 @@
 [![Build Status](https://travis-ci.org/turingschool/full-circle.svg?branch=master)](https://travis-ci.org/) [![Code Climate](https://codeclimate.com/github/turingschool/full-circle/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate) [![security](https://hakiri.io/github/turingschool/full-circle/master.svg)](https://hakiri.io/github/turingschool/full-circle/master)
 
-# Full Circle
-### Turing's Diversity Scholarship Application
+# Full Circle: Turing's Diversity Scholarship Application
 
 This application assists in streamlining and automating the application process for Turing's Diversity Scholarship Program.
 
-### Dependencies
+## Dependencies
 - Ruby 2.4.1
 - Rails 5.1.3
 - React 2.2.1
 
-### Setup
+## Setup
 
 If you don't have ruby 2.4.1 or greater first install this using your Ruby version manager of choice: $ `rvm install 2.4.1`
 
@@ -25,6 +24,25 @@ GITHUB_CLIENT_SECRET:
 ```
 
 Finally, run the test suite: $ `rspec`
+
+## Deployment
+
+Make sure the tests are passing on
+[Travis CI](https://circleci.com/gh/turingschool/full-circle) and then deploy to Heroku staging
+followed by production.
+
+To deploy to staging: `git push staging master`. To deploy to production: `git
+push heroku master`.
+
+The above assumed you have `staging` and `heroku` remotes set up to point to the
+below Heroku apps.
+
+The app runs on Heroku and has a staging and a production environment.
+
+The staging app is called turing-full-circle-staging and can be found at
+[https://full-circle-staging.turing.io](https://full-circle-staging.turing.io)
+The production app is called turing-full-circle and can be found at
+[https://full-circle.turing.io](https:/full-circle.turing.io)
 
 ## How the App Works
 > This section describes how the app works and it's structure. Here is where you can find what code does what and where to find it.
@@ -175,7 +193,7 @@ This section covers some of what is in the testing suite that may not be obvious
 
 > The testing environment uses RSpec and Capybara with Poltergeist to handle Phantomjs. It's slow, but easy to write and easy to test and does not require any additional setup on your end.
 
-***AAAAACK!!! As of now Phantomjs does not support Javascript ES6. This means that unless you want to go down some very dark roads testing React Components is not possible. When support of ES6 is real, Feature testing should be really easy and integrate very nicely with Capybara.***
+***As of now Phantomjs does not support Javascript ES6. This means that unless you want to go down some very dark roads testing React Components is not possible. When support of ES6 is supported, Feature testing should be really easy and integrate very nicely with Capybara.***
 
 > All testing configs for middle-wear will be found in rails_helper.rb. This includes Shoulda-Matchers, Capybara/Poltergeist, and Omniauth
 
