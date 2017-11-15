@@ -28,7 +28,7 @@ Finally, run the test suite: $ `rspec`
 ## Deployment
 
 Make sure the tests are passing on
-[Travis CI](https://circleci.com/gh/turingschool/full-circle) and then deploy to Heroku staging
+[Travis CI](https://travis-ci.org/turingschool/full-circle) and then deploy to Heroku staging
 followed by production.
 
 To deploy to staging: `git push staging master`. To deploy to production: `git
