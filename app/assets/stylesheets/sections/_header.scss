@@ -1,3 +1,7 @@
+.header .header-frame {
+  height: 80px !important;
+}
+
 .header-frame {
   display: flex;
   justify-content: space-between;
@@ -9,7 +13,7 @@
 
   img {
     height: 60px;
-    margin: 10px;
+    margin: 20px;
   }
 
   menu.user {
