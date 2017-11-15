@@ -10386,9 +10386,9 @@ h4 {
   width: 1200px;
   height: 90vh;
   padding: 20px;
-  border: 1px solid #00bbd2;
-  border-radius: 4px;
+  border: none !important;
   background-color: white;
+  margin-bottom: 50px;
 }
 /* line 2, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/components/_btn.scss */
 .student .application-guidelines .btn {
@@ -10422,10 +10422,17 @@ h4 {
 .student .application-guidelines .btn:active {
   background-color: #00c4dc;
 }
+
+.student .application-guidelines h2 {
+  padding: 10px 0 10px 0;
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+}
 /* line 3, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/components/_text_format.scss */
 .student .application-guidelines h3 {
   padding: 10px 0 10px 0;
-  font-size: 24px;
+  font-size: 50px;
   font-weight: 600;
 }
 /* line 10, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/components/_text_format.scss */
@@ -10440,6 +10447,12 @@ h4 {
   font-size: 18px;
   line-height: 20px;
 }
+.student .application-guidelines ol li {
+  padding: 10px 0 10px 25px !important;
+  /*padding: 10px 0 10px 0;*/
+  font-size: 18px;
+  line-height: 20px;
+}
 /* line 19, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/modules/student/_application_guidelines.scss */
 .student .application-guidelines .body {
   display: flex;
@@ -10447,7 +10460,7 @@ h4 {
   width: 100%;
   height: 100%;
   padding: 20px;
-  border: 1px solid #00bbd2;
+  border: 2px solid #00bbd2;
   border-radius: 4px;
   font-size: 18px;
   line-height: 20px;

@@ -21,7 +21,7 @@ class StudentApplicationQuestions extends React.Component {
             <ClickBtn
               Text='Read Guidelines'
               onClick={this.props.toggleGuidelines.bind(this, {
-                guidelines: 'show'
+                guidelines: 'enable'
               })} />
           </section>
           <section className='questions'
