@@ -26,6 +26,10 @@ class Header extends React.Component {
                  </a>
                 </span>
              </menu>
+    } else {
+      user = <menu className='user'>
+               <LinkBtn Text='Login' Url='/auth/github' />
+             </menu>
     }
 
     return (
