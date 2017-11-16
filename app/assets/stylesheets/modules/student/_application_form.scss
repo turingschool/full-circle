@@ -1,7 +1,7 @@
 .student {
   .application-form {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
 
     width: 100%;
@@ -29,7 +29,7 @@
     }
 
     .thank-you {
-      @include shadow();
+      background-color: white;
 
       display: flex;
       justify-content: center;
@@ -38,8 +38,7 @@
       height: 100px;
       width: 100%;
 
-      padding: 20px;
-      border: 1px solid $blue-digital;
+      margin: -100px 0 50px 0;
       border-radius: 4px;
 
       font-size: 24px;
