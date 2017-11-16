@@ -14,8 +14,8 @@ class StudentApplicationQuestions extends React.Component {
       <section className='application-questions'>
         <section className='inside-border'>
           <section className='info'>
-            <h4>Application Deadline</h4>
-            <p>{ date.toDateString() }</p>
+            <p>Application Deadline</p>
+            <h4>{ date.toDateString() }</h4>
           </section>
           <section className='guidelines'>
             <ClickBtn

@@ -26,19 +26,6 @@ class StudentDashboard extends React.Component {
     this.setState(action)
   }
 
-  render() {
-    let page = this.routing()
-
-    return (
-      <main className='main-vert-frame'>
-        <Header user={this.user} />
-        <section className='student'>
-          { page }
-        </section>
-      </main>
-    )
-  }
-
   routing() {
     if (this.state.cohort == null) {
       return <NotAcceptingApplications />
@@ -72,5 +59,20 @@ class StudentDashboard extends React.Component {
       .then((json) => {
         this.handleChange({ application: json })
       })
+  }
+  
+  
+  render() {
+    let page = this.routing()
+
+    return (
+      <main className='main-vert-frame'>
+        <Header user={this.user} />
+        <section className='student'>
+          <h1>Complete Your Essay</h1>
+          { page }
+        </section>
+      </main>
+    )
   }
 }

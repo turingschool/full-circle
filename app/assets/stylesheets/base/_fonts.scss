@@ -17,10 +17,13 @@ a:hover {
 
 h1, h2, h3, h4, h5 {
   weight: bold;
+  color: #4d4d4f;
 }
 
 h1 {
+  text-align: center;
   font-size: 45px;
+  margin: 30px;
 }
 
 h2 {
@@ -46,4 +49,9 @@ h3 {
 
 h4 {
   font-size: 20px;
+  font-weight: bold;
+}
+
+p {
+  color: #4d4d4f;
 }

@@ -6,17 +6,19 @@ class Defaults
     end
 
     def questions
-      "<h4>Please answer the following four questions in your essay.</h4>
-      <p>1 - Tell us the story of how you became interested in a career in
-      software development.</p>
-      <p>2 - Share something you would be passionate about contributing to the
-      world in the next five years.</p>
-      <p>3 - Share a challenge/situation you have experienced that you believe
-      was based on your status as a person in an underrepresented group and how
-      you overcame that challenge or handled that situation.</p>
-      <p>4 - Describe your financial barriers and how participation in this
-      scholarship program could impact your ability to pursue education at
-      Turing and a career in software development.</p>"
+      "<h4>Please answer the following four questions in your essay:</h4>
+      <ol>
+        <li><bold>1.</bold> Tell us the story of how you became interested in a career in
+        software development.</p>
+        <li><bold>2.</bold> Share something you would be passionate about contributing to the
+        world in the next five years.</p>
+        <li><bold>3.</bold> Share a challenge/situation you have experienced that you believe
+        was based on your status as a person in an underrepresented group and how
+        you overcame that challenge or handled that situation.</p>
+        <li><bold>4.</bold> Describe your financial barriers and how participation in this
+        scholarship program could impact your ability to pursue education at
+        Turing and a career in software development.</p>
+      </ol>"
     end
 
     def guidelines(cohort)
