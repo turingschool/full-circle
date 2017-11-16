@@ -69,7 +69,7 @@ class StudentDashboard extends React.Component {
       <main className='main-vert-frame'>
         <Header user={this.user} />
         <section className='student'>
-          <h1>Complete Your Essay</h1>
+          <h1 className='essay-title'>Complete Your Essay</h1>
           { page }
         </section>
       </main>
