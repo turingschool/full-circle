@@ -22,7 +22,7 @@ class Defaults
     end
 
     def guidelines(cohort)
-      "<h2>Turing School of Software & Design Diversity Scholarship Announcement</h2>
+      "<h2>Turing School of Software & Design Diversity Scholarship Guidelines</h2>
       <br></br>
       
       <p>Turing stands for the inclusion and equality of all people, regardless of race, gender, sexual orientation, age, zip code, background, or life experience. When we look at the tech industry overall, though, we see significant biases and a lot of missing faces. So many amazing people who could make monumental contributions to software development have not yet entered the field. This needs to change.</p>
