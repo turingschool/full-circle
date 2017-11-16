@@ -1,27 +1,5 @@
 class StudentApplicationFooter extends React.Component {
 
-  render() {
-    return(
-      <section className='application-footer'>
-        <ClickBtn
-          onClick={this.props.updateApplication}
-          Text='Save' />
-
-        <div className='message'>
-          {this.props.message}
-        </div>
-
-        <div className='message'>
-          {this.props.wordCount}
-        </div>
-
-        <ClickBtn
-          onClick={this.props.toggleConfirm.bind(this, this.validateEssay())}
-          Text='Submit' />
-      </section>
-    )
-  }
-
   validateEssay() {
     if (this.props.message == 'Unsaved Changes') {
       return { message: 'Save Before Submitting' }
@@ -33,5 +11,30 @@ class StudentApplicationFooter extends React.Component {
         essay: this.props.essay
       }
     }
+  }
+  
+  render() {
+    return(
+      <section className='application-footer'>
+
+        <div className='message'>
+          {this.props.message}
+        </div>
+
+        <div className='message'>
+          {this.props.wordCount} words remaining
+        </div>
+
+        <div className='save-button'>
+        <ClickBtn
+          onClick={this.props.updateApplication}
+          Text='Save' />
+        </div>
+
+        <ClickBtn
+          onClick={this.props.toggleConfirm.bind(this, this.validateEssay())}
+          Text='Submit' />
+      </section>
+    )
   }
 }
