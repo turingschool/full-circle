@@ -1,13 +1,12 @@
-.header .header-frame {
-  height: 80px !important;
-}
-
 .header-frame {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  height: 70px;
+  margin-bottom: 20px;
 
-  width: 100vw;
+  width: 100%;
 
   background-color: $gray-digital;
 
@@ -25,14 +24,12 @@
 
     min-width: 120px;
 
-    font-size: 15px;
-
     .logout {
       text-align: center;
       width: 120px;
 
       .btn {
-        font-size: 15px;
+        font-size: 18px;
       }
 
       .btn:hover {
@@ -42,6 +39,7 @@
     }
 
     span, a {
+      font-size: 18px;
       color: white;
       padding: 0 10px 0 10px;
     }
