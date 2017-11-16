@@ -5,7 +5,8 @@ class StudentDashboard extends React.Component {
 
     this.state = {
       cohort: {},
-      application: {}
+      application: {},
+      header: "Complete Your Essay"
     }
 
     this.user = JSON.parse(this.props.user)
@@ -32,6 +33,7 @@ class StudentDashboard extends React.Component {
     } else {
       if (this.state.application) {
         return <StudentApplicationSection
+          header={this.state.header}
           application={this.state.application}
           cohort={this.state.cohort}
           user={this.user}
@@ -69,7 +71,7 @@ class StudentDashboard extends React.Component {
       <main className='main-vert-frame'>
         <Header user={this.user} />
         <section className='student'>
-          <h1 className='essay-title'>Complete Your Essay</h1>
+          <h1 className='essay-title'> { this.state.header } </h1>
           { page }
         </section>
       </main>
