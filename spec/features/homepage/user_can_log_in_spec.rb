@@ -19,7 +19,9 @@ RSpec.describe 'User can login' do
     end
 
     it 'Student will route to student/dashboard' do
-      click_on 'Login'
+      within ('header') do
+        click_on 'Login'
+      end
 
       expect(page).to have_current_path('/student/dashboard')
     end
@@ -27,14 +29,18 @@ RSpec.describe 'User can login' do
     it 'Reviewer will route to reviewer/dashboard' do
       @user.reviewer!
 
-      click_on 'Login'
+      within ('header') do
+        click_on 'Login'
+      end
       expect(page).to have_current_path('/reviewer/dashboard')
     end
 
     it 'Admin will route to admin/dashboard' do
       @user.admin!
 
-      click_on 'Login'
+      within ('header') do
+        click_on 'Login'
+      end
       expect(page).to have_current_path('/admin/dashboard')
     end
   end
