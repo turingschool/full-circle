@@ -11,3 +11,25 @@
 
   @include btn();
 }
+
+#login-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 210px;
+  
+  background-color: $blue-digital;
+  padding: 10px 15px;
+
+  border-radius: 4px;
+
+  color: white;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+#gh-logo {
+  height: 23px;
+}
