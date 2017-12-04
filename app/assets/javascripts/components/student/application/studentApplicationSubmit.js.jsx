@@ -1,4 +1,5 @@
 class StudentApplicationSubmit extends React.Component {
+  
   constructor(props) {
     super(props)
 
@@ -16,36 +17,7 @@ class StudentApplicationSubmit extends React.Component {
   handleUpdate(action) {
     this.setState(action)
   }
-
-  render() {
-    return(
-      <section className='application-form'>
-        <p>{this.props.essay}</p>
-
-        <section className='confirm-alts'>
-          <section className='row'>
-            <h4>Email:</h4>
-            <input value={this.state.alt_email}
-              onChange={this.handleChange.bind(this, 'alt_email')} />
-          </section>
-
-          <section className='row'>
-            <h4>Name:</h4>
-            <input value={this.state.alt_name}
-              onChange={this.handleChange.bind(this, 'alt_name')} />
-          </section>
-        </section>
-
-        <section className='confirm-submission'>
-          <ClickBtn Text='Go Back'
-            onClick={this.props.toggleConfirm.bind(this, { confirm: false })} />
-          <span>{this.state.message}</span>
-          <ClickBtn Text='Confirm' onClick={this.submitForm.bind(this)} />
-        </section>
-      </section>
-    )
-  }
-
+  
   submitForm(){
     this.submitUser()
       .then(this.submitApplication.bind(this))
@@ -80,5 +52,34 @@ class StudentApplicationSubmit extends React.Component {
     }
 
     return ping('/api/v1/student/applications', options)
+  }
+
+  render() {
+    return(
+      <section className='application-form'>
+        <p>{this.props.essay}</p>
+
+        <section className='confirm-alts'>
+          <section className='row'>
+            <h4>Email:</h4>
+            <input value={this.state.alt_email}
+              onChange={this.handleChange.bind(this, 'alt_email')} />
+          </section>
+
+          <section className='row'>
+            <h4>Name:</h4>
+            <input value={this.state.alt_name}
+              onChange={this.handleChange.bind(this, 'alt_name')} />
+          </section>
+        </section>
+
+        <section className='confirm-submission'>
+          <ClickBtn Text='Go Back'
+            onClick={this.props.toggleConfirm.bind(this, { confirm: false })} />
+          <span>{this.state.message}</span>
+          <ClickBtn Text='Confirm' onClick={this.submitForm.bind(this)} />
+        </section>
+      </section>
+    )
   }
 }

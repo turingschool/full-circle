@@ -13,6 +13,11 @@ class Header extends React.Component {
       isLoggedIn: loggedIn
     }
   }
+  
+  
+  logOut() {
+
+  }
 
   render () {
     let user = ""
@@ -40,9 +45,5 @@ class Header extends React.Component {
         { user }
       </header>
     )
-  }
-
-  logOut() {
-
   }
 }
