@@ -1,5 +1,4 @@
 .admin {
-  @include shadow();
 
   display: flex;
   flex-direction: column;
@@ -7,6 +6,6 @@
   width: 1200px;
   height: 100%;
 
-  margin: 20px 0 20px 0;
-  padding: 10px;
+  margin: 10px 0px;
+  padding: 20px;
 }

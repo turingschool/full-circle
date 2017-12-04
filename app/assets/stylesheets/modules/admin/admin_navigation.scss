@@ -1,13 +1,17 @@
 .admin-navigation-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 
   width: 100%;
   min-height: 50px;
 
-  padding: 10px;
+  padding: 90px 20px 10px 20px;
   margin: 10px;
 
-  @include btn($width: 120px);
+  @include btn($width: 140px);
+  
+  .btn {
+    margin: 0px 10px;
+  }
 }
