@@ -1,14 +1,5 @@
 class AdminNewCohort extends React.Component {
 
-  render() {
-    return(
-      <section className='new-cohort'>
-        <ClickBtn Text='New Cohort'
-          onClick={this.createCohort.bind(this)} />
-      </section>
-    )
-  }
-
   createCohort() {
 
     ping('/api/v1/admin/cohorts', this.options())
@@ -38,5 +29,14 @@ class AdminNewCohort extends React.Component {
       headers: { 'Authorization': this.props.authorization,
                  'Content-Type': "application/json" }
     }
+  }
+  
+  render() {
+    return(
+      <section className='new-cohort'>
+        <ClickBtn Text='New Cohort'
+          onClick={this.createCohort.bind(this)} />
+      </section>
+    )
   }
 }

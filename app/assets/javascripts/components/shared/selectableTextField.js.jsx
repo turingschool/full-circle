@@ -1,5 +1,11 @@
 class SelectableTextField extends React.Component {
 
+  returnObject() {
+    let obj = {}
+    obj[this.props.returnKey] = this.props.returnValue
+    return obj
+  }
+
   render() {
     return(
       <div className='selectable-text-field'
@@ -11,11 +17,5 @@ class SelectableTextField extends React.Component {
         })}
       </div>
     )
-  }
-
-  returnObject() {
-    let obj = {}
-    obj[this.props.returnKey] = this.props.returnValue
-    return obj
   }
 }
