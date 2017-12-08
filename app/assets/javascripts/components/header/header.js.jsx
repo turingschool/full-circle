@@ -28,13 +28,15 @@ class Header extends React.Component {
              </menu>
     } else {
       user = <menu className='user'>
-               <LinkBtn Text='Login' Url='/auth/github' />
+              <a href='/auth/github' id='login-link'>
+                <img src="assets/images/GitHub-Mark-Light-120px-plus.png" id='gh-nav-logo'/> Login
+              </a>
              </menu>
     }
 
     return (
       <header className='header-frame'>
-        <img src={"https://www.turing.io/sites/default/files/turing-logo_1_0.png"} className='turing-logo' />
+        <img src="assets/images/TuringSchool_LogoHorizontal_White.png" className='turing-logo'/>
         { user }
       </header>
     )

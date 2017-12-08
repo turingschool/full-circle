@@ -11,7 +11,11 @@ class HomePage extends React.Component {
           <br></br>
           <br></br>
           <br></br>
-          <LinkBtn Text='Login' Url='/auth/github' />
+          <a href='/auth/github'>
+            <button id='login-button'>
+              <img src="assets/images/GitHub-Mark-Light-120px-plus.png" id='gh-logo'/> Login with Github
+            </button>
+          </a>
         </section>
       </main>
     )
