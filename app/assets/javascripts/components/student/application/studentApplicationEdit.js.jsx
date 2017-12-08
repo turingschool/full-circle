@@ -18,7 +18,6 @@ class StudentApplicationEdit extends React.Component {
   }
 
   wordCount(essay) {
-
     if (essay == "") {
       return this.essayLimit
     } else {
@@ -45,6 +44,23 @@ class StudentApplicationEdit extends React.Component {
       wordCount: this.wordCount(essay)
     })
   }
+  
+  updateApplication() {
+    let options = {
+      method: 'PUT',
+      body: JSON.stringify({ application: {essay: this.state.essay} }),
+      headers: { 'Authorization': this.props.authorization,
+                 'Content-Type': "application/json" }
+    }
+
+    ping('/api/v1/student/applications', options)
+      .then((response) => {
+        this.setState({message: 'Application Saved'})
+      })
+      .catch((error) => {
+        this.setState({message: 'Unable to Save Application'})
+      })
+  }
 
   render () {
     return(
@@ -67,22 +83,5 @@ class StudentApplicationEdit extends React.Component {
           toggleConfirm={this.props.toggleConfirm} />
       </section>
     )
-  }
-
-  updateApplication() {
-    let options = {
-      method: 'PUT',
-      body: JSON.stringify({ application: {essay: this.state.essay} }),
-      headers: { 'Authorization': this.props.authorization,
-                 'Content-Type': "application/json" }
-    }
-
-    ping('/api/v1/student/applications', options)
-      .then((response) => {
-        this.setState({message: 'Application Saved'})
-      })
-      .catch((error) => {
-        this.setState({message: 'Unable to Save Application'})
-      })
   }
 }

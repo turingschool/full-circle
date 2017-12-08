@@ -1,5 +1,11 @@
 class AdminCohortsList extends React.Component {
 
+  selected(cohort) {
+    if (this.props.cohort.id == cohort.id) {
+      return 'selected'
+    }
+  }
+  
   render() {
     return(
       <section className='cohorts-list'>
@@ -12,11 +18,5 @@ class AdminCohortsList extends React.Component {
         )}
       </section>
     )
-  }
-
-  selected(cohort) {
-    if (this.props.cohort.id == cohort.id) {
-      return 'selected'
-    }
   }
 }
