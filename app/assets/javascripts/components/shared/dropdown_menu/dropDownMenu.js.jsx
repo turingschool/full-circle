@@ -8,6 +8,16 @@ class DropDownMenu extends React.Component {
     }
   }
 
+  handleAction(action) {
+    this.setState(action)
+  }
+  
+  list() {
+    return this.props.list.filter((item) => {
+      return item.id != this.props.header.id
+    })
+  }
+  
   render() {
     return(
       <section className='circle-dropdown-menu'>
@@ -25,15 +35,5 @@ class DropDownMenu extends React.Component {
 
       </section>
     )
-  }
-
-  handleAction(action) {
-    this.setState(action)
-  }
-
-  list() {
-    return this.props.list.filter((item) => {
-      return item.id != this.props.header.id
-    })
   }
 }

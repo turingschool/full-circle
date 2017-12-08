@@ -30,6 +30,19 @@ class AdminViewCohorts extends React.Component {
     this.setState(action)
   }
 
+  applicationSection() {
+    if (this.state.application != undefined) {
+      return <AdminViewApplicationSection
+        application={this.state.application}
+        handleAction={this.handleAction.bind(this)}
+        authorization={this.props.authorization} />
+    } else {
+      return <section className='no-application'>
+        No Applications
+      </section>
+    }
+  }
+  
   render() {
     return(
       <section className='main-horz-frame'>
@@ -42,18 +55,5 @@ class AdminViewCohorts extends React.Component {
         {this.applicationSection()}
       </section>
     )
-  }
-
-  applicationSection() {
-    if (this.state.application != undefined) {
-      return <AdminViewApplicationSection
-        application={this.state.application}
-        handleAction={this.handleAction.bind(this)}
-        authorization={this.props.authorization} />
-    } else {
-      return <section className='no-application'>
-        No Applications
-      </section>
-    }
   }
 }

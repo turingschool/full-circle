@@ -1,21 +1,5 @@
 class AdminCohortFormFooter extends React.Component {
 
-  render() {
-    return(
-      <section className='form-footer'>
-        <ClickBtn Text={this.editOrSaveText()}
-          onClick={this.editOrSaveFunction()} />
-
-        {this.props.message}
-
-        <ClickBtn Text='Delete'
-          onClick={this.deleteCohort.bind(this)}
-          readOnly={this.props.readOnly} />
-
-      </section>
-    )
-  }
-
   deleteCohort() {
     let cohort_id = this.props.cohort.id
 
@@ -85,5 +69,21 @@ class AdminCohortFormFooter extends React.Component {
     } else {
       return this.saveCohort.bind(this)
     }
+  }
+  
+  render() {
+    return(
+      <section className='form-footer'>
+        <ClickBtn Text={this.editOrSaveText()}
+          onClick={this.editOrSaveFunction()} />
+
+        {this.props.message}
+
+        <ClickBtn Text='Delete'
+          onClick={this.deleteCohort.bind(this)}
+          readOnly={this.props.readOnly} />
+
+      </section>
+    )
   }
 }

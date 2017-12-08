@@ -30,8 +30,6 @@
 
         width: 400px;
         font-size: 18px;
-
-        border-bottom: 2px solid $blue-digital;
       }
 
       input:focus {
@@ -39,7 +37,7 @@
       }
 
       input:hover {
-        border-bottom: 3px solid $blue-digital;
+        font-weight: bold;
       }
     }
   }
