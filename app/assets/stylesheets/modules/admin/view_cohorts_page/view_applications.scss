@@ -2,8 +2,8 @@
 
   .view-applications,
   .no-application {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    // flex-direction: column;
 
     width: 50%;
     height: 100%;
@@ -17,6 +17,7 @@
   }
 
   .no-application {
+    display: flex;
     justify-content: center;
     align-items: center;
   }

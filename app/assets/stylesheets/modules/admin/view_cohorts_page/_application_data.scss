@@ -4,14 +4,40 @@
     flex-direction: column;
 
     width: 100%;
+    height: 90%;
     padding: 10px;
-
-    .application-scores,
-    .user-data {
+    
+    .application-scores {
        display: flex;
        flex-wrap: wrap;
 
-       width: 100%
+       width: 100%;
+       line-height: 22px;
+       padding: 10px 0px;
     }
+    
+    .application-scores {
+      height: 90px;
+      align-items: stretch;
+    }
+    
+    .user-name, .user-email {
+      margin: 10px 0px;
+    }
+    
+    .user-data {
+      height: 60px;
+      align-items: stretch;
+    }
+    
+    .student-essay {
+      height: 100%;
+      overflow: scroll;
+      display: block;
+
+      width: 100%;
+      line-height: 22px;
+      padding: 20px 0px;
+   }
   }
 }

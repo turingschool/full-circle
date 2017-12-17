@@ -3,15 +3,12 @@ class AdminApplicationUserData extends React.Component {
   render() {
     return(
       <section className='user-data'>
-        <StaticTextField
-          label='Name'
-          text={this.props.user.alt_name}
-          width='50%' />
-
-        <StaticTextField
-          label='Email'
-          text={this.props.user.alt_email}
-          width={'50%'} />
+        <div className='user-name'>
+          Name: {this.props.user.alt_name}
+        </div>
+        <div className='user-email'>
+          Email: {this.props.user.alt_email}
+        </div>
       </section>
     )
   }

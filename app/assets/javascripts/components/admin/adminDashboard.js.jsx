@@ -4,7 +4,7 @@ class AdminDashboard extends React.Component {
     super(props)
 
     this.state = {
-      page: 'editCohorts',
+      page: 'viewCohorts',
       cohorts: JSON.parse(this.props.cohorts)
     }
 
