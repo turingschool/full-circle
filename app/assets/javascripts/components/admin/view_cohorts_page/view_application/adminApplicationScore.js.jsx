@@ -26,6 +26,8 @@ class AdminApplicationScore extends React.Component {
           label='Average'
           text={'100'}
           width={'50%'} />
+          
+        <br></br>
 
         <StaticTextField
           label='Passion'
