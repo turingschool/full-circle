@@ -41,7 +41,7 @@ class Header extends React.Component {
 
     return (
       <header className='header-frame'>
-        <img src="assets/images/TuringSchool_LogoHorizontal_White.png" className='turing-logo'/>
+        <img src="assets/images/turing_logo.png" className='turing-logo'/>
         { user }
       </header>
     )

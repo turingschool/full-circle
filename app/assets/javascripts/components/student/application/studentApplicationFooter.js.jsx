@@ -13,13 +13,27 @@ class StudentApplicationFooter extends React.Component {
     }
   }
   
+  message() {
+    if (this.props.message == 'Save Before Submitting' || this.props.message == 'Essay cannot be blank')
+      return (
+        <div className='warn-message'>
+          {this.props.message}
+        </div>
+      )
+    else {
+      return (
+        <div className='message'>
+          {this.props.message}
+        </div>
+      )
+    }
+  }
+  
   render() {
     return(
       <section className='application-footer'>
 
-        <div className='message'>
-          {this.props.message}
-        </div>
+        {this.message()}
 
         <div className='message'>
           {this.props.wordCount} words remaining

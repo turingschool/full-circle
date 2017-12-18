@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  height: 70px;
+  height: 7%;
   margin-bottom: 20px;
 
   width: 100%;
@@ -11,8 +11,8 @@
   background-color: $gray-digital;
 
   img {
-    height: 55px;
-    margin: 20px;
+    height: 80%;
+    margin-left: 2%;
   }
 
   menu.user {
@@ -20,27 +20,26 @@
     justify-content: space-between;
     align-items: center;
 
-    padding-right: 20px;
-
-    min-width: 120px;
+    padding-right: 3%;
+    font-size:  0.9em;
+    width: 40%;
 
     .logout {
-      text-align: center;
-      width: 120px;
+      text-align: right;
+      width: 30%;
 
       .btn {
-        font-size: 18px;
+        color: white;
+        padding-right: 0px;
       }
     }
 
-    span, a {
-      // width: 60px;
-      font-size: 18px;
+    .name, a {
       color: white;
-      padding: 0 10px 0 10px;
+      width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
     }
     
     a:hover {

@@ -2,6 +2,7 @@
   .cohort-row {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     width: 100%;
     min-height: 30px;
@@ -12,7 +13,7 @@
     border: 1px solid $blue-digital;
     border-radius: 4px;
 
-    font-size: 18px;
+    font-size: 12px;
   }
 
   .cohort-row:hover {
