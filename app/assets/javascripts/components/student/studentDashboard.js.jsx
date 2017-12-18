@@ -70,7 +70,7 @@ class StudentDashboard extends React.Component {
       <main className='main-vert-frame'>
         <Header user={this.user} />
         <section className='student'>
-          <h1 className='essay-title'> { this.state.header } </h1>
+          <h2 className='essay-title'> { this.state.header } </h2>
           { page }
         </section>
       </main>

@@ -4,9 +4,9 @@
   flex-direction: column;
   align-items: center;
 
-  margin: 120px 0 20px 0;
+  margin: 10% 0 20px 0;
 
-  width: 1200px;
+  width: 90%;
   height: 100%;
 
   @include btn();
@@ -16,16 +16,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 210px;
+  width: 120%;
   
   background-color: $blue-digital;
-  padding: 10px 15px;
+  padding: 5% 7%;
 
   border-radius: 4px;
 
   color: white;
 
-  font-size: 18px;
+  font-size: 1em;
 
   cursor: pointer;
 }

@@ -12,6 +12,10 @@
 
     height: 80px;
 
-    padding: 20px 0px;
+    padding: 15px 0px;
+    
+    span {
+      justify-content: flex-start;
+    }
   }
 }

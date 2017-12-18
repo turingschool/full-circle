@@ -57,6 +57,10 @@ class StudentApplicationSubmit extends React.Component {
   render() {
     return(
       <section className='application-form'>
+        <div className='confirm-warning'>
+          * Please confirm your name and email below.
+        </div>
+        
         <p>{this.props.essay}</p>
 
         <section className='confirm-alts'>
@@ -74,9 +78,9 @@ class StudentApplicationSubmit extends React.Component {
         </section>
 
         <section className='confirm-submission'>
+          <span className='warn-message'>{this.state.message}</span>
           <ClickBtn Text='Go Back'
             onClick={this.props.toggleConfirm.bind(this, { confirm: false })} />
-          <span>{this.state.message}</span>
           <ClickBtn Text='Confirm' onClick={this.submitForm.bind(this)} />
         </section>
       </section>

@@ -1,3 +1,7 @@
+.warn-message {
+  color: red !important;
+}
+
 .student {
   .application-footer {
     display: flex;
@@ -13,18 +17,23 @@
 
     @include btn();
 
-    .message {
+    .message, .warn-message {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       margin-left: 3px;
-      margin-right: -40px;
-      text-align: left;
+      // margin-right: -40px;
+      // text-align: left;
+      font-size: 12px;
 
       width: 200px;
       height: 100%;
 
       color: #999;
+    }
+    
+    .save-button {
+      margin-right: 19.25%
     }
   }
 }
