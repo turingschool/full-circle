@@ -32,22 +32,27 @@ class StudentApplicationFooter extends React.Component {
   render() {
     return(
       <section className='application-footer'>
-
-        {this.message()}
-
-        <div className='message'>
-          {this.props.wordCount} words remaining
+        <div className='essay-info'>
+          <div className='message'>
+            {this.props.wordCount} words remaining
+          </div>
+          
+          {this.message()}
         </div>
 
-        <div className='save-button'>
-        <ClickBtn
-          onClick={this.props.updateApplication}
-          Text='Save' />
+        <div className='buttons'>
+          <div className='save-button'>
+            <ClickBtn
+              onClick={this.props.updateApplication}
+              Text='Save' />
+          </div>
+          
+          <div className='submit-button'>
+            <ClickBtn
+              onClick={this.props.toggleConfirm.bind(this, this.validateEssay())}
+              Text='Submit' />
+          </div>
         </div>
-
-        <ClickBtn
-          onClick={this.props.toggleConfirm.bind(this, this.validateEssay())}
-          Text='Submit' />
       </section>
     )
   }
