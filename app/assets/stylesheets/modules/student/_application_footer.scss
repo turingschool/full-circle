@@ -16,24 +16,35 @@
     padding: 10px;
 
     @include btn();
+    
+    .btn {
+      width: 70px;
+    }
 
     .message, .warn-message {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      margin-left: 3px;
-      // margin-right: -40px;
-      // text-align: left;
-      font-size: 12px;
-
-      width: 200px;
+    
+      width: 150px;
       height: 100%;
-
+      
+      font-size: 12px;
       color: #999;
     }
     
-    .save-button {
-      margin-right: 19.25%
+    .essay-info {
+      display: flex;
+      justify-content: flex-start;
+    }
+    
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    .submit-button {
+      margin-left: 10px;
     }
   }
 }
