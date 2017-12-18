@@ -8,16 +8,14 @@
     padding: 10px;
     
     .application-scores {
-       display: flex;
-       flex-wrap: wrap;
+      display: flex;
+      flex-wrap: wrap;
 
-       width: 100%;
-       line-height: 22px;
-       padding: 10px 0px;
-    }
-    
-    .application-scores {
-      height: 90px;
+      width: 100%;
+      line-height: 22px;
+      padding: 10px 0px;
+       
+      height: 20%;
       align-items: stretch;
     }
     
