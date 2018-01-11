@@ -25,9 +25,12 @@ a:hover {
 // Headers
 
 h1, h2, h3, h4, h5 {
-  font-family:"Helvetica Neue LT Std-Hv";
   weight: bold;
   color: #4d4d4f;
+}
+
+h1, h2 {
+  font-family:"Helvetica Neue LT Std-Hv";
 }
 
 h1 {
