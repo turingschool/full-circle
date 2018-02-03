@@ -23,6 +23,8 @@ class AdminDashboard extends React.Component {
         return this.editCohorts()
       case('editUsers'):
         return this.editUsers()
+      case('assignReviewers'):
+        return this.assignReviewers()
       default:
         return this.viewCohorts()
     }
@@ -37,6 +39,13 @@ class AdminDashboard extends React.Component {
 
   viewCohorts() {
     return <AdminViewCohorts
+      cohorts={this.state.cohorts}
+      changePage={this.handleChange.bind(this)}
+      authorization={this.authorization} />
+  }
+
+  assignReviewers() {
+    return <AdminReviewerSection
       cohorts={this.state.cohorts}
       changePage={this.handleChange.bind(this)}
       authorization={this.authorization} />

@@ -10,6 +10,9 @@ class AdminNavigationBar extends React.Component {
         <ClickBtn Text='Edit Cohorts'
           onClick={this.props.changePage.bind(this, {page: "editCohorts" })} />
 
+        <ClickBtn Text='Assign Reviewers'
+          onClick={this.props.changePage.bind(this, {page: "assignReviewers" })} />
+
         <ClickBtn Text='Edit Users'
           onClick={this.props.changePage.bind(this, {page: "editUsers" })} />
 

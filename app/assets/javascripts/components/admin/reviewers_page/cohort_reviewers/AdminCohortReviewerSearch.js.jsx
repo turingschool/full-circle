@@ -24,7 +24,7 @@ class AdminCohortReviewerSearch extends React.Component {
           <input type='text'
             readOnly={this.props.readOnly}
             className={['readOnly', this.props.readOnly].join('')}
-            placeholder='Search Reviewers'
+            placeholder='Unselected Reviewers'
             onChange={this.handleChange.bind(this, 'search')} />
         </section>
 
