@@ -16,7 +16,6 @@ class AdminReviewerSection extends React.Component {
   }
 
   render() {
-    debugger;
     return(
       <section className='main-horz-frame'>
         <AdminCohortsListSection
