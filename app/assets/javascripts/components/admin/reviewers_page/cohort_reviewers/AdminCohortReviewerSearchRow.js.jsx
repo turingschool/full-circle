@@ -7,6 +7,7 @@ class AdminCohortReviewerSearchRow extends React.Component {
       .then((response) => {
         response.json().then((json) => {
           this.props.cohort.reviewers.push(json)
+          this.props.cohort.non_reviewers = this.remainingNonReviewers(json)
 
           this.props.handleAction({
             cohort: this.props.cohort,
@@ -17,6 +18,12 @@ class AdminCohortReviewerSearchRow extends React.Component {
       .catch((error) => {
         this.props.handleAction({message: 'Error Adding Reviewer'})
       })
+  }
+  
+  remainingNonReviewers(json) {
+    return this.props.cohort.non_reviewers.filter(function(obj) {
+      return obj.email != json.email
+    })
   }
 
   options(verb, body = {}) {

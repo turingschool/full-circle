@@ -1,16 +1,5 @@
 class AdminCohortReviewerRow extends React.Component {
 
-  render() {
-    return(
-      <div className='reviewer-row'>
-        <span>{this.props.reviewer.name}</span>
-        <ClickBtn Text='X'
-          readOnly={this.props.readOnly}
-          onClick={this.removeReviewer.bind(this)} />
-      </div>
-    )
-  }
-
   removeReviewer() {
     let cohort_id = this.props.cohort.id
 
@@ -18,6 +7,7 @@ class AdminCohortReviewerRow extends React.Component {
       .then((response) => {
         response.json().then((json) => {
           this.props.cohort.reviewers = this.remainingReviewers()
+          this.props.cohort.non_reviewers.push(json)
 
           this.props.handleAction({
             cohort: this.props.cohort,
@@ -45,5 +35,16 @@ class AdminCohortReviewerRow extends React.Component {
       headers: { 'Authorization': this.props.authorization,
                  'Content-Type': "application/json" }
     }
+  }
+  
+  render() {
+    return(
+      <div className='reviewer-row'>
+        <span>{this.props.reviewer.name}</span>
+        <ClickBtn Text='X'
+          readOnly={this.props.readOnly}
+          onClick={this.removeReviewer.bind(this)} />
+      </div>
+    )
   }
 }

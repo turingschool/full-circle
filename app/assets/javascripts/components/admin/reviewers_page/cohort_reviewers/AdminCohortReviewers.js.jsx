@@ -1,6 +1,6 @@
 class AdminCohortReviewers extends React.Component {
 
-  render() {   
+  render() {
     return(
       <section className='cohort-reviewers-section'>
         <section className='reviewer-search-box'>

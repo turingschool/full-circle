@@ -15,6 +15,10 @@ class Cohort < ApplicationRecord
   def reviewers
     self.users.where(role: 'reviewer')
   end
+  
+  def non_reviewers
+    User.reviewer - reviewers
+  end
 
   def students
     self.users.where(role: 'student')

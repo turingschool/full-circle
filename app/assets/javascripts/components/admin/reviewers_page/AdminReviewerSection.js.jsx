@@ -7,7 +7,8 @@ class AdminReviewerSection extends React.Component {
       cohorts: this.props.cohorts,
       cohort: this.props.cohorts[0],
       message: '',
-      readOnly: true
+      readOnly: true,
+      allReviewers: []
     }
   }
   
@@ -24,12 +25,12 @@ class AdminReviewerSection extends React.Component {
           handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
         
-        <AdminReviewer
+        <AdminCohortReviewers
           cohort={this.state.cohort}
           cohorts={this.state.cohorts}
-          allReviewers={this.props.allReviewers}
+          allReviewers={this.state.allReviewers}
           message={this.state.message}
-          readOnly={this.state.readOnly}
+          readOnly={false}
           handleAction={this.handleAction.bind(this)}
           changePage={this.props.changePage}
           authorization={this.props.authorization} />
