@@ -1,14 +1,14 @@
-.cohort-form-section {
-  .cohort-form {
-    display: flex;
-    flex-direction: row;
 
-    width: 100%;
-    height: 100%;
+.cohort-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
-    padding: 10px;
+  width: 100%;
+  height: 100%;
 
-    border: 1px solid $blue-digital;
-    border-radius: 4px;
-  }
+  padding: 10px;
+
+  border: 1px solid $blue-digital;
+  border-radius: 4px;
 }

@@ -6,7 +6,7 @@ class AdminEditCohortsSection extends React.Component {
     this.state = {
       cohorts: this.props.cohorts,
       cohort: this.props.cohorts[0],
-      message: 'Welcome',
+      message: '',
       readOnly: true
     }
   }

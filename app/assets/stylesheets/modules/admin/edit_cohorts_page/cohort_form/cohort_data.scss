@@ -1,4 +1,10 @@
 .cohort-form-section {
+  h3.cohort-title {
+    color: $blue-digital;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
   .cohort-data {
     display: flex;
     flex-direction: column;
@@ -9,10 +15,7 @@
     padding: 10px;
     margin-right: 10px;
 
-    border: 1px solid $blue-digital;
-    border-radius: 4px;
-
-    overflow: scroll;
+    overflow-y: scroll;
 
     .form-row {
       display: flex;

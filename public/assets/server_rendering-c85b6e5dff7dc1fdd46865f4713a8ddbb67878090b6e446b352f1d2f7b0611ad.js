@@ -18324,7 +18324,7 @@
 	 * - Restores selection range.
 	 *
 	 * Future:
-	 * - Restore document/overflow scroll positions that were unintentionally
+	 * - Restore document/overflow-y scroll positions that were unintentionally
 	 *   modified via DOM insertions above the top viewport boundary.
 	 * - Implement/integrate with customized constraint based layout system and keep
 	 *   track of which dimensions must be remeasured.
@@ -19128,7 +19128,7 @@
 	  orient: 0,
 	  orientation: 0,
 	  origin: 0,
-	  overflow: 0,
+	  overflow-y: 0,
 	  overlinePosition: 'overline-position',
 	  overlineThickness: 'overline-thickness',
 	  paintOrder: 'paint-order',

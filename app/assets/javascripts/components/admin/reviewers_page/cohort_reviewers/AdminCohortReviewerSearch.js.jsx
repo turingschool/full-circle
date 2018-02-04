@@ -17,32 +17,6 @@ class AdminCohortReviewerSearch extends React.Component {
     this.setState( {[key]: event.target.value} )
   }
 
-  render() {
-    return(
-      <section className='reviewer-search-box'>
-        <section className='search-input'>
-          <input type='text'
-            readOnly={this.props.readOnly}
-            className={['readOnly', this.props.readOnly].join('')}
-            placeholder='Unselected Reviewers'
-            onChange={this.handleChange.bind(this, 'search')} />
-        </section>
-
-        <section className='search-results'>
-          {this.filteredSearch().map((reviewer, i) => {
-            return <AdminCohortReviewerSearchRow key={i}
-              reviewer={reviewer}
-              cohort={this.props.cohort}
-              readOnly={this.props.readOnly}
-              handleAction={this.props.handleAction}
-              authorization={this.props.authorization}
-            />
-          })}
-        </section>
-      </section>
-    )
-  }
-
   filteredSearch() {
     let search = this.state.search.toLowerCase()
     let length = search.length
@@ -71,5 +45,32 @@ class AdminCohortReviewerSearch extends React.Component {
       headers: { 'Authorization': this.props.authorization,
                  'Content-Type': "application/json" }
     }
+  }
+  
+  render() {
+    return(
+      <section className='reviewer-search-box'>
+        <h3>Unselected Reviewers</h3>
+        <section className='search-input'>
+          <input type='text'
+            readOnly={this.props.readOnly}
+            className={['readOnly', this.props.readOnly].join('')}
+            placeholder={"Search for a reviewer"}
+            onChange={this.handleChange.bind(this, 'search')} />
+        </section>
+
+        <section className='search-results'>
+          {this.filteredSearch().map((reviewer, i) => {
+            return <AdminCohortReviewerSearchRow key={i}
+              reviewer={reviewer}
+              cohort={this.props.cohort}
+              readOnly={this.props.readOnly}
+              handleAction={this.props.handleAction}
+              authorization={this.props.authorization}
+            />
+          })}
+        </section>
+      </section>
+    )
   }
 }

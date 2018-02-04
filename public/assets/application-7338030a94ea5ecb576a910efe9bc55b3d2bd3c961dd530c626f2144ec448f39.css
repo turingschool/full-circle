@@ -125,7 +125,7 @@ img {
 
 /* line 193, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
 svg:not(:root) {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 /* line 204, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
@@ -141,7 +141,7 @@ hr {
 
 /* line 221, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
 pre {
-  overflow: auto;
+  overflow-y: auto;
 }
 
 /* line 229, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
@@ -166,7 +166,7 @@ textarea {
 
 /* line 266, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
 button {
-  overflow: visible;
+  overflow-y: visible;
 }
 
 /* line 277, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
@@ -242,7 +242,7 @@ legend {
 
 /* line 396, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
 textarea {
-  overflow: auto;
+  overflow-y: auto;
 }
 
 /* line 405, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_normalize.scss */
@@ -1807,7 +1807,7 @@ hr {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
@@ -1818,7 +1818,7 @@ hr {
   width: auto;
   height: auto;
   margin: 0;
-  overflow: visible;
+  overflow-y: visible;
   clip: auto;
 }
 
@@ -2195,8 +2195,8 @@ dd {
     width: 160px;
     clear: left;
     text-align: right;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow-y: hidden;
+    text-overflow-y: ellipsis;
     white-space: nowrap;
   }
   /* line 218, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_type.scss */
@@ -2342,7 +2342,7 @@ pre code {
 /* line 66, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_code.scss */
 .pre-scrollable {
   max-height: 340px;
-  overflow-y: scroll;
+  overflow-y-y: scroll;
 }
 
 /* line 10, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_grid.scss */
@@ -3678,7 +3678,7 @@ table th[class*="col-"] {
 
 /* line 171, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_tables.scss */
 .table-responsive {
-  overflow-x: auto;
+  overflow-y-x: auto;
   min-height: 0.01%;
 }
 @media screen and (max-width: 767px) {
@@ -3686,8 +3686,8 @@ table th[class*="col-"] {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
-    overflow-y: hidden;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow-y-y: hidden;
+    -ms-overflow-y-style: -ms-autohiding-scrollbar;
     border: 1px solid #ddd;
   }
   /* line 183, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_tables.scss */
@@ -4831,7 +4831,7 @@ tbody.collapse.in {
 .collapsing {
   position: relative;
   height: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   -webkit-transition-property: height, visibility;
   transition-property: height, visibility;
   -webkit-transition-duration: 0.35s;
@@ -4895,7 +4895,7 @@ tbody.collapse.in {
 .dropdown-menu .divider {
   height: 1px;
   margin: 9px 0;
-  overflow: hidden;
+  overflow-y: hidden;
   background-color: #e5e5e5;
 }
 /* line 65, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_dropdowns.scss */
@@ -5454,7 +5454,7 @@ tbody.collapse.in {
 .nav .nav-divider {
   height: 1px;
   margin: 9px 0;
-  overflow: hidden;
+  overflow-y: hidden;
   background-color: #e5e5e5;
 }
 /* line 66, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navs.scss */
@@ -5639,12 +5639,12 @@ tbody.collapse.in {
 
 /* line 50, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-collapse {
-  overflow-x: visible;
+  overflow-y-x: visible;
   padding-right: 15px;
   padding-left: 15px;
   border-top: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-y-scrolling: touch;
 }
 /* line 14, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
 .navbar-collapse:before, .navbar-collapse:after {
@@ -5657,7 +5657,7 @@ tbody.collapse.in {
 }
 /* line 59, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-collapse.in {
-  overflow-y: auto;
+  overflow-y-y: auto;
 }
 @media (min-width: 768px) {
   /* line 50, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
@@ -5671,11 +5671,11 @@ tbody.collapse.in {
     display: block !important;
     height: auto !important;
     padding-bottom: 0;
-    overflow: visible !important;
+    overflow-y: visible !important;
   }
   /* line 75, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-collapse.in {
-    overflow-y: visible;
+    overflow-y-y: visible;
   }
   /* line 81, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-fixed-top .navbar-collapse, .navbar-static-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
@@ -6766,7 +6766,7 @@ a.thumbnail.active {
 }
 /* line 26, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_progress-bars.scss */
 .progress {
-  overflow: hidden;
+  overflow-y: hidden;
   height: 20px;
   margin-bottom: 20px;
   background-color: #f5f5f5;
@@ -6866,7 +6866,7 @@ a.thumbnail.active {
 .media,
 .media-body {
   zoom: 1;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 /* line 16, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_media.scss */
@@ -7600,7 +7600,7 @@ button.list-group-item-danger.active:focus {
   display: block;
   height: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 /* line 12, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_responsive-embed.scss */
 .embed-responsive .embed-responsive-item,
@@ -7687,20 +7687,20 @@ button.close {
 
 /* line 11, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_modals.scss */
 .modal-open {
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 /* line 16, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_modals.scss */
 .modal {
   display: none;
-  overflow: hidden;
+  overflow-y: hidden;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: 1050;
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-y-scrolling: touch;
   outline: 0;
 }
 /* line 32, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_modals.scss */
@@ -7724,8 +7724,8 @@ button.close {
 
 /* line 38, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_modals.scss */
 .modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y-x: hidden;
+  overflow-y-y: auto;
 }
 
 /* line 44, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_modals.scss */
@@ -7836,7 +7836,7 @@ button.close {
   top: -9999px;
   width: 50px;
   height: 50px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 @media (min-width: 768px) {
@@ -8160,7 +8160,7 @@ button.close {
 /* line 11, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_carousel.scss */
 .carousel-inner {
   position: relative;
-  overflow: hidden;
+  overflow-y: hidden;
   width: 100%;
 }
 /* line 16, /Users/wolverine/.rvm/gems/ruby-2.4.1/gems/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap/_carousel.scss */
@@ -8910,7 +8910,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Increment Hours";
@@ -8923,7 +8923,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Increment Minutes";
@@ -8936,7 +8936,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Decrement Hours";
@@ -8949,7 +8949,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Decrement Minutes";
@@ -8962,7 +8962,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Show Hours";
@@ -8975,7 +8975,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Show Minutes";
@@ -8988,7 +8988,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Toggle AM/PM";
@@ -9001,7 +9001,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Clear the picker";
@@ -9014,7 +9014,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Set the date to today";
@@ -9032,7 +9032,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Toggle Date and Time Screens";
@@ -9094,7 +9094,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Previous Month";
@@ -9107,7 +9107,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
   content: "Next Month";
@@ -9263,7 +9263,7 @@ button.close {
   height: 1px;
   margin: -1px;
   padding: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
@@ -9704,7 +9704,7 @@ h4 {
   margin-right: 10px;
   border: 1px solid #00bbd2;
   border-radius: 4px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 /* line 17, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/modules/admin/edit_cohorts_page/cohort_form/cohort_data.scss */
 .cohort-form-section .cohort-data .form-row {
@@ -9757,7 +9757,7 @@ h4 {
   height: 100%;
   width: 50%;
   padding: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
   border: 1px solid #00bbd2;
   border-radius: 4px;
 }
@@ -9769,7 +9769,7 @@ h4 {
   min-height: max-content;
   padding: 10px;
   margin-bottom: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
   border: 1px solid #00bbd2;
   border-radius: 4px;
 }
@@ -9863,7 +9863,7 @@ h4 {
   width: 100%;
   height: 100%;
   padding: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 /* line 32, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/modules/admin/edit_cohorts_page/cohort_form/cohort_reviewer_search.scss */
 .admin .reviewer-search-box .search-results .reviewer-row {
@@ -9926,7 +9926,7 @@ h4 {
   width: 100%;
   height: 100%;
   padding: 5px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 /* line 2, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/modules/admin/edit_cohorts_page/cohorts_list/cohort_row.scss */
@@ -10038,7 +10038,7 @@ h4 {
   border-radius: 0 0 4px 4px;
   background-color: #e1e1e1;
   color: #4d4d4f;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 /* line 39, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/components/_dropdown_menu.scss */
 .admin .view-cohorts .circle-dropdown-menu .list .item {
@@ -10073,7 +10073,7 @@ h4 {
   min-height: 100px;
   width: 100%;
   padding: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 /* line 29, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/modules/admin/view_cohorts_page/cohort_data.scss */
 .admin .cohort-data-section .cohort-applications {
@@ -10083,7 +10083,7 @@ h4 {
   width: 100%;
   padding: 10px;
   border-top: 1px solid #00bbd2;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 /* line 1, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/modules/admin/view_cohorts_page/cohort_applications_list.scss */
@@ -10094,7 +10094,7 @@ h4 {
   height: auto;
   border-top: 1px solid #00bbd2;
   padding-top: 10px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 /* line 3, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/modules/admin/view_cohorts_page/view_applications.scss */
@@ -10208,7 +10208,7 @@ h4 {
   border: 1px solid #00bbd2;
   border-radius: 4px;
   outline: none;
-  overflow: scroll;
+  overflow-y: scroll;
   font-size: 20px;
   font: 20px sans-serif;
   white-space: pre-wrap;
@@ -10358,7 +10358,7 @@ h4 {
   padding: 10px;
   font-size: 18px;
   outline: none;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 /* line 3, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/components/_text_format.scss */
 .student .application-questions .inside-border .questions h3 {
@@ -10464,7 +10464,7 @@ h4 {
   border-radius: 4px;
   font-size: 18px;
   line-height: 20px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 /* line 38, /Users/wolverine/workshop/full_circle/full_circle_app/app/assets/stylesheets/modules/student/_application_guidelines.scss */
 .student .enable {
