@@ -105,7 +105,7 @@ class Seed
   end
 
   def make_current_students
-    8.times.map do |i|
+    rand(1..10).times.map do |i|
       name = Faker::HarryPotter.unique.character
       email = name.gsub(' ', '.') + '@gmail.com'
       uid = (12345 + i).to_s
