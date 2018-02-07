@@ -12,7 +12,6 @@ class AdminEditCohorts extends React.Component {
           <AdminCohortFormSection
             cohort={this.props.cohort}
             cohorts={this.props.cohorts}
-            allReviewers={this.props.allReviewers}
             message={this.props.message}
             readOnly={this.props.readOnly}
             handleAction={this.props.handleAction}

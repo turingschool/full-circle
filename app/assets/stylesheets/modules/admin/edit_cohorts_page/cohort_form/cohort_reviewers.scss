@@ -1,45 +1,39 @@
-.cohort-form-section {
-  .cohort-reviewers-section {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 4px;
+//   background-color: rgba(0,0,0,.5);
+//   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+// };
+html {
+  overflow-y-y: scroll;
+}
 
-    height: 100%;
+
+.cohort-reviewers-section {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 20px;
+
+  height: 100%;
+  width: 100%;
+
+  padding: 10px;
+
+  overflow-y: scroll;
+
+  border: 1px solid $blue-digital;
+  border-radius: 4px;
+
+  .reviewer-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 25px;
+
+    min-height: 30px;
     width: 50%;
 
-    padding: 10px;
-
-    overflow: scroll;
-
-    border: 1px solid $blue-digital;
-    border-radius: 4px;
-
-    .cohort-reviewers {
-      display: flex;
-      flex-direction: column;
-
-      width: 100%;
-      min-height: max-content;
-
-      padding: 10px;
-      margin-bottom: 10px;
-
-      overflow: scroll;
-
-      border: 1px solid $blue-digital;
-      border-radius: 4px;
-
-      .reviewer-row {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        min-height: 30px;
-        width: 100%;
-
-        @include btn(15px, 15px);
-      }
-    }
+    @include btn(15px, 15px);
   }
 }

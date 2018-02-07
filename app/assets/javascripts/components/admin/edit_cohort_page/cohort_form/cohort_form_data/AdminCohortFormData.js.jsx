@@ -29,6 +29,8 @@ class AdminCohortFormData extends React.Component {
   render() {
     return(
       <section className='cohort-data'>
+        <h3 className="cohort-title">Cohort Data</h3>
+        <br/>
         {this.textInput('title', 'Title')}
         {this.dateInput('start_date', 'Start Date', '1')}
         {this.dateInput('end_date', 'End Date', '2')}

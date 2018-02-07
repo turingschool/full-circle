@@ -19591,7 +19591,7 @@ Released under the MIT license
 	 * - Restores selection range.
 	 *
 	 * Future:
-	 * - Restore document/overflow scroll positions that were unintentionally
+	 * - Restore document/overflow-y scroll positions that were unintentionally
 	 *   modified via DOM insertions above the top viewport boundary.
 	 * - Implement/integrate with customized constraint based layout system and keep
 	 *   track of which dimensions must be remeasured.
@@ -20395,7 +20395,7 @@ Released under the MIT license
 	  orient: 0,
 	  orientation: 0,
 	  origin: 0,
-	  overflow: 0,
+	  overflow-y: 0,
 	  overlinePosition: 'overline-position',
 	  overlineThickness: 'overline-thickness',
 	  paintOrder: 'paint-order',
@@ -33461,14 +33461,14 @@ function defaultPrefilter( elem, props, opts ) {
 		} );
 	}
 
-	// height/width overflow pass
+	// height/width overflow-y pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 
 		// Make sure that nothing sneaks out
-		// Record all 3 overflow attributes because IE does not
-		// change the overflow attribute when overflowX and
-		// overflowY are set to the same value
-		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
+		// Record all 3 overflow-y attributes because IE does not
+		// change the overflow-y attribute when overflow-yX and
+		// overflow-yY are set to the same value
+		opts.overflow-y = [ style.overflow-y, style.overflow-yX, style.overflow-yY ];
 
 		// Set display property to inline-block for height/width
 		// animations on inline elements that are having width/height animated
@@ -33490,13 +33490,13 @@ function defaultPrefilter( elem, props, opts ) {
 		}
 	}
 
-	if ( opts.overflow ) {
-		style.overflow = "hidden";
+	if ( opts.overflow-y ) {
+		style.overflow-y = "hidden";
 		if ( !support.shrinkWrapBlocks() ) {
 			anim.always( function() {
-				style.overflow = opts.overflow[ 0 ];
-				style.overflowX = opts.overflow[ 1 ];
-				style.overflowY = opts.overflow[ 2 ];
+				style.overflow-y = opts.overflow-y[ 0 ];
+				style.overflow-yX = opts.overflow-y[ 1 ];
+				style.overflow-yY = opts.overflow-y[ 2 ];
 			} );
 		}
 	}
@@ -38029,18 +38029,18 @@ return jQuery;
     }
   }
 
-  // these following methods are used to handle overflowing modals
+  // these following methods are used to handle overflow-ying modals
 
   Modal.prototype.handleUpdate = function () {
     this.adjustDialog()
   }
 
   Modal.prototype.adjustDialog = function () {
-    var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
+    var modalIsoverflow-ying = this.$element[0].scrollHeight > document.documentElement.clientHeight
 
     this.$element.css({
-      paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
-      paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
+      paddingLeft:  !this.bodyIsoverflow-ying && modalIsoverflow-ying ? this.scrollbarWidth : '',
+      paddingRight: this.bodyIsoverflow-ying && !modalIsoverflow-ying ? this.scrollbarWidth : ''
     })
   }
 
@@ -38057,14 +38057,14 @@ return jQuery;
       var documentElementRect = document.documentElement.getBoundingClientRect()
       fullWindowWidth = documentElementRect.right - Math.abs(documentElementRect.left)
     }
-    this.bodyIsOverflowing = document.body.clientWidth < fullWindowWidth
+    this.bodyIsoverflow-ying = document.body.clientWidth < fullWindowWidth
     this.scrollbarWidth = this.measureScrollbar()
   }
 
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
     this.originalBodyPad = document.body.style.paddingRight || ''
-    if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+    if (this.bodyIsoverflow-ying) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
   }
 
   Modal.prototype.resetScrollbar = function () {
@@ -39019,17 +39019,17 @@ return jQuery;
     if (/right|left/.test(placement)) {
       var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
       var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
-      if (topEdgeOffset < viewportDimensions.top) { // top overflow
+      if (topEdgeOffset < viewportDimensions.top) { // top overflow-y
         delta.top = viewportDimensions.top - topEdgeOffset
-      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
+      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow-y
         delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
       }
     } else {
       var leftEdgeOffset  = pos.left - viewportPadding
       var rightEdgeOffset = pos.left + viewportPadding + actualWidth
-      if (leftEdgeOffset < viewportDimensions.left) { // left overflow
+      if (leftEdgeOffset < viewportDimensions.left) { // left overflow-y
         delta.left = viewportDimensions.left - leftEdgeOffset
-      } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow
+      } else if (rightEdgeOffset > viewportDimensions.right) { // right overflow-y
         delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
       }
     }
@@ -39357,7 +39357,7 @@ function defaultParsingFlags() {
         empty           : false,
         unusedTokens    : [],
         unusedInput     : [],
-        overflow        : -2,
+        overflow-y        : -2,
         charsLeftOver   : 0,
         nullInput       : false,
         invalidMonth    : null,
@@ -39403,7 +39403,7 @@ function isValid(m) {
             return i != null;
         });
         var isNowValid = !isNaN(m._d.getTime()) &&
-            flags.overflow < 0 &&
+            flags.overflow-y < 0 &&
             !flags.empty &&
             !flags.invalidMonth &&
             !flags.invalidWeekday &&
@@ -39988,7 +39988,7 @@ function getParseRegexForToken (token, config) {
     return regexes[token](config._strict, config._locale);
 }
 
-// Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+// Code from http://stackoverflow-y.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
 function unescapeFormat(s) {
     return regexEscape(s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
         return p1 || p2 || p3 || p4;
@@ -40392,7 +40392,7 @@ function getIsLeapYear () {
 
 function createDate (y, m, d, h, M, s, ms) {
     //can't just apply() to create a date:
-    //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
+    //http://stackoverflow-y.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
     var date = new Date(y, m, d, h, M, s, ms);
 
     //the date constructor remaps years 0-99 to 1900-1999
@@ -41213,12 +41213,12 @@ function listLocales() {
     return keys$1(locales);
 }
 
-function checkOverflow (m) {
-    var overflow;
+function checkoverflow-y (m) {
+    var overflow-y;
     var a = m._a;
 
-    if (a && getParsingFlags(m).overflow === -2) {
-        overflow =
+    if (a && getParsingFlags(m).overflow-y === -2) {
+        overflow-y =
             a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
             a[DATE]        < 1 || a[DATE]        > daysInMonth(a[YEAR], a[MONTH]) ? DATE :
             a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
@@ -41227,17 +41227,17 @@ function checkOverflow (m) {
             a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND :
             -1;
 
-        if (getParsingFlags(m)._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
-            overflow = DATE;
+        if (getParsingFlags(m)._overflow-yDayOfYear && (overflow-y < YEAR || overflow-y > DATE)) {
+            overflow-y = DATE;
         }
-        if (getParsingFlags(m)._overflowWeeks && overflow === -1) {
-            overflow = WEEK;
+        if (getParsingFlags(m)._overflow-yWeeks && overflow-y === -1) {
+            overflow-y = WEEK;
         }
-        if (getParsingFlags(m)._overflowWeekday && overflow === -1) {
-            overflow = WEEKDAY;
+        if (getParsingFlags(m)._overflow-yWeekday && overflow-y === -1) {
+            overflow-y = WEEKDAY;
         }
 
-        getParsingFlags(m).overflow = overflow;
+        getParsingFlags(m).overflow-y = overflow-y;
     }
 
     return m;
@@ -41402,7 +41402,7 @@ function configFromArray (config) {
         yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
 
         if (config._dayOfYear > daysInYear(yearToUse)) {
-            getParsingFlags(config)._overflowDayOfYear = true;
+            getParsingFlags(config)._overflow-yDayOfYear = true;
         }
 
         date = createUTCDate(yearToUse, 0, config._dayOfYear);
@@ -41446,7 +41446,7 @@ function configFromArray (config) {
 }
 
 function dayOfYearFromWeekInfo(config) {
-    var w, weekYear, week, weekday, dow, doy, temp, weekdayOverflow;
+    var w, weekYear, week, weekday, dow, doy, temp, weekdayoverflow-y;
 
     w = config._w;
     if (w.GG != null || w.W != null || w.E != null) {
@@ -41461,7 +41461,7 @@ function dayOfYearFromWeekInfo(config) {
         week = defaults(w.W, 1);
         weekday = defaults(w.E, 1);
         if (weekday < 1 || weekday > 7) {
-            weekdayOverflow = true;
+            weekdayoverflow-y = true;
         }
     } else {
         dow = config._locale._week.dow;
@@ -41478,13 +41478,13 @@ function dayOfYearFromWeekInfo(config) {
             // weekday -- low day numbers are considered next week
             weekday = w.d;
             if (weekday < 0 || weekday > 6) {
-                weekdayOverflow = true;
+                weekdayoverflow-y = true;
             }
         } else if (w.e != null) {
             // local weekday -- counting starts from begining of week
             weekday = w.e + dow;
             if (w.e < 0 || w.e > 6) {
-                weekdayOverflow = true;
+                weekdayoverflow-y = true;
             }
         } else {
             // default to begining of week
@@ -41492,9 +41492,9 @@ function dayOfYearFromWeekInfo(config) {
         }
     }
     if (week < 1 || week > weeksInYear(weekYear, dow, doy)) {
-        getParsingFlags(config)._overflowWeeks = true;
-    } else if (weekdayOverflow != null) {
-        getParsingFlags(config)._overflowWeekday = true;
+        getParsingFlags(config)._overflow-yWeeks = true;
+    } else if (weekdayoverflow-y != null) {
+        getParsingFlags(config)._overflow-yWeekday = true;
     } else {
         temp = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
         config._a[YEAR] = temp.year;
@@ -41571,7 +41571,7 @@ function configFromStringAndFormat(config) {
     config._a[HOUR] = meridiemFixWrap(config._locale, config._a[HOUR], config._meridiem);
 
     configFromArray(config);
-    checkOverflow(config);
+    checkoverflow-y(config);
 }
 
 
@@ -41659,7 +41659,7 @@ function configFromObject(config) {
 }
 
 function createFromConfig (config) {
-    var res = new Moment(checkOverflow(prepareConfig(config)));
+    var res = new Moment(checkoverflow-y(prepareConfig(config)));
     if (res._nextDay) {
         // Adding is smart enough around DST
         res.add(1, 'd');
@@ -41684,7 +41684,7 @@ function prepareConfig (config) {
     }
 
     if (isMoment(input)) {
-        return new Moment(checkOverflow(input));
+        return new Moment(checkoverflow-y(input));
     } else if (isDate(input)) {
         config._d = input;
     } else if (isArray(format)) {
@@ -42597,7 +42597,7 @@ function parsingFlags () {
 }
 
 function invalidAt () {
-    return getParsingFlags(this).overflow;
+    return getParsingFlags(this).overflow-y;
 }
 
 function creationData() {

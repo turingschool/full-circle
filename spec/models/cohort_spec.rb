@@ -81,6 +81,20 @@ RSpec.describe Cohort do
       expect(reviewers).to include(*cohort.reviewers)
       expect(students).not_to include(*cohort.reviewers)
     end
+    
+    it 'Can return all non-reviewers' do
+      cohort = create(:cohort, :open)
+      reviewers = create_list(:user, 10, :reviewer)
+      students = create_list(:user, 10)
+      cohort_reviewers = reviewers.slice(0..3)
+
+      cohort.users << cohort_reviewers << students
+
+      expect(cohort.reviewers.count).to eq(4)
+      expect(reviewers - cohort_reviewers).not_to include(*cohort.reviewers)
+      expect(cohort_reviewers).to include(*cohort.reviewers)
+      expect(students).not_to include(*cohort.reviewers)
+    end
 
     it 'Can return all students' do
       cohort = create(:cohort, :open)

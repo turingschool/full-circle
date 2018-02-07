@@ -1,17 +1,5 @@
 class AdminCohortReviewerSearchRow extends React.Component {
 
-  render() {
-    return(
-      <span className='reviewer-row'>
-        {this.props.reviewer.name}
-
-        <ClickBtn Text='Add'
-          readOnly={this.props.readOnly}
-          onClick={this.addReviewer.bind(this)} />
-      </span>
-    )
-  }
-
   addReviewer() {
     let cohort_id = this.props.cohort.id
 
@@ -19,6 +7,7 @@ class AdminCohortReviewerSearchRow extends React.Component {
       .then((response) => {
         response.json().then((json) => {
           this.props.cohort.reviewers.push(json)
+          this.props.cohort.non_reviewers = this.remainingNonReviewers(json)
 
           this.props.handleAction({
             cohort: this.props.cohort,
@@ -30,6 +19,12 @@ class AdminCohortReviewerSearchRow extends React.Component {
         this.props.handleAction({message: 'Error Adding Reviewer'})
       })
   }
+  
+  remainingNonReviewers(json) {
+    return this.props.cohort.non_reviewers.filter(function(obj) {
+      return obj.email != json.email
+    })
+  }
 
   options(verb, body = {}) {
     return {
@@ -38,5 +33,17 @@ class AdminCohortReviewerSearchRow extends React.Component {
       headers: { 'Authorization': this.props.authorization,
                  'Content-Type': "application/json" }
     }
+  }
+  
+  render() {
+    return(
+      <span className='reviewer-row'>
+        {this.props.reviewer.name}
+
+        <ClickBtn Text='Add'
+          readOnly={this.props.readOnly}
+          onClick={this.addReviewer.bind(this)} />
+      </span>
+    )
   }
 }
