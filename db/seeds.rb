@@ -117,8 +117,8 @@ class Seed
 
   def make_reviewers
     20.times.map do |i|
-      name = Faker::Friends.character
-      email = name.gsub(' ', '.') + '@gmail.com'
+      name = Faker::GameOfThrones.unique.character
+      email = Faker::Internet.unique.safe_email
       uid = (123456 + i).to_s
       token = (987654321 + i).to_s
 
