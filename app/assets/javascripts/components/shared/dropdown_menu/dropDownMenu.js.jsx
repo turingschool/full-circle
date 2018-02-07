@@ -4,7 +4,7 @@ class DropDownMenu extends React.Component {
     super(props)
 
     this.state = {
-      dropDown: false
+      dropDown: true
     }
   }
 
