@@ -11,6 +11,7 @@ class ReviewerViewCohortsSection extends React.Component {
 
         <ReviewerCohortDataSection
           cohort={this.props.cohort}
+          applications={this.props.applications}
           user={this.props.user}
           handleAction={this.props.handleAction} />
 
