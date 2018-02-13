@@ -4,7 +4,7 @@ class ReviewerCohortApplications extends React.Component {
     return(
       <section className='cohort-applications'>
         <StaticTextField
-          label='Total Apps'
+          label='Total Applications: '
           text={this.props.cohort.applications.length}
           width='50%'/>
 

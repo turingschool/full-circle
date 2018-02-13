@@ -50,6 +50,7 @@ class ReviewerViewApplications extends React.Component {
         <ReviewerViewCohortsSection
           cohorts={this.state.cohorts}
           cohort={this.state.item}
+          user={this.props.user}
           handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
 

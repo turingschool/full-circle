@@ -38,7 +38,9 @@ class Review < ApplicationRecord
   end
 
   def total
-    score_card["metrics"].reduce(0) { |sum, metric| sum + metric["score"] }
+    score_card["metrics"].reduce(0) do |sum, metric| 
+      sum + metric["score"]
+    end
   end
 
   def average

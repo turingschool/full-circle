@@ -1,19 +1,31 @@
 class ReviewerCohortApplicationList extends React.Component {
   
   reviewStatus(app) {
-    if (this.props.review) {
-      return this.props.review.status
+    if (this.findUserReview(app)) {
+      return this.findUserReview(app).status
     } else {
       return "N/A"
     }
   }
   
   totalScore(app) {
-    if (this.props.review) {
-      return this.props.review.score_card.total
+    if (this.findUserReview(app)) {
+      return this.findUserReview(app).score_card.total
     } else {
       return "N/A"
     }
+  }
+  
+  findCohortReviewer(app, review) {
+    return this.props.user.cohort_reviewers.find((ch_reviewer) => {
+      return ch_reviewer.id == review.cohort_reviewer_id
+    })
+  }
+  
+  findUserReview(app){
+    return app.reviews.find((review) => {
+      return review.cohort_reviewer_id == this.findCohortReviewer(app, review).id;
+    })
   }
 
   render() {

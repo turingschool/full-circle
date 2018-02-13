@@ -8,7 +8,7 @@ class ReviewerApplicationActionBar extends React.Component {
   
   handleChange(param, event) {
     let review = this.props.review
-    this.findScoreMetricValue(param).score = event.target.value
+    this.findScoreMetricValue(param).score = parseInt(event.target.value)
 
     this.props.handleAction({
       review: review,
@@ -26,6 +26,9 @@ class ReviewerApplicationActionBar extends React.Component {
   
   saveReview() {
     let cohort_id = this.props.application.cohort_id
+    this.props.review.status = 'reviewed'
+    this.props.review.score_card.total = this.props.review.score_card.metrics[0].score + this.props.review.score_card.metrics[1].score +this.props.review.score_card.metrics[2].score
+    
     let options = this.options('PUT',
       JSON.stringify({ review: this.props.review })
     )

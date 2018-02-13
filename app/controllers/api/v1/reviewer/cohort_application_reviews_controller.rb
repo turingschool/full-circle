@@ -1,7 +1,7 @@
 class Api::V1::Reviewer::CohortApplicationReviewsController < Api::V1::ReviewerApiController
 
   def update
-    review = Review.find(params[:id])    
+    review = Review.find(params[:id])
     if review.update(review_params)
       render json: review, status: 200
     else
@@ -12,7 +12,7 @@ class Api::V1::Reviewer::CohortApplicationReviewsController < Api::V1::ReviewerA
   private
     
     def review_params
-      params.require(:review).permit({score_card: {}})
+      params.require(:review).permit({score_card: {}}, :status)
     end
 
 end
