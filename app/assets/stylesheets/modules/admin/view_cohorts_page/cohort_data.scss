@@ -9,18 +9,12 @@
 
     margin-top: 10px;
 
-    border: 1px solid $blue-digital;
-    border-radius: 4px;
-
-    @include shadow();
-
     .cohort-data {
       display: flex;
       flex-wrap: wrap;
 
       min-height: 100px;;
       width: 100%;
-
       padding: 10px;
 
       overflow-y: scroll;
@@ -32,11 +26,7 @@
 
       min-height: auto;
       width: 100%;
-
-      padding: 10px;
-
-      border-top: 1px solid $blue-digital;
-
+      
       overflow-y: scroll;
     }
   }

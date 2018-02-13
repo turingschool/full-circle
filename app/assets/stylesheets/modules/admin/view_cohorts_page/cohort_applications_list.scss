@@ -4,9 +4,12 @@
 
   width: 100%;
   height: auto;
-
-  border-top: 1px solid $blue-digital;
   padding-top: 10px;
 
   overflow-y: scroll;
+  
+  .application-list-headers {
+    text-align: center;
+    font-weight: bold;
+  }
 }

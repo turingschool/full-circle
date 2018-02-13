@@ -36,7 +36,6 @@ class ReviewerApplicationActionBar extends React.Component {
     ping('/api/v1/reviewer/cohorts/' + cohort_id + '/applications/' + this.props.application.id + '/reviews/' + this.props.review.id, options)
       .then((response) => {
         this.props.handleAction({
-          // readOnly: true,
           review: this.props.review,
           message: 'Form Saved' })
       })
@@ -57,10 +56,10 @@ class ReviewerApplicationActionBar extends React.Component {
   render() {
     return(
       <section className='application-action-bar'>
-        {this.textInput('passion', 'Passion Score')}
-        {this.textInput('dedication', 'Dedication Score')}
-        {this.textInput('need', 'Need Score')}
-        <ClickBtn Text='Save Scores'
+        {this.textInput('passion', 'Passion: ')}
+        {this.textInput('dedication', 'Dedication: ')}
+        {this.textInput('need', 'Need: ')}
+        <ClickBtn Text='Save'
           onClick={this.saveReview.bind(this)} />
       </section>
     )

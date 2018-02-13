@@ -1,18 +1,25 @@
 .static-text-field {
   display: flex;
   flex-direction: row;
+  width: 100%;
 
   align-items: center;
 
   min-height: 25px;;
   padding: 5px;
-
-  .static-label,
-  .static-text {
-    display: flex;
-    align-items: center;
-
+  
+  span {
     width: 100%;
-    color: $gray-print;
+    height: 100%;
+    font-weight: bolder;
   }
+
+  // .static-label,
+  // .static-text {
+  //   display: flex;
+  //   align-items: center;
+  // 
+  //   width: 100%;
+  //   color: $gray-print;
+  // }
 }

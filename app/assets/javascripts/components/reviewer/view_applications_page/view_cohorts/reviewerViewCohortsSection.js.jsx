@@ -2,7 +2,8 @@ class ReviewerViewCohortsSection extends React.Component {
 
   render() {
     return(
-      <section className='view-cohorts'>
+      <section className='view-cohorts reviewer-view-cohorts'>
+        <h3 className='reviewer-header'>Select a Cohort</h3>
         <DropDownMenu
           label='title'
           list={this.props.cohorts}

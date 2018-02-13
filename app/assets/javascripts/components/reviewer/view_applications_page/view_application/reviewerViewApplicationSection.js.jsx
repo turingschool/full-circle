@@ -15,7 +15,8 @@ class ReviewerViewApplicationSection extends React.Component {
     let application = this.props.application
         
     return(
-      <section className='view-applications'>
+      <section className='view-applications reviewer-view-applications'>
+        <h3 className='reviewer-header'>Score Application</h3>
         <ReviewerApplicationActionBar
           application={application}
           handleAction={this.props.handleAction}
