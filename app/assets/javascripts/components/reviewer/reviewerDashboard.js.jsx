@@ -19,9 +19,9 @@ class ReviewerDashboard extends React.Component {
     })
   }
 
-  // handleChange(action){
-  //   this.setState(action)
-  // }
+  handleChange(action){
+    this.setState(action)
+  }
   
   render() {
     return (
@@ -31,6 +31,7 @@ class ReviewerDashboard extends React.Component {
           <h2 className='page-title'> Reviewer Dashboard </h2>
           <ReviewerViewApplications
             cohorts={this.cohorts}
+            user={this.user}
             cohort={this.current_cohort}
             authorization={this.authorization} />
         </section>

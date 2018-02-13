@@ -10,6 +10,8 @@ class ReviewerCohortApplications extends React.Component {
 
         <ReviewerCohortApplicationList
           applications={this.props.cohort.applications}
+          user={this.props.user}
+          cohort={this.props.cohort}
           handleAction={this.props.handleAction} />
         
       </section>

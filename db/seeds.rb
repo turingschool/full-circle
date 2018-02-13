@@ -185,7 +185,6 @@ class Seed
   def score_past_applications
     @closed_cohorts.each do |cohort|
       cohort.cohort_reviewers.each do |cohort_reviewer|
-        cohort_reviewer.applications << cohort.applications
         cohort_reviewer.reviews.each do |review|
           review.score_card["metrics"].each do |metric|
             metric["score"] = rand(1..10)

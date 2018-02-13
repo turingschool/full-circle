@@ -25,6 +25,14 @@ Rails.application.routes.draw do
         end
         resources :reviewers, only: [:index]
       end
+      
+      namespace :reviewer do
+        resources :cohorts, only: [:show] do
+          resources :applications, only: [:show] do
+            resources :reviews, only: [:update], controller: 'cohort_application_reviews'
+          end
+        end
+      end
 
       namespace :student do
         resources :applications, only: [:index, :create]

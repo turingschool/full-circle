@@ -35,6 +35,7 @@ class ReviewerViewApplications extends React.Component {
       return <ReviewerViewApplicationSection
         application={this.state.application}
         handleAction={this.handleAction.bind(this)}
+        user={this.props.user}
         authorization={this.props.authorization} />
     } else {
       return <section className='no-application'>
