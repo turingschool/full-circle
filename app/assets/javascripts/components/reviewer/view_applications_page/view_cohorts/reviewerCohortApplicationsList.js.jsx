@@ -34,7 +34,7 @@ class ReviewerCohortApplicationList extends React.Component {
         <StaticTextField
           key={this.props.cohort + ' application-list-headers'}
           name='application'
-          texts={['Application', 'Status', 'Total Score']}
+          texts={['App #', 'Status', 'Total Score']}
           color='rgba(0, 187, 210, 1)'
           width='100%' />
         {this.props.applications.map((app) => {

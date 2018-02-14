@@ -33,14 +33,14 @@ class ReviewerViewApplications extends React.Component {
   applicationSection() {
     if (this.state.application != undefined) {
       return <ReviewerViewApplicationSection
+        applications={this.state.applications}
         application={this.state.application}
-        applications={this.state.item.applications.filter(app => app.state == 'submitted')}
         handleAction={this.handleAction.bind(this)}
         user={this.props.user}
         authorization={this.props.authorization} />
     } else {
       return <section className='no-application'>
-        No Applications
+        No Completed Applications
       </section>
     }
   }
@@ -52,6 +52,7 @@ class ReviewerViewApplications extends React.Component {
           cohorts={this.state.cohorts}
           cohort={this.state.item}
           applications={this.state.item.applications.filter(app => app.state == 'submitted')}
+          application={this.state.item.applications.filter(app => app.state == 'submitted')[0]}
           user={this.props.user}
           handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
