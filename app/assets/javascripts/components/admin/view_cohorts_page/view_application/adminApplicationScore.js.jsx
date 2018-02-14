@@ -18,31 +18,36 @@ class AdminApplicationScore extends React.Component {
     return(
       <section className='application-scores'>
         <StaticTextField
-          label='Total'
-          text={'100'}
-          width={'50%'} />
+          width='50%'
+          color='rgba(38, 38, 38, 1)'
+          name=''
+          texts={['Total: ']} />
 
         <StaticTextField
-          label='Average'
-          text={'100'}
-          width={'50%'} />
+          width='50%'
+          color='rgba(38, 38, 38, 1)'
+          name=''
+          texts={['Average: ']} />
           
         <br></br>
 
         <StaticTextField
-          label='Passion'
-          text={this.getMetricAvg('passion')}
-          width={'33.33%'} />
+          width='33.33%'
+          color='rgba(38, 38, 38, 1)'
+          name=''
+          texts={['Passion: ' + this.getMetricAvg('passion')]} />
 
         <StaticTextField
-          label='Dedication'
-          text={this.getMetricAvg('dedication')}
-          width={'33.33%'} />
+          width='33.33%'
+          color='rgba(38, 38, 38, 1)'
+          name=''
+          texts={['Dedication: ' + this.getMetricAvg('dedication')]} />
 
         <StaticTextField
-          label='Need'
-          text={this.getMetricAvg('need')}
-          width={'33.33%'} />
+          width='33.33%'
+          color='rgba(38, 38, 38, 1)'
+          name=''
+          texts={['Need: ' + this.getMetricAvg('need')]}  />
 
       </section>
     )
