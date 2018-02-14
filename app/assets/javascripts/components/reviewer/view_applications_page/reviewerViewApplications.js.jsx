@@ -39,7 +39,7 @@ class ReviewerViewApplications extends React.Component {
         user={this.props.user}
         authorization={this.props.authorization} />
     } else {
-      return <section className='no-application'>
+      return <section className='no-application reviewer-no-app'>
         No Completed Applications
       </section>
     }

@@ -4,8 +4,9 @@ class AdminCohortApplications extends React.Component {
     return(
       <section className='cohort-applications'>
         <StaticTextField
-          label='Total Apps'
-          text={this.props.cohort.applications.length}
+          name={'applications-header'}
+          texts={[this.props.applications.length + ' of ' + this.props.cohort.applications.length + ' Submitted Applications']}
+          color={'rgba(38, 38, 38, 1)'}
           width='50%'/>
 
         <AdminCohortApplicationList
