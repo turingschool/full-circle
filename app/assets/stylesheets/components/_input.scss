@@ -13,14 +13,20 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 4px;
   }
 
-  input.readOnlytrue {
-    color: $gray-digital
+  input.readOnlytrue-admin {
+    color: $gray-digital;
+    width: 130px;
   }
 
   input.readOnlyfalse {
     color: $gray-print;
     background-color: $gray-highlight;
-    // border-bottom: 1px solid $blue-digital;
+  }
+  
+  input.readOnlyfalse-admin {
+    color: $gray-print;
+    background-color: $gray-highlight;
+    width: 120px;
   }
 
   input.readOnlyfalse:focus {
