@@ -61,7 +61,7 @@ class AdminApplicationScore extends React.Component {
           width='20%'
           color='rgba(38, 38, 38, 1)'
           name=''
-          texts={['Reviewers: ' + this.state.reviewersReviewed]}  />
+          texts={[this.state.reviewersReviewed + ' / ' + this.props.reviews.length + ' Reviews Submitted']}  />
 
       </section>
     )

@@ -5,6 +5,7 @@ class AdminCohortReviewers extends React.Component {
       <section className='cohort-reviewers-section'>
         <section className='reviewer-search-box'>
           <h3>Selected Reviewers</h3>
+          <h4 className='warn-message'> * Do not complete this step until after {this.props.cohort.formatted_close_date} (Application Due Date) </h4>
           <br/>
           <section className='search-results'>
             {this.props.cohort.reviewers.map((reviewer, i) => {
