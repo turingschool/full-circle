@@ -31,6 +31,8 @@ class Review < ApplicationRecord
                         "average" => 0
                       }
   end
+  
+  { "metrics" => [{ "name" => "passion","score" => 9 },{ "name" => "dedication","score" => 4 },{ "name" => "need","score" => 8 } ],"total" => 21,"average" => 0}
 
   def calculate_metrics
     score_card["total"] = total
@@ -38,7 +40,9 @@ class Review < ApplicationRecord
   end
 
   def total
-    score_card["metrics"].reduce(0) { |sum, metric| sum + metric["score"] }
+    score_card["metrics"].reduce(0) do |sum, metric| 
+      sum + metric["score"]
+    end
   end
 
   def average

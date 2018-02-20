@@ -5,7 +5,7 @@ class AdminCohortInputRow extends React.Component {
       <div className='form-row'>
         <span className='input-label'>{this.props.Text}</span>
 
-        <input className={'readOnly' + this.props.readOnly}
+        <input className={'readOnly' + this.props.readOnly + '-admin'}
           value={this.props.Value}
           readOnly={this.props.readOnly}
           type='text'

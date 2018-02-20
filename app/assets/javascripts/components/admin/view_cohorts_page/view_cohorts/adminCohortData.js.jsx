@@ -3,41 +3,24 @@ class AdminCohortData extends React.Component {
   render() {
     return(
       <section className='cohort-data'>
+
+        <StaticTextField
+          width='33%'
+          color='rgba(38, 38, 38, 1)'
+          name=''
+          texts={['App Due Date: ' + this.props.cohort.formatted_close_date]} />
         
         <StaticTextField
-          width='50%'
-          label='Status'
-          text={this.props.cohort.status} />
+          width='33%'
+          color='rgba(38, 38, 38, 1)'
+          name=''
+          texts={['Notify Date: ' + this.props.cohort.formatted_notify_date]} />
 
         <StaticTextField
-          width='50%'
-          label='State'
-          text={this.props.cohort.state} />
-
-        <StaticTextField
-          width='50%'
-          label='Open Date'
-          text={this.props.cohort.open_date} />
-
-        <StaticTextField
-          width='50%'
-          label='Close Date'
-          text={this.props.cohort.close_date} />
-
-        <StaticTextField
-          width='50%'
-          label='Start Date'
-          text={this.props.cohort.start_date} />
-
-        <StaticTextField
-          width='50%'
-          label='End Date'
-          text={this.props.cohort.end_date} />
-
-        <StaticTextField
-          width='50%'
-          label='Notify Date'
-          text={this.props.cohort.notify_date} />
+          width='33%'
+          color='rgba(38, 38, 38, 1)'
+          name=''
+          texts={['Start Date: ' + this.props.cohort.formatted_start_date]} />
 
       </section>
     )

@@ -5,7 +5,9 @@ class AdminCohortDateRow extends React.Component {
 
     datepicker.datetimepicker({
       format: 'MMMM DD, YYYY',
-      toolbarPlacement: 'top',
+      toolbarPlacement: 'bottom',
+      widgetPositioning: {horizontal: 'left', vertical: 'bottom'},
+      icons: {today: 'glyphicon glyphicon-time'},
       showClose: true,
       showTodayButton: true
     })
@@ -20,7 +22,7 @@ class AdminCohortDateRow extends React.Component {
       <div className='form-row'>
         <span className='input-label'>{this.props.Text}</span>
 
-        <input className={'readOnly' + this.props.readOnly}
+        <input className={'readOnly' + this.props.readOnly + '-admin'}
           id={'datetimepicker' + this.props.Id}
           readOnly={this.props.readOnly}
           value={moment(this.props.Value).format('MMMM DD, YYYY')}

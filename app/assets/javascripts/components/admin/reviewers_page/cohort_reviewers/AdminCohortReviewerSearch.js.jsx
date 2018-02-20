@@ -46,6 +46,7 @@ class AdminCohortReviewerSearch extends React.Component {
           {this.filteredSearch().map((reviewer, i) => {
             return <AdminCohortReviewerSearchRow key={i}
               reviewer={reviewer}
+              applications={this.props.cohort.applications}
               nonReviewers={this.props.cohort.non_reviewers}
               cohort={this.props.cohort}
               readOnly={this.props.readOnly}

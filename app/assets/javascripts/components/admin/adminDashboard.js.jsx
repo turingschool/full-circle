@@ -7,7 +7,6 @@ class AdminDashboard extends React.Component {
       page: 'viewCohorts',
       cohorts: JSON.parse(this.props.cohorts)
     }
-
     this.user = JSON.parse(this.props.user)
     this.users = JSON.parse(this.props.users)
     this.authorization = 'Bearer ' + this.props.authorization

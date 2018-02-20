@@ -33,13 +33,13 @@ class Defaults
       <br></br>
       <h3>Eligibility and Deadlines for Diversity Scholarships</h3>
       <p>Scholarship applicants must be accepted into the Turing School of Software & Design
-      for the #{cohort.title} cohort, which begins #{cohort.open_date.strftime("%B %d, %Y")}
+      for the #{cohort.title} cohort, which begins #{cohort.start_date.strftime("%B %d, %Y")}
       and meet the following qualifications:</p>
       <ol>
         <li><bold>1.</bold> Identify as a member of at least one group that is underrepresented in
         technology (e.g.   Black,   Latinx,   Indigenous,   Pacific   Islander,   Woman,   LGBTQ+, disabled,   veteran)</li>
-        <li><bold>2.</bold> Be accepted into the school and commit to the #{cohort.open_date.strftime("%B")} cohort, which starts on
-        #{cohort.open_date.strftime("%B %d, %Y")}.</li>
+        <li><bold>2.</bold> Be accepted into the school and commit to the #{cohort.title} cohort, which starts on
+        #{cohort.start_date.strftime("%B %d, %Y")}.</li>
         <li><bold>3.</bold> Complete a brief (approximately 1000 words) scholarship
         essay (below). Our scholarship panel will award scholarships based on your
         essay response (<bold>passion</bold>, <bold>determination</bold>, and <bold>financial need</bold>). Scholarship
@@ -53,7 +53,7 @@ class Defaults
       allow recipients to start at Turing for as little as $1,000.
       
       <br></br>
-      <h3>Scholarship Program Essay (Due #{cohort.close_date.strftime("%B %d, %Y")})</h3>
+      <h3>Scholarship Program Essay (Due #{cohort.close_date.strftime("%B %d, %Y")} at Midnight)</h3>
       <p>The purpose of this essay is to allow the scholarship panel to learn more about you, to
       better understand your passion and determination to become a programmer, and to
       understand your relative financial need.</p>

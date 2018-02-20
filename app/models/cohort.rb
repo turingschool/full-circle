@@ -23,6 +23,18 @@ class Cohort < ApplicationRecord
   def students
     self.users.where(role: 'student')
   end
+  
+  def formatted_close_date
+    close_date.strftime("%b %d, %Y")
+  end
+  
+  def formatted_notify_date
+    notify_date.strftime("%b %d, %Y")
+  end
+  
+  def formatted_start_date
+    start_date.strftime("%b %d, %Y")
+  end
 
   def open
     (open_date <= Date.today) && (close_date >= Date.today)

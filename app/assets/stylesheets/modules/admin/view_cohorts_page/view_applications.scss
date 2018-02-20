@@ -3,14 +3,13 @@
   .view-applications,
   .no-application {
     display: block;
-    // flex-direction: column;
 
-    width: 50%;
+    width: 60%;
     height: 100%;
 
     padding: 10px;
 
-    border: 1px solid $blue-digital;
+    border: 2px solid $blue-digital;
     border-radius: 4px;
 
     @include shadow();
