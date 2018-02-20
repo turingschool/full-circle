@@ -1,53 +1,67 @@
 class AdminApplicationScore extends React.Component {
+  
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      reviewersReviewed: 0
+    }
+  }
 
   getMetricAvg(ofMetric) {
-    let sum = 0;
+    let sum = 0
+    this.state.reviewersReviewed = 0
 
     this.props.reviews.forEach((review) => {
       let theMetric = review.score_card.metrics.filter((metric) => {
         return metric.name == ofMetric
       })
 
-      sum += theMetric[0].score
+      if (theMetric[0].score != 0) {
+        sum += theMetric[0].score
+        this.state.reviewersReviewed += 1
+      }
     })
-
-    return (sum / this.props.reviews.length).toFixed(2)
+    
+    return (sum / this.state.reviewersReviewed).toFixed(2)
+  }
+  
+  calculateTotalAverage() {
+    return parseFloat(this.getMetricAvg('passion')) + parseFloat(this.getMetricAvg('dedication')) + parseFloat(this.getMetricAvg('need'))
   }
 
   render() {
     return(
       <section className='application-scores'>
         <StaticTextField
-          width='50%'
+          width='20%'
           color='rgba(38, 38, 38, 1)'
           name=''
-          texts={['Total: ']} />
+          texts={['Avg Total: ' + this.calculateTotalAverage()]} />
 
         <StaticTextField
-          width='50%'
+          width='20%'
           color='rgba(38, 38, 38, 1)'
           name=''
-          texts={['Average: ']} />
-          
-        <br></br>
+          texts={['Avg Passion: ' + this.getMetricAvg('passion')]} />
 
         <StaticTextField
-          width='33.33%'
+          width='20%'
           color='rgba(38, 38, 38, 1)'
           name=''
-          texts={['Passion: ' + this.getMetricAvg('passion')]} />
+          texts={['Avg Dedication: ' + this.getMetricAvg('dedication')]} />
 
         <StaticTextField
-          width='33.33%'
+          width='20%'
           color='rgba(38, 38, 38, 1)'
           name=''
-          texts={['Dedication: ' + this.getMetricAvg('dedication')]} />
+          texts={['Avg Need: ' + this.getMetricAvg('need')]}  />
 
         <StaticTextField
-          width='33.33%'
+          width='20%'
           color='rgba(38, 38, 38, 1)'
           name=''
-          texts={['Need: ' + this.getMetricAvg('need')]}  />
+          texts={['Reviewers: ' + this.state.reviewersReviewed]}  />
 
       </section>
     )

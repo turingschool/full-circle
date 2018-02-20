@@ -31,6 +31,8 @@ class Review < ApplicationRecord
                         "average" => 0
                       }
   end
+  
+  { "metrics" => [{ "name" => "passion","score" => 9 },{ "name" => "dedication","score" => 4 },{ "name" => "need","score" => 8 } ],"total" => 21,"average" => 0}
 
   def calculate_metrics
     score_card["total"] = total
