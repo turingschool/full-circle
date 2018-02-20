@@ -1,13 +1,10 @@
 class ReviewerViewApplicationSection extends React.Component {
-  findCohortReviewer(app, review) {
-    return this.props.user.cohort_reviewers.find((ch_reviewer) => {
-      return ch_reviewer.id == review.cohort_reviewer_id
-    })
-  }
   
   findUserReview(app){
     return app.reviews.find((review) => {
-      return review.cohort_reviewer_id == this.findCohortReviewer(app, review).id;
+      return this.props.user.cohort_reviewers.some((cohort_reviewer) => {
+        return cohort_reviewer.id == review.cohort_reviewer_id
+      })
     })
   }
 
@@ -16,7 +13,7 @@ class ReviewerViewApplicationSection extends React.Component {
         
     return(
       <section className='view-applications reviewer-view-applications'>
-        <h3 className='reviewer-header'>Score Application</h3>
+        <h3 className='reviewer-header'>Score Application #{this.props.application.id}</h3>
         <ReviewerApplicationActionBar
           application={application}
           handleAction={this.props.handleAction}

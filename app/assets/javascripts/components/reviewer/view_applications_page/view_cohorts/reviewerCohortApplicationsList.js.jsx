@@ -16,15 +16,11 @@ class ReviewerCohortApplicationList extends React.Component {
     }
   }
   
-  findCohortReviewer(app, review) {
-    return this.props.user.cohort_reviewers.find((ch_reviewer) => {
-      return ch_reviewer.id == review.cohort_reviewer_id
-    })
-  }
-  
   findUserReview(app){
     return app.reviews.find((review) => {
-      return review.cohort_reviewer_id == this.findCohortReviewer(app, review).id;
+      return this.props.user.cohort_reviewers.some((cohort_reviewer) => {
+        return cohort_reviewer.id == review.cohort_reviewer_id
+      })
     })
   }
 

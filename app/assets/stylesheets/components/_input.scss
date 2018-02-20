@@ -21,6 +21,7 @@ input[type=number]::-webkit-outer-spin-button {
   input.readOnlyfalse {
     color: $gray-print;
     background-color: $gray-highlight;
+    padding-left: 10px;
   }
   
   input.readOnlyfalse-admin {
