@@ -140,7 +140,7 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    pg (0.21.0)
+    pg (1.0.0)
     phantomjs (2.1.1.0)
     poltergeist (1.16.0)
       capybara (~> 2.1)
@@ -269,7 +269,7 @@ DEPENDENCIES
   momentjs-rails (>= 2.9.0)
   omniauth
   omniauth-github
-  pg (~> 0.18)
+  pg (~> 1.0)
   phantomjs (~> 2.0)
   poltergeist
   pry-rails
