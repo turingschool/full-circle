@@ -149,7 +149,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.0)
-    puma (3.10.0)
+    puma (3.11.2)
     rack (2.0.4)
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
@@ -270,7 +270,7 @@ DEPENDENCIES
   phantomjs (~> 2.0)
   poltergeist
   pry-rails
-  puma (~> 3.7)
+  puma (~> 3.11)
   rails (~> 5.1.5)
   react-rails (~> 2.2.1)
   rspec-rails
