@@ -12,7 +12,6 @@ class ReviewerDashboard extends React.Component {
   }
   
   defineCurrentCohort() {
-    debugger
     return this.cohorts.map((cohort, i) => {
       if (cohort.title == this.current_cohort.title) {
         cohort.title = this.current_cohort.title + ' (Current Cohort)'
