@@ -4,7 +4,7 @@ class ReviewerAppScoreInputRow extends React.Component {
     super(props)
 
     this.state = {
-      score_range: Array.from(new Array(10),(val,index)=>index+1)
+      score_range: Array.from(new Array(11),(val,index)=>index)
     }
   }
   
