@@ -71,7 +71,7 @@ class Seed
       date = Date.today + (-6 - i).months
 
       Cohort.create(
-        title: ('17' + i.to_s),
+        title: ('170' + i.to_s),
         open_date: date,
         close_date: date + 2.weeks,
         start_date: date,
