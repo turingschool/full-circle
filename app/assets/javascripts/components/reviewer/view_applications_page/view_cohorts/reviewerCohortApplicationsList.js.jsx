@@ -34,6 +34,7 @@ class ReviewerCohortApplicationList extends React.Component {
           width='100%' />
         {this.props.applications.map((app) => {
           return <SelectableTextField
+            key={app.id}
             texts={[app.id, this.reviewStatus(app), this.totalScore(app)]}
             width='100%'
             returnKey='application'
