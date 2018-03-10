@@ -13,7 +13,7 @@ class SelectableTextField extends React.Component {
         onClick={this.props.handleAction.bind(this, this.returnObject())}>
 
         {this.props.texts.map((text) => {
-          return <span>{text}</span>
+          return <span key={text}>{text}</span>
         })}
       </div>
     )

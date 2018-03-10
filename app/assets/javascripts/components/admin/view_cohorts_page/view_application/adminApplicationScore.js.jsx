@@ -12,7 +12,7 @@ class AdminApplicationScore extends React.Component {
     let sum = 0
     this.state.reviewersReviewed = 0
 
-    this.props.reviews.forEach((review) => {
+    this.props.application.reviews.forEach((review) => {
       let theMetric = review.score_card.metrics.filter((metric) => {
         return metric.name == ofMetric
       })
@@ -61,7 +61,7 @@ class AdminApplicationScore extends React.Component {
           width='20%'
           color='rgba(38, 38, 38, 1)'
           name=''
-          texts={[this.state.reviewersReviewed + ' / ' + this.props.reviews.length + ' Reviews']}  />
+          texts={[this.state.reviewersReviewed + ' / ' + this.props.application.reviews.length + ' Reviews']}  />
 
       </section>
     )
