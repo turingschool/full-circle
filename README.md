@@ -25,6 +25,11 @@ GITHUB_CLIENT_SECRET:
 
 Finally, run the test suite: $ `rspec`
 
+To install client side dependencies:
+
+* `brew install yarn`
+* `yarn`
+
 ## Deployment
 
 Make sure the tests are passing on
