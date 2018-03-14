@@ -4,7 +4,7 @@ class Header extends React.Component {
     super(props)
 
     let loggedIn = false
-    
+
     if (this.props.user != undefined) {
       loggedIn = true
     }
@@ -13,8 +13,7 @@ class Header extends React.Component {
       isLoggedIn: loggedIn
     }
   }
-  
-  
+
   logOut() {
 
   }
@@ -41,9 +40,10 @@ class Header extends React.Component {
          headerTitle = (<span className='role-header'>Student Dashboard</span>)
        }
     } else {
+<<<<<<< HEAD
       user = (<menu className='user'>
-              <a href='/auth/github' id='login-link'>
-                <img src="assets/images/GitHub-Mark-Light-120px-plus.png" id='gh-nav-logo'/> Login
+              <a href='/auth/census' id='login-link'>
+                Login
               </a>
             </menu>)
       headerTitle = (<span className='role-header'></span>)
