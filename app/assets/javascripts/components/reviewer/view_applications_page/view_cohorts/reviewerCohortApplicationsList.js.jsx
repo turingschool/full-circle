@@ -37,6 +37,7 @@ class ReviewerCohortApplicationList extends React.Component {
             key={app.id}
             texts={[app.id, this.reviewStatus(app), this.totalScore(app)]}
             width='100%'
+            application={this.props.application}
             returnKey='application'
             returnValue={app}
             handleAction={this.props.handleAction} />
