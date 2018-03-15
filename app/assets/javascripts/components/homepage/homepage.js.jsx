@@ -13,7 +13,7 @@ class HomePage extends React.Component {
           <br></br>
           <a href='/auth/census'>
             <button id='login-button'>
-              <img src="assets/images/turing_logo.png" id='turing-logo'/> Login with Turing
+              <img src="assets/images/turing_logo.png" id='turing-logo-sm'/> Login with Turing
             </button>
           </a>
         </section>

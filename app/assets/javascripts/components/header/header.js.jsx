@@ -40,12 +40,11 @@ class Header extends React.Component {
          headerTitle = (<span className='role-header'>Student Dashboard</span>)
        }
     } else {
-<<<<<<< HEAD
       user = (<menu className='user'>
               <a href='/auth/census' id='login-link'>
-                Login
+                <img src="assets/images/turing_logo.png" id='turing-logo-sm'/> Login
               </a>
-            </menu>)
+             </menu>)
       headerTitle = (<span className='role-header'></span>)
     }
 
