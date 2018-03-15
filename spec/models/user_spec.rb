@@ -47,7 +47,7 @@ RSpec.describe User do
             'email' => 'somewhere@colorado.com',
             'roles' => roles.map { |role| { 'name' => role } }
           },
-          'provider' => User::AUTH_PROVIDER_GITHUB
+          'provider' => User::AUTH_PROVIDER_CENSUS
         }
       end
 

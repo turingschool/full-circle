@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include OauthUser
+  AUTH_PROVIDER_CENSUS = "census"
   AUTH_PROVIDER_GITHUB = "github"
 
   has_one :application, dependent: :destroy
