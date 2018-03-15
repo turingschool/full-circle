@@ -15,10 +15,14 @@ class ReviewerApplicationActionBar extends React.Component {
       message: "Editing Scores"
     })
   }
+  
+  isReadOnly() {
+    this.props.review.status == 'reviewed' ? true : false;
+  }
 
   textInput(param, text) {
     return <ReviewerAppScoreInputRow
-      readOnly={false}
+      readOnly={this.isReadOnly()}
       Value={this.findScoreMetricValue(param).score}
       Param={param} Text={text}
       handleChange={this.handleChange.bind(this)} />
@@ -26,7 +30,7 @@ class ReviewerApplicationActionBar extends React.Component {
   
   saveReview() {
     let cohort_id = this.props.application.cohort_id
-    this.props.review.status = 'reviewed'
+    this.props.review.status = 'reviewing'
     this.props.review.score_card.total = this.props.review.score_card.metrics[0].score + this.props.review.score_card.metrics[1].score +this.props.review.score_card.metrics[2].score
     
     let options = this.options('PUT',

@@ -56,6 +56,7 @@ class ReviewerViewApplications extends React.Component {
           application={this.state.item.applications.filter(app => app.state == 'submitted')[0]}
           user={this.props.user}
           handleAction={this.handleAction.bind(this)}
+          message={this.state.message}
           authorization={this.props.authorization} />
 
         <section className='reviewer-application-section'>
