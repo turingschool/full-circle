@@ -7,7 +7,6 @@ class SelectableTextField extends React.Component {
       application: this.props.application
     }
   }
-    
 
   returnObject() {
     let obj = {}
@@ -54,5 +53,3 @@ class SelectableTextField extends React.Component {
     )
   }
 }
-
-// onClick={this.props.handleAction.bind(this, this.returnObject())}>
