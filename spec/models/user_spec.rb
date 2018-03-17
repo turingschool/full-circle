@@ -51,13 +51,23 @@ RSpec.describe User do
         }
       end
 
+      context 'with a non admin or reviewer role' do
+        it 'falls back to student role' do
+          user = create(:user, uid: '90210')
+
+          expect(
+            User.find_or_create_by_oauth(oauth_params).role
+          ).to eq(User::ROLE_STUDENT.to_s)
+        end
+      end
+
       context 'with an admin role' do
         it 'creates user with role of admin' do
           user = create(:user, uid: '90210')
 
           expect(
-            User.find_or_create_by_oauth(oauth_params(roles: ['admin'])).role
-          ).to eq("admin")
+            User.find_or_create_by_oauth(oauth_params(roles: [User::ROLE_NAME_EXTERNAL_ADMIN])).role
+          ).to eq(User::ROLE_ADMIN.to_s)
         end
       end
 
@@ -66,8 +76,8 @@ RSpec.describe User do
           user = create(:user, uid: '90210')
 
           expect(
-            User.find_or_create_by_oauth(oauth_params(roles: ['staff'])).role
-          ).to eq("reviewer")
+            User.find_or_create_by_oauth(oauth_params(roles: [User::ROLE_NAME_EXTERNAL_REVIEWER])).role
+          ).to eq(User::ROLE_REVIWER.to_s)
         end
       end
     end

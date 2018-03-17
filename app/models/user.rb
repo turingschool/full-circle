@@ -2,6 +2,11 @@ class User < ApplicationRecord
   include OauthUser
   AUTH_PROVIDER_CENSUS = "census"
   AUTH_PROVIDER_GITHUB = "github"
+  ROLE_ADMIN = :admin
+  ROLE_NAME_EXTERNAL_ADMIN = "full-circle-admin"
+  ROLE_NAME_EXTERNAL_REVIEWER = "full-circle-reviewer"
+  ROLE_REVIWER = :reviewer
+  ROLE_STUDENT = :student
 
   has_one :application, dependent: :destroy
 
@@ -13,7 +18,7 @@ class User < ApplicationRecord
 
   before_create :set_default_alts
 
-  enum role: [:student, :reviewer, :admin]
+  enum role: [ROLE_STUDENT, ROLE_REVIWER, ROLE_ADMIN]
 
   def set_default_alts
     self.alt_email = email
@@ -26,9 +31,9 @@ class User < ApplicationRecord
       user = User.find_or_initialize_by(uid: params['uid'], provider: params['provider'])
       census_roles = (params['info']['roles'] || []).map { |role| role['name'] }
 
-      user.role = 'student'
-      user.role = 'reviewer' if census_roles.include?('staff')
-      user.role = 'admin' if census_roles.include?('admin')
+      user.role = ROLE_STUDENT
+      user.role = ROLE_REVIWER if census_roles.include?(ROLE_NAME_EXTERNAL_REVIEWER)
+      user.role = ROLE_ADMIN if census_roles.include?(ROLE_NAME_EXTERNAL_ADMIN)
 
       user.tap do |user|
         user.update!(oauth_params(params))
