@@ -12,7 +12,7 @@ class ReviewerApplicationActionBar extends React.Component {
 
     this.props.handleAction({
       review: review,
-      message: "Editing Form"
+      message: "Editing Scores"
     })
   }
 
@@ -37,7 +37,7 @@ class ReviewerApplicationActionBar extends React.Component {
       .then((response) => {
         this.props.handleAction({
           review: this.props.review,
-          message: 'Form Saved' })
+          message: 'Scores Saved' })
       })
       .catch((error) => {
         this.props.handleAction({message: 'Unable to Save Application Review'})

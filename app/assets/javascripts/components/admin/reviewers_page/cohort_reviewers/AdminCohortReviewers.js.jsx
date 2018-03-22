@@ -24,6 +24,10 @@ class AdminCohortReviewers extends React.Component {
           readOnly={this.props.readOnly}
           handleAction={this.props.handleAction}
           authorization={this.props.authorization} />
+        
+        <span>
+          {this.props.message}
+        </span>
       </section>
     )
   }
