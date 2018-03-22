@@ -71,7 +71,7 @@ class Seed
       date = Date.today + (-6 - i).months
 
       Cohort.create(
-        title: ('17' + i.to_s),
+        title: ('170' + i.to_s),
         open_date: date,
         close_date: date + 2.weeks,
         start_date: date,
@@ -130,6 +130,7 @@ class Seed
     @past_students.each.map do |student|
       app = make_application
       app.user = student
+      submit_application?([true, false].shuffle.pop, student)
       app
     end
   end
@@ -138,7 +139,14 @@ class Seed
     @current_students.each.map do |student|
       app = make_application
       app.user = student
+      submit_application?([true, false].shuffle.pop, student)
       app
+    end
+  end
+
+  def submit_application?(boolean, student)
+    if boolean
+      student.application.update(state: 'submitted')
     end
   end
 

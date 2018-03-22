@@ -4,7 +4,7 @@ class AdminAppDataSection extends React.Component {
     return(
       <section className='application-data'>
         <AdminApplicationScore
-          reviews={this.props.application.reviews} />
+          application={this.props.application} />
         <section className='student-essay'>
           {this.props.application.essay}
         </section>

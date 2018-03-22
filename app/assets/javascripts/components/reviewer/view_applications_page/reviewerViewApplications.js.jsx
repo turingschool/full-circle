@@ -4,7 +4,7 @@ class ReviewerViewApplications extends React.Component {
     super(props)
 
     this.state = {
-      message: 'Welcome',
+      message: '',
       cohorts: [],
       item: {},
       applications: [],
@@ -37,10 +37,11 @@ class ReviewerViewApplications extends React.Component {
         application={this.state.application}
         handleAction={this.handleAction.bind(this)}
         user={this.props.user}
+        message={this.state.message}
         authorization={this.props.authorization} />
     } else {
       return <section className='no-application reviewer-no-app'>
-        No Completed Applications
+        No Submitted Applications
       </section>
     }
   }
@@ -57,7 +58,9 @@ class ReviewerViewApplications extends React.Component {
           handleAction={this.handleAction.bind(this)}
           authorization={this.props.authorization} />
 
-        {this.applicationSection()}
+        <section className='reviewer-application-section'>
+          {this.applicationSection()}
+        </section>
       </section>
     )
   }
