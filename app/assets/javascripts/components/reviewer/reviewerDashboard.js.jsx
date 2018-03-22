@@ -33,6 +33,7 @@ class ReviewerDashboard extends React.Component {
             cohorts={this.cohorts}
             user={this.user}
             cohort={this.current_cohort}
+            message={this.message}
             authorization={this.authorization} />
         </section>
       </main>

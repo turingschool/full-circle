@@ -33,8 +33,4 @@ input[type=number]::-webkit-outer-spin-button {
   input.readOnlyfalse:focus {
     @include shadow();
   }
-
-  input.readOnlyfalse:hover {
-    border-bottom: 3px solid $blue-digital;
-  }
 }

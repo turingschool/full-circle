@@ -28,7 +28,6 @@ class ReviewerCohortApplicationList extends React.Component {
     return(
       <section className='cohort-applications-list'>
         <StaticTextField
-          key={this.props.cohort + ' application-list-headers'}
           name='application'
           texts={['App #', 'Status', 'Total Score']}
           color='rgba(0, 187, 210, 1)'
@@ -38,6 +37,7 @@ class ReviewerCohortApplicationList extends React.Component {
             key={app.id}
             texts={[app.id, this.reviewStatus(app), this.totalScore(app)]}
             width='100%'
+            application={this.props.application}
             returnKey='application'
             returnValue={app}
             handleAction={this.props.handleAction} />

@@ -1,21 +1,55 @@
 class SelectableTextField extends React.Component {
 
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+      application: this.props.application
+    }
+  }
+
   returnObject() {
     let obj = {}
     obj[this.props.returnKey] = this.props.returnValue
+    obj['message'] = ''
     return obj
+  }
+  
+  onItemClick(event) {
+    [].slice.call(event.currentTarget.parentElement.parentElement.children).forEach((child) => {
+      child.children[0].style.backgroundColor = 'transparent';
+    })
+    event.currentTarget.style.backgroundColor = 'rgba(200, 200, 200, 0.4)';
+    this.props.handleAction(
+      this.returnObject()
+    )
+  }
+  
+  highlightApplication() {
+    if (this.props.returnValue == this.props.application) {
+      return (<div className='selectable-text-field'
+        style={{width: this.props.width, backgroundColor: 'rgba(200, 200, 200, 0.4)'}}
+        onClick={this.onItemClick.bind(this)}>
+        {this.props.texts.map((text) => {
+          return <span key={text}>{text}</span>
+        })}
+      </div>
+      )
+    } else {
+      return (<div className='selectable-text-field'
+        style={{width: this.props.width}}
+        onClick={this.onItemClick.bind(this)}>
+        {this.props.texts.map((text) => {
+          return <span key={text}>{text}</span>
+        })}
+      </div>
+      )
+    }
   }
 
   render() {
     return(
-      <div className='selectable-text-field'
-        style={{width: this.props.width}}
-        onClick={this.props.handleAction.bind(this, this.returnObject())}>
-
-        {this.props.texts.map((text) => {
-          return <span>{text}</span>
-        })}
-      </div>
+      <div>{this.highlightApplication()}</div>
     )
   }
 }
