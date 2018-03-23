@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   def set_default_alts
     self.alt_email = email
-    self.alt_name = name
+    self.alt_name = name.blank? ? "n/a" : name
   end
 
   class << self
