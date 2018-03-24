@@ -42,7 +42,7 @@ class ReviewerViewApplications extends React.Component {
         authorization={this.props.authorization} />)
     } else {
       return (<section className='no-application reviewer-no-app'>
-        No Submitted Applications
+        No applications have been submitted for this cohort.
       </section>)
     }
   }
