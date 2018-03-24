@@ -15,6 +15,9 @@ class ReviewerViewCohortsSection extends React.Component {
           applications={this.props.applications}
           application={this.props.application}
           user={this.props.user}
+          authorization={this.props.authorization}
+          message={this.props.message}
+          finalizingMessage={this.props.finalizingMessage}
           handleAction={this.props.handleAction} />
 
       </section>

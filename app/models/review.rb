@@ -3,9 +3,9 @@ class Review < ApplicationRecord
   belongs_to :cohort_reviewer
 
   before_create :set_metrics
-  before_save :calculate_metrics, if: ->(obj){ obj.reviewed? }
-
-  enum status: ['unreviewed', 'reviewed']
+  before_save :calculate_metrics, unless: ->(obj){ obj.unreviewed? }
+  
+  enum status: ['unreviewed', 'reviewing', 'reviewed', 'locked']
 
   def score_metric(name, score)
     score_card['metrics'].each do |metric|
