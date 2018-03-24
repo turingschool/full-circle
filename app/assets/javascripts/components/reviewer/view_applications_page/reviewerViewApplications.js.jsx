@@ -5,6 +5,7 @@ class ReviewerViewApplications extends React.Component {
 
     this.state = {
       message: '',
+      finalizingMessage: '',
       cohorts: [],
       item: {},
       applications: [],
@@ -32,17 +33,17 @@ class ReviewerViewApplications extends React.Component {
 
   applicationSection() {
     if (this.state.application != undefined) {
-      return <ReviewerViewApplicationSection
+      return (<ReviewerViewApplicationSection
         applications={this.state.applications}
         application={this.state.application}
         handleAction={this.handleAction.bind(this)}
         user={this.props.user}
         message={this.state.message}
-        authorization={this.props.authorization} />
+        authorization={this.props.authorization} />)
     } else {
-      return <section className='no-application reviewer-no-app'>
+      return (<section className='no-application reviewer-no-app'>
         No Submitted Applications
-      </section>
+      </section>)
     }
   }
   
@@ -57,6 +58,7 @@ class ReviewerViewApplications extends React.Component {
           user={this.props.user}
           handleAction={this.handleAction.bind(this)}
           message={this.state.message}
+          finalizingMessage={this.state.finalizingMessage}
           authorization={this.props.authorization} />
 
         <section className='reviewer-application-section'>

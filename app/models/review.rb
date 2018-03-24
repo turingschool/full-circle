@@ -5,7 +5,7 @@ class Review < ApplicationRecord
   before_create :set_metrics
   before_save :calculate_metrics, unless: ->(obj){ obj.unreviewed? }
   
-  enum status: ['unreviewed', 'reviewing', 'reviewed']
+  enum status: ['unreviewed', 'reviewing', 'reviewed', 'locked']
 
   def score_metric(name, score)
     score_card['metrics'].each do |metric|

@@ -6,7 +6,9 @@ class DropDownMenuItem extends React.Component {
         onClick={this.props.handleAction.bind(this, {
           item: this.props.item,
           message: '',
-          application: this.props.item.applications.filter(app => app.state == 'submitted')[0]})}>
+          finalizingMessage: '',
+          application: this.props.item.applications.filter(app => app.state == 'submitted')[0]
+        })}>
         {this.props.item[this.props.label]}
       </span>
     )
