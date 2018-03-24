@@ -105,7 +105,7 @@ class Seed
   end
 
   def make_current_students
-    rand(1..10).times.map do |i|
+    rand(5..15).times.map do |i|
       name = Faker::HarryPotter.unique.character
       email = name.gsub(' ', '.') + '@gmail.com'
       uid = (12345 + i).to_s
@@ -151,7 +151,7 @@ class Seed
   end
 
   def make_application
-    Application.new( essay: Faker::Lorem.paragraph(8, false) )
+    Application.new(essay: "#{Faker::Lorem.paragraph(40, false, 20)} \n\n #{Faker::Lorem.paragraph(40, false, 20)} \n\n #{Faker::Lorem.paragraph(40, false, 20)} \n\n #{Faker::Lorem.paragraph(40, false, 20)}")
   end
 
   def populate_closed_cohorts

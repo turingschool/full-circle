@@ -12,6 +12,7 @@ class SelectableTextField extends React.Component {
     let obj = {}
     obj[this.props.returnKey] = this.props.returnValue
     obj['message'] = ''
+    obj['finalizingMessage'] = ''
     return obj
   }
   
