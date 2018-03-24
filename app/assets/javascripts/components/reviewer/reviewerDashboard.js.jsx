@@ -23,18 +23,28 @@ class ReviewerDashboard extends React.Component {
     this.setState(action)
   }
   
+  confirmReviewerHasCohorts() {
+    if(this.user.) {
+      return (<ReviewerViewApplications
+        cohorts={this.cohorts}
+        user={this.user}
+        cohort={this.current_cohort}
+        message={this.message}
+        authorization={this.authorization} />)
+    } else {
+      return (<section> Sorry, you do not have any Cohorts to review </section>)
+    }
+    
+    
+  }
+  
   render() {
     return (
       <main className='main-vert-frame'>
         <Header user={this.user} />
         <section className='admin'>
           <h2 className='page-title'> Reviewer Dashboard </h2>
-          <ReviewerViewApplications
-            cohorts={this.cohorts}
-            user={this.user}
-            cohort={this.current_cohort}
-            message={this.message}
-            authorization={this.authorization} />
+          {this.confirmReviewerHasCohorts()}
         </section>
       </main>
     )
