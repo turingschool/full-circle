@@ -64,6 +64,19 @@ RSpec.describe User do
       expect(user.uid).to eq('90210')
     end
 
+    it 'works with an empty name' do
+      user = create(:user, name: '',
+                           email: 'mark.wahlberg@cool.com',
+                           uid: '90210'
+                    )
+
+      updated_user = User.find_or_create_by_oauth(oauth_params)
+
+      expect(updated_user).to eq(user)
+      expect(updated_user.name).to eq('John Galt')
+      expect(updated_user.email).to eq('somewhere@colorado.com')
+    end
+
     it 'Will update a users attributes' do
       user = create(:user, name: 'Marky Mark',
                            email: 'mark.wahlberg@cool.com',
