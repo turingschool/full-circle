@@ -17,17 +17,23 @@ class ReviewerApplicationActionBar extends React.Component {
   }
 
   textInput(param, text) {
-    return <ReviewerAppScoreInputRow
-      readOnly={false}
+    return (<ReviewerAppScoreInputRow
+      reviewLockStatus={this.props.review.status == 'locked'}
       Value={this.findScoreMetricValue(param).score}
       Param={param} Text={text}
-      handleChange={this.handleChange.bind(this)} />
+      handleChange={this.handleChange.bind(this)} />)
   }
   
   saveReview() {
     let cohort_id = this.props.application.cohort_id
-    this.props.review.status = 'reviewed'
-    this.props.review.score_card.total = this.props.review.score_card.metrics[0].score + this.props.review.score_card.metrics[1].score +this.props.review.score_card.metrics[2].score
+    let metrics = this.props.review.score_card.metrics
+    if (metrics[0].score == 0 || metrics[1].score == 0 || metrics[0].score == 0) {
+      this.props.review.status = 'reviewing'
+    } else {
+      this.props.review.status = 'reviewed'
+    }
+    
+    this.props.review.score_card.total = metrics[0].score + metrics[1].score + metrics[2].score
     
     let options = this.options('PUT',
       JSON.stringify({ review: this.props.review })
@@ -53,14 +59,20 @@ class ReviewerApplicationActionBar extends React.Component {
     }
   }
   
+  addButton() {
+    if(this.props.review.status != 'locked') {
+      return (<ClickBtn Text='Save'
+        onClick={this.saveReview.bind(this)} />)
+    }
+  }
+  
   render() {
     return(
       <section className='application-action-bar'>
         {this.textInput('passion', 'Passion: ')}
         {this.textInput('dedication', 'Dedication: ')}
         {this.textInput('need', 'Need: ')}
-        <ClickBtn Text='Save'
-          onClick={this.saveReview.bind(this)} />
+        {this.addButton()}
       </section>
     )
   }
