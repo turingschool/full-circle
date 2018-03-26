@@ -27,7 +27,7 @@ class ReviewerApplicationActionBar extends React.Component {
   saveReview() {
     let cohort_id = this.props.application.cohort_id
     let metrics = this.props.review.score_card.metrics
-    if (metrics[0].score == 0 || metrics[1].score == 0 || metrics[0].score == 0) {
+    if (metrics[0].score == 0 || metrics[1].score == 0 || metrics[2].score == 0) {
       this.props.review.status = 'reviewing'
     } else {
       this.props.review.status = 'reviewed'
