@@ -1,11 +1,11 @@
 class Api::V1::Admin::CohortsController < Api::V1::AdminApiController
 
   def index
-    render json: Cohort.all, status: 200
+    render json: Cohort.all.map { |cohort| CohortSerializer.new(cohort).to_json }, status: 200
   end
 
   def show
-    render json: Cohort.find(params[:id]), status: 200
+    render json: CohortSerializer.new(Cohort.find(params[:id])).to_json, status: 200
   end
 
   def create

@@ -49,6 +49,22 @@ RSpec.describe 'API::V1::Admin::CohortController' do
       raw_cohorts = JSON.parse(response.body)
 
       expect(raw_cohorts.count).to eq(10)
+      expect(raw_cohorts.first.keys.sort).to eq([
+        "close_date",
+        "created_at",
+        "end_date",
+        "essay_limit",
+        "guidelines",
+        "id",
+        "notify_date",
+        "open",
+        "open_date",
+        "questions",
+        "start_date",
+        "state",
+        "title",
+        "updated_at"
+      ])
     end
 
     it 'Will return one cohort' do

@@ -2,6 +2,7 @@ class Api::V1::Reviewer::CohortApplicationReviewsController < Api::V1::ReviewerA
 
   def update
     review = Review.find(params[:id])
+
     if review.update(review_params)
       render json: review, status: 200
     else

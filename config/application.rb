@@ -27,5 +27,6 @@ module FullCircleApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.autoload_paths << "#{Rails.root}/app/serializers/v1"
   end
 end

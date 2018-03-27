@@ -1,7 +1,7 @@
 class Student::DashboardController < ApplicationController
 
   def index
-    @cohort = Cohort.current[0]
+    @cohort = Cohort.current.first
     @user = current_user
     @application = get_application
 

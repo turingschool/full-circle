@@ -3,6 +3,7 @@ class Api::V1::Admin::CohortReviewersController < Api::V1::AdminApiController
   before_action :get_reviewer, only: [:create, :destroy]
 
   def index
+    # TODO(srt32): add serialization layer here
     render json: @cohort.reviewers
   end
 
