@@ -12,6 +12,7 @@ class Api::V1::Admin::CohortsController < Api::V1::AdminApiController
     cohort = Cohort.create(cohort_params)
 
     if cohort.valid?
+      # TODO(srt32): add serialization layer here
       render json: cohort, :include => [:applications, :reviewers], status: 200
     else
       render json: { "error"=>"Error Creating Cohort" }, status: 400
@@ -22,6 +23,7 @@ class Api::V1::Admin::CohortsController < Api::V1::AdminApiController
     cohort = Cohort.find(params[:id])
 
     if cohort.update(cohort_params)
+      # TODO(srt32): add serialization layer here
       render json: cohort, :include => [:applications, :reviewers], status: 200
     else
       render json: { "error"=>"Error Updating Cohort" }, status: 400
@@ -32,6 +34,7 @@ class Api::V1::Admin::CohortsController < Api::V1::AdminApiController
     cohort = Cohort.find(params[:id])
 
     if cohort.destroy
+      # TODO(srt32): add serialization layer here
       render json: cohort, :include => [:applications, :reviewers], status: 200
     else
       render json: { "error"=>"Error Deleting Cohort" }, status: 400
