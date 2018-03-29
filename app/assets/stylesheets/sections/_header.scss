@@ -3,16 +3,28 @@
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  height: 7%;
-  margin-bottom: 20px;
+  height: 45px;
 
   width: 100%;
 
   background-color: $gray-digital;
+  
+  .turing-logo-space {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    padding-left: 3%
+  }
 
   img {
-    height: 80%;
-    margin-left: 2%;
+    width: 35px;
+  }
+  
+  .role-header {
+    color: white;
+    font-size: 125%;
+    text-align: center;
+    width: 100%;
   }
 
   menu.user {
@@ -22,7 +34,7 @@
 
     padding-right: 3%;
     font-size:  0.9em;
-    width: 40%;
+    width: 90%;
 
     .logout {
       text-align: right;
@@ -48,6 +60,7 @@
     
     #gh-nav-logo {
       height: 23px;
+      width: 23px;
       margin: 10px;
     }
   }
