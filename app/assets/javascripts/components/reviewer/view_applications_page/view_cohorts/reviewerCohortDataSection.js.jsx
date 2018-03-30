@@ -56,14 +56,17 @@ class ReviewerCohortDataSection extends React.Component {
       })
     } else {
       this.props.handleAction({
-        finalizingMessage: "To finalize reviews, each review must be saved (scores must be greater than 0)."
+        finalizingMessage: 'To finalize reviews, each review must have a "reviewed" status.'
       })
     }
   }
   
   lockReview(review) {
     let cohort_id = this.props.application.cohort_id
+    const prevReviewStatus = review.status
     review.status = 'locked'
+    
+    this.props.handleAction({ review: review })
     
     let options = this.options('PUT',
       JSON.stringify({ review: review })
@@ -71,12 +74,15 @@ class ReviewerCohortDataSection extends React.Component {
 
     ping('/api/v1/reviewer/cohorts/' + cohort_id + '/applications/' + this.props.application.id + '/reviews/' + review.id, options)
       .then((response) => {
-        this.props.handleAction({
-          review: review,
-          message: 'Review Locked' })
+        this.props.handleAction({ message: 'Review Locked' })
       })
       .catch((error) => {
-        this.props.handleAction({message: 'Unable to Lock Review'})
+        review.status = prevReviewStatus
+        
+        this.props.handleAction({
+          review: review,
+          message: 'Unable to Lock Review'
+        })
       })
   }
   

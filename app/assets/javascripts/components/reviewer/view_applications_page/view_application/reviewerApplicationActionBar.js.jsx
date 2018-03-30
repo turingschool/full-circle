@@ -26,27 +26,41 @@ class ReviewerApplicationActionBar extends React.Component {
   
   saveReview() {
     let cohort_id = this.props.application.cohort_id
-    let metrics = this.props.review.score_card.metrics
+    let review = this.props.review
+    const prevReviewStatus = review.status
+    let metrics = review.score_card.metrics
+    
+    review.score_card.total = metrics[0].score + metrics[1].score + metrics[2].score
+    
     if (metrics[0].score == 0 || metrics[1].score == 0 || metrics[2].score == 0) {
-      this.props.review.status = 'reviewing'
+      review.status = 'reviewing'
+      this.props.handleAction({review: review})
     } else {
-      this.props.review.status = 'reviewed'
+      review.status = 'reviewed'
+      this.props.handleAction({review: review})
     }
     
-    this.props.review.score_card.total = metrics[0].score + metrics[1].score + metrics[2].score
-    
     let options = this.options('PUT',
-      JSON.stringify({ review: this.props.review })
+      JSON.stringify({ review: review })
     )
 
-    ping('/api/v1/reviewer/cohorts/' + cohort_id + '/applications/' + this.props.application.id + '/reviews/' + this.props.review.id, options)
+    ping('/api/v1/reviewer/cohorts/' + cohort_id + '/applications/' + this.props.application.id + '/reviews/' + review.id, options)
       .then((response) => {
-        this.props.handleAction({
-          review: this.props.review,
-          message: 'Scores Saved' })
+        if (metrics[0].score == 0 || metrics[1].score == 0 || metrics[2].score == 0) {
+          this.props.handleAction({
+            message: 'Scores saved but one or more scores must still be updated.'
+          })
+        } else {
+          this.props.handleAction({ message: 'Scores Saved' })
+        }
       })
       .catch((error) => {
-        this.props.handleAction({message: 'Unable to Save Application Review'})
+        review.status = prevReviewStatus
+        
+        this.props.handleAction({
+          review: review,
+          message: 'Unable to Save Application Review'
+        })
       })
   }
 
