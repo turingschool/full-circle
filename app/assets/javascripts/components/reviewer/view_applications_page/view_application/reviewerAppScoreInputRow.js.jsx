@@ -4,7 +4,7 @@ class ReviewerAppScoreInputRow extends React.Component {
     super(props)
 
     this.state = {
-      score_range: Array.from(new Array(11),(val,index)=>index)
+      score_range: Array.from(new Array(10),(val,index)=>index + 1)
     }
   }
   
@@ -13,6 +13,7 @@ class ReviewerAppScoreInputRow extends React.Component {
       return (<select className='readOnlyfalse' 
         value={this.props.Value}
         onChange={this.props.handleChange.bind(this, this.props.Param)}>
+        {<option value={0} disabled> -- </option>}
         { this.state.score_range.map(value => <option key={value} value={value}>{value}</option>) }
       </select>)
     } else {
