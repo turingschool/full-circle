@@ -11,9 +11,9 @@ class HomePage extends React.Component {
           <br></br>
           <br></br>
           <br></br>
-          <a href='/auth/github'>
+          <a href='/auth/census'>
             <button id='login-button'>
-              <img src="assets/images/GitHub-Mark-Light-120px-plus.png" id='gh-logo'/> Login with Github
+              <img src="assets/images/turing_logo.png" id='turing-logo-sm'/> Login with Turing
             </button>
           </a>
         </section>

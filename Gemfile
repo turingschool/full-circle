@@ -18,6 +18,7 @@ gem 'honeybadger'
 gem 'jquery-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'omniauth'
+gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'omniauth-github'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.11'
