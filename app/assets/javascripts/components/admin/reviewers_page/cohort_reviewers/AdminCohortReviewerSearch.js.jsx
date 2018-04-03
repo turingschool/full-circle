@@ -22,11 +22,11 @@ class AdminCohortReviewerSearch extends React.Component {
   }
 
   filteredSearch() {
-    let search = (this.state.search || "").toLowerCase()
+    let search = this.state.search.toLowerCase()
     let length = search.length
 
     return this.props.cohort.non_reviewers.filter((reviewer) => {
-      return (reviewer.name.toLowerCase().substr(0, length) == search)
+      return ((reviewer.name || "").toLowerCase().substr(0, length) == search)
     })
   }
 
