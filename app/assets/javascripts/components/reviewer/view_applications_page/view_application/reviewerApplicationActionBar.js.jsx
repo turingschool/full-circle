@@ -17,30 +17,50 @@ class ReviewerApplicationActionBar extends React.Component {
   }
 
   textInput(param, text) {
-    return <ReviewerAppScoreInputRow
-      readOnly={false}
+    return (<ReviewerAppScoreInputRow
+      reviewLockStatus={this.props.review.status == 'locked'}
       Value={this.findScoreMetricValue(param).score}
       Param={param} Text={text}
-      handleChange={this.handleChange.bind(this)} />
+      handleChange={this.handleChange.bind(this)} />)
   }
   
   saveReview() {
     let cohort_id = this.props.application.cohort_id
-    this.props.review.status = 'reviewed'
-    this.props.review.score_card.total = this.props.review.score_card.metrics[0].score + this.props.review.score_card.metrics[1].score +this.props.review.score_card.metrics[2].score
+    let review = this.props.review
+    const prevReviewStatus = review.status
+    let metrics = review.score_card.metrics
+    
+    review.score_card.total = metrics[0].score + metrics[1].score + metrics[2].score
+    
+    if (metrics[0].score == 0 || metrics[1].score == 0 || metrics[2].score == 0) {
+      review.status = 'reviewing'
+      this.props.handleAction({review: review})
+    } else {
+      review.status = 'reviewed'
+      this.props.handleAction({review: review})
+    }
     
     let options = this.options('PUT',
-      JSON.stringify({ review: this.props.review })
+      JSON.stringify({ review: review })
     )
 
-    ping('/api/v1/reviewer/cohorts/' + cohort_id + '/applications/' + this.props.application.id + '/reviews/' + this.props.review.id, options)
+    ping('/api/v1/reviewer/cohorts/' + cohort_id + '/applications/' + this.props.application.id + '/reviews/' + review.id, options)
       .then((response) => {
-        this.props.handleAction({
-          review: this.props.review,
-          message: 'Scores Saved' })
+        if (metrics[0].score == 0 || metrics[1].score == 0 || metrics[2].score == 0) {
+          this.props.handleAction({
+            message: 'Scores saved but one or more scores must still be updated.'
+          })
+        } else {
+          this.props.handleAction({ message: 'Scores Saved' })
+        }
       })
       .catch((error) => {
-        this.props.handleAction({message: 'Unable to Save Application Review'})
+        review.status = prevReviewStatus
+        
+        this.props.handleAction({
+          review: review,
+          message: 'Unable to Save Application Review'
+        })
       })
   }
 
@@ -53,14 +73,20 @@ class ReviewerApplicationActionBar extends React.Component {
     }
   }
   
+  addButton() {
+    if(this.props.review.status != 'locked') {
+      return (<ClickBtn Text='Save'
+        onClick={this.saveReview.bind(this)} />)
+    }
+  }
+  
   render() {
     return(
       <section className='application-action-bar'>
         {this.textInput('passion', 'Passion: ')}
         {this.textInput('dedication', 'Dedication: ')}
         {this.textInput('need', 'Need: ')}
-        <ClickBtn Text='Save'
-          onClick={this.saveReview.bind(this)} />
+        {this.addButton()}
       </section>
     )
   }

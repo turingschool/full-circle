@@ -4,6 +4,7 @@ FactoryGirl.define do
     name 'John Galt'
     email 'somewhere@colorado.com'
     sequence :uid { |i| '90210' + i.to_s }
+    provider User::AUTH_PROVIDER_GITHUB
     token 'averysecrettoken'
   end
 

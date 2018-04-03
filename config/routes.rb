@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'homepage#index'
 
   get '/auth/github/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
   namespace :admin do

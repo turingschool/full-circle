@@ -1,7 +1,18 @@
 .reviewer-view-cohorts {
   width: 33% !important;
+  
+  @include btn();
+  
+  .btn {
+    align-self: center;
+    margin: 5px;
+    padding: 5px;
+    font-size: 12px;
+    height: 25px;
+    width: auto;
+  }
 }
 
 .reviewer-no-app {
-  width: 67% !important;
+  width: 100% !important;
 }
