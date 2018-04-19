@@ -100,7 +100,7 @@ class Seed
       uid = (1234 + i).to_s
       token = (9876543 + i).to_s
 
-      User.create(name: name, email: email, uid: uid, token: token)
+      user = User.create!(name: name, email: email, uid: uid, token: token, provider: 'github')
     end
   end
 
@@ -111,7 +111,7 @@ class Seed
       uid = (12345 + i).to_s
       token = (98765432 + i).to_s
 
-      User.create(name: name, email: email, uid: uid, token: token)
+      User.create(name: name, email: email, uid: uid, token: token, provider: 'github')
     end
   end
 
@@ -122,7 +122,7 @@ class Seed
       uid = (123456 + i).to_s
       token = (987654321 + i).to_s
 
-      User.create(name: name, email: email, uid: uid, token: token, role: 'reviewer')
+      User.create(name: name, email: email, uid: uid, token: token, role: 'reviewer', provider: 'github')
     end
   end
 
