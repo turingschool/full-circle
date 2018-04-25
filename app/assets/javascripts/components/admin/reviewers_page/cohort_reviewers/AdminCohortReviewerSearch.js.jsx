@@ -2,12 +2,12 @@ class AdminCohortReviewerSearch extends React.Component {
 
   constructor(props) {
     super(props)
-  
+
     this.state = {
       search: ""
     }
   }
-  
+
   options(verb, body = {}) {
     return {
       body: body,
@@ -16,20 +16,20 @@ class AdminCohortReviewerSearch extends React.Component {
                  'Content-Type': "application/json" }
     }
   }
-  
+
   handleChange(key, event) {
     this.setState( {[key]: event.target.value} )
   }
-  
+
   filteredSearch() {
     let search = this.state.search.toLowerCase()
     let length = search.length
-  
+
     return this.props.cohort.non_reviewers.filter((reviewer) => {
-      return (reviewer.name.toLowerCase().substr(0, length) == search)
+      return ((reviewer.name || "").toLowerCase().substr(0, length) == search)
     })
   }
-  
+
   render() {
     return(
       <section className='reviewer-search-box'>

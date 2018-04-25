@@ -48,8 +48,7 @@ class ReviewerDashboard extends React.Component {
     return (
       <main className='main-vert-frame'>
         <Header user={this.user} />
-        <section className='admin'>
-          <h2 className='page-title'> Reviewer Dashboard </h2>
+        <section className='reviewer'>
           {this.confirmReviewerHasCohorts()}
         </section>
       </main>

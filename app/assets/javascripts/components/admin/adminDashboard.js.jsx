@@ -64,7 +64,6 @@ class AdminDashboard extends React.Component {
       <main className='main-vert-frame'>
         <Header user={this.user} />
         <section className='admin'>
-          <h2 className='page-title'> Admin Dashboard </h2>
           <AdminNavigationBar changePage={this.handleChange.bind(this)} />
           { page }
         </section>
