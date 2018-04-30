@@ -60,9 +60,9 @@ GEM
       sass (>= 3.3.4)
     bootstrap3-datetimepicker-rails (4.17.47)
       momentjs-rails (>= 2.8.1)
-    browserify-rails (4.2.0)
+    browserify-rails (4.3.0)
       addressable (>= 2.4.0)
-      railties (>= 4.0.0, < 5.2)
+      railties (>= 4.0.0)
       sprockets (>= 3.6.0)
     builder (3.2.3)
     capybara (2.18.0)
@@ -261,7 +261,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   bootstrap3-datetimepicker-rails (~> 4.17.47)
-  browserify-rails (~> 4.2.0)
+  browserify-rails (~> 4.3.0)
   capybara
   factory_girl_rails (~> 4.0)
   faker (>= 1.8.4)
