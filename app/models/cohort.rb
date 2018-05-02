@@ -1,5 +1,5 @@
 class Cohort < ApplicationRecord
-  has_many :applications, -> { order('state DESC, id') }, dependent: :destroy
+  has_many :applications
 
   has_many :cohort_reviewers, dependent: :destroy
   has_many :users, through: :cohort_reviewers
@@ -11,6 +11,10 @@ class Cohort < ApplicationRecord
   default_scope { order("start_date DESC") }
   scope :current, -> { where('open_date <= ? AND close_date >= ?', Date.today, Date.today) }
   scope :closed, -> { where('open_date > ? OR close_date < ?', Date.today, Date.today) }
+
+  def order_by_id_and_state
+    applications.order('state DESC, id')
+  end
 
   def reviewers
     users.where(role: 'reviewer')
