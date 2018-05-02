@@ -11,7 +11,7 @@ class AdminCohortApplications extends React.Component {
           width='100%'/>
 
         <AdminCohortApplicationList
-          applications={this.props.cohort.order_by_id_and_state}
+          applications={this.props.cohort.applications_by_state_and_id}
           handleAction={this.props.handleAction} />
 
       </section>

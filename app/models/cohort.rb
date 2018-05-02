@@ -12,7 +12,7 @@ class Cohort < ApplicationRecord
   scope :current, -> { where('open_date <= ? AND close_date >= ?', Date.today, Date.today) }
   scope :closed, -> { where('open_date > ? OR close_date < ?', Date.today, Date.today) }
 
-  def order_by_id_and_state
+  def applications_by_state_and_id
     applications.order('state DESC, id')
   end
 
