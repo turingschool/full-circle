@@ -1,5 +1,5 @@
 class Cohort < ApplicationRecord
-  has_many :applications, dependent: :destroy
+  has_many :applications
 
   has_many :cohort_reviewers, dependent: :destroy
   has_many :users, through: :cohort_reviewers
@@ -12,26 +12,30 @@ class Cohort < ApplicationRecord
   scope :current, -> { where('open_date <= ? AND close_date >= ?', Date.today, Date.today) }
   scope :closed, -> { where('open_date > ? OR close_date < ?', Date.today, Date.today) }
 
-  def reviewers
-    self.users.where(role: 'reviewer')
+  def applications_by_state_and_id
+    applications.order('state DESC, id')
   end
-  
+
+  def reviewers
+    users.where(role: 'reviewer')
+  end
+
   def non_reviewers
     User.reviewer - reviewers
   end
 
   def students
-    self.users.where(role: 'student')
+    users.where(role: 'student')
   end
-  
+
   def formatted_close_date
     close_date.strftime("%b %d, %Y")
   end
-  
+
   def formatted_notify_date
     notify_date.strftime("%b %d, %Y")
   end
-  
+
   def formatted_start_date
     start_date.strftime("%b %d, %Y")
   end
