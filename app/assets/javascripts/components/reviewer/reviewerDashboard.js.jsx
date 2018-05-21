@@ -6,6 +6,8 @@ class ReviewerDashboard extends React.Component {
     this.cohorts = JSON.parse(this.props.cohorts)
     if(this.props.current_cohort){
       this.current_cohort = JSON.parse(this.props.current_cohort)
+    }
+    if(this.current_cohort){
       this.current_cohort.title += ' (Current Cohort)'
     }
     this.defineCurrentCohort()
