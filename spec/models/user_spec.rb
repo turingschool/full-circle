@@ -43,7 +43,8 @@ RSpec.describe User do
           'uid' => '90210',
           'credentials' => { 'token' => 'averysecrettoken' },
           'info' => {
-            'name' => 'John Galt',
+            'first_name' => 'John',
+            'last_name' => 'Galt',
             'email' => 'somewhere@colorado.com',
             'roles' => roles.map { |role| { 'name' => role } }
           },
@@ -88,7 +89,8 @@ RSpec.describe User do
           'uid' => '90210',
           'credentials' => { 'token' => 'averysecrettoken' },
           'info' => {
-            'name' => 'John Galt',
+            'first_name' => 'John',
+            'last_name' => 'Galt',
             'email' => 'somewhere@colorado.com'
           },
           'provider' => User::AUTH_PROVIDER_GITHUB
