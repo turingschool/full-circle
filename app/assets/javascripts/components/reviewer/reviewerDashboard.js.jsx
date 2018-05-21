@@ -4,17 +4,19 @@ class ReviewerDashboard extends React.Component {
     super(props)
 
     this.cohorts = JSON.parse(this.props.cohorts)
-    this.current_cohort = JSON.parse(this.props.current_cohort)
+    if(this.props.current_cohort){
+      this.current_cohort = JSON.parse(this.props.current_cohort)
+      this.current_cohort.title += ' (Current Cohort)'
+    }
     this.defineCurrentCohort()
-    this.current_cohort.title = this.current_cohort.title + ' (Current Cohort)'
     this.user = JSON.parse(this.props.user)
     this.authorization = 'Bearer ' + this.props.authorization
   }
   
   defineCurrentCohort() {
     return this.cohorts.map((cohort, i) => {
-      if (cohort.title == this.current_cohort.title) {
-        cohort.title = this.current_cohort.title + ' (Current Cohort)'
+      if (this.current_cohort && cohort.id === this.current_cohort.id) {
+        cohort.title = cohort.title + ' (Current Cohort)'
       }
     })
   }
@@ -23,17 +25,33 @@ class ReviewerDashboard extends React.Component {
     this.setState(action)
   }
   
+  findCohort(){
+    if(this.current_cohort) {
+      return this.current_cohort
+    } else {
+      return this.cohorts[0]
+    }
+  }
+  
+  confirmReviewerHasCohorts() {
+    if(this.user.cohort_reviewers.length != 0) {
+      return (<ReviewerViewApplications
+        cohorts={this.cohorts}
+        user={this.user}
+        cohort={this.findCohort()}
+        message={this.message}
+        authorization={this.authorization} />)
+    } else {
+      return (<section className='reviewer-header'>You do not yet have any Cohorts to review</section>)
+    }
+  }
+  
   render() {
     return (
       <main className='main-vert-frame'>
         <Header user={this.user} />
         <section className='reviewer'>
-          <ReviewerViewApplications
-            cohorts={this.cohorts}
-            user={this.user}
-            cohort={this.current_cohort}
-            message={this.message}
-            authorization={this.authorization} />
+          {this.confirmReviewerHasCohorts()}
         </section>
       </main>
     )
