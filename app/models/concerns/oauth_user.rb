@@ -6,7 +6,7 @@ module OauthUser
       {
         uid: params['uid'],
         token: params['credentials']['token'],
-        name: params['info']['name'],
+        name: [params['info']['first_name'], params['info']['last_name']].join(" "),
         email: params['info']['email']
       }
     end
