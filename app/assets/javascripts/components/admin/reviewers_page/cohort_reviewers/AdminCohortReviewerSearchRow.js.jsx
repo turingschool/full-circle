@@ -38,7 +38,7 @@ class AdminCohortReviewerSearchRow extends React.Component {
   render() {
     return(
       <span className='reviewer-row'>
-        {this.props.reviewer.name}
+        {this.props.reviewer.email}
 
         <ClickBtn Text='Add'
           readOnly={this.props.readOnly}
