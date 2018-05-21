@@ -4,16 +4,18 @@ class ReviewerDashboard extends React.Component {
     super(props)
 
     this.cohorts = JSON.parse(this.props.cohorts)
-    if(this.current_cohort){this.current_cohort = JSON.parse(this.props.current_cohort)}
+    if(this.props.current_cohort){
+      this.current_cohort = JSON.parse(this.props.current_cohort)
+      this.current_cohort.title += ' (Current Cohort)'
+    }
     this.defineCurrentCohort()
-    if(this.current_cohort){this.current_cohort.title + ' (Current Cohort)'}
     this.user = JSON.parse(this.props.user)
     this.authorization = 'Bearer ' + this.props.authorization
   }
   
   defineCurrentCohort() {
     return this.cohorts.map((cohort, i) => {
-      if (this.current_cohort && cohort.title === this.current_cohort.title) {
+      if (this.current_cohort && cohort.id === this.current_cohort.id) {
         cohort.title = cohort.title + ' (Current Cohort)'
       }
     })
