@@ -6,7 +6,7 @@ class AdminCohortApplicationList extends React.Component {
         {this.props.applications.map((app) => {
           return <SelectableTextField
             key={app.user.id}
-            texts={[app.user.email, app.state, app.id]}
+            texts={[app.id, app.user.email, app.state]}
             width='100%'
             returnKey='application'
             returnValue={app}
