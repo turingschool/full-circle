@@ -9,7 +9,7 @@ ruby '2.4.1'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
-gem 'browserify-rails', '~> 4.2.0'
+gem 'browserify-rails', '~> 4.3.0'
 gem 'faker', '>= 1.8.4'
 gem 'faraday'
 gem 'fetch-rails'
