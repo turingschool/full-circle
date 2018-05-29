@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/turingschool-projects/omniauth-census
-  revision: 5487f40c5de4a10d80ca7cd037b53b04992b1781
+  revision: d74d4c1f26031db34820e20bcbc1c5c51f366f80
   specs:
-    omniauth-census (0.1.10)
+    omniauth-census (0.1.11)
       omniauth-oauth2 (~> 1.2)
 
 GEM
