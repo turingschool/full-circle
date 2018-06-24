@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/turingschool-projects/omniauth-census
-  revision: c459fff757a6eabe81905d5881ce78e67a0bbe39
+  revision: b0a60a01f6aadefdc01ad0ec70d070769aa4f321
   specs:
-    omniauth-census (0.1.7)
-      omniauth-oauth2
+    omniauth-census (0.1.12)
+      omniauth-oauth2 (~> 1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -65,13 +65,13 @@ GEM
       railties (>= 4.0.0)
       sprockets (>= 3.6.0)
     builder (3.2.3)
-    capybara (3.1.0)
+    capybara (3.2.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      xpath (~> 3.0)
+      xpath (~> 3.1)
     cliver (0.3.2)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
@@ -147,7 +147,7 @@ GEM
       omniauth (~> 1.2)
     pg (0.21.0)
     phantomjs (2.1.1.0)
-    poltergeist (1.18.0)
+    poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
@@ -230,7 +230,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -242,7 +242,7 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.10)
+    uglifier (4.1.11)
       execjs (>= 0.3.0, < 3)
     web-console (3.6.2)
       actionview (>= 5.0)
@@ -252,7 +252,7 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    xpath (3.0.0)
+    xpath (3.1.0)
       nokogiri (~> 1.8)
 
 PLATFORMS

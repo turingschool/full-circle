@@ -40,7 +40,7 @@ class AdminCohortReviewerRow extends React.Component {
   render() {
     return(
       <div className='reviewer-row'>
-        <span>{this.props.reviewer.name}</span>
+        <span>{this.props.reviewer.email}</span>
         <ClickBtn Text='X'
           readOnly={this.props.readOnly}
           onClick={this.removeReviewer.bind(this)} />
