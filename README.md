@@ -30,6 +30,14 @@ To install client side dependencies:
 * `brew install yarn`
 * `yarn`
 
+Then set up rails:
+
+* `sudo gem install rails`
+
+Finally, to run the application locally:
+
+* `rails s`
+
 ## Deployment
 
 Make sure the tests are passing on
