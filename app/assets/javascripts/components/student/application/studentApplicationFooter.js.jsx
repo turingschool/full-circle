@@ -1,14 +1,15 @@
 class StudentApplicationFooter extends React.Component {
 
   validateEssay() {
-    if (this.props.message == 'Unsaved Changes') {
-      return { message: 'Save Before Submitting' }
-    } else if (this.props.essay.length < 1) {
+    const { essay, message } = this.props;
+    if ( essay.length < 1) {
       return { message: 'Essay cannot be blank' }
+    } else if (['Unsaved Changes', 'Save Before Submitting'].includes(message)) {
+      return { message: 'Save Before Submitting' }
     } else {
       return {
         confirm: true,
-        essay: this.props.essay
+        essay
       }
     }
   }
