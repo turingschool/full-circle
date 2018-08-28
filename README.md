@@ -41,14 +41,11 @@ Finally, to run the application locally:
 ## Deployment
 
 Make sure the tests are passing on
-[Travis CI](https://travis-ci.org/turingschool/full-circle) and then deploy to Heroku staging
-followed by production.
+[Circle CI](https://circleci.com/gh/turingschool/full-circle). When code is merged into master and CI goes green, the app will auto deploy to staging.
 
-To deploy to staging: `git push staging master`. To deploy to production: `git
-push heroku master`.
+Deploys to production are done manually via `git push heroku master`.
 
-The above assumed you have `staging` and `heroku` remotes set up to point to the
-below Heroku apps.
+The above assumed you have `staging` and `heroku` remotes set up to point to the below Heroku apps.
 
 The app runs on Heroku and has a staging and a production environment.
 
