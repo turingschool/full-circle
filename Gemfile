@@ -20,7 +20,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'omniauth'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'omniauth-github'
-gem 'pg', '~> 0.18'
+gem 'pg', '~> 1.1'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.1.6'
 gem 'react-rails', '~> 2.2.1'
