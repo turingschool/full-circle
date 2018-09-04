@@ -40,19 +40,13 @@ Finally, to run the application locally:
 
 ## Deployment
 
-Make sure the tests are passing on
-[Circle CI](https://circleci.com/gh/turingschool/full-circle). When code is merged into master and CI goes green, the app will auto deploy to staging.
+Full Cirlce is hosted on Heroku. Green builds of the master branch will deploy to
+staging automatically via CircleCI. Migrations are run as part of the Heroku
+release process. Migrations on Heroku should not need to be run manually (`rake
+db:migrate`) except in emergencies or extreme circumstances.
 
-Deploys to production are done manually via `git push heroku master`.
-
-The above assumed you have `staging` and `heroku` remotes set up to point to the below Heroku apps.
-
-The app runs on Heroku and has a staging and a production environment.
-
-The staging app is called turing-full-circle-staging and can be found at
-[https://full-circle-staging.turing.io](https://full-circle-staging.turing.io)
-The production app is called turing-full-circle and can be found at
-[https://full-circle.turing.io](https:/full-circle.turing.io)
+Production deploys are done by approving the workflow in the Circle UI. Manual
+`git push`'s to Heroku should not happen except in extreme circumstances.
 
 ## How the App Works
 > This section describes how the app works and it's structure. Here is where you can find what code does what and where to find it.
