@@ -11,7 +11,7 @@ This application assists in streamlining and automating the application process 
 
 ## Setup
 
-If you don't have ruby 2.4.1 or greater first install this using your Ruby version manager of choice: $ `rvm install 2.4.1`
+If you don't have ruby 2.4.1 or greater first install this using your Ruby version manager of choice (we use `rbenv` at Turing)
 
 Now: `git clone https://github.com/turingschool/full-circle.git`
 
