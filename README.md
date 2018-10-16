@@ -15,7 +15,7 @@ If you don't have ruby 2.4.1 or greater first install this using your Ruby versi
 
 Now: `git clone https://github.com/turingschool/full-circle.git`
 
-Run `bundle update`. If all goes well setup the database: `rake db:create db:migrate` and optionally: `rake db:seed`
+Run `bundle install`. If all goes well setup the database: `rake db:create db:migrate` and optionally: `rake db:seed`
 
 Install figaro: $ `bundle exec figaro install` and then add to the created application.yml file your Github OAuth credentials:
 ```Ruby
