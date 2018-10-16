@@ -15,24 +15,30 @@ If you don't have ruby 2.4.1 or greater first install this using your Ruby versi
 
 Now: `git clone https://github.com/turingschool/full-circle.git`
 
-Run `bundle install`. If all goes well setup the database: `rake db:create db:migrate` and optionally: `rake db:seed`
+Run `bundle install`.
 
-Install figaro: $ `bundle exec figaro install` and then add to the created application.yml file your Github OAuth credentials:
+Create OAuth App in Census (https://login-staging.turing.io)
+Redirect url `http://localhost:3000/auth/census/callback`
+
+Install figaro: $ `bundle exec figaro install` and then add to the created application.yml file your Census OAuth credentials:
 ```Ruby
-GITHUB_CLIENT_ID:
-GITHUB_CLIENT_SECRET:
+CENSUS_CLIENT_ID:
+CENSUS_CLIENT_SECRET:
 ```
+
+*You should also set your role in Census to `full-circle-admin`*
+
+Create and migrate the DB
+* `rake db:create db:migrate`
+
+Optional seed the db
+* `rake db:seed`
 
 Finally, run the test suite: $ `rspec`
 
 To install client side dependencies:
 
-* `brew install yarn`
 * `yarn`
-
-Then set up rails:
-
-* `sudo gem install rails`
 
 Finally, to run the application locally:
 
@@ -40,7 +46,7 @@ Finally, to run the application locally:
 
 ## Deployment
 
-Full Cirlce is hosted on Heroku. Green builds of the master branch will deploy to
+Full Circle is hosted on Heroku. Green builds of the master branch will deploy to
 staging automatically via CircleCI. Migrations are run as part of the Heroku
 release process. Migrations on Heroku should not need to be run manually (`rake
 db:migrate`) except in emergencies or extreme circumstances.
@@ -54,6 +60,11 @@ Production deploys are done by approving the workflow in the Circle UI. Manual
 #### Basic Structure
 
 Full Circle is really 3 single page apps in one. Each user has their own dashboard: Student, Reviewer, and Admin. When a user first logs in via the homepage portal they will be redirected to the dashboard that corresponds to their _role_ **(found in controller/concerns/authorize.rb).**
+
+Roles are determined by the user's role within Census.
+Admin `full-circle-admin`
+Reviewer `full-circle-reviewer`
+
 - A student will be rerouted to `student/dashboard`, and will not be able to visit the reviewer or admin dashboard.
 - A reviewer will be rerouted to `reviewer/dashboard` and will not be able to visit the admin dashboard, but can visit the student dashboard.
 - An admin will be rerouted to `admin/dashboard`, and can navigate to all other dashboards.
@@ -68,9 +79,9 @@ Once a user has entered a dashboard we are no longer in Rails but in React. All 
 > - app/controllers/concerns/authorize.rb
 > - app/controllers/session_controller.rb
 
-OAuth happens right now via the omniauth gem with a github provider **(found in the omniauth.rb config file)**. The hope is this will make moving to the Census provider somewhat painless.
+OAuth happens right now via the omniauth gem with the Census provider **(found in the omniauth.rb config file)**.
 
-When a user clicks on the login button on the homepage this initiates the Github callback loop. When a user is Authorized they are rerouted through the session_controller. When a session is created a user is then rerouted based on their role **(found in authorize.rb)**
+When a user clicks on the login button on the homepage this initiates the Census callback loop. When a user is Authorized they are rerouted through the session_controller. When a session is created a user is then rerouted based on their role **(found in authorize.rb)**
 
 A user in the Full Circle database will maintain state with the OAuth provider. If they change their name on Github, it will also change in Full Circle. When a user logs in, all information is updated in this way from the provider. This information can be found in oauth_params in oauth_user.rb. When a change is needed for the User model's attributes, these can be updated here and should not effect anything else.
 
