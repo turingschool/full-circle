@@ -98,7 +98,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
-    honeybadger (3.3.1)
+    honeybadger (4.0.0)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.3.3)
