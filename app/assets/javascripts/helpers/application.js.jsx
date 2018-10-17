@@ -3,7 +3,7 @@ function sortedWithReviewCount(applications) {
   return appsWithScore.sort((a,b) => {
     if ((a.state === "draft" && b.state === "submitted") || a.numberOfReviews < b.numberOfReviews) {
       return 1;
-    } else if (a.numberOfReviews > b.numberOfReviews) {
+    } else if ((a.state === "submitted" && b.state === "draft") || a.numberOfReviews > b.numberOfReviews) {
       return -1;
     } else {
       return b.totalAverage - a.totalAverage
