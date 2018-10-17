@@ -43,7 +43,7 @@ class AdminCohortFormFooter extends React.Component {
       })
   }
 
-  options(verb, body = {}) {
+  options(verb, body = "{}") {
     return {
       body: body,
       method: verb,

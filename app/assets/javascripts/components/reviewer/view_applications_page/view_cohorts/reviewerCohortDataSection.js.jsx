@@ -78,15 +78,15 @@ class ReviewerCohortDataSection extends React.Component {
       })
       .catch((error) => {
         review.status = prevReviewStatus
-        
+
         this.props.handleAction({
           review: review,
           message: 'Unable to Lock Review'
         })
       })
   }
-  
-  options(verb, body = {}) {
+
+  options(verb, body = "{}") {
     return {
       body: body,
       method: verb,

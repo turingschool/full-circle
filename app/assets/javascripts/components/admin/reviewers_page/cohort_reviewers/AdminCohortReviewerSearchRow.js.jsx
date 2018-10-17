@@ -17,10 +17,10 @@ class AdminCohortReviewerSearchRow extends React.Component {
       })
       .catch((error) => {
         this.props.handleAction({message: 'Error Adding Reviewer'})
-      })    
+      })
   }
 
-  options(verb, body = {}) {
+  options(verb, body = "{}") {
     return {
       body: body,
       method: verb,
