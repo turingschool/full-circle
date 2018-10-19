@@ -16,7 +16,7 @@ function scoreAndReviewers(application) {
   let totalSum = 0;
 
   application.reviews.forEach(review => {
-    if (review.status === "reviewed") {
+    if (review.status === "reviewed" || review.status === "locked") {
       numberOfReviews++
       totalSum += review.score_card.total
     }
