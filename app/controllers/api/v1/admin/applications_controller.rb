@@ -11,7 +11,7 @@ class Api::V1::Admin::ApplicationsController < Api::V1::AdminApiController
     application = Application.find(params[:id])
 
     if application.update(application_params)
-      render json: application, status: 200
+      render json: application, :include => [:user, :reviews], status: 200
     else
       render json: { "error" => "Error Updating Application" }, status: 400
     end

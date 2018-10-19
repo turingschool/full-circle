@@ -8,7 +8,8 @@ class AdminViewApplicationSection extends React.Component {
         { this.props.application.status === "undecided" ? (
           <AdminApplicationActionBar
             application={this.props.application}
-            handleAction={this.props.handleAction} />
+            handleAction={this.props.handleAction}
+            authorization={this.props.authorization}/>
         ) : (
           <h5>Status: {this.props.application.status}</h5>
         )}

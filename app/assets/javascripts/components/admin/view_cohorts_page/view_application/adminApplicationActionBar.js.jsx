@@ -7,6 +7,29 @@ class AdminApplicationActionBar extends React.Component {
 
     alert(reviewersStatuses.join('\n'))
   }
+  
+  updateStatus(status) {
+    this.props.application.status = status
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify({application: this.props.application}),
+      headers: { 'Authorization': this.props.authorization,
+      'Content-Type': "application/json" }}
+
+      ping(`/api/v1/admin/applications/${this.props.application.id}`, options)
+      .then(response => {
+        response.json().then((json) => {
+          this.props.handleAction({
+            application: json,
+            message: 'Application status updated'
+          })
+        })
+      })
+      .catch((error) => {
+        this.props.handleAction({
+          message: 'Unable to edit application status'
+        })
+      })
 
   render() {
     return(
@@ -14,12 +37,12 @@ class AdminApplicationActionBar extends React.Component {
         <ClickBtn
           readOnly='decline-btn'
           Text={'Decline'}
-          onClick={this.props.handleAction} />
+          onClick={() => this.updateStatus('declined')} />
 
         <ClickBtn
           readOnly='award-btn'
           Text={'Award'}
-          onClick={this.props.handleAction} />
+          onClick={() => this.updateStatus('awarded')} />
 
         <ClickBtn
           readOnly='reviewers-btn'
