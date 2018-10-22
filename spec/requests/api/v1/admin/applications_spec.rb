@@ -22,6 +22,9 @@ RSpec.describe 'API::V1::Admin::CohortController' do
         params: {application: {status: 'awarded'} },
         headers: @authorization
 
+      expect(ActionMailer::Base.deliveries.size).to eq(1)
+      award_email = ActionMailer::Base.deliveries.last
+
       expect(response.status).to eq(200)
       raw_application = JSON.parse(response.body)
 
