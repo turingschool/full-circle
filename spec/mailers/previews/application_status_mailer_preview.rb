@@ -1,9 +1,9 @@
 class ApplicationStatusMailerPreview < ActionMailer::Preview
   def award
-    ApplicationStatusMailer.award(Application.last)
+    ApplicationStatusMailer.notify(Application.where(status: 'awarded').last)
   end
 
   def decline
-    ApplicationStatusMailer.decline(Application.last)
+    ApplicationStatusMailer.notify(Application.where(status: 'declined').last)
   end
 end

@@ -1,14 +1,17 @@
 class ApplicationStatusMailer < ApplicationMailer
 
-  def award(application)
+  def notify(application)
     @application = application
 
-    mail(to: application.user.email, subject: 'Congratulation')
+    if application.status == 'awarded'
+      mail(to: application.user.email,
+           subject: 'Congratulation',
+           template_name: 'award')
+    else
+      mail(to: application.user.email,
+           subject: 'Diversity Scholarship',
+           template_name: 'decline')
+    end
   end
 
-  def decline(application)
-    @application = application
-
-    mail(to: application.user.email, subject: 'Diversity Scholarship')
-  end
 end

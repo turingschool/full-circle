@@ -11,6 +11,9 @@ class Api::V1::Admin::ApplicationsController < Api::V1::AdminApiController
     application = Application.find(params[:id])
 
     if application.update(application_params)
+      if application_params[:status] && ['declined', 'awarded'].include?(application_params[:status])
+        ApplicationStatusMailer.notify(application).deliver_now
+      end
       render json: application, :include => [:user, :reviews], status: 200
     else
       render json: { "error" => "Error Updating Application" }, status: 400
