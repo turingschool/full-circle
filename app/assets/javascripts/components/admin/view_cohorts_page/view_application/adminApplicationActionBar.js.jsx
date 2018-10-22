@@ -1,5 +1,13 @@
 class AdminApplicationActionBar extends React.Component {
 
+  showReviewers() {
+    let reviewersStatuses = this.props.application.reviews.map(review => {
+      return `${review.cohort_reviewer.user.email} - ${review.status}`
+    })
+
+    alert(reviewersStatuses.join('\n'))
+  }
+
   render() {
     return(
       <section className='application-action-bar'>
@@ -14,9 +22,9 @@ class AdminApplicationActionBar extends React.Component {
           onClick={this.props.handleAction} />
 
         <ClickBtn
-          readOnly='flag-btn'
-          Text={'Flag'}
-          onClick={this.props.handleAction} />
+          readOnly='reviewers-btn'
+          Text={'View Reviewers'}
+          onClick={this.showReviewers.bind(this)} />
 
       </section>
     )

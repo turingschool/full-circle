@@ -6,24 +6,23 @@
     width: 100%;
 
     @include btn();
-    
+
     .btn {
       margin: 0px 5px;
       font-size: 12px;
       height: 25px;
-      max-width: 60px;
     }
-    
+
     .decline-btn {
       background-color: #dc143c;
     }
-    
+
     .award-btn {
       background-color: #60eba8;
     }
-    
-    .flag-btn {
-      background-color: #d5d622;
+
+    .reviewers-btn {
+      background-color: #00bbd2;
     }
   }
 }
