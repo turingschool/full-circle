@@ -3,15 +3,12 @@ class ApplicationStatusMailer < ApplicationMailer
   def notify(application)
     @application = application
 
-    if application.status == 'awarded'
-      mail(to: application.user.email,
-           subject: 'Congratulation',
-           template_name: 'award')
-    else
-      mail(to: application.user.email,
-           subject: 'Diversity Scholarship',
-           template_name: 'decline')
-    end
+    mail(
+        to: @application.user.email,
+        bcc: "contact@turing.io",
+        subject: "Turing School Scholarship Application",
+        template_name: application.status == 'awarded' ? "award" : "decline"
+        )
   end
 
 end
