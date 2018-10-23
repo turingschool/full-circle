@@ -15,7 +15,6 @@ RSpec.describe 'API::V1::Admin::CohortController' do
   describe 'PUT' do
 
     it 'Will update Application' do
-      # cohort = create(:cohort, :open)
       application = create(:application)
 
       put @url + '/' + application.id.to_s,
