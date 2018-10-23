@@ -7,7 +7,7 @@ class AdminApplicationActionBar extends React.Component {
 
     alert(reviewersStatuses.join('\n'))
   }
-  
+
   updateStatus(status) {
     this.props.application.status = status
     const options = {
@@ -16,20 +16,21 @@ class AdminApplicationActionBar extends React.Component {
       headers: { 'Authorization': this.props.authorization,
       'Content-Type': "application/json" }}
 
-      ping(`/api/v1/admin/applications/${this.props.application.id}`, options)
-      .then(response => {
-        response.json().then((json) => {
-          this.props.handleAction({
-            application: json,
-            message: 'Application status updated'
-          })
-        })
-      })
-      .catch((error) => {
+    ping(`/api/v1/admin/applications/${this.props.application.id}`, options)
+    .then(response => {
+      response.json().then((json) => {
         this.props.handleAction({
-          message: 'Unable to edit application status'
+          application: json,
+          message: 'Application status updated'
         })
       })
+    })
+    .catch((error) => {
+      this.props.handleAction({
+        message: 'Unable to edit application status'
+      })
+    })
+  }
 
   render() {
     return(
