@@ -25,7 +25,6 @@
 /app/channels
 /app/helpers
 /app/jobs
-/app/mailers
 
 /config/locales
 /vendor

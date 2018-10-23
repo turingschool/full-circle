@@ -153,7 +153,8 @@ Description: **Creates a clickable button that will execute a function.** <br>
 Props:
  - onClick: (Function) What will be executed on button click.
  - Text: (String) Text that will be displayed in button body.
- - readOnly: (Boolean) Defaults to false. True will disable button.
+ - readOnly: (String) Classnames. 'true' class will hide button.
+ - disabled: (Boolean) Defaults to false. `true` will disable the button as clickable.
 
 Name: **LinkBtn** <br>
 Description: **Creates a clickable button that will reroute to a link.** <br>

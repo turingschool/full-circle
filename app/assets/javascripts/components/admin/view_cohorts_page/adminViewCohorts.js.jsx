@@ -21,7 +21,7 @@ class AdminViewCohorts extends React.Component {
         cohorts: cohorts,
         item: cohort,
         applications: cohort.applications,
-        application: cohort.applications[0]
+        application: sortedWithReviewCount(cohort.applications)[0]
       })
     }
   }
@@ -42,7 +42,7 @@ class AdminViewCohorts extends React.Component {
       </section>
     }
   }
-  
+
   render() {
     return(
       <section className='main-horz-frame'>

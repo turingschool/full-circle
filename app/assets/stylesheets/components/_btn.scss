@@ -26,6 +26,16 @@
     visibility: visible;
   }
 
+  .btn.disabled {
+    background-color: $turing-gray;
+    cursor: not-allowed;
+  }
+
+  .btn.disabled:active {
+    background-color: $turing-gray;
+    cursor: not-allowed;
+  }
+
   .btn:hover {
     @include shadow();
   }
