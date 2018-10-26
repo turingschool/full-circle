@@ -11,6 +11,18 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     @authorization = { 'HTTP_AUTHORIZATION' => "Bearer " + @token }
   end
 
+  describe 'GET' do
+    it 'Will return one application' do
+      application = create(:application)
+
+      get @url + '/' + application.id.to_s, headers: @authorization
+
+      expect(response.status).to eq(200)
+      raw_application = JSON.parse(response.body)
+
+      expect(raw_application["id"]).to eq(application.id)
+    end
+  end
 
   describe 'PUT' do
 

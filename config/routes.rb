@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :admin do
-        resources :applications, only: [:index, :update]
+        resources :applications, only: [:index, :update, :show]
         resources :cohorts do
           resources :reviewers, only: [:show, :index, :update, :destroy], controller: 'cohort_reviewers'
         end

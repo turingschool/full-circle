@@ -9,11 +9,27 @@ class AdminApplicationActionBar extends React.Component {
   }
 
   showReviewers() {
-    let reviewersStatuses = this.props.application.reviews.map(review => {
-      return `${review.cohort_reviewer.user.email} - ${review.status}`
-    })
+    const options = {
+      method: 'GET',
+      headers: { 'Authorization': this.props.authorization,
+      'Content-Type': "application/json" }
+    }
 
-    alert(reviewersStatuses.join('\n'))
+    ping(`/api/v1/admin/applications/${this.props.application.id}`, options)
+    .then(response => {
+      response.json().then((json) => {
+        let reviewersStatuses = json.reviews.map(review => {
+          return `${review.cohort_reviewer.user.email} - ${review.status}`
+        })
+
+        alert(reviewersStatuses.join('\n'))
+      })
+    })
+    .catch((error) => {
+      this.props.handleAction({
+        message: 'Unable to get reviewer status'
+      })
+    })
   }
 
   updateStatus(status) {
