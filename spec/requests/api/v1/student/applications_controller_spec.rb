@@ -25,7 +25,7 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
       get @url, headers: { 'HTTP_AUTHORIZATION' => "Bearer " + '1' }
 
       expect(response.status).to eq(403)
-      expect(JSON.parse(response.body)).to eq({ "error"=>"Forbidden" })
+      expect(JSON.parse(response.body)).to eq({ "error"=>"JWT::DecodeError - Forbidden" })
     end
   end
 
