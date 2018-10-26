@@ -29,7 +29,7 @@ RSpec.describe 'API::V1::Admin::ReviewersController' do
       get url, headers: { 'HTTP_AUTHORIZATION' => "Bearer " + '1' }
 
       expect(response.status).to eq(403)
-      expect(JSON.parse(response.body)).to eq({ "error"=>"Forbidden" })
+      expect(JSON.parse(response.body)).to eq({ "error"=>"JWT::DecodeError - Forbidden" })
     end
 
     it 'Will return Forbidden if user not an admin' do
@@ -39,7 +39,7 @@ RSpec.describe 'API::V1::Admin::ReviewersController' do
       get url, headers: { 'HTTP_AUTHORIZATION' => "Bearer " + token }
 
       expect(response.status).to eq(403)
-      expect(JSON.parse(response.body)).to eq({ "error"=>"Forbidden" })
+      expect(JSON.parse(response.body)).to eq({ "error"=>"Api::V1::AdminApiController - Forbidden" })
     end
   end
 

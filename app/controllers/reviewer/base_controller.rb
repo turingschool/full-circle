@@ -4,6 +4,9 @@ class Reviewer::BaseController < ApplicationController
   private
 
     def authorize!
-      render file: "/public/404" unless admin? || reviewer?
+      unless admin? || reviewer?
+        Honeybadger.notify("Reviewer::BaseController - Unauthorized")
+        render file: "/public/404"
+      end
     end
 end
