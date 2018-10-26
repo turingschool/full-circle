@@ -7,6 +7,11 @@ class Api::V1::Admin::ApplicationsController < Api::V1::AdminApiController
                    }
   end
 
+  def show
+    application = Application.find(params[:id])
+    render json: application, :include => [:user, :reviews => {:include => [:cohort_reviewer => {:include => :user}]}], status: 200
+  end
+
   def update
     application = Application.find(params[:id])
 
