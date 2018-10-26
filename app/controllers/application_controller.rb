@@ -2,10 +2,12 @@ class ApplicationController < ActionController::Base
   include Authorize
 
   before_action do
-    Honeybadger.context({
-      user_id: current_user.id,
-      user_email: current_user.email
-    })
+    if current_user
+      Honeybadger.context({
+        user_id: current_user.id,
+        user_email: current_user.email
+      })
+    end
   end
 
   protect_from_forgery with: :exception
@@ -14,6 +16,6 @@ class ApplicationController < ActionController::Base
   private
 
     def current_user
-      @current_user ||= User.find(session[:user_id])
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 end
