@@ -1,9 +1,9 @@
 function sortedWithReviewCount(applications) {
   appsWithScore = applications.map(application => Object.assign(application, scoreAndReviewers(application)))
   return appsWithScore.sort((a,b) => {
-    if ((a.state === "draft" && b.state === "submitted") || a.numberOfReviews < b.numberOfReviews) {
+    if (a.state === "draft" && b.state === "submitted") {
       return 1;
-    } else if ((a.state === "submitted" && b.state === "draft") || a.numberOfReviews > b.numberOfReviews) {
+    } else if (a.state === "submitted" && b.state === "draft") {
       return -1;
     } else {
       return b.totalAverage - a.totalAverage
@@ -22,5 +22,8 @@ function scoreAndReviewers(application) {
     }
   })
 
-  return {numberOfReviews, totalAverage: parseFloat((totalSum/numberOfReviews).toFixed(2))}
+  let totalAverage = parseFloat((totalSum/numberOfReviews).toFixed(2))
+  if (isNaN(totalAverage)) { totalAverage = 0 }
+
+  return {numberOfReviews, totalAverage}
 }

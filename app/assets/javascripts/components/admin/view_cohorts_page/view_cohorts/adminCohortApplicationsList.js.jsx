@@ -6,7 +6,10 @@ class AdminCohortApplicationList extends React.Component {
         {this.props.applications.map((app) => {
           return <SelectableTextField
             key={app.user.id}
-            texts={[`${app.totalAverage || 0} (${app.numberOfReviews}/${app.reviews.length})`, app.user.email, app.state]}
+            texts={[
+              { displayText: `${app.totalAverage || 0} (${app.numberOfReviews}/${app.reviews.length})`, classes: app.numberOfReviews != app.reviews.length ? 'warning' : ''},
+              { displayText: app.user.email},
+              { displayText: app.state}]}
             width='100%'
             returnKey='application'
             returnValue={app}
