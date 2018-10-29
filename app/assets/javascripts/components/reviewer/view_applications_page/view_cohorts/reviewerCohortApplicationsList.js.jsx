@@ -1,5 +1,5 @@
 class ReviewerCohortApplicationList extends React.Component {
-  
+
   reviewStatus(app) {
     if (this.findUserReview(app)) {
       return this.findUserReview(app).status
@@ -7,7 +7,7 @@ class ReviewerCohortApplicationList extends React.Component {
       return "N/A"
     }
   }
-  
+
   totalScore(app) {
     if (this.findUserReview(app)) {
       return this.findUserReview(app).score_card.total
@@ -15,7 +15,7 @@ class ReviewerCohortApplicationList extends React.Component {
       return "N/A"
     }
   }
-  
+
   findUserReview(app){
     return app.reviews.find((review) => {
       return this.props.user.cohort_reviewers.some((cohort_reviewer) => {
@@ -35,7 +35,7 @@ class ReviewerCohortApplicationList extends React.Component {
         {this.props.applications.map((app) => {
           return <SelectableTextField
             key={app.id}
-            texts={[app.id, this.reviewStatus(app), this.totalScore(app)]}
+            texts={[{ displayText: app.id}, { displayText: this.reviewStatus(app)}, { displayText: this.totalScore(app)}]}
             width='100%'
             application={this.props.application}
             returnKey='application'
