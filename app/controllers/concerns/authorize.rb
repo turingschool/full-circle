@@ -12,22 +12,26 @@ module Authorize
   end
 
   def authorize_student!
-    redirect_to root_path unless current_user
+    redirect_to root_path and return unless current_user
   end
 
   def authorize_reviewer!
-    redirect_to root_path unless current_user
-
-    unless current_user.admin? || current_user.reviewer?
-      render file: "/public/404"
+    if current_user
+      if !current_user.admin? && !current_user.reviewer?
+        render file: "/public/404"
+      end
+    else
+      redirect_to root_path unless current_user
     end
   end
 
   def authorize_admin!
-    redirect_to root_path unless current_user
-
-    unless current_user.admin?
-      render file: "/public/404"
+    if current_user
+      if !current_user.admin?
+        render file: "/public/404"
+      end
+    else
+      redirect_to root_path unless current_user
     end
   end
 
