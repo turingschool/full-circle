@@ -2,24 +2,33 @@ module Authorize
   extend ActiveSupport::Concern
 
   def redirect_user
-    if student?
+    if current_user.student?
       redirect_to student_dashboard_path
     elsif current_user.reviewer?
       redirect_to reviewer_dashboard_path
-    elsif admin?
+    elsif current_user.admin?
       redirect_to admin_dashboard_path
     end
   end
 
-  def admin?
-    current_user.admin?
+  def authorize_student!
+    redirect_to root_path unless current_user
   end
 
-  def reviewer?
-    current_user.reviewer?
+  def authorize_reviewer!
+    redirect_to root_path unless current_user
+
+    unless current_user.admin? || current_user.reviewer?
+      render file: "/public/404"
+    end
   end
 
-  def student?
-    current_user.student?
+  def authorize_admin!
+    redirect_to root_path unless current_user
+
+    unless current_user.admin?
+      render file: "/public/404"
+    end
   end
+
 end

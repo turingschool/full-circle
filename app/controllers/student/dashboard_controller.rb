@@ -1,4 +1,5 @@
 class Student::DashboardController < ApplicationController
+  before_action :authorize_student!
 
   def index
     @cohort = Cohort.current[0]
