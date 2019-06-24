@@ -23,7 +23,7 @@ RSpec.describe 'API::V1::Admin::CohortController' do
     it 'Will return Forbidden if invalid token is sent' do
       get @url, headers: { 'HTTP_AUTHORIZATION' => "Bearer " + '1' }
 
-      expect(response.status).to eq(403)
+      expect(response.status).to eq(401)
       expect(JSON.parse(response.body)).to eq({ "error"=>"JWT::DecodeError - Forbidden" })
     end
 
