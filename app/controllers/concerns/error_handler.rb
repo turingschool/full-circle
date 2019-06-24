@@ -11,7 +11,7 @@ module ErrorHandler
 
       rescue_from JWT::DecodeError do |error|
         Honeybadger.notify("JWT::DecodeError", context: {error: error})
-        render json: { "error"=>"JWT::DecodeError - Forbidden" }, status: 403
+        render json: { "error"=>"JWT::DecodeError - Forbidden" }, status: 401
       end
     end
   end
