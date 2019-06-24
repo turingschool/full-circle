@@ -7,6 +7,10 @@ function ping(url, options) {
 }
 
 function handleErrors(response) {
+  if (response.status === 401) {
+    window.alert('Session Expired. Please Log In.')
+    window.location.assign('/')
+  }
   if (!response.ok) {
     throw response
   }
