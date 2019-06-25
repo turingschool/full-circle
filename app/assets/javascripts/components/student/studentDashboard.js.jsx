@@ -54,7 +54,7 @@ class StudentDashboard extends React.Component {
       headers: { 'Authorization': this.authorization }
     }
 
-    fetch('/api/v1/student/applications' + params, options)
+    ping('/api/v1/student/applications' + params, options)
       .then((data) => {
         return data.json()
       })
