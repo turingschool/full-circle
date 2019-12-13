@@ -23,7 +23,7 @@ gem 'omniauth-github'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.12'
 gem 'rails', '~> 5.2.2'
-gem 'react-rails', '~> 2.2.1'
+gem 'react-rails', '~> 2.6.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
