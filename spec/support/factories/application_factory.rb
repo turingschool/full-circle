@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :application do
-    essay 'Blah blah blah blah'
+    essay { 'Blah blah blah blah' }
     cohort
     user
   end
