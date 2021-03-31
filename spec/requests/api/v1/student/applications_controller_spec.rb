@@ -34,7 +34,7 @@ RSpec.describe 'API::V1::Student::ApplicationController' do
       get @url, headers: @authorization
       application = JSON.parse(response.body)
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(application["user_id"]).to eq(@user.id)
       expect(application["id"]).to eq(@user.application.id)
     end
