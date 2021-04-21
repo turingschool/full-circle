@@ -17,7 +17,7 @@ Now: `git clone https://github.com/turingschool/full-circle.git`
 
 Run `bundle install`.
 
-Create OAuth App in Census (https://login-staging.turing.io)
+Create OAuth App in Census (https://login-staging.turing.edu)
 Redirect url `http://localhost:3000/auth/census/callback`
 
 Install figaro: $ `bundle exec figaro install` and then add to the created application.yml file your Census OAuth credentials:

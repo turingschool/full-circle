@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: '"Turing School" <contact@turing.io>'
+  default from: '"Turing School" <contact@turing.edu>'
   layout 'mailer'
 end

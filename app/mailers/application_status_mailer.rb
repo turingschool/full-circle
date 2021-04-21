@@ -5,7 +5,7 @@ class ApplicationStatusMailer < ApplicationMailer
 
     mail(
         to: @application.user.email,
-        bcc: "darren@turing.io",
+        bcc: "darren@turing.edu",
         subject: "Turing School Scholarship Application",
         template_name: application.status == 'awarded' ? "award" : "decline"
         )
