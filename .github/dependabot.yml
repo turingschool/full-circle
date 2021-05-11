@@ -1,0 +1,49 @@
+# Turing School - Standard Dependabot File (with modifications)
+#
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: weekly
+  reviewers:
+    - turingschool/engineering
+  rebase-strategy: auto
+  ignore:
+  - dependency-name: faraday
+    versions:
+    - 1.3.0
+    - 1.4.0
+    - 1.4.1
+  - dependency-name: shoulda-matchers
+    versions:
+    - 4.5.1
+  - dependency-name: faker
+    versions:
+    - 2.12.0
+  - dependency-name: capybara
+    versions:
+    - 3.32.2
+  - dependency-name: rspec-rails
+    versions:
+    - 4.0.2
+    - 4.1.0
+    - 5.0.0
+  - dependency-name: honeybadger
+    versions:
+    - 4.7.2
+    - 4.7.3
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+  reviewers:
+    - turingschool/engineering
+  rebase-strategy: auto
+  ignore:
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
