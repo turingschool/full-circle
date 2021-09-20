@@ -22,7 +22,7 @@ gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-c
 gem 'omniauth-github'
 gem 'pg', '~> 0.18'
 gem 'postmark-rails'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 5.5'
 gem 'rails', '~> 5.2.5'
 gem 'react-rails', '~> 2.2.1'
 gem 'sass-rails', '~> 5.0'
