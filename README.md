@@ -1,3 +1,8 @@
+# NO LONGER USED: replaced with Airtable form.
+See https://turing.edu/financing/diversity-scholarship-application
+
+---
+
 [![Build Status](https://travis-ci.org/turingschool/full-circle.svg?branch=master)](https://travis-ci.org/) [![Code Climate](https://codeclimate.com/github/turingschool/full-circle/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate) [![security](https://hakiri.io/github/turingschool/full-circle/master.svg)](https://hakiri.io/github/turingschool/full-circle/master)
 
 # Full Circle: Turing's Diversity Scholarship Application
