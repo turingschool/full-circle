@@ -10,6 +10,11 @@
   height: 100%;
 
   @include btn();
+
+  .basic-link {
+    color: blue !important;
+    text-decoration: underline !important;
+  }
 }
 
 #login-button {

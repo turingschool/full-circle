@@ -10,10 +10,7 @@ class HomePage extends React.Component {
           <br></br>
 
           <p style={{ color: 'red', fontWeight: 'bold', fontSize: '24px' }}>
-            The diversity scholarship application has moved. Please submit your application on the turing.edu site at
-            <a href='https://turing.edu/financing/diversity-scholarship-application'>
-              turing.edu/financing/diversity-scholarship-application
-            </a>
+            The diversity scholarship application has moved. Please submit your application on the turing.edu site at <a className='basic-link' href='https://turing.edu/financing/diversity-scholarship-application'>turing.edu/financing/diversity-scholarship-application </a>
           </p>
           <br></br>
           <br></br>
